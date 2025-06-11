@@ -23,27 +23,55 @@
             position: relative;
         }
 
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 0.8rem 1.5rem;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: var(--primary-green);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-        }
+  .dropdown-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 0.8rem 1.5rem;
+        background-color: rgba(255,255,255,0.8);
+        color: var(--primary-green);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s;
+    }
 
-        .back-button:hover {
-            background-color: white;
-            transform: translateX(-5px);
-        }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-button:hover .dropdown-menu {
+      display: block;
+    }
+    
+    .dropdown-button:hover {
+        background-color: white;
+        transform: translateX(-5px);
+    }
 
         .ticket-hero {
             height: 40vh;
