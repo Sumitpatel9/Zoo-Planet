@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/image.ico" type="image/x-icon">
+    <title>Zoo Planet - Explore Wildlife Wonders</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/servise.css">
+</head>
+
+<body>
+    <section id="services" class="services-section">
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <!-- Hero Background with Overlay -->
+        <div class="services-hero">
+            <h2>Our Services</h2>
+            <p>Discover everything we offer for an unforgettable zoo experience</p>
+        </div>
+
+        <div class="services-container">
+            <div class="services-tabs">
+                <button class="service-tab active" data-tab="hours">
+                    <i class="fas fa-clock"></i> Hours & Info
+                </button>
+                <button class="service-tab" data-tab="membership">
+                    <i class="fas fa-id-card"></i> Membership
+                </button>
+                <button class="service-tab" data-tab="events">
+                    <i class="fas fa-calendar-star"></i> Special Events
+                </button>
+                <button class="service-tab" data-tab="accessibility">
+                    <i class="fas fa-wheelchair"></i> Accessibility
+                </button>
+                <button class="service-tab" data-tab="tours">
+                    <i class="fas fa-binoculars"></i> Guided Tours
+                </button>
+            </div>
+
+            <div class="services-content">
+                <div class="service-info active" id="hours-info">
+                    <div class="info-header">
+                        <h3>Opening Hours</h3>
+                        <span class="info-badge">Essential Info</span>
+                    </div>
+                    <div class="hours-grid">
+                        <div class="day">
+                            <div class="day-icon"><i class="fas fa-building"></i></div>
+                            <p class="day-name">Monday - Friday</p>
+                            <p class="day-hours">9:00 AM - 5:00 PM</p>
+                        </div>
+                        <div class="day">
+                            <div class="day-icon"><i class="fas fa-umbrella-beach"></i></div>
+                            <p class="day-name">Saturday - Sunday</p>
+                            <p class="day-hours">8:00 AM - 6:00 PM</p>
+                        </div>
+                        <div class="day highlight">
+                            <div class="day-icon"><i class="fas fa-gift"></i></div>
+                            <p class="day-name">Holidays</p>
+                            <p class="day-hours">8:00 AM - 7:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="info-header">
+                        <h3>Daily Schedule</h3>
+                        <span class="info-badge">Feeding Times</span>
+                    </div>
+                    <ul class="schedule">
+                        <li>
+                            <span class="schedule-time">9:00 AM</span>
+                            <span class="schedule-event">Zoo Opens</span>
+                        </li>
+                        <li>
+                            <span class="schedule-time">10:00 AM</span>
+                            <span class="schedule-event">Penguin Feeding</span>
+                            <span class="schedule-badge">Popular</span>
+                        </li>
+                        <li>
+                            <span class="schedule-time">11:30 AM</span>
+                            <span class="schedule-event">Elephant Demonstration</span>
+                        </li>
+                        <li>
+                            <span class="schedule-time">1:00 PM</span>
+                            <span class="schedule-event">Lion Feeding</span>
+                            <span class="schedule-badge">New</span>
+                        </li>
+                        <li>
+                            <span class="schedule-time">3:00 PM</span>
+                            <span class="schedule-event">Bird Show</span>
+                        </li>
+                    </ul>
+                </div>
+<!-- 
+                <div class="service-info" id="membership-info">
+                    <h3>Membership Benefits</h3>
+                    <div class="membership-cards">
+                        <div class="membership-card">
+                            <div class="card-header">
+                                <h4>Individual</h4>
+                                <span class="card-badge">Best Value</span>
+                            </div>
+                            <p class="price">₹99/year</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Unlimited zoo admission</li>
+                                <li><i class="fas fa-check-circle"></i> 10% discount on food & gifts</li>
+                                <li><i class="fas fa-check-circle"></i> Exclusive member events</li>
+                                <li><i class="fas fa-check-circle"></i> Free parking</li>
+                                <li><i class="fas fa-check-circle"></i> Early access to new exhibits</li>
+                            </ul>
+                            <button class="btn membership-btn">Join Now</button>
+                        </div>
+
+                        <div class="membership-card">
+                            <div class="card-header">
+                                <h4>Family</h4>
+                                <span class="card-badge">Most Popular</span>
+                            </div>
+                            <p class="price">₹179/year</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> 2 Adults + 3 Children</li>
+                                <li><i class="fas fa-check-circle"></i> 15% discount on food & gifts</li>
+                                <li><i class="fas fa-check-circle"></i> All Individual benefits</li>
+                                <li><i class="fas fa-check-circle"></i> Free carousel rides</li>
+                                <li><i class="fas fa-check-circle"></i> Birthday party discount</li>
+                            </ul>
+                            <button class="btn membership-btn">Join Now</button>
+                        </div>
+
+                        <div class="membership-card">
+                            <div class="card-header">
+                                <h4>Premium</h4>
+                                <span class="card-badge">VIP</span>
+                            </div>
+                            <p class="price">₹299/year</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> All Family benefits</li>
+                                <li><i class="fas fa-check-circle"></i> Behind-the-scenes tours</li>
+                                <li><i class="fas fa-check-circle"></i> 20% discount on all purchases</li>
+                                <li><i class="fas fa-check-circle"></i> Reserved parking</li>
+                                <li><i class="fas fa-check-circle"></i> Personal zoo guide</li>
+                            </ul>
+                            <button class="btn membership-btn">Join Now</button>
+                        </div>
+                    </div>
+                </div>-->
+
+                <!-- Special Events Section -->
+                <!--<div class="service-info" id="events-info">
+                    <div class="info-header">
+                        <h3>Special Events</h3>
+                        <span class="info-badge">Unique Experiences</span>
+                    </div>
+
+                    <div class="events-grid">
+                        <div class="event-card">
+                            <div class="event-image" style="background-image: url('/img/MoonLightSafar.png')"></div>
+                            <div class="event-details">
+                                <h4>Moonlight Safari</h4>
+                                <p class="event-date">Every Friday, 7:00 PM - 10:00 PM</p>
+                                <p class="event-desc">Experience the zoo after dark with our special nighttime tour
+                                    featuring nocturnal animals.</p>
+                                <div class="event-tags">
+                                    <span class="event-tag">Night Tour</span>
+                                    <span class="event-tag">Family Friendly</span>
+                                </div>
+                                <button class="btn event-btn">Book Now</button>
+                            </div>
+                        </div>
+
+                        <div class="event-card">
+                            <div class="event-image" style="background-image: url('/img/BreakfastWithGiraffe.png')">
+                            </div>
+                            <div class="event-details">
+                                <h4>Breakfast with Giraffes</h4>
+                                <p class="event-date">Select Saturdays, 8:00 AM - 10:00 AM</p>
+                                <p class="event-desc">Enjoy a delicious breakfast while giraffes eat theirs right beside
+                                    you!</p>
+                                <div class="event-tags">
+                                    <span class="event-tag">Animal Encounter</span>
+                                    <span class="event-tag">Limited Spots</span>
+                                </div>
+                                <button class="btn event-btn">Book Now</button>
+                            </div>
+                        </div>
+
+                        <div class="event-card">
+                            <div class="event-image" style="background-image: url('/img/PhotographyWorkshop.png')">
+                            </div>
+                            <div class="event-details">
+                                <h4>Photography Workshop</h4>
+                                <p class="event-date">First Sunday of each month</p>
+                                <p class="event-desc">Learn wildlife photography techniques from professionals in our
+                                    beautiful zoo setting.</p>
+                                <div class="event-tags">
+                                    <span class="event-tag">Workshop</span>
+                                    <span class="event-tag">All Levels</span>
+                                </div>
+                                <button class="btn event-btn">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Membership Section -->
+<div class="service-info" id="membership-info">
+    <h3>Membership Benefits</h3>
+    <div class="membership-cards">
+        <div class="membership-card">
+            <div class="card-header">
+                <h4>Individual</h4>
+                <span class="card-badge">Best Value</span>
+            </div>
+            <p class="price">₹99/year</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Unlimited zoo admission</li>
+                <li><i class="fas fa-check-circle"></i> 10% discount on food & gifts</li>
+                <li><i class="fas fa-check-circle"></i> Exclusive member events</li>
+                <li><i class="fas fa-check-circle"></i> Free parking</li>
+                <li><i class="fas fa-check-circle"></i> Early access to new exhibits</li>
+            </ul>
+            <button class="btn membership-btn" data-plan="Individual" data-price="99">Join Now</button>
+        </div>
+
+        <div class="membership-card">
+            <div class="card-header">
+                <h4>Family</h4>
+                <span class="card-badge">Most Popular</span>
+            </div>
+            <p class="price">₹179/year</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> 2 Adults + 3 Children</li>
+                <li><i class="fas fa-check-circle"></i> 15% discount on food & gifts</li>
+                <li><i class="fas fa-check-circle"></i> All Individual benefits</li>
+                <li><i class="fas fa-check-circle"></i> Free carousel rides</li>
+                <li><i class="fas fa-check-circle"></i> Birthday party discount</li>
+            </ul>
+            <button class="btn membership-btn" data-plan="Family" data-price="179">Join Now</button>
+        </div>
+
+        <div class="membership-card">
+            <div class="card-header">
+                <h4>Premium</h4>
+                <span class="card-badge">VIP</span>
+            </div>
+            <p class="price">₹299/year</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> All Family benefits</li>
+                <li><i class="fas fa-check-circle"></i> Behind-the-scenes tours</li>
+                <li><i class="fas fa-check-circle"></i> 20% discount on all purchases</li>
+                <li><i class="fas fa-check-circle"></i> Reserved parking</li>
+                <li><i class="fas fa-check-circle"></i> Personal zoo guide</li>
+            </ul>
+            <button class="btn membership-btn" data-plan="Premium" data-price="299">Join Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Membership Form Modal -->
+<div class="modal" id="membershipModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="membershipModalTitle">Become a Member</h3>
+        <form id="membershipForm">
+            <div class="form-group">
+                <label for="membershipPlan">Membership Plan:</label>
+                <input type="text" id="membershipPlan" readonly>
+            </div>
+            <div class="form-group">
+                <label for="membershipPrice">Annual Price:</label>
+                <input type="text" id="membershipPrice" readonly>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">ZIP Code:</label>
+                    <input type="text" id="zipCode" required>
+                </div>
+            </div>
+            
+            <!-- Family-specific fields -->
+            <div class="family-fields" style="display: none;">
+                <div class="form-group">
+                    <label>Family Members:</label>
+                    <div class="family-member">
+                        <input type="text" placeholder="Adult 1 Name" class="family-member-name">
+                        <input type="text" placeholder="Age" class="family-member-age">
+                    </div>
+                    <div class="family-member">
+                        <input type="text" placeholder="Adult 2 Name" class="family-member-name">
+                        <input type="text" placeholder="Age" class="family-member-age">
+                    </div>
+                    <div class="family-member">
+                        <input type="text" placeholder="Child 1 Name" class="family-member-name">
+                        <input type="text" placeholder="Age" class="family-member-age">
+                    </div>
+                    <div class="family-member">
+                        <input type="text" placeholder="Child 2 Name" class="family-member-name">
+                        <input type="text" placeholder="Age" class="family-member-age">
+                    </div>
+                    <div class="family-member">
+                        <input type="text" placeholder="Child 3 Name" class="family-member-name">
+                        <input type="text" placeholder="Age" class="family-member-age">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" required>
+                    <option value="">Select payment method</option>
+                    <option value="credit">Credit Card</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="netbanking">Net Banking</option>
+                </select>
+            </div>
+            
+            <div class="form-group payment-details" style="display: none;">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" id="expiryDate" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" placeholder="123">
+                    </div>
+                </div>
+                
+                <label for="cardName">Name on Card:</label>
+                <input type="text" id="cardName">
+            </div>
+            
+            <div class="form-group upi-details" style="display: none;">
+                <label for="upiId">UPI ID:</label>
+                <input type="text" id="upiId" placeholder="yourname@upi">
+            </div>
+            
+            <div class="form-group terms">
+                <input type="checkbox" id="agreeTerms" required>
+                <label for="agreeTerms">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            
+            <button type="submit" class="btn submit-btn">Complete Membership</button>
+        </form>
+    </div>
+</div>
+
+<!-- Special Events Section -->
+<div class="service-info" id="events-info">
+    <div class="info-header">
+        <h3>Special Events</h3>
+        <span class="info-badge">Unique Experiences</span>
+    </div>
+
+    <div class="events-grid">
+        <div class="event-card">
+            <div class="event-image" style="background-image: url('/img/MoonLightSafar.png')"></div>
+            <div class="event-details">
+                <h4>Moonlight Safari</h4>
+                <p class="event-date">Every Friday, 7:00 PM - 10:00 PM</p>
+                <p class="event-desc">Experience the zoo after dark with our special nighttime tour featuring nocturnal animals.</p>
+                <div class="event-tags">
+                    <span class="event-tag">Night Tour</span>
+                    <span class="event-tag">Family Friendly</span>
+                </div>
+                <button class="btn event-btn" data-event="Moonlight Safari">Book Now</button>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <div class="event-image" style="background-image: url('/img/BreakfastWithGiraffe.png')"></div>
+            <div class="event-details">
+                <h4>Breakfast with Giraffes</h4>
+                <p class="event-date">Select Saturdays, 8:00 AM - 10:00 AM</p>
+                <p class="event-desc">Enjoy a delicious breakfast while giraffes eat theirs right beside you!</p>
+                <div class="event-tags">
+                    <span class="event-tag">Animal Encounter</span>
+                    <span class="event-tag">Limited Spots</span>
+                </div>
+                <button class="btn event-btn" data-event="Breakfast with Giraffes">Book Now</button>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <div class="event-image" style="background-image: url('/img/PhotographyWorkshop.png')"></div>
+            <div class="event-details">
+                <h4>Photography Workshop</h4>
+                <p class="event-date">First Sunday of each month</p>
+                <p class="event-desc">Learn wildlife photography techniques from professionals in our beautiful zoo setting.</p>
+                <div class="event-tags">
+                    <span class="event-tag">Workshop</span>
+                    <span class="event-tag">All Levels</span>
+                </div>
+                <button class="btn event-btn" data-event="Photography Workshop">Book Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Booking Modal -->
+<div class="modal" id="eventBookingModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="eventModalTitle">Book Your Event</h3>
+        <form id="eventBookingForm">
+            <div class="form-group">
+                <label for="eventName">Event:</label>
+                <input type="text" id="eventName" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventDate">Select Date:</label>
+                <select id="eventDate" required>
+                    <option value="">Select available date</option>
+                    <!-- Dates will be populated by JavaScript -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventParticipants">Number of Participants:</label>
+                <input type="number" id="eventParticipants" min="1" max="10" value="1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventFullName">Full Name:</label>
+                <input type="text" id="eventFullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventEmail">Email:</label>
+                <input type="email" id="eventEmail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventPhone">Phone Number:</label>
+                <input type="tel" id="eventPhone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventSpecialReq">Special Requirements:</label>
+                <textarea id="eventSpecialReq" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group terms">
+                <input type="checkbox" id="eventAgreeTerms" required>
+                <label for="eventAgreeTerms">I agree to the <a href="#">Event Terms & Conditions</a></label>
+            </div>
+            
+            <button type="submit" class="btn submit-btn">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<!-- Membership Confirmation Modal -->
+<div class="modal" id="membershipConfirmation">
+    <div class="modal-content confirmation-content">
+        <span class="close-modal">&times;</span>
+        <div class="confirmation-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Membership Activated!</h3>
+        <p id="membershipConfirmationText">Thank you for becoming a member. Your membership card will be emailed to you within 24 hours.</p>
+        <div class="membership-card-preview">
+            <div class="preview-card">
+                <h4 id="confirmationPlan">Individual Membership</h4>
+                <p>Member ID: <span id="memberId">ZM2023-001</span></p>
+                <p>Valid until: <span id="expiryDate">June 30, 2024</span></p>
+            </div>
+        </div>
+        <button class="btn close-confirmation">Close</button>
+    </div>
+</div>
+
+                <!-- Accessibility Section -->
+                <div class="service-info" id="accessibility-info">
+                    <div class="info-header">
+                        <h3>Accessibility Services</h3>
+                        <span class="info-badge">Inclusive Experience</span>
+                    </div>
+
+                    <div class="accessibility-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-wheelchair"></i>
+                            </div>
+                            <h4>Wheelchair Access</h4>
+                            <p>All main paths and facilities are wheelchair accessible with ramps and elevators
+                                available.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-ear-deaf"></i>
+                            </div>
+                            <h4>Hearing Assistance</h4>
+                            <p>Sign language interpreters available upon request and hearing loops at all shows.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-eye-low-vision"></i>
+                            </div>
+                            <h4>Visual Assistance</h4>
+                            <p>Tactile maps, braille guides, and audio descriptions available at the entrance.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Sensory-Friendly Hours</h4>
+                            <p>Every Wednesday morning (9-11 AM) with reduced crowds, sounds, and lighting.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-wheelchair-move"></i>
+                            </div>
+                            <h4>Mobility Equipment</h4>
+                            <p>Wheelchairs and ECVs available for rent on a first-come, first-served basis.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h4>Special Assistance</h4>
+                            <p>Our staff is trained to provide any additional assistance you may require.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guided Tours Section -->
+                <!-- <div class="service-info" id="tours-info">
+                    <div class="info-header">
+                        <h3>Guided Tours</h3>
+                        <span class="info-badge">Expert-Led Adventures</span>
+                    </div>
+
+                    <div class="tours-container">
+                        <div class="tour-options">
+                            <div class="tour-card">
+                                <div class="tour-image" style="background-image: url('/img/FamilyExpolrerTour.png')">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Family Explorer Tour</h4>
+                                    <p class="tour-duration">1.5 hours | All Ages</p>
+                                    <p>Perfect for families with young children, featuring interactive animal
+                                        encounters.</p>
+                                    <div class="tour-price">₹25 per person</div>
+                                    <button class="btn tour-btn">Book Tour</button>
+                                </div>
+                            </div>
+
+                            <div class="tour-card">
+                                <div class="tour-image" style="background-image: url('/img/BehindTheScene.png')"></div>
+                                <div class="tour-content">
+                                    <h4>Behind-the-Scenes</h4>
+                                    <p class="tour-duration">2 hours | Ages 12+</p>
+                                    <p>Exclusive access to animal care areas and meet our zookeepers.</p>
+                                    <div class="tour-price">₹45 per person</div>
+                                    <button class="btn tour-btn">Book Tour</button>
+                                </div>
+                            </div>
+
+                            <div class="tour-card">
+                                <div class="tour-image" style="background-image: url('/img/AfricanSavanaTour.png')">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>African Savanna Tour</h4>
+                                    <p class="tour-duration">2 hours | Ages 8+</p>
+                                    <p>Focus on lions, giraffes, zebras and other African species with an expert guide.
+                                    </p>
+                                    <div class="tour-price">₹35 per person</div>
+                                    <button class="btn tour-btn">Book Tour</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="private-tours">
+                            <h4>Private Group Tours</h4>
+                            <p>Customize your own private tour for groups of 6 or more. Perfect for:</p>
+                            <ul>
+                                <li><i class="fas fa-graduation-cap"></i> School groups</li>
+                                <li><i class="fas fa-birthday-cake"></i> Birthday parties</li>
+                                <li><i class="fas fa-briefcase"></i> Corporate events</li>
+                                <li><i class="fas fa-users"></i> Family reunions</li>
+                            </ul>
+                            <button class="btn private-tour-btn">Inquire About Private Tours</button>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="service-info" id="tours-info">
+    <div class="info-header">
+        <h3>Guided Tours</h3>
+        <span class="info-badge">Expert-Led Adventures</span>
+    </div>
+
+    <div class="tours-container">
+        <div class="tour-options">
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('/img/FamilyExpolrerTour.png')">
+                </div>
+                <div class="tour-content">
+                    <h4>Family Explorer Tour</h4>
+                    <p class="tour-duration">1.5 hours | All Ages</p>
+                    <p>Perfect for families with young children, featuring interactive animal
+                        encounters.</p>
+                    <div class="tour-price">₹25 per person</div>
+                    <button class="btn tour-btn" data-tour="Family Explorer Tour">Book Tour</button>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('/img/BehindTheScene.png')"></div>
+                <div class="tour-content">
+                    <h4>Behind-the-Scenes</h4>
+                    <p class="tour-duration">2 hours | Ages 12+</p>
+                    <p>Exclusive access to animal care areas and meet our zookeepers.</p>
+                    <div class="tour-price">₹45 per person</div>
+                    <button class="btn tour-btn" data-tour="Behind-the-Scenes">Book Tour</button>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-image" style="background-image: url('/img/AfricanSavanaTour.png')">
+                </div>
+                <div class="tour-content">
+                    <h4>African Savanna Tour</h4>
+                    <p class="tour-duration">2 hours | Ages 8+</p>
+                    <p>Focus on lions, giraffes, zebras and other African species with an expert guide.
+                    </p>
+                    <div class="tour-price">₹35 per person</div>
+                    <button class="btn tour-btn" data-tour="African Savanna Tour">Book Tour</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="private-tours">
+            <h4>Private Group Tours</h4>
+            <p>Customize your own private tour for groups of 6 or more. Perfect for:</p>
+            <ul>
+                <li><i class="fas fa-graduation-cap"></i> School groups</li>
+                <li><i class="fas fa-birthday-cake"></i> Birthday parties</li>
+                <li><i class="fas fa-briefcase"></i> Corporate events</li>
+                <li><i class="fas fa-users"></i> Family reunions</li>
+            </ul>
+            <button class="btn private-tour-btn" id="privateTourBtn">Inquire About Private Tours</button>
+        </div>
+    </div>
+</div>
+
+<!-- Tour Booking Modal -->
+<div class="modal" id="tourBookingModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="modalTourTitle">Book Your Tour</h3>
+        <form id="tourBookingForm">
+            <div class="form-group">
+                <label for="tourDate">Select Date:</label>
+                <input type="date" id="tourDate" required>
+            </div>
+            <div class="form-group">
+                <label for="tourTime">Select Time:</label>
+                <select id="tourTime" required>
+                    <option value="">Choose a time</option>
+                    <option value="09:00">9:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="13:00">1:00 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="participants">Number of Participants:</label>
+                <input type="number" id="participants" min="1" max="15" value="1" required>
+            </div>
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="specialRequests">Special Requests:</label>
+                <textarea id="specialRequests" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<!-- Private Tour Inquiry Modal -->
+<div class="modal" id="privateTourModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Private Group Tour Inquiry</h3>
+        <form id="privateTourForm">
+            <div class="form-group">
+                <label for="groupName">Group/Organization Name:</label>
+                <input type="text" id="groupName" required>
+            </div>
+            <div class="form-group">
+                <label for="groupType">Group Type:</label>
+                <select id="groupType" required>
+                    <option value="">Select group type</option>
+                    <option value="school">School Group</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="family">Family Reunion</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="groupSize">Expected Group Size:</label>
+                <input type="number" id="groupSize" min="6" required>
+            </div>
+            <div class="form-group">
+                <label for="preferredDate1">Preferred Date 1:</label>
+                <input type="date" id="preferredDate1" required>
+            </div>
+            <div class="form-group">
+                <label for="preferredDate2">Preferred Date 2:</label>
+                <input type="date" id="preferredDate2">
+            </div>
+            <div class="form-group">
+                <label for="preferredTime">Preferred Time:</label>
+                <input type="time" id="preferredTime" required>
+            </div>
+            <div class="form-group">
+                <label for="contactPerson">Contact Person:</label>
+                <input type="text" id="contactPerson" required>
+            </div>
+            <div class="form-group">
+                <label for="contactEmail">Contact Email:</label>
+                <input type="email" id="contactEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="contactPhone">Contact Phone:</label>
+                <input type="tel" id="contactPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="tourInterests">Tour Interests (select all that apply):</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="interests" value="animals"> Animal Encounters</label>
+                    <label><input type="checkbox" name="interests" value="education"> Educational Focus</label>
+                    <label><input type="checkbox" name="interests" value="behind-scenes"> Behind-the-Scenes</label>
+                    <label><input type="checkbox" name="interests" value="conservation"> Conservation Focus</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="additionalInfo">Additional Information:</label>
+                <textarea id="additionalInfo" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">Submit Inquiry</button>
+        </form>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal" id="confirmationModal">
+    <div class="modal-content confirmation-content">
+        <span class="close-modal">&times;</span>
+        <div class="confirmation-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 id="confirmationTitle">Booking Confirmed!</h3>
+        <p id="confirmationMessage">Thank you for your booking. We've sent a confirmation to your email.</p>
+        <button class="btn close-confirmation">Close</button>
+    </div>
+</div>
+
+                <!-- Other service tabs content would go here -->
+            </div>
+        </div>
+    </section>
+
+    <script src="js/service.js"></script>
+</body>
+
+</html>
