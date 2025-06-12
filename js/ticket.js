@@ -98,10 +98,10 @@
                 <span>${type.charAt(0).toUpperCase() + type.slice(1)} x${quantity}</span>
                 <div class="ticket-actions">
                     <button class="remove-ticket" data-type="${type}" title="Remove one">
-                        <i class="fas fa-minus-circle">-1</i>
+                        <i class="fas fa-minus-circle"></i>
                     </button>
                     <button class="discard-ticket" data-type="${type}" title="Discard all">
-                        <i class="fas fa-trash-alt">-All</i>
+                        <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
             </div>
