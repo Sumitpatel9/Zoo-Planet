@@ -130,9 +130,9 @@ function validatePaymentMethod() {
             
         case 'paypal':
             const paypalEmail = document.getElementById('paypal-email')?.value;
-            if (!paypalEmail || !paypalEmail.includes('@')) {
-                errors.push('Please enter a valid PayPal email address.');
-            }
+            // if (!paypalEmail || !paypalEmail.includes('@')) {
+            //     errors.push('Please enter a valid PayPal email address.');
+            // }
             break;
     }
     
