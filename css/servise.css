@@ -1,853 +1,883 @@
+:root {
+    --primary-green: #4a7c59;
+    --secondary-green: #8fc0a9;
+    --light-green: #c8d5b9;
+    --brown: #8b5a2b;
+    --sky-blue: #68b0ab;
+    --white: #faf3dd;
+    --dark-green: #3a5a40;
+    --gold: #ffd700;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
+}
 
-    :root {
-        --primary-green: #4a7c59;
-        --secondary-green: #8fc0a9;
-        --light-green: #c8d5b9;
-        --brown: #8b5a2b;
-        --sky-blue: #68b0ab;
-        --white: #faf3dd;
-        --dark-green: #3a5a40;
-        --gold: #ffd700;
-        --silver: #c0c0c0;
-        --bronze: #cd7f32;
+body {
+    display: block;
+    margin: 0;
+}
+
+
+.services-section {
+    padding: 0;
+    background-color: var(--white);
+    position: relative;
+}
+
+.dropdown-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0.8rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--primary-green);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+    font-size: larger;
+    transition: 0.2s;
+    color: var(--primary-green);
+    font-style: italic;
+}
+
+.dropdown-button:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-button:hover {
+    background-color: white;
+    transform: translateX(-5px);
+}
+
+.services-hero {
+    height: 40vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('https://source.unsplash.com/random/1920x1080/?zoo,animals') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.services-hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.services-hero p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+}
+
+.services-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+}
+
+.service-tab {
+    padding: 1rem 2rem;
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-tab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-tab.active {
+    background-color: var(--primary-green);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.service-tab i {
+    font-size: 1.2rem;
+}
+
+.services-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.service-info {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.service-info.active {
+    display: block;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-badge {
+    background-color: var(--sky-blue);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0 3rem;
+}
+
+.day {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-green);
+}
+
+.day.highlight {
+    /* border: 2px solid var(--primary-green); */
+    position: relative;
+}
+
+.day.highlight::after {
+    content: "Special Hours";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background-color: var(--primary-green);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.day-icon {
+    font-size: 2rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.day-name {
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: 0.5rem;
+}
+
+.day-hours {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.schedule {
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.schedule li {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.schedule li:hover {
+    background-color: rgba(143, 192, 169, 0.1);
+    transform: translateX(5px);
+}
+
+.schedule-time {
+    font-weight: bold;
+    color: var(--primary-green);
+    min-width: 80px;
+}
+
+.schedule-event {
+    flex: 1;
+}
+
+.schedule-badge {
+    background-color: var(--sky-blue);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.membership-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin: 2rem 0;
+}
+
+.membership-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.membership-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.membership-card.highlight {
+    border: 2px solid var(--primary-green);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-badge {
+    background-color: var(--gold);
+    color: #333;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.membership-card .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin: 1.5rem 0;
+}
+
+.membership-card ul {
+    margin: 1.5rem 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.membership-card li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.membership-card i {
+    color: var(--primary-green);
+}
+
+.membership-btn {
+    width: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.membership-btn:hover {
+    background-color: var(--dark-green);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
 
-    body
-    {
-        display: block;
-        margin: 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    
-    .services-section {
-        padding: 0;
-        background-color: var(--white);
-        position: relative;
-    }
-
-  .dropdown-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        padding: 0.8rem 1.5rem;
-        background-color: rgba(255,255,255,0.8);
-        color: var(--primary-green);
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 600;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      min-width: 180px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      z-index: 1;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 15px;
-      color: #333;
-      text-decoration: none;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: #f0f0f0;
-    }
-
-    .dropdown-button:hover .dropdown-menu {
-      display: block;
-    }
-    
-    .dropdown-button:hover {
-        background-color: white;
-        transform: translateX(-5px);
-    }
-    
-    .services-hero {
-        height: 40vh;
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                    url('https://source.unsplash.com/random/1920x1080/?zoo,animals') center/cover no-repeat;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        margin-bottom: 3rem;
-    }
-    
+@media (max-width: 768px) {
     .services-hero h2 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .services-hero p {
-        font-size: 1.3rem;
-        max-width: 800px;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    }
-    
-    .services-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem 4rem;
-    }
-    
-    .services-tabs {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        margin: 2rem 0 3rem;
-    }
-    
-    .service-tab {
-        padding: 1rem 2rem;
-        background-color: var(--light-green);
-        border: none;
-        border-radius: 30px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .service-tab:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .service-tab.active {
-        background-color: var(--primary-green);
-        color: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    .service-tab i {
-        font-size: 1.2rem;
-    }
-    
-    .services-content {
-        background-color: white;
-        padding: 2.5rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    
-    .service-info {
-        display: none;
-        animation: fadeIn 0.5s ease;
-    }
-    
-    .service-info.active {
-        display: block;
-    }
-    
-    .info-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .info-badge {
-        background-color: var(--sky-blue);
-        color: white;
-        padding: 0.3rem 1rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    .hours-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 2rem 0 3rem;
-    }
-    
-    .day {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-    }
-    
-    .day:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        border-color: var(--secondary-green);
-    }
-    
-    .day.highlight {
-        /* border: 2px solid var(--primary-green); */
-        position: relative;
-    }
-    
-    .day.highlight::after {
-        content: "Special Hours";
-        position: absolute;
-        top: -10px;
-        right: 20px;
-        background-color: var(--primary-green);
-        color: white;
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.7rem;
-        font-weight: bold;
-    }
-    
-    .day-icon {
-        font-size: 2rem;
-        color: var(--primary-green);
-        margin-bottom: 1rem;
-    }
-    
-    .day-name {
-        font-weight: 600;
-        color: var(--dark-green);
-        margin-bottom: 0.5rem;
-    }
-    
-    .day-hours {
-        font-size: 1.1rem;
-        color: #555;
-    }
-    
-    .schedule {
-        list-style-type: none;
-        padding: 0;
-        margin: 2rem 0;
-    }
-    
-    .schedule li {
-        padding: 1rem;
-        border-bottom: 1px solid #eee;
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        transition: all 0.2s ease;
-    }
-    
-    .schedule li:hover {
-        background-color: rgba(143, 192, 169, 0.1);
-        transform: translateX(5px);
-    }
-    
-    .schedule-time {
-        font-weight: bold;
-        color: var(--primary-green);
-        min-width: 80px;
-    }
-    
-    .schedule-event {
-        flex: 1;
-    }
-    
-    .schedule-badge {
-        background-color: var(--sky-blue);
-        color: white;
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.7rem;
-        font-weight: bold;
-    }
-    
-    .membership-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
-        margin: 2rem 0;
-    }
-    
-    .membership-card {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-        position: relative;
-    }
-    
-    .membership-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .membership-card.highlight {
-        border: 2px solid var(--primary-green);
-    }
-    
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-    
-    .card-badge {
-        background-color: var(--gold);
-        color: #333;
-        padding: 0.3rem 1rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: bold;
-    }
-    
-    .membership-card .price {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: var(--primary-green);
-        margin: 1.5rem 0;
-    }
-    
-    .membership-card ul {
-        margin: 1.5rem 0;
-        padding-left: 0;
-        list-style-type: none;
-    }
-    
-    .membership-card li {
-        margin-bottom: 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .membership-card i {
-        color: var(--primary-green);
-    }
-    
-    .membership-btn {
-        width: 100%;
-        padding: 1rem;
-        font-weight: bold;
-        margin-top: 1rem;
-        transition: all 0.3s ease;
-    }
-    
-    .membership-btn:hover {
-        background-color: var(--dark-green);
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @media (max-width: 768px) {
-        .services-hero h2 {
-            font-size: 2.2rem;
-        }
-        
-        .services-hero p {
-            font-size: 1.1rem;
-        }
-        
-        .service-tab {
-            padding: 0.8rem 1.2rem;
-            font-size: 0.9rem;
-        }
-        
-        .services-content {
-            padding: 1.5rem;
-        }
+        font-size: 2.2rem;
     }
 
-     /* Special Events Styles */
-     .events-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2.5rem;
-        margin: 2rem 0;
+    .services-hero p {
+        font-size: 1.1rem;
     }
-    
-    .event-card {
-        background-color: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-    }
-    
-    .event-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-    
-    .event-card.highlight {
-        border: 2px solid var(--primary-green);
-    }
-    
-    .event-image {
-        height: 360px;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .event-details {
-        padding: 1.5rem;
-    }
-    
-    .event-card h4 {
-        margin: 0 0 0.5rem;
-        color: var(--dark-green);
-        font-size: 1.3rem;
-    }
-    
-    .event-date {
-        color: var(--primary-green);
-        font-weight: 600;
-        margin-bottom: 1rem;
+
+    .service-tab {
+        padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
     }
-    
-    .event-desc {
-        color: #555;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
+
+    .services-content {
+        padding: 1.5rem;
     }
-    
-    .event-tags {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
-    }
-    
-    .event-tag {
-        background-color: var(--light-green);
-        color: var(--dark-green);
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    /* .event-btn {
+}
+
+/* Special Events Styles */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin: 2rem 0;
+}
+
+.event-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-card.highlight {
+    border: 2px solid var(--primary-green);
+}
+
+.event-image {
+    height: 360px;
+    background-size: cover;
+    background-position: center;
+}
+
+.event-details {
+    padding: 1.5rem;
+}
+
+.event-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--dark-green);
+    font-size: 1.3rem;
+}
+
+.event-date {
+    color: var(--primary-green);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.event-desc {
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.event-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.event-tag {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* .event-btn {
         width: 100%;
     } */
-    
-    /* Accessibility Styles */
-    .accessibility-features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 2rem 0;
-    }
-    
-    .feature-card {
-        background-color: white;
-        padding: 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-        text-align: center;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
-    .feature-card.highlight {
-        border: 2px solid var(--primary-green);
-    }
-    
-    .feature-icon {
-        font-size: 2rem;
-        color: var(--primary-green);
-        margin-bottom: 1rem;
-    }
-    
-    .feature-card h4 {
-        margin: 0 0 1rem;
-        color: var(--dark-green);
-    }
-    
-    .feature-card p {
-        color: #555;
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    
-    /* Guided Tours Styles */
-    .tours-container {
-        margin: 2rem 0;
-    }
-    
+
+/* Accessibility Styles */
+.accessibility-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card.highlight {
+    border: 2px solid var(--primary-green);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+    margin: 0 0 1rem;
+    color: var(--dark-green);
+}
+
+.feature-card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Guided Tours Styles */
+.tours-container {
+    margin: 2rem 0;
+}
+
+.tour-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tour-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tour-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tour-card.highlight {
+    border: 2px solid var(--primary-green);
+}
+
+.tour-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+}
+
+.tour-content {
+    padding: 1.5rem;
+}
+
+.tour-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--dark-green);
+    font-size: 1.3rem;
+}
+
+.tour-duration {
+    color: var(--primary-green);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.tour-card p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.tour-price {
+    font-weight: bold;
+    color: var(--dark-green);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.tour-btn {
+    background-color: var(--primary-green);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tour-btn:hover {
+    background-color: #1f4f3d;
+}
+
+.private-tours {
+    background-color: var(--light-green);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.private-tours h4 {
+    color: var(--dark-green);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.private-tours p {
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.private-tours ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.private-tours li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.private-tours i {
+    color: var(--primary-green);
+    width: 20px;
+}
+
+.private-tour-btn {
+    background-color: var(--primary-green);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.private-tour-btn:hover {
+    background-color: #1f4f3d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .events-grid,
+    .accessibility-features,
     .tour-options {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
+        grid-template-columns: 1fr;
     }
-    
+
+    .event-card,
     .tour-card {
-        background-color: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
+        max-width: 400px;
+        margin: 0 auto;
     }
-    
-    .tour-card:hover {
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-right: 8px;
+}
+
+.submit-btn {
+    background-color: var(--secondary-green);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #3a8a6b;
+}
+
+/* Confirmation Modal */
+.confirmation-content {
+    text-align: center;
+}
+
+.confirmation-icon {
+    font-size: 60px;
+    color: var(--secondary-green);
+    margin-bottom: 20px;
+}
+
+.confirmation-icon i {
+    animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
         transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
-    
-    .tour-card.highlight {
-        border: 2px solid var(--primary-green);
-    }
-    
-    .tour-image {
-        height: 180px;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .tour-content {
-        padding: 1.5rem;
-    }
-    
-    .tour-card h4 {
-        margin: 0 0 0.5rem;
-        color: var(--dark-green);
-        font-size: 1.3rem;
-    }
-    
-    .tour-duration {
-        color: var(--primary-green);
-        font-weight: 600;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-    }
-    
-    .tour-card p {
-        color: #555;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-    }
-    
-    .tour-price {
-        font-weight: bold;
-        color: var(--dark-green);
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .tour-btn {
-        background-color: var(--primary-green);
-        color: white;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-        .tour-btn:hover {
-        background-color: #1f4f3d;
-    }
+}
 
-    .private-tours {
-        background-color: var(--light-green);
-        padding: 2rem;
-        border-radius: 10px;
-        margin-top: 2rem;
-    }
-    
-    .private-tours h4 {
-        color: var(--dark-green);
-        margin-top: 0;
-        font-size: 1.5rem;
-    }
-    
-    .private-tours p {
-        color: #555;
-        margin-bottom: 1.5rem;
-    }
-    
-    .private-tours ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 1.5rem 0;
-    }
-    
-    .private-tours li {
-        margin-bottom: 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .private-tours i {
-        color: var(--primary-green);
-        width: 20px;
-    }
-    
-    .private-tour-btn {
-        background-color: var(--primary-green);
-        color: white;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .private-tour-btn:hover {
-        background-color: #1f4f3d;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .events-grid,
-        .accessibility-features,
-        .tour-options {
-            grid-template-columns: 1fr;
-        }
-        
-        .event-card,
-        .tour-card {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-    }
+.close-confirmation {
+    background-color: var(--primary-blue);
+    margin-top: 20px;
+}
 
-     /* Modal Styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.7);
-        overflow-y: auto;
-    }
-    
-    .modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 25px;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 600px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        position: relative;
-        animation: modalFadeIn 0.3s;
-    }
-    
-    @keyframes modalFadeIn {
-        from {opacity: 0; transform: translateY(-50px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
-    
-    .close-modal {
-        position: absolute;
-        right: 20px;
-        top: 15px;
-        font-size: 28px;
-        font-weight: bold;
-        color: #aaa;
-        cursor: pointer;
-    }
-    
-    .close-modal:hover {
-        color: #333;
-    }
-    
-    /* Form Styles */
-    .form-group {
-        margin-bottom: 20px;
-    }
-    
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: #333;
-    }
-    
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-    
-    .form-group textarea {
-        resize: vertical;
-        min-height: 80px;
-    }
-    
-    .checkbox-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .checkbox-group label {
-        display: flex;
-        align-items: center;
-        font-weight: normal;
-        cursor: pointer;
-    }
-    
-    .checkbox-group input {
-        width: auto;
-        margin-right: 8px;
-    }
-    
-    .submit-btn {
-        background-color: var(--secondary-green);
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        width: 100%;
-        margin-top: 10px;
-    }
-    
-    .submit-btn:hover {
-        background-color: #3a8a6b;
-    }
-    
-    /* Confirmation Modal */
-    .confirmation-content {
-        text-align: center;
-    }
-    
-    .confirmation-icon {
-        font-size: 60px;
-        color: var(--secondary-green);
-        margin-bottom: 20px;
-    }
-    
-    .confirmation-icon i {
-        animation: bounce 0.5s;
-    }
-    
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-        40% {transform: translateY(-20px);}
-        60% {transform: translateY(-10px);}
-    }
-    
-    .close-confirmation {
-        background-color: var(--primary-blue);
-        margin-top: 20px;
-    }
+/* Membership Card Styles */
+.membership-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
 
-      /* Membership Card Styles */
-    .membership-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 30px;
-    }
-    
-    .membership-card {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        padding: 25px;
-        width: 300px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .membership-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    
-    .card-header h4 {
-        margin: 0;
-        font-size: 22px;
-        color: var(--primary-blue);
-    }
-    
-    .card-badge {
-        background-color: var(--secondary-green);
-        color: white;
-        padding: 3px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-    }
-    
-    .price {
-        font-size: 28px;
-        font-weight: bold;
-        color: var(--primary-blue);
-        margin: 15px 0;
-    }
-    
-    .membership-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 20px 0;
-    }
-    
-    .membership-card li {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: flex-start;
-    }
-    
-    .membership-card li i {
-        color: var(--secondary-green);
-        margin-right: 10px;
-        margin-top: 3px;
-    }
-    
-    /* .membership-btn {
+.membership-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.membership-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-size: 22px;
+    color: var(--primary-blue);
+}
+
+.card-badge {
+    background-color: var(--secondary-green);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin: 15px 0;
+}
+
+.membership-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.membership-card li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.membership-card li i {
+    color: var(--secondary-green);
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+/* .membership-btn {
         background-color: var(--primary-blue);
         color: white;
         width: 100%;
@@ -863,127 +893,127 @@
     .membership-btn:hover {
         background-color: #2a6495;
     } */
-    
-    /* Events Grid Styles */
-    .events-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 25px;
-        margin-top: 30px;
-    }
-    
-    .event-card {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s;
-    }
-    
-    .event-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .event-image {
-        height: 200px;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .event-details {
-        padding: 20px;
-    }
-    
-    .event-details h4 {
-        margin: 0 0 10px;
-        color: var(--primary-blue);
-    }
-    
-    .event-date {
-        color: var(--primary-green);
-        font-weight: bold;
-        margin: 0 0 15px;
-        font-size: 14px;
-    }
-    
-    .event-desc {
-        color: #555;
-        margin: 0 0 15px;
-        line-height: 1.5;
-    }
-    
-    .event-tags {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-    
-    .event-tag {
-        background-color: #f0f7f4;
-        color: var(--primary-green);
-        padding: 3px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-    }
-    
-    .event-btn {
-        background-color: var(--primary-green);
-        color: white;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .event-btn:hover {
-        background-color: #1f4f3d;
-    }
-    
-    /* Form Row Styles */
-    .form-row {
-        display: flex;
-        gap: 15px;
-    }
-    
-    .form-row .form-group {
-        flex: 1;
-    }
-    
-    /* Family Member Fields */
-    .family-member {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 8px;
-    }
-    
-    .family-member input {
-        flex: 1;
-    }
-    
-    /* Membership Card Preview */
-    .membership-card-preview {
-        margin: 20px 0;
-    }
-    
-    .preview-card {
-        background: linear-gradient(135deg, var(--primary-blue), #4a90e2);
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    .preview-card h4 {
-        margin: 0 0 15px;
-        font-size: 20px;
-    }
-    
-    .preview-card p {
-        margin: 8px 0;
-        font-size: 14px;
-    }
+
+/* Events Grid Styles */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.event-details {
+    padding: 20px;
+}
+
+.event-details h4 {
+    margin: 0 0 10px;
+    color: var(--primary-blue);
+}
+
+.event-date {
+    color: var(--primary-green);
+    font-weight: bold;
+    margin: 0 0 15px;
+    font-size: 14px;
+}
+
+.event-desc {
+    color: #555;
+    margin: 0 0 15px;
+    line-height: 1.5;
+}
+
+.event-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.event-tag {
+    background-color: #f0f7f4;
+    color: var(--primary-green);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.event-btn {
+    background-color: var(--primary-green);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.event-btn:hover {
+    background-color: #1f4f3d;
+}
+
+/* Form Row Styles */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Family Member Fields */
+.family-member {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.family-member input {
+    flex: 1;
+}
+
+/* Membership Card Preview */
+.membership-card-preview {
+    margin: 20px 0;
+}
+
+.preview-card {
+    background: linear-gradient(135deg, var(--primary-blue), #4a90e2);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.preview-card h4 {
+    margin: 0 0 15px;
+    font-size: 20px;
+}
+
+.preview-card p {
+    margin: 8px 0;
+    font-size: 14px;
+}

@@ -57,6 +57,10 @@
 
   .dropdown-menu a:hover {
       background-color: #f0f0f0;
+      font-size: larger;
+      transition: 0.2s;
+      color: var(--primary-green);
+      font-style: italic;
   }
 
   .dropdown-button:hover .dropdown-menu {
