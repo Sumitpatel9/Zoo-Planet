@@ -79,3 +79,21 @@ body {
   .stats-grid { grid-template-columns: 1fr; }
   .about-hero .hero-inner h1 { font-size:1.8rem; }
 }
+
+/* ===== Remove Scrollbar From Entire Website ===== */
+
+/* Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none !important;
+}
+
+/* IE & old Edge */
+html {
+  -ms-overflow-style: none !important;
+}

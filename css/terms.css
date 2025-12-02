@@ -72,3 +72,20 @@ body {
   .terms-grid { grid-template-columns: 1fr; }
   .terms-toc { position: static; }
 }
+/* ===== Remove Scrollbar From Entire Website ===== */
+
+/* Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none !important;
+}
+
+/* IE & old Edge */
+html {
+  -ms-overflow-style: none !important;
+}
