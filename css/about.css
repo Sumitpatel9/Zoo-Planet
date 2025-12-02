@@ -1,0 +1,81 @@
+body {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+/* css/about.css — About Us page styling (scoped) */
+
+:root {
+  --accent: #0a6ebd;
+  --accent-2: #0d85d1;
+  --muted: #6b7280;
+  --bg: #fbfdff;
+  --container-max: 1100px;
+}
+
+/* hero */
+.about-hero {
+  height: 44vh;
+  background: linear-gradient(0deg, rgba(6,47,72,0.4), rgba(6,47,72,0.4)),
+              url("https://source.unsplash.com/1600x900/?zoo,animals,conservation") center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:22px;
+}
+.about-hero .hero-inner h1 { font-size:2.6rem; margin:0 0 10px; }
+.about-hero .hero-inner p { font-size:1.05rem; margin:0 0 14px; color:rgba(255,255,255,0.92); }
+.hero-cta { padding:10px 14px; border-radius:10px; }
+
+/* layout container helper */
+.container { max-width: var(--container-max); margin: 0 auto; padding: 28px 18px; box-sizing:border-box; }
+
+/* Mission section */
+.mission-grid { display:grid; grid-template-columns: 1fr 460px; gap:28px; align-items:center; }
+.mission-text h2 { font-size:1.6rem; color:#073f61; margin-bottom:8px; }
+.mission-text p { color:var(--muted); line-height:1.6; }
+.mission-image img { width:100%; height:100%; object-fit:cover; border-radius:12px; box-shadow:0 12px 36px rgba(3,10,18,0.08); }
+
+/* stats */
+.stats-section { background: linear-gradient(180deg,#fff,#f7fbff); padding: 18px 0 28px; }
+.stats-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:18px; align-items:center; max-width:var(--container-max); margin: 0 auto; padding: 10px 18px; }
+.stat { background:#fff; border-radius:12px; padding:18px; text-align:center; box-shadow: 0 10px 30px rgba(3,10,18,0.06); }
+.stat-num { font-size:1.6rem; font-weight:800; color:var(--accent); margin-bottom:6px; }
+.stat-label { color:var(--muted); font-size:0.95rem; }
+
+/* timeline */
+.history-section { padding:28px 18px; }
+.timeline { list-style:none; padding:0; margin: 12px 0 0; display:grid; gap:12px; }
+.timeline li { background:#fff; padding:14px 16px; border-radius:10px; box-shadow: 0 8px 24px rgba(3,10,18,0.04); display:flex; gap:12px; align-items:flex-start; }
+.timeline li strong { font-size:1.02rem; color:var(--accent); width:72px; display:inline-block; }
+
+/* team */
+.team-section { padding: 18px; }
+.team-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:12px; }
+.team-card { background:#fff; border-radius:12px; padding:14px; text-align:center; box-shadow: 0 10px 30px rgba(3,10,18,0.06); }
+.team-card img { width:110px; height:110px; object-fit:cover; border-radius:50%; display:block; margin: 0 auto 10px; }
+.team-card h4 { margin: 6px 0 4px; font-size:1.05rem; color:#073f61; }
+.team-card .role { color:var(--muted); font-size:0.92rem; margin-bottom:8px; }
+.team-card .desc { color:var(--muted); font-size:0.95rem; }
+
+/* team modal */
+.team-modal { position: fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:1500; background: rgba(3,10,18,0.55); padding:20px; }
+.team-modal[aria-hidden="false"] { display:flex; }
+.team-modal-inner { background:#fff; border-radius:12px; padding:18px; max-width:760px; width:100%; text-align:center; box-shadow: 0 24px 60px rgba(3,10,18,0.15); }
+.team-modal-inner img { width:100%; height:auto; border-radius:8px; max-height:56vh; object-fit:cover; margin-bottom:12px; }
+.team-modal-inner .close-modal { position:absolute; top:12px; right:12px; background:transparent; border:none; font-size:22px; }
+
+/* CTA */
+.about-cta { background: linear-gradient(180deg,#fff,#f7fbff); padding:26px 18px; text-align:center; margin-top:18px; border-top:1px solid rgba(3,10,18,0.02); }
+.about-cta h2 { margin:0 0 8px; color:#073f61; }
+.about-cta p { color:var(--muted); margin:0 0 14px; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .mission-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 520px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .about-hero .hero-inner h1 { font-size:1.8rem; }
+}

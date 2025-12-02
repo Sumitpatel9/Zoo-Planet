@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
+
+    <title>Donate | Zoo Planet</title>
+
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/donate.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="site-navbar">
+      <div class="nav-container">
+        <a href="index.html" class="brand">
+          <img src="img/navlogo.png" class="brand-logo" alt="Zoo Planet" />
+          <span class="brand-text">Zoo Planet</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span class="nav-toggle-icon">☰</span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="ticket.html">Tickets</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="donate.html" class="active">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="donate-hero">
+      <div class="hero-content">
+        <h1>Support Wildlife Conservation</h1>
+        <p>
+          Your donation helps protect animals, preserve habitats, and support
+          rescue missions.
+        </p>
+      </div>
+    </section>
+
+    <!-- DONATION FORM SECTION -->
+    <section class="donation-section">
+      <div class="donation-container">
+        <h2>Make a Donation</h2>
+        <p class="intro">
+          Choose an amount and payment method. Every contribution makes a
+          difference.
+        </p>
+
+        <!-- Donation Amount Buttons -->
+        <div class="amount-buttons">
+          <button class="amount-btn" data-amount="500">₹500</button>
+          <button class="amount-btn" data-amount="1000">₹1000</button>
+          <button class="amount-btn" data-amount="2000">₹2000</button>
+          <button class="amount-btn" data-amount="5000">₹5000</button>
+        </div>
+
+        <!-- Custom Amount -->
+        <div class="form-group">
+          <label for="custom-amount">Custom Amount (₹)</label>
+          <input type="number" id="custom-amount" placeholder="Enter amount" />
+        </div>
+
+        <!-- Donor Details -->
+        <div class="form-group">
+          <label for="donor-name">Full Name</label>
+          <input type="text" id="donor-name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="donor-email">Email</label>
+          <input type="email" id="donor-email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="donor-phone">Phone Number</label>
+          <input type="tel" id="donor-phone" required />
+        </div>
+
+        <!-- Payment Methods -->
+        <h3>Payment Method</h3>
+        <div class="payment-methods">
+          <label>
+            <input type="radio" name="pay-method" value="upi" checked />
+            <i class="fas fa-mobile-alt"></i> UPI
+          </label>
+          <label>
+            <input type="radio" name="pay-method" value="card" />
+            <i class="fas fa-credit-card"></i> Credit/Debit Card
+          </label>
+          <label>
+            <input type="radio" name="pay-method" value="paypal" />
+            <i class="fab fa-paypal"></i> PayPal
+          </label>
+        </div>
+
+        <!-- Payment Details -->
+        <div class="payment-details">
+          <!-- UPI -->
+          <div class="upi-section active" id="upi-section">
+            <p>Scan the QR Code</p>
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=donate@upi"
+              class="upi-qr"
+              alt="UPI QR Code"
+            />
+            <p>Or enter your UPI ID</p>
+            <input type="text" id="upi-id" placeholder="yourname@upi" />
+          </div>
+
+          <!-- Card -->
+          <div class="card-section" id="card-section">
+            <input type="text" placeholder="Card Number" maxlength="16" />
+            <div class="row">
+              <input type="text" placeholder="MM/YY" maxlength="5" />
+              <input type="text" placeholder="CVV" maxlength="3" />
+            </div>
+          </div>
+
+          <!-- PayPal -->
+          <div class="paypal-section" id="paypal-section">
+            <p>You will be redirected to PayPal to complete this donation.</p>
+          </div>
+        </div>
+
+        <button class="donate-btn" id="donate-btn">
+          <i class="fas fa-heart"></i> Donate Now
+        </button>
+
+        <p class="secure"><i class="fas fa-lock"></i> Secure Payment</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+    <script src="js/footer.js"></script>
+
+    <script src="js/nav.js"></script>
+    <script src="js/donate.js"></script>
+  </body>
+</html>

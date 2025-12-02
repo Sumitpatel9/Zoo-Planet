@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
+
+    <title>Visit | Zoo Planet</title>
+
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/visit.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="site-navbar">
+      <div class="nav-container">
+        <a class="brand" href="index.html">
+          <img src="img/navlogo.png" class="brand-logo" alt="Zoo Planet logo" />
+          <span class="brand-text">Zoo Planet</span>
+        </a>
+
+        <button class="nav-toggle">
+          <span class="nav-toggle-icon">☰</span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="ticket.html">Tickets</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="visit.html" class="active">Plan Visit</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="visit-hero">
+      <div class="hero-content">
+        <h1>Plan Your Visit</h1>
+        <p>Everything you need to know before exploring the wildlife world.</p>
+      </div>
+    </section>
+
+    <!-- VISIT DETAILS SECTION -->
+    <section class="visit-info">
+      <div class="visit-container">
+        <!-- Hours -->
+        <div class="visit-card">
+          <i class="fas fa-clock card-icon"></i>
+          <h3>Opening Hours</h3>
+          <ul>
+            <li><strong>Monday – Friday:</strong> 9:00 AM – 5:00 PM</li>
+            <li><strong>Saturday – Sunday:</strong> 8:30 AM – 6:00 PM</li>
+            <li><strong>Holidays:</strong> Open</li>
+          </ul>
+        </div>
+
+        <!-- Tickets -->
+        <div class="visit-card">
+          <i class="fas fa-ticket-alt card-icon"></i>
+          <h3>Tickets & Pricing</h3>
+          <p>Book tickets online and skip the long queues.</p>
+          <a href="ticket.html" class="btn visit-btn">Buy Tickets</a>
+        </div>
+
+        <!-- Location -->
+        <div class="visit-card">
+          <i class="fas fa-map-marker-alt card-icon"></i>
+          <h3>Location</h3>
+          <p>Zoo Planet, Green Valley Road, Eco City, India</p>
+          <a href="#map-section" class="btn visit-btn">View Map</a>
+        </div>
+
+        <!-- Safety -->
+        <div class="visit-card">
+          <i class="fas fa-shield-halved card-icon"></i>
+          <h3>Safety Guidelines</h3>
+          <ul>
+            <li>Do not feed the animals</li>
+            <li>Stay within marked paths</li>
+            <li>Keep the premises clean</li>
+            <li>Children must be supervised</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="map-section" id="map-section">
+      <h2>Find Us on Map</h2>
+      <p>Locate Zoo Planet easily using the interactive map below.</p>
+
+      <div class="map-container">
+        <iframe
+          class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.690364817497!2d75.78727047506882!3d26.887131776668065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f05c439cdd%3A0x9ab9da8db36805b5!2sZoo!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          loading="lazy"
+          allowfullscreen=""
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- WHAT TO EXPECT -->
+    <section class="expect-section">
+      <h2>What to Expect</h2>
+      <div class="expect-container">
+        <div class="expect-card">
+          <img src="https://source.unsplash.com/600x400/?lion,zoo" alt="" />
+          <h3>Animal Encounters</h3>
+          <p>See majestic creatures up close in safe, naturalistic habitats.</p>
+        </div>
+
+        <div class="expect-card">
+          <img src="https://source.unsplash.com/600x400/?family,zoo" alt="" />
+          <h3>Family Activities</h3>
+          <p>Fun attractions, rides, shows, and picnic areas for all ages.</p>
+        </div>
+
+        <div class="expect-card">
+          <img src="https://source.unsplash.com/600x400/?forest,trail" alt="" />
+          <h3>Nature Trails</h3>
+          <p>Beautiful walking paths surrounded by greenery and wildlife.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+    <script src="js/footer.js"></script>
+
+    <script src="js/nav.js"></script>
+    <script src="js/visit.js"></script>
+  </body>
+</html>

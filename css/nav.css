@@ -1,0 +1,138 @@
+/* nav.css - drop into css/ and include via <link> or paste into your main stylesheet */
+/* Variables: adjust once here and all pages update */
+:root {
+  --nav-height: 64px;
+  --nav-bg: #0a6ebd; /* navbar background color */
+  --nav-text: #ffffff; /* link text color */
+  --nav-hover: #dceeff; /* link hover color */
+  --nav-font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --nav-font-size: 16px !important;
+  --nav-brand-font-size: 20px !important;
+  --nav-z: 9999 !important;
+  --nav-padding-inline: 20px !important;
+}
+
+/* Force consistent font & box-model for navbar elements (important to avoid page CSS interference) */
+.site-navbar,
+.site-navbar * {
+  box-sizing: border-box;
+  font-family: var(--nav-font-family) !important;
+  font-size: var(--nav-font-size) !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Navbar container */
+.site-navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: var(--nav-height) !important;
+  background: var(--nav-bg) !important;
+  color: var(--nav-text) !important;
+  z-index: var(--nav-z) !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* inner container keeps content aligned with page width */
+.site-navbar .nav-container {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 var(--nav-padding-inline) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* Brand */
+.brand {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  color: var(--nav-text) !important;
+}
+.brand-logo {
+  height: calc(var(--nav-height) - 20px) !important; /* fits inside nav */
+  width: auto !important;
+  margin-right: 10px !important;
+}
+.brand-text {
+  font-weight: 600 !important;
+  font-size: var(--nav-brand-font-size) !important;
+  color: var(--nav-text) !important;
+}
+
+/* Links list */
+.nav-links {
+  list-style: none !important;
+  display: flex !important;
+  gap: 18px !important;
+  align-items: center !important;
+}
+.nav-links li a {
+  color: var(--nav-text) !important;
+  text-decoration: none !important;
+  padding: 10px 8px !important;
+  border-radius: 6px !important;
+  display: inline-block !important;
+  font-size: var(--nav-font-size) !important;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: var(--nav-hover) !important;
+  text-decoration: none !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Hamburger for small screens */
+.nav-toggle {
+  display: none !important; /* hidden on desktop */
+  background: transparent !important;
+  border: none !important;
+  font-size: 22px !important;
+  color: var(--nav-text) !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+}
+.nav-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: block !important;
+  }
+  .nav-links {
+    position: absolute !important;
+    top: var(--nav-height) !important;
+    right: 0 !important;
+    background: var(--nav-bg) !important;
+    width: 220px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 10px !important;
+    gap: 6px !important;
+    transform-origin: top right !important;
+    transform: scaleY(0) !important;
+    transition: transform 160ms ease !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18) !important;
+  }
+  .nav-links.show {
+    transform: scaleY(1) !important;
+  }
+  .nav-links li a {
+    width: 100% !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* Make sure body content is not hidden under navbar */
+body {
+  padding-top: calc(var(--nav-height)) !important;
+}

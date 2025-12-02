@@ -1,0 +1,203 @@
+/* css/footer.css
+   Unified footer styles for Zoo Planet (match navbar look)
+   Put this at the end of your stylesheet includes (after nav.css/login.css)
+*/
+
+/* Footer variables */
+:root {
+  --footer-bg: #074f88;        /* dark blue base */
+  --footer-accent: #0a6ebd;    /* navbar blue */
+  --footer-text: #eaf2f9;      /* light text */
+  --footer-muted: rgba(234,242,249,0.8);
+  --footer-radius: 10px;
+  --footer-padding: 40px;
+  --footer-bottom-bg: rgba(0,0,0,0.06);
+  --footer-height-safe: 220px; /* used for body padding fallback */
+  --site-max-width: 1200px;
+  --brand-font: "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Base footer layout */
+.site-footer {
+  background: linear-gradient(180deg, var(--footer-bg), #063a63);
+  color: var(--footer-text);
+  font-family: var(--brand-font);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding-top: 32px;
+  /* keep footer above any lower page elements */
+  z-index: 9998;
+}
+
+/* main container */
+.site-footer .footer-container {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: 0 var(--footer-padding);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Brand block */
+.site-footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+.site-footer .footer-logo-link {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--footer-text);
+}
+.site-footer .footer-logo {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+  background: #fff;
+  padding: 6px;
+}
+.site-footer .footer-brand-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--footer-text);
+}
+.site-footer .footer-desc {
+  color: var(--footer-muted);
+  margin: 0;
+  max-width: 280px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* links grid */
+.site-footer .footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* footer columns */
+.site-footer .footer-col h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.02rem;
+  color: var(--footer-text);
+  font-weight: 700;
+}
+.site-footer .footer-col a {
+  display: block;
+  color: var(--footer-muted);
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.site-footer .footer-col a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* newsletter */
+.site-footer .newsletter-col .footer-newsletter {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.site-footer .footer-newsletter input[type="email"] {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--footer-text);
+  font-size: 0.95rem;
+}
+.site-footer .footer-newsletter input::placeholder { color: rgba(234,242,249,0.65); }
+.site-footer .newsletter-btn {
+  background: var(--footer-accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+.site-footer .newsletter-btn:hover { background: #0d85d1; }
+
+/* social icons */
+.site-footer .footer-social {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+.site-footer .footer-social .social {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;height:36px;border-radius:8px;
+  background: rgba(255,255,255,0.06);
+  color: var(--footer-text); text-decoration:none;
+  font-size: 16px;
+}
+.site-footer .footer-social .social:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* bottom area */
+.site-footer .footer-bottom {
+  margin-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: var(--footer-bottom-bg);
+}
+.site-footer .footer-bottom-inner {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: 14px var(--footer-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--footer-muted);
+}
+.site-footer .legal-links a {
+  color: var(--footer-muted);
+  text-decoration: none;
+  margin-left: 12px;
+}
+.site-footer .legal-links a:hover { color: #fff; text-decoration: underline; }
+
+/* responsive */
+@media (max-width: 1024px) {
+  .site-footer .footer-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 0 28px;
+  }
+  .site-footer .footer-links { grid-template-columns: repeat(2, 1fr); }
+  .site-footer .footer-brand { align-items: center; text-align: center; }
+  .site-footer .footer-desc { max-width: 100%; }
+  .site-footer .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+/* smaller screens */
+@media (max-width: 520px) {
+  .site-footer .footer-links { grid-template-columns: 1fr; }
+  .site-footer .footer-newsletter { flex-direction: column; }
+  .site-footer .footer-newsletter input { width: 100%; }
+  .site-footer .footer-bottom-inner { padding: 14px 18px; }
+}
+
+/* Safety: ensure footer not overridden by page CSS */
+.site-footer,
+.site-footer * { box-sizing: border-box !important; font-family: var(--brand-font) !important; }
+
+/* body padding to avoid overlap with fixed content (if any) */
+/* body { padding-bottom: calc(var(--footer-height-safe) + 24px) !important; } */

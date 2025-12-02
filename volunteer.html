@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
+
+    <title>Volunteer | Zoo Planet</title>
+
+    <!-- shared styles -->
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <!-- page style -->
+    <link rel="stylesheet" href="css/volunteer.css" />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR (same markup used on other pages) -->
+    <nav class="site-navbar" role="navigation" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a class="brand" href="index.html" aria-label="Zoo Planet home">
+          <img src="img/navlogo.png" alt="Zoo Planet logo" class="brand-logo" />
+          <span class="brand-text">Zoo Planet</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-icon">☰</span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="ticket.html">Tickets</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="volunteer.html" class="active">Volunteer</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="vol-hero" role="banner" aria-label="Volunteer hero">
+      <div class="vol-hero-inner">
+        <h1>Join Us — Become a Volunteer</h1>
+        <p>
+          Help care for animals, guide visitors, and support conservation
+          programs.
+        </p>
+        <a href="#volunteer-form" class="btn btn-accent hero-cta"
+          >Apply to Volunteer</a
+        >
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="vol-main" id="main" role="main">
+      <section class="vol-info">
+        <div class="container">
+          <div class="cards">
+            <div class="card">
+              <i class="fas fa-hands-helping"></i>
+              <h3>Hands-on Care</h3>
+              <p>
+                Assist keepers with feeding, enrichment and habitat upkeep under
+                supervision.
+              </p>
+            </div>
+            <div class="card">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <h3>Education</h3>
+              <p>
+                Lead tours, give talks, and inspire visitors about wildlife
+                conservation.
+              </p>
+            </div>
+            <div class="card">
+              <i class="fas fa-seedling"></i>
+              <h3>Conservation</h3>
+              <p>
+                Help with habitat restoration, planting, and community outreach
+                projects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="vol-form-section"
+        id="volunteer-form"
+        aria-labelledby="vol-form-title"
+      >
+        <div class="container">
+          <h2 id="vol-form-title">Volunteer Application</h2>
+          <p class="lead">
+            Fill the form below — we'll review and contact you within 7 business
+            days.
+          </p>
+
+          <form id="volunteerForm" class="vol-form" novalidate>
+            <fieldset>
+              <legend class="sr-only">Volunteer application details</legend>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="v-name"
+                    >Full Name <span aria-hidden="true">*</span></label
+                  >
+                  <input
+                    id="v-name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Jane Doe"
+                  />
+                  <div
+                    class="field-error"
+                    id="err-name"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="v-age"
+                    >Age <span class="optional"> (optional)</span></label
+                  >
+                  <input
+                    id="v-age"
+                    name="age"
+                    type="number"
+                    min="14"
+                    placeholder="e.g. 21"
+                  />
+                  <div
+                    class="field-error"
+                    id="err-age"
+                    aria-live="polite"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="v-email"
+                    >Email <span aria-hidden="true">*</span></label
+                  >
+                  <input
+                    id="v-email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                  />
+                  <div
+                    class="field-error"
+                    id="err-email"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="v-phone"
+                    >Phone <span aria-hidden="true">*</span></label
+                  >
+                  <input
+                    id="v-phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                  />
+                  <div
+                    class="field-error"
+                    id="err-phone"
+                    aria-live="polite"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="v-role"
+                  >Preferred Volunteer Role
+                  <span aria-hidden="true">*</span></label
+                >
+                <select id="v-role" name="role" required>
+                  <option value="">Select role...</option>
+                  <option value="animal-care">Animal Care Assistant</option>
+                  <option value="guest-services">Guest Services / Guide</option>
+                  <option value="education">Education & Outreach</option>
+                  <option value="conservation">Conservation Projects</option>
+                  <option value="events">Events & Fundraising</option>
+                </select>
+                <div class="field-error" id="err-role" aria-live="polite"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="v-availability">Availability</label>
+                <div class="availability">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="availability"
+                      value="weekdays"
+                    />
+                    Weekdays</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="availability"
+                      value="weekends"
+                    />
+                    Weekends</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="availability"
+                      value="mornings"
+                    />
+                    Mornings</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="availability"
+                      value="afternoons"
+                    />
+                    Afternoons</label
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="v-experience">Relevant Experience (brief)</label>
+                <textarea
+                  id="v-experience"
+                  name="experience"
+                  rows="4"
+                  placeholder="Describe any relevant experience or skills"
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="v-resume">Upload Resume (PDF, optional)</label>
+                  <input
+                    id="v-resume"
+                    name="resume"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                  />
+                  <div class="file-preview" id="resume-preview"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="v-photo">Upload Photo (optional)</label>
+                  <input
+                    id="v-photo"
+                    name="photo"
+                    type="file"
+                    accept="image/*"
+                  />
+                  <div class="file-preview" id="photo-preview"></div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <label class="consent">
+                  <input type="checkbox" id="v-consent" required /> I agree to
+                  the <a href="terms.html">terms</a> and allow Zoo Planet to
+                  contact me.
+                </label>
+              </div>
+
+              <div class="form-actions submit-row">
+                <button type="submit" class="btn btn-accent">
+                  Submit Application
+                </button>
+                <button type="button" id="clearBtn" class="btn btn-secondary">
+                  Clear
+                </button>
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- success message modal (hidden) -->
+          <div
+            id="vol-success"
+            class="vol-modal"
+            aria-hidden="true"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div class="vol-modal-inner">
+              <button class="close-modal" aria-label="Close">&times;</button>
+              <div class="vol-modal-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <h3>Application Received</h3>
+              <p>
+                Thanks! We received your application. We'll review and contact
+                you within 7 business days.
+              </p>
+              <button class="btn btn-accent" id="vol-ok">OK</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER placeholder loads footer.html via js/footer.js -->
+    <div id="footer-placeholder" aria-hidden="false"></div>
+    <script src="js/footer.js" defer></script>
+
+    <!-- shared scripts -->
+    <script src="js/nav.js" defer></script>
+
+    <!-- page script -->
+    <script src="js/volunteer.js" defer></script>
+  </body>
+</html>

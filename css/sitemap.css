@@ -1,0 +1,114 @@
+/* Sitemap page */
+
+:root {
+  --accent: #0a6ebd;
+  --dark: #073f61;
+  --muted: #6b7280;
+  --bg: #f7fafc;
+  --card-bg: #ffffff;
+}
+
+body {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+/* hero */
+.sitemap-hero {
+  background: linear-gradient(
+      180deg,
+      rgba(7, 63, 97, 0.65),
+      rgba(7, 63, 97, 0.5)
+    ),
+    url("https://source.unsplash.com/1600x900/?map,website") center/cover
+      no-repeat;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+  margin-top: 60px;
+  
+}
+.sitemap-hero h1 {
+  font-size: 2.4rem;
+  margin: 0 0 10px;
+}
+.sitemap-hero p {
+  max-width: 700px;
+  margin: auto;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* grid layout */
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* cards */
+.sitemap-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.sitemap-card:hover {
+  transform: translateY(-6px);
+}
+
+.sitemap-card h2 {
+  color: var(--dark);
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sitemap-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sitemap-card ul li {
+  margin: 8px 0;
+}
+
+.sitemap-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sitemap-card a:hover {
+  text-decoration: underline;
+  color: var(--dark);
+}
+
+/* last updated note */
+.sitemap-note {
+  margin-top: 30px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .sitemap-hero h1 {
+    font-size: 1.8rem;
+  }
+}

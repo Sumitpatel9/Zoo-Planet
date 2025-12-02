@@ -1,13 +1,16 @@
 /* Contact Section Styles */
 .contact-section {
     padding: 0;
-    background-color: var(--white);
+    background-color: #faf3dd;
     position: relative;
 }
 
 body {
-    display: block;
-    margin: 0;
+    display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
 
 .dropdown-button {
@@ -66,7 +69,7 @@ body {
 
 .contact-hero {
     height: 40vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url('https://source.unsplash.com/random/1920x1080/?zoo,entrance') center/cover no-repeat;
     display: flex;
     flex-direction: column;

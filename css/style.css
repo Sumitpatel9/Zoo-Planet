@@ -15,7 +15,7 @@ body {
     background-color: var(--white);
 }
 
-header {
+/* header {
     background-color: var(--primary-green);
     color: white;
     padding: 1rem;
@@ -54,7 +54,7 @@ header {
 
 .nav-links li:hover {
     transform: translateY(-5px);
-}
+} */
 
 .hero {
     height: 80vh;

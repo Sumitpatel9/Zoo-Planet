@@ -1,0 +1,114 @@
+/* css/volunteer.css - styles for Volunteer page */
+body {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+/* page variables */
+:root {
+  --accent: #0a6ebd;
+  --accent-dark: #0d85d1;
+  --muted: #6b7280;
+  --card-shadow: 0 10px 30px rgba(3, 10, 18, 0.08);
+  --container-max: 1100px;
+}
+
+/* HERO */
+.vol-hero {
+  height: 44vh;
+  background: linear-gradient(0deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+              url("https://source.unsplash.com/1600x900/?zoo,volunteer,animals") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #fff;
+  text-align:center;
+  padding: 22px;
+}
+.vol-hero-inner h1 {
+  font-size: 2.6rem;
+  margin: 0 0 10px;
+  line-height:1.02;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.vol-hero-inner p { font-size:1.1rem; color: rgba(255,255,255,0.92); margin:0 0 14px; }
+.hero-cta { font-weight:700; padding:10px 16px; border-radius:10px; }
+
+/* MAIN LAYOUT */
+.vol-main { background: #fbfdff; color: #0f1724; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 36px 20px; box-sizing: border-box; }
+
+/* INFO CARDS */
+.cards { display:flex; gap:20px; justify-content: center; margin-bottom: 18px; flex-wrap:wrap; }
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: var(--card-shadow);
+  text-align:center;
+}
+.card i { font-size:28px; color: var(--accent); margin-bottom:12px; display:inline-block; }
+.card h3 { margin: 8px 0; font-size:1.1rem; }
+.card p { color: var(--muted); font-size:0.95rem; }
+
+/* FORM SECTION */
+.vol-form-section { padding-bottom: 48px; }
+.vol-form-section h2 { font-size:1.6rem; margin-bottom:4px; color:#073f61; text-align:center; }
+.vol-form-section .lead { text-align:center; color:var(--muted); margin-bottom:18px; }
+
+/* Form styles */
+.vol-form { background: white; border-radius: 12px; padding: 22px; box-shadow: var(--card-shadow); }
+.form-row { display:flex; gap:16px; margin-bottom: 14px; flex-wrap:wrap; }
+.form-group { flex:1; min-width: 220px; display:flex; flex-direction:column; gap:8px; }
+.form-group label { font-weight:600; color:#0b2540; }
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea,
+.form-group input[type="file"] {
+  padding: 10px 12px; border-radius: 8px; border: 1px solid #dfe6ee; font-size: 0.98rem; background: #fff;
+}
+.form-group textarea { resize:vertical; min-height:96px; }
+
+/* availability checkboxes */
+.availability { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.availability label { display:flex; gap:8px; align-items:center; color:var(--muted); }
+
+/* file preview */
+.file-preview { font-size:0.9rem; color:var(--muted); margin-top:6px; }
+.file-preview img { max-width:100px; border-radius:6px; display:block; margin-top:8px; }
+
+/* consent */
+.consent { display:flex; gap:10px; align-items:center; color:var(--muted); font-size:0.95rem; }
+
+/* buttons row */
+.form-actions { margin-top:12px; display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+.btn { border-radius:10px; padding:10px 14px; border:none; cursor:pointer; font-weight:700; }
+.btn-accent { background:var(--accent); color:#fff; }
+.btn-secondary { background:#fff; color:#073f61; border:1px solid #e6eef8; }
+
+/* errors */
+.field-error { color:#d04444; font-size:0.88rem; min-height:18px; }
+
+/* success modal */
+.vol-modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:1500; background:rgba(3,10,18,0.5); padding:20px; }
+.vol-modal[aria-hidden="false"] { display:flex; }
+.vol-modal-inner { background:#fff; border-radius:12px; padding:22px; max-width:560px; text-align:center; box-shadow:0 20px 60px rgba(3,10,18,0.12); }
+.vol-modal-icon { font-size:46px; color: #2bb673; margin-bottom:8px; }
+
+/* small responsive */
+@media (max-width: 900px) {
+  .cards { justify-content: stretch; }
+  .card { width: 100%; }
+  .form-row { flex-direction: column; }
+  .form-group { min-width: 100%; }
+  .vol-hero-inner h1 { font-size: 2rem; }
+}
+
+/* accessibility focus */
+input:focus, select:focus, textarea:focus, button:focus { outline: 3px solid rgba(10,110,189,0.12); outline-offset:2px; }

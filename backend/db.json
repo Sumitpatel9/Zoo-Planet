@@ -1,0 +1,40 @@
+{
+  "tickets": [
+    {
+      "id": "7937cd3d-1af3-4082-be3f-878a6445614e",
+      "bookingDate": "2025-12-08",
+      "ticketType": "family",
+      "qty": 2,
+      "fullName": "john doe",
+      "email": "example@email.com",
+      "mobile": "9876543210",
+      "paymentMethod": "cash",
+      "notes": "",
+      "createdAt": "2025-12-02T10:18:13.604Z"
+    },
+    {
+      "id": "8afa4b58-f91d-4373-9e01-556d5a23c40a",
+      "bookingDate": "2025-12-12",
+      "ticketType": "family",
+      "qty": 3,
+      "fullName": "john doe",
+      "email": "example@email.com",
+      "mobile": "9876543210",
+      "paymentMethod": "credit",
+      "notes": "",
+      "createdAt": "2025-12-02T10:18:54.586Z"
+    },
+    {
+      "id": "cbb4dfc0-240b-484f-b7e3-122eade241be",
+      "bookingDate": "2025-12-04",
+      "ticketType": "family",
+      "qty": 3,
+      "fullName": "john doe",
+      "email": "example@email.com",
+      "mobile": "9876543210",
+      "paymentMethod": "cash",
+      "notes": "",
+      "createdAt": "2025-12-02T10:34:18.499Z"
+    }
+  ]
+}

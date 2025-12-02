@@ -1,0 +1,152 @@
+/* HERO SECTION */
+body {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+.visit-hero {
+  height: 45vh;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url("https://source.unsplash.com/1600x900/?zoo,animals,wildlife") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.visit-hero h1 {
+  font-size: 3rem;
+}
+
+.visit-hero p {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+/* VISIT CARDS */
+.visit-info {
+  padding: 60px 20px;
+  background: #f7fafc;
+}
+
+.visit-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.visit-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.visit-card:hover {
+  transform: translateY(-6px);
+}
+
+.visit-card h3 {
+  color: #074f88;
+  margin-bottom: 12px;
+}
+
+.visit-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #444;
+}
+
+.card-icon {
+  font-size: 35px;
+  margin-bottom: 12px;
+  color: #0a6ebd;
+}
+
+/* BUTTON */
+.visit-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #0a6ebd;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.visit-btn:hover {
+  background: #0d85d1;
+}
+
+/* MAP SECTION */
+.map-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.map-container {
+  margin-top: 20px;
+  max-width: 900px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* EXPECT SECTION */
+.expect-section {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.expect-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.expect-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.expect-card:hover {
+  transform: translateY(-6px);
+}
+
+.expect-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.expect-card h3 {
+  margin: 15px 0 6px;
+  color: #074f88;
+}
+
+.expect-card p {
+  padding: 0 12px 20px;
+  color: #444;
+}

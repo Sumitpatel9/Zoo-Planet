@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
+
+    <title>FAQ | Zoo Planet</title>
+
+    <!-- shared styles -->
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <!-- page style -->
+    <link rel="stylesheet" href="css/faq.css" />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="site-navbar" role="navigation" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a class="brand" href="index.html" aria-label="Zoo Planet home">
+          <img class="brand-logo" src="img/navlogo.png" alt="Zoo Planet logo" />
+          <span class="brand-text">Zoo Planet</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-icon">☰</span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="ticket.html">Tickets</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="visit.html">Plan Visit</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="faq-hero" role="banner">
+      <div class="hero-inner">
+        <h1>Frequently Asked Questions</h1>
+        <p>Quick answers to common questions about visiting Zoo Planet.</p>
+      </div>
+    </header>
+
+    <!-- FAQ CONTROLS -->
+    <main class="faq-main" id="main" role="main">
+      <section class="faq-controls container">
+        <div class="search-wrap">
+          <label for="faq-search" class="sr-only">Search FAQs</label>
+          <input
+            id="faq-search"
+            type="search"
+            placeholder="Search questions (e.g. tickets, parking, animals)"
+            aria-label="Search FAQs"
+          />
+          <button
+            id="clear-search"
+            class="icon-btn"
+            title="Clear search"
+            aria-label="Clear search"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="faq-actions">
+          <button id="expand-all" class="btn">Expand all</button>
+          <button id="collapse-all" class="btn btn-secondary">
+            Collapse all
+          </button>
+        </div>
+      </section>
+
+      <!-- FAQ list -->
+      <section class="faq-list container" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="sr-only">FAQ</h2>
+
+        <!-- Each .faq-item -->
+        <div class="faq-item" data-tags="tickets booking refunds">
+          <button class="faq-q" aria-expanded="false">
+            <span>How do I book tickets online?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              You can book tickets on our
+              <a href="ticket.html">Tickets</a> page. Choose date, ticket type
+              and complete payment. E-tickets will be emailed to you.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="parking arrival">
+          <button class="faq-q" aria-expanded="false">
+            <span>Is parking available at the zoo?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              Yes — free parking is available for members; for others, parking
+              is available near the main entrance (subject to availability).
+              Please follow signage and staff instructions.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="children safety age">
+          <button class="faq-q" aria-expanded="false">
+            <span>Are children allowed and is there an age limit?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              Children of all ages are welcome. Children under 12 must be
+              accompanied by an adult at all times. Some activities have minimum
+              age requirements — see the relevant activity page for details.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="animals feeding safety">
+          <button class="faq-q" aria-expanded="false">
+            <span>Can I feed the animals?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              No. For animal safety and health, feeding animals is strictly
+              prohibited unless a supervised feeding experience is offered by
+              the zoo staff.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="membership benefits discount events">
+          <button class="faq-q" aria-expanded="false">
+            <span>What are the benefits of membership?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              Members receive free admission (individual/family levels),
+              discounts on dining and gifts, early access to exhibits and
+              special member events. See
+              <a href="service.html#membership-info">Membership</a> for full
+              details.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="accessibility wheelchair">
+          <button class="faq-q" aria-expanded="false">
+            <span>Is the zoo accessible for visitors with disabilities?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              Yes — most paths, viewing areas and facilities are wheelchair
+              accessible. We also have accessible restrooms. Contact us in
+              advance for special assistance.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="faq-item"
+          data-tags="animals photography photography-permit"
+        >
+          <button class="faq-q" aria-expanded="false">
+            <span>Can I take photos and videos inside the zoo?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              Personal photography for non-commercial use is welcome. For
+              professional photography, drones, or commercial shoots, please
+              obtain prior permission by contacting us.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="refund cancellation tickets">
+          <button class="faq-q" aria-expanded="false">
+            <span>What is your refund policy for tickets?</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a" hidden>
+            <p>
+              Tickets are refundable up to 48 hours before the visit date.
+              Service fees are non-refundable. For cancellations due to weather
+              or emergencies, see our Terms and contact support.
+            </p>
+          </div>
+        </div>
+
+        <!-- add more items as needed -->
+      </section>
+    </main>
+
+    <!-- FOOTER placeholder -->
+    <div id="footer-placeholder"></div>
+    <script src="js/footer.js" defer></script>
+
+    <!-- page scripts -->
+    <script src="js/nav.js" defer></script>
+    <script src="js/faq.js" defer></script>
+  </body>
+</html>
