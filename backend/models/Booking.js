@@ -34,7 +34,7 @@ const bookingSchema = new mongoose.Schema(
 
     paymentMethod: {
       type: String,
-      enum: ["card", "upi", "paypal", "cash"],
+      enum: ["credit", "upi", "paypal", "cash"],
       required: true,
     },
 
@@ -53,4 +53,4 @@ const bookingSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Booking", bookingSchema);
+module.exports = mongoose.model("Booking", bookingSchema);//Booking shows the collection in compass. name shows 'bookings', if Ticket then in db collection name shows 'tickets'

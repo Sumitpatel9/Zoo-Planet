@@ -536,30 +536,16 @@
 //     });
 // });
 
+////----------------------------------------------------------------
+////----------------------------------------------------------------
+////----------------------------------------------------------------
+////----------------------------------------------------------------
+/// ticket.js - FIXED: backend integration + robust modal FINAL CODE
+////----------------------------------------------------------------
+////----------------------------------------------------------------
+////----------------------------------------------------------------
+////----------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/// ticket.js - FIXED: backend integration + robust modal behavior by removing temporary pointer-events logic
-
-// -------------------------------
-// Config
-// -------------------------------
 const API_BASE = "http://localhost:4000"; // change to your backend URL when deployed
 
 // Set minimum visit date to today
@@ -568,7 +554,7 @@ if (visitDateInput) {
   visitDateInput.min = new Date().toISOString().split("T")[0];
 }
 
-// Ticket prices
+// Stores price for each ticket type
 const ticketPrices = {
   adult: 24.99,
   child: 14.99,
@@ -578,11 +564,14 @@ const ticketPrices = {
   group: 12.99,
 };
 
+//This object stores user selection
+/*{
+  adult: 2,
+  child: 1
+}*/
 let selectedTickets = {};
 
-// -------------------------------
 // Utility / Validation Helpers
-// -------------------------------
 function calculateAge(birthDate) {
   const today = new Date();
   const birth = new Date(birthDate);
@@ -690,9 +679,7 @@ function validatePaymentMethod() {
   return errors;
 }
 
-// -------------------------------
 // Dynamic fields for birth/student
-// -------------------------------
 function toggleAdditionalFields() {
   const needsBirthDate =
     selectedTickets.child > 0 ||
@@ -763,9 +750,7 @@ function createStudentIdField() {
   insertAfter.insertAdjacentElement("afterend", studentIdDiv);
 }
 
-// -------------------------------
 // Ticket selection UI logic
-// -------------------------------
 document.querySelectorAll(".select-ticket").forEach((btn) => {
   btn.addEventListener("click", function () {
     const type = this.dataset.type;
@@ -855,9 +840,7 @@ function updateTicketSelection() {
   if (totalEl) totalEl.textContent = `₹${total.toFixed(2)}`;
 }
 
-// -------------------------------
 // Payment UI handlers
-// -------------------------------
 document.querySelectorAll('input[name="payment"]').forEach((radio) => {
   radio.addEventListener("change", function () {
     document
@@ -883,7 +866,7 @@ document.querySelectorAll('input[name="upi-method"]').forEach((radio) => {
 // Card formatting
 document.getElementById("card-number")?.addEventListener("input", function () {
   let value = this.value.replace(/\s/g, "").replace(/\D/g, "");
-  this.value = value.replace(/(\d{4})/g, "$1 ").trim();
+  this.value = value.replace(/(\d{4})/g, "₹1 ").trim();
   if (value.length > 16) this.value = this.value.substring(0, 19);
 });
 
@@ -902,9 +885,7 @@ document.getElementById("upi-id")?.addEventListener("input", function () {
   this.value = this.value.toLowerCase();
 });
 
-// -------------------------------
 // UI: booking ref, modal, QR, download/print
-// -------------------------------
 function generateBookingReference() {
   const letters = "ABCDEFGHJKLMNPQRSTUVWXYZ";
   const numbers = "0123456789";
@@ -930,33 +911,35 @@ function formatDisplayDate(dateString) {
   }
 }
 
-/**
- * UPDATED: Removed pointer-events safety window logic to prevent the modal from closing immediately.
- */
-function showConfirmationModal(formData, bookingRefs, createdAt, totalAmount) {
+// ================= CONFIRMATION MODAL =================
+function showConfirmationModal(formData, bookingRef, createdAt, totalAmount) {
   const modal = document.getElementById("confirmation-modal");
   if (!modal) return;
 
-  // populate content
-  document.getElementById("booking-reference").textContent =
-    bookingRefs.join(", ");
+  document.getElementById("booking-reference").textContent = bookingRef;
+
   document.getElementById("conf-name").textContent = formData.name;
   document.getElementById("conf-email").textContent = formData.email;
   document.getElementById("conf-phone").textContent = formData.phone;
+
   document.getElementById("conf-visit-date").textContent = formatDisplayDate(
     formData.visitDate
   );
+
   document.getElementById("conf-booking-date").textContent =
     formatDisplayDate(createdAt);
+
   document.getElementById("conf-payment-method").textContent =
-    (formData.paymentMethod || "Card").charAt(0).toUpperCase() +
-    (formData.paymentMethod || "card").slice(1);
+    formData.paymentMethod.charAt(0).toUpperCase() +
+    formData.paymentMethod.slice(1);
 
   const ticketItemsContainer = document.getElementById("conf-ticket-items");
   ticketItemsContainer.innerHTML = "";
+
   for (const [type, quantity] of Object.entries(selectedTickets)) {
-    const price = ticketPrices[type] || 0;
+    const price = ticketPrices[type];
     const subtotal = price * quantity;
+
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${type.charAt(0).toUpperCase() + type.slice(1)}</td>
@@ -971,11 +954,10 @@ function showConfirmationModal(formData, bookingRefs, createdAt, totalAmount) {
     "conf-total-amount"
   ).textContent = `₹${totalAmount.toFixed(2)}`;
 
-  const qrData = `Refs: ${bookingRefs.join("; ")}\nName:${
-    formData.name
-  }\nDate:${formData.visitDate}\nTickets:${Object.values(
-    selectedTickets
-  ).reduce((a, b) => a + b, 0)}`;
+  const qrData = `Booking Ref: ${bookingRef}
+Name: ${formData.name}
+Date: ${formData.visitDate}`;
+
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(
     qrData
   )}`;
@@ -983,73 +965,177 @@ function showConfirmationModal(formData, bookingRefs, createdAt, totalAmount) {
     "ticket-qr-code"
   ).innerHTML = `<img src="${qrCodeUrl}" alt="QR Code">`;
 
-  // Show the modal
   modal.style.display = "flex";
   document.body.style.overflow = "hidden";
-
-  // Focus close button for accessibility
-  const closeBtn = modal.querySelector(".close-modal");
-  if (closeBtn) closeBtn.focus();
 }
 
 function closeConfirmationModal() {
   const modal = document.getElementById("confirmation-modal");
-  if (!modal) return;
   modal.style.display = "none";
   document.body.style.overflow = "auto";
-  modal.style.pointerEvents = "auto"; // Ensure pointer-events is reset
 }
 
+//Download ticket
 function downloadTicket() {
-  alert(
-    "In a real implementation, this would download the ticket as a PNG (use html2canvas)."
-  );
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF("p", "mm", "a4");
+
+  let y = 20;
+
+  // ===== HEADER =====
+  pdf.setFontSize(18);
+  pdf.text("Wildlife Adventure Zoo - Ticket", 105, y, { align: "center" });
+  y += 10;
+
+  pdf.setLineWidth(0.5);
+  pdf.line(20, y, 190, y);
+  y += 8;
+
+  // ===== BOOKING DETAILS =====
+  pdf.setFontSize(11);
+  pdf.text(`Booking Reference: ${document.getElementById("booking-reference").textContent}`, 20, y); y += 7;
+  pdf.text(`Name: ${document.getElementById("conf-name").textContent}`, 20, y); y += 7;
+  pdf.text(`Email: ${document.getElementById("conf-email").textContent}`, 20, y); y += 7;
+  pdf.text(`Phone: ${document.getElementById("conf-phone").textContent}`, 20, y); y += 7;
+  pdf.text(`Visit Date: ${document.getElementById("conf-visit-date").textContent}`, 20, y); y += 7;
+  pdf.text(`Payment Method: ${document.getElementById("conf-payment-method").textContent}`, 20, y);
+  y += 10;
+
+  // ===== TABLE HEADER =====
+  pdf.setFontSize(12);
+  pdf.text("Tickets Booked", 20, y);
+  y += 8;
+
+  pdf.setFontSize(11);
+  pdf.text("Type", 20, y);
+  pdf.text("Qty", 70, y);
+  pdf.text("Price", 100, y);
+  pdf.text("Subtotal", 150, y);
+  y += 4;
+
+  pdf.line(20, y, 190, y);
+  y += 6;
+
+  // ===== TABLE DATA =====
+  let total = 0;
+
+  for (const [type, qty] of Object.entries(selectedTickets)) {
+    const price = Number(ticketPrices[type]);
+    const subtotal = price * qty;
+    total += subtotal;
+
+    pdf.text(type.toUpperCase(), 20, y);
+    pdf.text(String(qty), 70, y);
+    pdf.text(`INR ${price.toFixed(2)}`, 100, y);
+    pdf.text(`INR ${subtotal.toFixed(2)}`, 150, y);
+
+    y += 7;
+
+    if (y > 260) {
+      pdf.addPage();
+      y = 20;
+    }
+  }
+
+  // ===== TOTAL =====
+  y += 4;
+  pdf.line(20, y, 190, y);
+  y += 8;
+
+  pdf.setFontSize(13);
+  pdf.text(`Total Amount: INR ${total.toFixed(2)}`, 140, y);
+
+  // ===== QR CODE =====
+  const qrData = `
+Booking Ref: ${document.getElementById("booking-reference").textContent}
+Name: ${document.getElementById("conf-name").textContent}
+Visit Date: ${document.getElementById("conf-visit-date").textContent}
+`;
+
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
+
+  const qrImg = new Image();
+  qrImg.crossOrigin = "anonymous";
+  qrImg.src = qrUrl;
+
+  qrImg.onload = function () {
+    pdf.addImage(qrImg, "PNG", 20, y + 10, 40, 40);
+
+    // ===== FOOTER =====
+    pdf.setFontSize(9);
+    pdf.text(
+      "Please carry this ticket and a valid ID. Tickets are non-refundable.",
+      105,
+      285,
+      { align: "center" }
+    );
+
+    pdf.save("Zoo_Ticket.pdf");
+  };
 }
+
+
+//Print Ticket
 function printTicket() {
   window.print();
 }
 
-// -------------------------------
-// Attach modal & control listeners immediately (script placed at end of body)
-// -------------------------------
-(function attachModalListeners() {
-  // close buttons: stop propagation & close
-  document.querySelectorAll(".close-modal, .close-btn").forEach((btn) => {
-    btn?.addEventListener("click", function (e) {
-      e.stopPropagation();
-      closeConfirmationModal();
-    });
+document
+  .querySelector(".close-modal")
+  ?.addEventListener("click", closeConfirmationModal);
+document
+  .querySelector(".close-btn")
+  ?.addEventListener("click", closeConfirmationModal);
+document
+  .querySelector(".download-ticket")
+  ?.addEventListener("click", downloadTicket);
+document.querySelector(".print-ticket")?.addEventListener("click", printTicket);
+
+document
+  .getElementById("confirmation-modal")
+  ?.addEventListener("click", function (e) {
+    if (e.target === this) closeConfirmationModal();
   });
 
-  // download / print: stop propagation
-  document
-    .querySelectorAll(".download-ticket, .print-ticket")
-    .forEach((btn) => {
-      btn?.addEventListener("click", function (e) {
-        e.stopPropagation();
-        if (this.classList.contains("download-ticket")) downloadTicket();
-        else if (this.classList.contains("print-ticket")) printTicket();
-      });
-    });
+// Attach modal & control listeners immediately (script placed at end of body)
 
-  /**
-   * UPDATED: Removed pointer-events check here, as the temporary 'none' state is gone.
-   * The modal will now stay open unless the backdrop or close button is clicked.
-   */
-  const modalEl = document.getElementById("confirmation-modal");
-  if (modalEl) {
-    modalEl.addEventListener("click", function (e) {
-      // if click occurred on backdrop (modal container) — close
-      if (e.target === this) {
-        closeConfirmationModal();
-      }
-    });
-  }
-})();
+// (function attachModalListeners() {
+//   // close buttons: stop propagation & close
+//   document.querySelectorAll(".close-modal, .close-btn").forEach((btn) => {
+//     btn?.addEventListener("click", function (e) {
+//       e.stopPropagation();
+//       closeConfirmationModal();
+//     });
+//   });
 
-// -------------------------------
+//   // download / print: stop propagation
+//   document
+//     .querySelectorAll(".download-ticket, .print-ticket")
+//     .forEach((btn) => {
+//       btn?.addEventListener("click", function (e) {
+//         e.stopPropagation();
+//         if (this.classList.contains("download-ticket")) downloadTicket();
+//         else if (this.classList.contains("print-ticket")) printTicket();
+//       });
+//     });
+
+//   /**
+//    * UPDATED: Removed pointer-events check here, as the temporary 'none' state is gone.
+//    * The modal will now stay open unless the backdrop or close button is clicked.
+//    */
+//   const modalEl = document.getElementById("confirmation-modal");
+//   if (modalEl) {
+//     modalEl.addEventListener("click", function (e) {
+//       // if click occurred on backdrop (modal container) — close
+//       if (e.target === this) {
+//         closeConfirmationModal();
+//       }
+//     });
+//   }
+// })();
+
 // Main submit handler: sends to backend
-// -------------------------------
+
 document
   .getElementById("ticket-form")
   ?.addEventListener("submit", async function (e) {
@@ -1085,71 +1171,58 @@ document
     }
 
     // Build payloads: one POST per ticket type
-    const payloads = [];
-    for (const [type, quantity] of Object.entries(selectedTickets)) {
-      const qty = Number(quantity) || 1;
-      const payload = {
-        bookingDate: visitDate,
-        ticketType: type,
-        qty: qty,
-        fullName: name,
-        email: email,
-        mobile: phone,
-        paymentMethod: paymentMethod,
-        notes: notes,
-      };
-      payloads.push(payload);
+    // 1️⃣ Convert selectedTickets into tickets array
+    const tickets = Object.entries(selectedTickets).map(([type, qty]) => ({
+      type: type,
+      qty: qty,
+      price: ticketPrices[type],
+    }));
+
+    // 2️⃣ Build ONE payload
+    const payload = {
+      fullName: name,
+      email: email,
+      mobile: phone,
+      visitDate: visitDate, // IMPORTANT
+      paymentMethod: paymentMethod,
+      tickets: tickets, // IMPORTANT
+      notes: notes,
+    };
+
+    // 3️⃣ Send ONE request to backend
+    const res = await fetch(`${API_BASE}/api/tickets`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await res.json();
+    if (!res.ok) {
+      throw new Error(result.error || "Booking failed");
     }
 
-    const submitBtn = document.querySelector(".submit-btn");
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = "Processing...";
-
-    try {
-      const reqs = payloads.map((p) =>
-        fetch(`${API_BASE}/api/tickets`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(p),
-        }).then(async (res) => {
-          const body = await res.json().catch(() => ({}));
-          if (!res.ok) {
-            const msg = body && body.error ? body.error : `HTTP ${res.status}`;
-            throw new Error(msg);
-          }
-          return body;
-        })
-      );
-
-      const results = await Promise.all(reqs);
-
-      const bookingRefs = results.map((r) => r.bookingRef);
-      const createdAt = results[0]?.createdAt || new Date().toISOString();
-
-      // compute total
-      let total = 0;
-      for (const [type, qty] of Object.entries(selectedTickets)) {
-        const price = ticketPrices[type] || 0;
-        total += price * qty;
-      }
-
-      // Show modal with server-backed info
-      showConfirmationModal(
-        { name, email, phone, visitDate, paymentMethod },
-        bookingRefs,
-        createdAt,
-        total
-      );
-
-      // Optionally clear selections & form (uncomment if you want)
-      // selectedTickets = {};
-      // updateTicketSelection();
-      // this.reset();
-    } catch (err) {
-      console.error("Booking error:", err);
-      alert("Booking failed: " + (err.message || "Unknown error"));
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `<i class="fas fa-ticket-alt"></i> Complete Booking`;
+    // Calculate total
+    let total = 0;
+    for (const [type, qty] of Object.entries(selectedTickets)) {
+      total += ticketPrices[type] * qty;
     }
+
+    // OPEN CONFIRMATION MODAL
+    showConfirmationModal(
+      {
+        name,
+        email,
+        phone,
+        visitDate,
+        paymentMethod,
+      },
+      result.bookingRef,
+      result.createdAt,
+      total
+    );
+
+    // Reset form
+    selectedTickets = {};
+    updateTicketSelection();
+    this.reset();
   });

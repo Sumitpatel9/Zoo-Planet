@@ -1,5 +1,6 @@
 const Booking = require("../models/Booking");
 
+// Generate booking reference
 function generateBookingRef() {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let ref = "ZOO-" + new Date().getFullYear() + "-";
@@ -21,15 +22,21 @@ exports.createBooking = async (req, res) => {
       notes,
     } = req.body;
 
-    if (!tickets || tickets.length === 0) {
+    // ✅ Validation
+    if (!tickets || !Array.isArray(tickets) || tickets.length === 0) {
       return res.status(400).json({ error: "No tickets selected" });
     }
+    if (!fullName || !email || !mobile || !visitDate) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
 
+    // Calculate total
     const totalAmount = tickets.reduce(
       (sum, t) => sum + t.price * t.qty,
       0
     );
 
+    // Save booking
     const booking = await Booking.create({
       bookingRef: generateBookingRef(),
       fullName,
@@ -42,9 +49,14 @@ exports.createBooking = async (req, res) => {
       notes,
     });
 
-    res.status(201).json(booking);
+    res.status(201).json({
+      success: true,
+      bookingRef: booking.bookingRef,
+      createdAt: booking.createdAt,
+      booking,
+    });
   } catch (error) {
-    console.error(error);
-    res.status(400).json({ error: error.message });
+    console.error("Booking error:", error);
+    res.status(500).json({ error: error.message });
   }
 };
