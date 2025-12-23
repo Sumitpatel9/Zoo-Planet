@@ -556,6 +556,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
+  margin-top: 60px;
 }
 
 .modal-header {
@@ -667,6 +668,7 @@ td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #eee;
+  color: black;
 }
 
 th {
@@ -984,3 +986,4 @@ html {
 html {
   -ms-overflow-style: none !important;
 }
+

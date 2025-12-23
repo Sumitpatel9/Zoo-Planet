@@ -60,3 +60,58 @@ exports.createBooking = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// exports.getBookingBySearch = async (req, res) => {
+//   try {
+//     const { bookingRef, mobile } = req.query;
+
+//     let booking;
+
+//     if (bookingRef) {
+//       booking = await Booking.findOne({ bookingRef });
+//     } else if (mobile) {
+//       booking = await Booking.findOne({ mobile }).sort({ createdAt: -1 });
+//     } else {
+//       return res.status(400).json({ error: "Invalid search" });
+//     }
+
+//     if (!booking) {
+//       return res.status(404).json({ error: "Ticket not found" });
+//     }
+
+//     res.json(booking);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// };
+exports.getBookingBySearch = async (req, res) => {
+  try {
+    const { bookingRef, mobile } = req.query;
+
+    // Search by booking reference (single ticket)
+    if (bookingRef) {
+      const booking = await Booking.findOne({ bookingRef });
+
+      if (!booking) {
+        return res.status(404).json({ error: "Ticket not found" });
+      }
+
+      return res.json({ type: "single", booking });
+    }
+
+    // Search by mobile (MULTIPLE tickets)
+    if (mobile) {
+      const bookings = await Booking.find({ mobile }).sort({ createdAt: -1 });
+
+      if (!bookings.length) {
+        return res.status(404).json({ error: "No tickets found" });
+      }
+
+      return res.json({ type: "multiple", bookings });
+    }
+
+    res.status(400).json({ error: "Invalid search" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

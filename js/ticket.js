@@ -993,12 +993,41 @@ function downloadTicket() {
 
   // ===== BOOKING DETAILS =====
   pdf.setFontSize(11);
-  pdf.text(`Booking Reference: ${document.getElementById("booking-reference").textContent}`, 20, y); y += 7;
-  pdf.text(`Name: ${document.getElementById("conf-name").textContent}`, 20, y); y += 7;
-  pdf.text(`Email: ${document.getElementById("conf-email").textContent}`, 20, y); y += 7;
-  pdf.text(`Phone: ${document.getElementById("conf-phone").textContent}`, 20, y); y += 7;
-  pdf.text(`Visit Date: ${document.getElementById("conf-visit-date").textContent}`, 20, y); y += 7;
-  pdf.text(`Payment Method: ${document.getElementById("conf-payment-method").textContent}`, 20, y);
+  pdf.text(
+    `Booking Reference: ${
+      document.getElementById("booking-reference").textContent
+    }`,
+    20,
+    y
+  );
+  y += 7;
+  pdf.text(`Name: ${document.getElementById("conf-name").textContent}`, 20, y);
+  y += 7;
+  pdf.text(
+    `Email: ${document.getElementById("conf-email").textContent}`,
+    20,
+    y
+  );
+  y += 7;
+  pdf.text(
+    `Phone: ${document.getElementById("conf-phone").textContent}`,
+    20,
+    y
+  );
+  y += 7;
+  pdf.text(
+    `Visit Date: ${document.getElementById("conf-visit-date").textContent}`,
+    20,
+    y
+  );
+  y += 7;
+  pdf.text(
+    `Payment Method: ${
+      document.getElementById("conf-payment-method").textContent
+    }`,
+    20,
+    y
+  );
   y += 10;
 
   // ===== TABLE HEADER =====
@@ -1052,7 +1081,9 @@ Name: ${document.getElementById("conf-name").textContent}
 Visit Date: ${document.getElementById("conf-visit-date").textContent}
 `;
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(
+    qrData
+  )}`;
 
   const qrImg = new Image();
   qrImg.crossOrigin = "anonymous";
@@ -1073,7 +1104,6 @@ Visit Date: ${document.getElementById("conf-visit-date").textContent}
     pdf.save("Zoo_Ticket.pdf");
   };
 }
-
 
 //Print Ticket
 function printTicket() {
@@ -1096,6 +1126,155 @@ document
   ?.addEventListener("click", function (e) {
     if (e.target === this) closeConfirmationModal();
   });
+
+//search ticket
+// async function viewTicket() {
+//   const searchType = document.querySelector(
+//     'input[name="searchType"]:checked'
+//   ).value;
+
+//   const value = document.getElementById("search-value").value.trim();
+
+//   if (!value) {
+//     alert("Please enter value");
+//     return;
+//   }
+
+//   let url = `${API_BASE}/api/tickets/search`;
+
+//   if (searchType === "ref") {
+//     url += `?bookingRef=${value}`;
+//   } else {
+//     if (value.length < 10) {
+//       alert("Enter valid mobile number");
+//       return;
+//     }
+//     url += `?mobile=${value}`;
+//   }
+
+//   try {
+//     const res = await fetch(url);
+//     const data = await res.json();
+
+//     if (!res.ok) {
+//       alert(data.error || "Ticket not found");
+//       return;
+//     }
+
+//     // rebuild selectedTickets for modal table
+//     selectedTickets = {};
+//     data.tickets.forEach((t) => {
+//       selectedTickets[t.type] = t.qty;
+//     });
+
+//     showConfirmationModal(
+//       {
+//         name: data.fullName,
+//         email: data.email,
+//         phone: data.mobile,
+//         visitDate: data.visitDate,
+//         paymentMethod: data.paymentMethod,
+//       },
+//       data.bookingRef,
+//       data.createdAt,
+//       data.totalAmount
+//     );
+//   } catch (err) {
+//     alert("Server error");
+//   }
+// }
+async function viewTicket() {
+  const searchType = document.querySelector(
+    'input[name="searchType"]:checked'
+  ).value;
+
+  const value = document.getElementById("search-value").value.trim();
+
+  if (!value) {
+    alert("Please enter value");
+    return;
+  }
+
+  let url = `${API_BASE}/api/tickets/search`;
+
+  if (searchType === "ref") {
+    url += `?bookingRef=${value}`;
+  } else {
+    url += `?mobile=${value}`;
+  }
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.error || "Ticket not found");
+    return;
+  }
+
+  // 🔹 Single ticket (booking reference)
+  if (data.type === "single") {
+    openTicketModal(data.booking);
+    return;
+  }
+
+  // 🔹 Multiple tickets (mobile number)
+  showTicketList(data.bookings);
+}
+
+//SHOW LIST OF TICKETS (WHEN MOBILE USED)
+function showTicketList(bookings) {
+  const listHtml = bookings
+    .map(
+      (b, i) => `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${b.bookingRef}</td>
+        <td>${formatDisplayDate(b.visitDate)}</td>
+        <td>₹${b.totalAmount.toFixed(2)}</td>
+        <td>
+          <button onclick='openTicketModal(${JSON.stringify(b)})'>
+            View
+          </button>
+        </td>
+      </tr>
+    `
+    )
+    .join("");
+
+  const modal = document.getElementById("ticket-list-modal");
+  document.getElementById("ticket-list-body").innerHTML = listHtml;
+
+  modal.style.display = "flex";
+}
+
+//OPEN CONFIRMATION MODAL (REUSED LOGIC)
+function openTicketModal(booking) {
+  selectedTickets = {};
+  booking.tickets.forEach((t) => {
+    selectedTickets[t.type] = t.qty;
+  });
+
+  showConfirmationModal(
+    {
+      name: booking.fullName,
+      email: booking.email,
+      phone: booking.mobile,
+      visitDate: booking.visitDate,
+      paymentMethod: booking.paymentMethod,
+    },
+    booking.bookingRef,
+    booking.createdAt,
+    booking.totalAmount
+  );
+}
+
+document.querySelectorAll('input[name="searchType"]').forEach((radio) => {
+  radio.addEventListener("change", function () {
+    const input = document.getElementById("search-value");
+    input.placeholder =
+      this.value === "ref" ? "Enter booking reference" : "Enter mobile number";
+  });
+});
 
 // Attach modal & control listeners immediately (script placed at end of body)
 

@@ -64,6 +64,59 @@
       <div class="ticket-hero">
         <h1>Plan Your Visit</h1>
         <p>Book your tickets for an unforgettable wildlife experience</p>
+
+        <!-- View Ticket -->
+        <div class="view-ticket">
+          <h2>View Your Ticket</h2>
+
+          <label>
+            <input type="radio" name="searchType" value="ref" checked />
+            Booking Reference
+          </label>
+
+          <label>
+            <input type="radio" name="searchType" value="mobile" />
+            Mobile Number
+          </label>
+
+          <input
+            type="text"
+            id="search-value"
+            placeholder="Enter booking reference"
+          />
+
+          <button onclick="viewTicket()">View Ticket</button>
+        </div>
+        
+        <!-- Ticket List model -->
+        <div
+          id="ticket-list-modal"
+          class="confirmation-modal"
+          style="display: none"
+        >
+          <div class="modal-content">
+            <h3 style="color: black;">Select Your Ticket</h3>
+            <!-- <button class="close-modal">&times;</button> -->
+            <table>
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Booking Ref</th>
+                  <th>Visit Date</th>
+                  <th>Total</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="ticket-list-body"></tbody>
+            </table>
+
+            <button
+              onclick="this.closest('.confirmation-modal').style.display='none'"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="ticket-container">

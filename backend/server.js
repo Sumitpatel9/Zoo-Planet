@@ -17,6 +17,8 @@ app.use(helmet());
 // });
 
 app.use("/api/tickets", require("./routes/bookingRoutes"));
+app.use("/api/contact", require("./routes/contactRoutes"));
+
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () =>
