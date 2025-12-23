@@ -19,11 +19,11 @@
 //     const birth = new Date(birthDate);
 //     let age = today.getFullYear() - birth.getFullYear();
 //     const monthDiff = today.getMonth() - birth.getMonth();
-    
+
 //     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
 //         age--;
 //     }
-    
+
 //     return age;
 // }
 
@@ -31,9 +31,9 @@
 // function validateTicketEligibility() {
 //     const birthDate = document.getElementById('birth-date')?.value;
 //     const studentId = document.getElementById('student-id')?.value;
-    
+
 //     let errors = [];
-    
+
 //     // Check child tickets
 //     if (selectedTickets.child > 0) {
 //         if (!birthDate) {
@@ -45,7 +45,7 @@
 //             }
 //         }
 //     }
-    
+
 //     // Check senior tickets
 //     if (selectedTickets.senior > 0) {
 //         if (!birthDate) {
@@ -57,7 +57,7 @@
 //             }
 //         }
 //     }
-    
+
 //     // Check student tickets
 //     if (selectedTickets.student > 0) {
 //         if (!studentId || studentId.trim() === '') {
@@ -72,7 +72,7 @@
 //             }
 //         }
 //     }
-    
+
 //     return errors;
 // }
 
@@ -80,19 +80,19 @@
 // function validatePaymentMethod() {
 //     const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value;
 //     let errors = [];
-    
+
 //     if (!paymentMethod) {
 //         errors.push('Please select a payment method.');
 //         return errors;
 //     }
-    
+
 //     switch (paymentMethod) {
 //         case 'credit':
 //             const cardNumber = document.getElementById('card-number')?.value?.replace(/\s/g, '');
 //             const expiryDate = document.getElementById('expiry')?.value;
 //             const cvv = document.getElementById('cvv')?.value;
 //             const cardName = document.getElementById('card-name')?.value;
-            
+
 //             if (!cardNumber || cardNumber.length < 16) {
 //                 errors.push('Please enter a valid 16-digit card number.');
 //             }
@@ -115,7 +115,7 @@
 //             //     errors.push('Please enter the cardholder name.');
 //             // }
 //             break;
-            
+
 //         case 'upi':
 //             const upiMethod = document.querySelector('input[name="upi-method"]:checked')?.value;
 //             if (!upiMethod) {
@@ -127,7 +127,7 @@
 //                 }
 //             }
 //             break;
-            
+
 //         case 'paypal':
 //             const paypalEmail = document.getElementById('paypal-email')?.value;
 //             // if (!paypalEmail || !paypalEmail.includes('@')) {
@@ -135,7 +135,7 @@
 //             // }
 //             break;
 //     }
-    
+
 //     return errors;
 // }
 
@@ -143,21 +143,21 @@
 // function toggleAdditionalFields() {
 //     const needsBirthDate = selectedTickets.child > 0 || selectedTickets.senior > 0 || selectedTickets.student > 0;
 //     const needsStudentId = selectedTickets.student > 0;
-    
+
 //     // Create birth date field if it doesn't exist
 //     let birthDateField = document.getElementById('birth-date-field');
 //     if (!birthDateField && needsBirthDate) {
 //         createBirthDateField();
 //         birthDateField = document.getElementById('birth-date-field');
 //     }
-    
+
 //     // Create student ID field if it doesn't exist
 //     let studentIdField = document.getElementById('student-id-field');
 //     if (!studentIdField && needsStudentId) {
 //         createStudentIdField();
 //         studentIdField = document.getElementById('student-id-field');
 //     }
-    
+
 //     // Show/hide birth date field
 //     if (birthDateField) {
 //         birthDateField.style.display = needsBirthDate ? 'block' : 'none';
@@ -166,7 +166,7 @@
 //             birthDateInput.required = needsBirthDate;
 //         }
 //     }
-    
+
 //     // Show/hide student ID field
 //     if (studentIdField) {
 //         studentIdField.style.display = needsStudentId ? 'block' : 'none';
@@ -181,12 +181,12 @@
 // function createBirthDateField() {
 //     const form = document.getElementById('ticket-form');
 //     const phoneField = document.getElementById('phone').parentNode;
-    
+
 //     const birthDateDiv = document.createElement('div');
 //     birthDateDiv.className = 'form-group';
 //     birthDateDiv.id = 'birth-date-field';
 //     birthDateDiv.style.display = 'none';
-    
+
 //     birthDateDiv.innerHTML = `
 //         <label for="birth-date">
 //             <i class="fas fa-birthday-cake"></i>
@@ -195,7 +195,7 @@
 //         </label>
 //         <input type="date" id="birth-date" name="birth-date" max="${new Date().toISOString().split('T')[0]}">
 //     `;
-    
+
 //     // Insert after phone field
 //     phoneField.insertAdjacentElement('afterend', birthDateDiv);
 // }
@@ -205,12 +205,12 @@
 //     const form = document.getElementById('ticket-form');
 //     const birthDateField = document.getElementById('birth-date-field');
 //     const insertAfter = birthDateField || document.getElementById('phone').parentNode;
-    
+
 //     const studentIdDiv = document.createElement('div');
 //     studentIdDiv.className = 'form-group';
 //     studentIdDiv.id = 'student-id-field';
 //     studentIdDiv.style.display = 'none';
-    
+
 //     studentIdDiv.innerHTML = `
 //         <label for="student-id">
 //             <i class="fas fa-id-card"></i>
@@ -219,7 +219,7 @@
 //         </label>
 //         <input type="text" id="student-id" name="student-id" placeholder="Enter your valid student ID" maxlength="20">
 //     `;
-    
+
 //     // Insert after birth date field or phone field
 //     insertAfter.insertAdjacentElement('afterend', studentIdDiv);
 // }
@@ -350,7 +350,7 @@
 // document.getElementById('card-number')?.addEventListener('input', function (e) {
 //     let value = this.value.replace(/\s/g, '').replace(/\D/g, '');
 //     this.value = value.replace(/(\d{4})/g, '$1 ').trim();
-    
+
 //     // Limit to 16 digits
 //     if (value.length > 16) {
 //         this.value = this.value.substring(0, 19); // 16 digits + 3 spaces
@@ -382,17 +382,17 @@
 //     const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
 //     const numbers = '0123456789';
 //     let ref = 'WAZ-';
-    
+
 //     // Add 3 random letters
 //     for (let i = 0; i < 3; i++) {
 //         ref += letters.charAt(Math.floor(Math.random() * letters.length));
 //     }
-    
+
 //     // Add 4 random numbers
 //     for (let i = 0; i < 4; i++) {
 //         ref += numbers.charAt(Math.floor(Math.random() * numbers.length));
 //     }
-    
+
 //     return ref;
 // }
 
@@ -406,31 +406,31 @@
 // function showConfirmationModal(formData) {
 //     const modal = document.getElementById('confirmation-modal');
 //     const today = new Date().toISOString().split('T')[0];
-    
+
 //     // Set booking reference
 //     document.getElementById('booking-reference').textContent = generateBookingReference();
-    
+
 //     // Set visitor info
 //     document.getElementById('conf-name').textContent = formData.name;
 //     document.getElementById('conf-email').textContent = formData.email;
 //     document.getElementById('conf-phone').textContent = formData.phone;
-    
+
 //     // Set visit info
 //     document.getElementById('conf-visit-date').textContent = formatDisplayDate(formData.visitDate);
 //     document.getElementById('conf-booking-date').textContent = formatDisplayDate(today);
-//     document.getElementById('conf-payment-method').textContent = 
+//     document.getElementById('conf-payment-method').textContent =
 //         formData.paymentMethod.charAt(0).toUpperCase() + formData.paymentMethod.slice(1);
-    
+
 //     // Set ticket items
 //     const ticketItemsContainer = document.getElementById('conf-ticket-items');
 //     ticketItemsContainer.innerHTML = '';
-    
+
 //     let total = 0;
 //     for (const [type, quantity] of Object.entries(selectedTickets)) {
 //         const price = ticketPrices[type];
 //         const subtotal = price * quantity;
 //         total += subtotal;
-        
+
 //         const row = document.createElement('tr');
 //         row.innerHTML = `
 //             <td>${type.charAt(0).toUpperCase() + type.slice(1)}</td>
@@ -440,10 +440,10 @@
 //         `;
 //         ticketItemsContainer.appendChild(row);
 //     }
-    
+
 //     // Set total amount
 //     document.getElementById('conf-total-amount').textContent = `₹${total.toFixed(2)}`;
-    
+
 //     // Generate QR code (using a simple API for demo purposes)
 //     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(
 //         `Booking Ref: ${document.getElementById('booking-reference').textContent}\n` +
@@ -451,9 +451,9 @@
 //         `Date: ${formData.visitDate}\n` +
 //         `Tickets: ${Object.keys(selectedTickets).length} types, ${Object.values(selectedTickets).reduce((a, b) => a + b, 0)} total`
 //     )}`;
-    
+
 //     document.getElementById('ticket-qr-code').innerHTML = `<img src="${qrCodeUrl}" alt="QR Code">`;
-    
+
 //     // Show modal
 //     modal.style.display = 'flex';
 //     document.body.style.overflow = 'hidden';
@@ -491,7 +491,7 @@
 //     // Download and print buttons
 //     document.querySelector('.download-ticket')?.addEventListener('click', downloadTicket);
 //     document.querySelector('.print-ticket')?.addEventListener('click', printTicket);
-    
+
 //     // Initialize the form - ensure dynamic fields are ready
 //     console.log('Form initialized - dynamic fields will appear when tickets are selected');
 // });
@@ -537,17 +537,35 @@
 // });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// ticket.js - FIXED: backend integration + robust modal behavior by removing temporary pointer-events logic
 
 // -------------------------------
 // Config
 // -------------------------------
-const API_BASE = 'http://localhost:4000'; // change to your backend URL when deployed
+const API_BASE = "http://localhost:4000"; // change to your backend URL when deployed
 
 // Set minimum visit date to today
-const visitDateInput = document.getElementById('visit-date');
+const visitDateInput = document.getElementById("visit-date");
 if (visitDateInput) {
-  visitDateInput.min = new Date().toISOString().split('T')[0];
+  visitDateInput.min = new Date().toISOString().split("T")[0];
 }
 
 // Ticket prices
@@ -557,7 +575,7 @@ const ticketPrices = {
   senior: 19.99,
   family: 69.99,
   student: 18.99,
-  group: 12.99
+  group: 12.99,
 };
 
 let selectedTickets = {};
@@ -577,35 +595,45 @@ function calculateAge(birthDate) {
 }
 
 function validateTicketEligibility() {
-  const birthDate = document.getElementById('birth-date')?.value;
-  const studentId = document.getElementById('student-id')?.value;
+  const birthDate = document.getElementById("birth-date")?.value;
+  const studentId = document.getElementById("student-id")?.value;
   let errors = [];
 
   if (selectedTickets.child > 0) {
     if (!birthDate) {
-      errors.push('Birth date is required for child tickets.');
+      errors.push("Birth date is required for child tickets.");
     } else {
       const age = calculateAge(birthDate);
-      if (age >= 18) errors.push('Child tickets are only valid for visitors under 18 years old.');
+      if (age >= 18)
+        errors.push(
+          "Child tickets are only valid for visitors under 18 years old."
+        );
     }
   }
 
   if (selectedTickets.senior > 0) {
     if (!birthDate) {
-      errors.push('Birth date is required for senior tickets.');
+      errors.push("Birth date is required for senior tickets.");
     } else {
       const age = calculateAge(birthDate);
-      if (age < 60) errors.push('Senior tickets are only valid for visitors 60 years and older.');
+      if (age < 60)
+        errors.push(
+          "Senior tickets are only valid for visitors 60 years and older."
+        );
     }
   }
 
   if (selectedTickets.student > 0) {
-    if (!studentId || studentId.trim() === '') errors.push('Valid student ID is required for student tickets.');
+    if (!studentId || studentId.trim() === "")
+      errors.push("Valid student ID is required for student tickets.");
     if (!birthDate) {
-      errors.push('Birth date is required for student tickets.');
+      errors.push("Birth date is required for student tickets.");
     } else {
       const age = calculateAge(birthDate);
-      if (age < 16 || age > 30) errors.push('Student tickets are valid for ages 16-30 with valid student ID.');
+      if (age < 16 || age > 30)
+        errors.push(
+          "Student tickets are valid for ages 16-30 with valid student ID."
+        );
     }
   }
 
@@ -613,37 +641,47 @@ function validateTicketEligibility() {
 }
 
 function validatePaymentMethod() {
-  const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value;
+  const paymentMethod = document.querySelector(
+    'input[name="payment"]:checked'
+  )?.value;
   let errors = [];
   if (!paymentMethod) {
-    errors.push('Please select a payment method.');
+    errors.push("Please select a payment method.");
     return errors;
   }
 
   switch (paymentMethod) {
-    case 'credit': {
-      const cardNumber = document.getElementById('card-number')?.value?.replace(/\s/g, '');
-      const expiryDate = document.getElementById('expiry')?.value;
-      const cvv = document.getElementById('cvv')?.value;
-      if (!cardNumber || cardNumber.length < 16) errors.push('Please enter a valid 16-digit card number.');
-      if (!expiryDate || !expiryDate.match(/^\d{2}\/\d{2}$/)) errors.push('Please enter a valid expiry date (MM/YY).');
-      if (!cvv || cvv.length < 3) errors.push('Please enter a valid CVV (3-4 digits).');
+    case "credit": {
+      const cardNumber = document
+        .getElementById("card-number")
+        ?.value?.replace(/\s/g, "");
+      const expiryDate = document.getElementById("expiry")?.value;
+      const cvv = document.getElementById("cvv")?.value;
+      if (!cardNumber || cardNumber.length < 16)
+        errors.push("Please enter a valid 16-digit card number.");
+      if (!expiryDate || !expiryDate.match(/^\d{2}\/\d{2}$/))
+        errors.push("Please enter a valid expiry date (MM/YY).");
+      if (!cvv || cvv.length < 3)
+        errors.push("Please enter a valid CVV (3-4 digits).");
       break;
     }
-    case 'upi': {
-      const upiMethod = document.querySelector('input[name="upi-method"]:checked')?.value;
+    case "upi": {
+      const upiMethod = document.querySelector(
+        'input[name="upi-method"]:checked'
+      )?.value;
       if (!upiMethod) {
-        errors.push('Please select UPI payment method (QR or UPI ID).');
-      } else if (upiMethod === 'id') {
-        const upiId = document.getElementById('upi-id')?.value;
-        if (!upiId || !upiId.includes('@')) errors.push('Please enter a valid UPI ID (e.g., user@bank).');
+        errors.push("Please select UPI payment method (QR or UPI ID).");
+      } else if (upiMethod === "id") {
+        const upiId = document.getElementById("upi-id")?.value;
+        if (!upiId || !upiId.includes("@"))
+          errors.push("Please enter a valid UPI ID (e.g., user@bank).");
       }
       break;
     }
-    case 'paypal':
+    case "paypal":
       // optional
       break;
-    case 'cash':
+    case "cash":
       break;
     default:
       break;
@@ -656,58 +694,64 @@ function validatePaymentMethod() {
 // Dynamic fields for birth/student
 // -------------------------------
 function toggleAdditionalFields() {
-  const needsBirthDate = selectedTickets.child > 0 || selectedTickets.senior > 0 || selectedTickets.student > 0;
+  const needsBirthDate =
+    selectedTickets.child > 0 ||
+    selectedTickets.senior > 0 ||
+    selectedTickets.student > 0;
   const needsStudentId = selectedTickets.student > 0;
 
-  let birthDateField = document.getElementById('birth-date-field');
+  let birthDateField = document.getElementById("birth-date-field");
   if (!birthDateField && needsBirthDate) createBirthDateField();
 
-  let studentIdField = document.getElementById('student-id-field');
+  let studentIdField = document.getElementById("student-id-field");
   if (!studentIdField && needsStudentId) createStudentIdField();
 
-  birthDateField = document.getElementById('birth-date-field');
-  studentIdField = document.getElementById('student-id-field');
+  birthDateField = document.getElementById("birth-date-field");
+  studentIdField = document.getElementById("student-id-field");
 
   if (birthDateField) {
-    birthDateField.style.display = needsBirthDate ? 'block' : 'none';
-    const birthDateInput = document.getElementById('birth-date');
+    birthDateField.style.display = needsBirthDate ? "block" : "none";
+    const birthDateInput = document.getElementById("birth-date");
     if (birthDateInput) birthDateInput.required = needsBirthDate;
   }
   if (studentIdField) {
-    studentIdField.style.display = needsStudentId ? 'block' : 'none';
-    const studentIdInput = document.getElementById('student-id');
+    studentIdField.style.display = needsStudentId ? "block" : "none";
+    const studentIdInput = document.getElementById("student-id");
     if (studentIdInput) studentIdInput.required = needsStudentId;
   }
 }
 
 function createBirthDateField() {
-  const phoneField = document.getElementById('phone')?.parentNode;
+  const phoneField = document.getElementById("phone")?.parentNode;
   if (!phoneField) return;
 
-  const birthDateDiv = document.createElement('div');
-  birthDateDiv.className = 'form-group';
-  birthDateDiv.id = 'birth-date-field';
-  birthDateDiv.style.display = 'none';
+  const birthDateDiv = document.createElement("div");
+  birthDateDiv.className = "form-group";
+  birthDateDiv.id = "birth-date-field";
+  birthDateDiv.style.display = "none";
   birthDateDiv.innerHTML = `
     <label for="birth-date">
       <i class="fas fa-birthday-cake"></i>
       Birth Date <span class="required">*</span>
       <small>(Required for Child/Senior/Student tickets)</small>
     </label>
-    <input type="date" id="birth-date" name="birth-date" max="${new Date().toISOString().split('T')[0]}">
+    <input type="date" id="birth-date" name="birth-date" max="${
+      new Date().toISOString().split("T")[0]
+    }">
   `;
-  phoneField.insertAdjacentElement('afterend', birthDateDiv);
+  phoneField.insertAdjacentElement("afterend", birthDateDiv);
 }
 
 function createStudentIdField() {
-  const birthDateField = document.getElementById('birth-date-field');
-  const insertAfter = birthDateField || document.getElementById('phone')?.parentNode;
+  const birthDateField = document.getElementById("birth-date-field");
+  const insertAfter =
+    birthDateField || document.getElementById("phone")?.parentNode;
   if (!insertAfter) return;
 
-  const studentIdDiv = document.createElement('div');
-  studentIdDiv.className = 'form-group';
-  studentIdDiv.id = 'student-id-field';
-  studentIdDiv.style.display = 'none';
+  const studentIdDiv = document.createElement("div");
+  studentIdDiv.className = "form-group";
+  studentIdDiv.id = "student-id-field";
+  studentIdDiv.style.display = "none";
   studentIdDiv.innerHTML = `
     <label for="student-id">
       <i class="fas fa-id-card"></i>
@@ -716,31 +760,32 @@ function createStudentIdField() {
     </label>
     <input type="text" id="student-id" name="student-id" placeholder="Enter your valid student ID" maxlength="20">
   `;
-  insertAfter.insertAdjacentElement('afterend', studentIdDiv);
+  insertAfter.insertAdjacentElement("afterend", studentIdDiv);
 }
 
 // -------------------------------
 // Ticket selection UI logic
 // -------------------------------
-document.querySelectorAll('.select-ticket').forEach(btn => {
-  btn.addEventListener('click', function () {
+document.querySelectorAll(".select-ticket").forEach((btn) => {
+  btn.addEventListener("click", function () {
     const type = this.dataset.type;
-    if (selectedTickets[type]) selectedTickets[type]++; else selectedTickets[type] = 1;
+    if (selectedTickets[type]) selectedTickets[type]++;
+    else selectedTickets[type] = 1;
     updateTicketSelection();
     toggleAdditionalFields();
 
-    const card = this.closest('.ticket-card');
+    const card = this.closest(".ticket-card");
     if (card) {
-      card.style.transform = 'scale(1.05)';
-      setTimeout(() => (card.style.transform = ''), 300);
+      card.style.transform = "scale(1.05)";
+      setTimeout(() => (card.style.transform = ""), 300);
     }
   });
 });
 
 function updateTicketSelection() {
-  const container = document.getElementById('selected-tickets');
+  const container = document.getElementById("selected-tickets");
   if (!container) return;
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   let total = 0;
   for (const [type, quantity] of Object.entries(selectedTickets)) {
@@ -748,11 +793,13 @@ function updateTicketSelection() {
     const subtotal = price * quantity;
     total += subtotal;
 
-    const ticketDiv = document.createElement('div');
-    ticketDiv.className = 'selected-ticket';
+    const ticketDiv = document.createElement("div");
+    ticketDiv.className = "selected-ticket";
     ticketDiv.innerHTML = `
       <div>
-        <span>${type.charAt(0).toUpperCase() + type.slice(1)} x${quantity}</span>
+        <span>${
+          type.charAt(0).toUpperCase() + type.slice(1)
+        } x${quantity}</span>
         <div class="ticket-actions">
           <button class="remove-ticket" data-type="${type}" title="Remove one">
             <i class="fas fa-minus-circle"></i>
@@ -768,16 +815,17 @@ function updateTicketSelection() {
   }
 
   // remove / discard actions
-  container.querySelectorAll('.remove-ticket').forEach(btn => {
-    btn.addEventListener('click', function () {
+  container.querySelectorAll(".remove-ticket").forEach((btn) => {
+    btn.addEventListener("click", function () {
       const type = this.dataset.type;
-      if (selectedTickets[type] > 1) selectedTickets[type]--; else delete selectedTickets[type];
+      if (selectedTickets[type] > 1) selectedTickets[type]--;
+      else delete selectedTickets[type];
       updateTicketSelection();
       toggleAdditionalFields();
     });
   });
-  container.querySelectorAll('.discard-ticket').forEach(btn => {
-    btn.addEventListener('click', function () {
+  container.querySelectorAll(".discard-ticket").forEach((btn) => {
+    btn.addEventListener("click", function () {
       const type = this.dataset.type;
       delete selectedTickets[type];
       updateTicketSelection();
@@ -786,62 +834,71 @@ function updateTicketSelection() {
   });
 
   if (Object.keys(selectedTickets).length > 0) {
-    const clearAllDiv = document.createElement('div');
-    clearAllDiv.className = 'clear-all';
+    const clearAllDiv = document.createElement("div");
+    clearAllDiv.className = "clear-all";
     clearAllDiv.innerHTML = `
       <button class="btn clear-all-btn">
         <i class="fas fa-times-circle"></i> Discard All Tickets
       </button>
     `;
     container.appendChild(clearAllDiv);
-    document.querySelector('.clear-all-btn')?.addEventListener('click', function () {
-      selectedTickets = {};
-      updateTicketSelection();
-      toggleAdditionalFields();
-    });
+    document
+      .querySelector(".clear-all-btn")
+      ?.addEventListener("click", function () {
+        selectedTickets = {};
+        updateTicketSelection();
+        toggleAdditionalFields();
+      });
   }
 
-  const totalEl = document.getElementById('total-amount');
+  const totalEl = document.getElementById("total-amount");
   if (totalEl) totalEl.textContent = `₹${total.toFixed(2)}`;
 }
 
 // -------------------------------
 // Payment UI handlers
 // -------------------------------
-document.querySelectorAll('input[name="payment"]').forEach(radio => {
-  radio.addEventListener('change', function () {
-    document.querySelectorAll('.payment-details').forEach(detail => detail.classList.remove('active'));
+document.querySelectorAll('input[name="payment"]').forEach((radio) => {
+  radio.addEventListener("change", function () {
+    document
+      .querySelectorAll(".payment-details")
+      .forEach((detail) => detail.classList.remove("active"));
     const el = document.getElementById(`${this.value}-details`);
-    if (el) el.classList.add('active');
+    if (el) el.classList.add("active");
   });
 });
 
 // UPI method toggles
-document.querySelectorAll('input[name="upi-method"]').forEach(radio => {
-  radio.addEventListener('change', function () {
-    document.querySelector('.upi-qr')?.classList.toggle('active', this.value === 'qr');
-    document.querySelector('.upi-id')?.classList.toggle('active', this.value === 'id');
+document.querySelectorAll('input[name="upi-method"]').forEach((radio) => {
+  radio.addEventListener("change", function () {
+    document
+      .querySelector(".upi-qr")
+      ?.classList.toggle("active", this.value === "qr");
+    document
+      .querySelector(".upi-id")
+      ?.classList.toggle("active", this.value === "id");
   });
 });
 
 // Card formatting
-document.getElementById('card-number')?.addEventListener('input', function () {
-  let value = this.value.replace(/\s/g, '').replace(/\D/g, '');
-  this.value = value.replace(/(\d{4})/g, '$1 ').trim();
+document.getElementById("card-number")?.addEventListener("input", function () {
+  let value = this.value.replace(/\s/g, "").replace(/\D/g, "");
+  this.value = value.replace(/(\d{4})/g, "$1 ").trim();
   if (value.length > 16) this.value = this.value.substring(0, 19);
 });
 
-document.getElementById('expiry')?.addEventListener('input', function () {
-  let value = this.value.replace(/\D/g, '');
-  if (value.length >= 2) value = value.substring(0, 2) + '/' + value.substring(2, 4);
+document.getElementById("expiry")?.addEventListener("input", function () {
+  let value = this.value.replace(/\D/g, "");
+  if (value.length >= 2)
+    value = value.substring(0, 2) + "/" + value.substring(2, 4);
   this.value = value;
 });
 
-document.getElementById('cvv')?.addEventListener('input', function () {
-  this.value = this.value.replace(/\D/g, '').substring(0, 4);
+document.getElementById("cvv")?.addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, "").substring(0, 4);
 });
 
-document.getElementById('upi-id')?.addEventListener('input', function () {
+document.getElementById("upi-id")?.addEventListener("input", function () {
   this.value = this.value.toLowerCase();
 });
 
@@ -849,18 +906,25 @@ document.getElementById('upi-id')?.addEventListener('input', function () {
 // UI: booking ref, modal, QR, download/print
 // -------------------------------
 function generateBookingReference() {
-  const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-  const numbers = '0123456789';
-  let ref = 'WAZ-';
-  for (let i = 0; i < 3; i++) ref += letters.charAt(Math.floor(Math.random() * letters.length));
-  for (let i = 0; i < 4; i++) ref += numbers.charAt(Math.floor(Math.random() * numbers.length));
+  const letters = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+  const numbers = "0123456789";
+  let ref = "WAZ-";
+  for (let i = 0; i < 3; i++)
+    ref += letters.charAt(Math.floor(Math.random() * letters.length));
+  for (let i = 0; i < 4; i++)
+    ref += numbers.charAt(Math.floor(Math.random() * numbers.length));
   return ref;
 }
 
 function formatDisplayDate(dateString) {
   try {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString("en-US", options);
   } catch {
     return dateString;
   }
@@ -870,24 +934,30 @@ function formatDisplayDate(dateString) {
  * UPDATED: Removed pointer-events safety window logic to prevent the modal from closing immediately.
  */
 function showConfirmationModal(formData, bookingRefs, createdAt, totalAmount) {
-  const modal = document.getElementById('confirmation-modal');
+  const modal = document.getElementById("confirmation-modal");
   if (!modal) return;
 
   // populate content
-  document.getElementById('booking-reference').textContent = bookingRefs.join(', ');
-  document.getElementById('conf-name').textContent = formData.name;
-  document.getElementById('conf-email').textContent = formData.email;
-  document.getElementById('conf-phone').textContent = formData.phone;
-  document.getElementById('conf-visit-date').textContent = formatDisplayDate(formData.visitDate);
-  document.getElementById('conf-booking-date').textContent = formatDisplayDate(createdAt);
-  document.getElementById('conf-payment-method').textContent = (formData.paymentMethod || 'Card').charAt(0).toUpperCase() + (formData.paymentMethod || 'card').slice(1);
+  document.getElementById("booking-reference").textContent =
+    bookingRefs.join(", ");
+  document.getElementById("conf-name").textContent = formData.name;
+  document.getElementById("conf-email").textContent = formData.email;
+  document.getElementById("conf-phone").textContent = formData.phone;
+  document.getElementById("conf-visit-date").textContent = formatDisplayDate(
+    formData.visitDate
+  );
+  document.getElementById("conf-booking-date").textContent =
+    formatDisplayDate(createdAt);
+  document.getElementById("conf-payment-method").textContent =
+    (formData.paymentMethod || "Card").charAt(0).toUpperCase() +
+    (formData.paymentMethod || "card").slice(1);
 
-  const ticketItemsContainer = document.getElementById('conf-ticket-items');
-  ticketItemsContainer.innerHTML = '';
+  const ticketItemsContainer = document.getElementById("conf-ticket-items");
+  ticketItemsContainer.innerHTML = "";
   for (const [type, quantity] of Object.entries(selectedTickets)) {
     const price = ticketPrices[type] || 0;
     const subtotal = price * quantity;
-    const row = document.createElement('tr');
+    const row = document.createElement("tr");
     row.innerHTML = `
       <td>${type.charAt(0).toUpperCase() + type.slice(1)}</td>
       <td>${quantity}</td>
@@ -897,31 +967,43 @@ function showConfirmationModal(formData, bookingRefs, createdAt, totalAmount) {
     ticketItemsContainer.appendChild(row);
   }
 
-  document.getElementById('conf-total-amount').textContent = `₹${totalAmount.toFixed(2)}`;
+  document.getElementById(
+    "conf-total-amount"
+  ).textContent = `₹${totalAmount.toFixed(2)}`;
 
-  const qrData = `Refs: ${bookingRefs.join('; ')}\nName:${formData.name}\nDate:${formData.visitDate}\nTickets:${Object.values(selectedTickets).reduce((a, b) => a + b, 0)}`;
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
-  document.getElementById('ticket-qr-code').innerHTML = `<img src="${qrCodeUrl}" alt="QR Code">`;
+  const qrData = `Refs: ${bookingRefs.join("; ")}\nName:${
+    formData.name
+  }\nDate:${formData.visitDate}\nTickets:${Object.values(
+    selectedTickets
+  ).reduce((a, b) => a + b, 0)}`;
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(
+    qrData
+  )}`;
+  document.getElementById(
+    "ticket-qr-code"
+  ).innerHTML = `<img src="${qrCodeUrl}" alt="QR Code">`;
 
   // Show the modal
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
 
   // Focus close button for accessibility
-  const closeBtn = modal.querySelector('.close-modal');
+  const closeBtn = modal.querySelector(".close-modal");
   if (closeBtn) closeBtn.focus();
 }
 
 function closeConfirmationModal() {
-  const modal = document.getElementById('confirmation-modal');
+  const modal = document.getElementById("confirmation-modal");
   if (!modal) return;
-  modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
-  modal.style.pointerEvents = 'auto'; // Ensure pointer-events is reset
+  modal.style.display = "none";
+  document.body.style.overflow = "auto";
+  modal.style.pointerEvents = "auto"; // Ensure pointer-events is reset
 }
 
 function downloadTicket() {
-  alert('In a real implementation, this would download the ticket as a PNG (use html2canvas).');
+  alert(
+    "In a real implementation, this would download the ticket as a PNG (use html2canvas)."
+  );
 }
 function printTicket() {
   window.print();
@@ -932,29 +1014,31 @@ function printTicket() {
 // -------------------------------
 (function attachModalListeners() {
   // close buttons: stop propagation & close
-  document.querySelectorAll('.close-modal, .close-btn').forEach(btn => {
-    btn?.addEventListener('click', function (e) {
+  document.querySelectorAll(".close-modal, .close-btn").forEach((btn) => {
+    btn?.addEventListener("click", function (e) {
       e.stopPropagation();
       closeConfirmationModal();
     });
   });
 
   // download / print: stop propagation
-  document.querySelectorAll('.download-ticket, .print-ticket').forEach(btn => {
-    btn?.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (this.classList.contains('download-ticket')) downloadTicket();
-      else if (this.classList.contains('print-ticket')) printTicket();
+  document
+    .querySelectorAll(".download-ticket, .print-ticket")
+    .forEach((btn) => {
+      btn?.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (this.classList.contains("download-ticket")) downloadTicket();
+        else if (this.classList.contains("print-ticket")) printTicket();
+      });
     });
-  });
 
   /**
    * UPDATED: Removed pointer-events check here, as the temporary 'none' state is gone.
    * The modal will now stay open unless the backdrop or close button is clicked.
    */
-  const modalEl = document.getElementById('confirmation-modal');
+  const modalEl = document.getElementById("confirmation-modal");
   if (modalEl) {
-    modalEl.addEventListener('click', function (e) {
+    modalEl.addEventListener("click", function (e) {
       // if click occurred on backdrop (modal container) — close
       if (e.target === this) {
         closeConfirmationModal();
@@ -966,104 +1050,106 @@ function printTicket() {
 // -------------------------------
 // Main submit handler: sends to backend
 // -------------------------------
-document.getElementById('ticket-form')?.addEventListener('submit', async function (e) {
-  e.preventDefault();
+document
+  .getElementById("ticket-form")
+  ?.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const name = document.getElementById('full-name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const visitDate = document.getElementById('visit-date').value;
-  const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'card';
-  const notes = document.getElementById('notes')?.value || '';
+    const name = document.getElementById("full-name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const visitDate = document.getElementById("visit-date").value;
+    const paymentMethod =
+      document.querySelector('input[name="payment"]:checked')?.value || "card";
+    const notes = document.getElementById("notes")?.value || "";
 
-  if (Object.keys(selectedTickets).length === 0) {
-    alert('Please select at least one ticket type.');
-    return;
-  }
-  if (!name || !email || !phone || !visitDate) {
-    alert('Please fill in name, email, phone and visit date.');
-    return;
-  }
-
-  const eligibilityErrors = validateTicketEligibility();
-  if (eligibilityErrors.length > 0) {
-    alert('Ticket Validation Errors:\n\n' + eligibilityErrors.join('\n'));
-    return;
-  }
-
-  const paymentErrors = validatePaymentMethod();
-  if (paymentErrors.length > 0) {
-    alert('Payment Validation Errors:\n\n' + paymentErrors.join('\n'));
-    return;
-  }
-
-  // Build payloads: one POST per ticket type
-  const payloads = [];
-  for (const [type, quantity] of Object.entries(selectedTickets)) {
-    const qty = Number(quantity) || 1;
-    const payload = {
-      bookingDate: visitDate,
-      ticketType: type,
-      qty: qty,
-      fullName: name,
-      email: email,
-      mobile: phone,
-      paymentMethod: paymentMethod,
-      notes: notes
-    };
-    payloads.push(payload);
-  }
-
-  const submitBtn = document.querySelector('.submit-btn');
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = 'Processing...';
-
-  try {
-    const reqs = payloads.map(p =>
-      fetch(`${API_BASE}/api/tickets`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(p)
-      }).then(async (res) => {
-        const body = await res.json().catch(() => ({}));
-        if (!res.ok) {
-          const msg = body && body.error ? body.error : `HTTP ${res.status}`;
-          throw new Error(msg);
-        }
-        return body;
-      })
-    );
-
-    const results = await Promise.all(reqs);
-
-    const bookingRefs = results.map(r => r.id || generateBookingReference());
-    const createdAt = results[0]?.createdAt || new Date().toISOString();
-
-    // compute total
-    let total = 0;
-    for (const [type, qty] of Object.entries(selectedTickets)) {
-      const price = ticketPrices[type] || 0;
-      total += price * qty;
+    if (Object.keys(selectedTickets).length === 0) {
+      alert("Please select at least one ticket type.");
+      return;
+    }
+    if (!name || !email || !phone || !visitDate) {
+      alert("Please fill in name, email, phone and visit date.");
+      return;
     }
 
-    // Show modal with server-backed info
-    showConfirmationModal(
-      { name, email, phone, visitDate, paymentMethod },
-      bookingRefs,
-      createdAt,
-      total
-    );
+    const eligibilityErrors = validateTicketEligibility();
+    if (eligibilityErrors.length > 0) {
+      alert("Ticket Validation Errors:\n\n" + eligibilityErrors.join("\n"));
+      return;
+    }
 
-    // Optionally clear selections & form (uncomment if you want)
-    // selectedTickets = {};
-    // updateTicketSelection();
-    // this.reset();
+    const paymentErrors = validatePaymentMethod();
+    if (paymentErrors.length > 0) {
+      alert("Payment Validation Errors:\n\n" + paymentErrors.join("\n"));
+      return;
+    }
 
-  } catch (err) {
-    console.error('Booking error:', err);
-    alert('Booking failed: ' + (err.message || 'Unknown error'));
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = `<i class="fas fa-ticket-alt"></i> Complete Booking`;
-  }
-});
+    // Build payloads: one POST per ticket type
+    const payloads = [];
+    for (const [type, quantity] of Object.entries(selectedTickets)) {
+      const qty = Number(quantity) || 1;
+      const payload = {
+        bookingDate: visitDate,
+        ticketType: type,
+        qty: qty,
+        fullName: name,
+        email: email,
+        mobile: phone,
+        paymentMethod: paymentMethod,
+        notes: notes,
+      };
+      payloads.push(payload);
+    }
+
+    const submitBtn = document.querySelector(".submit-btn");
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Processing...";
+
+    try {
+      const reqs = payloads.map((p) =>
+        fetch(`${API_BASE}/api/tickets`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(p),
+        }).then(async (res) => {
+          const body = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            const msg = body && body.error ? body.error : `HTTP ${res.status}`;
+            throw new Error(msg);
+          }
+          return body;
+        })
+      );
+
+      const results = await Promise.all(reqs);
+
+      const bookingRefs = results.map((r) => r.bookingRef);
+      const createdAt = results[0]?.createdAt || new Date().toISOString();
+
+      // compute total
+      let total = 0;
+      for (const [type, qty] of Object.entries(selectedTickets)) {
+        const price = ticketPrices[type] || 0;
+        total += price * qty;
+      }
+
+      // Show modal with server-backed info
+      showConfirmationModal(
+        { name, email, phone, visitDate, paymentMethod },
+        bookingRefs,
+        createdAt,
+        total
+      );
+
+      // Optionally clear selections & form (uncomment if you want)
+      // selectedTickets = {};
+      // updateTicketSelection();
+      // this.reset();
+    } catch (err) {
+      console.error("Booking error:", err);
+      alert("Booking failed: " + (err.message || "Unknown error"));
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<i class="fas fa-ticket-alt"></i> Complete Booking`;
+    }
+  });
