@@ -1,156 +1,195 @@
-/* nav.css - drop into css/ and include via <link> or paste into your main stylesheet */
-/* Variables: adjust once here and all pages update */
+/* =========================================
+   NAVBAR STYLES (Glassmorphism & Jungle Theme)
+   ========================================= */
+
 :root {
-  --nav-height: 64px;
-  --nav-bg: #0a6ebd; /* navbar background color */
-  --nav-text: #ffffff; /* link text color */
-  --nav-hover: #dceeff; /* link hover color */
-  --nav-font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-  --nav-font-size: 16px !important;
-  --nav-brand-font-size: 20px !important;
-  --nav-z: 9999 !important;
-  --nav-padding-inline: 20px !important;
+  --nav-height: 80px; /* Taller for a modern look */
+  --nav-bg: rgba(15, 61, 62, 0.85); /* Deep Jungle Green with Transparency */
+  --nav-text: #ffffff;
+  --nav-hover: #e29578; /* Sunset Orange */
+  --nav-font: 'Poppins', sans-serif;
+  --glass-blur: blur(15px);
+  --nav-z: 1000;
 }
 
-/* Force consistent font & box-model for navbar elements (important to avoid page CSS interference) */
-.site-navbar,
-.site-navbar * {
+/* Base Reset for Nav Elements */
+.site-navbar, .site-navbar * {
   box-sizing: border-box;
-  font-family: var(--nav-font-family) !important;
-  font-size: var(--nav-font-size) !important;
-  line-height: 1 !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
+  font-family: var(--nav-font);
+  text-decoration: none;
 }
 
-/* Navbar container */
+/* Navbar Container */
 .site-navbar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: var(--nav-height) !important;
-  background: var(--nav-bg) !important;
-  color: var(--nav-text) !important;
-  z-index: var(--nav-z) !important;
-  display: flex !important;
-  align-items: center !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: var(--nav-bg);
+  backdrop-filter: var(--glass-blur); /* The Frosted Glass Effect */
+  -webkit-backdrop-filter: var(--glass-blur);
+  z-index: var(--nav-z);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* inner container keeps content aligned with page width */
-.site-navbar .nav-container {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 0 var(--nav-padding-inline) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
+/* Inner Container */
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Brand */
+/* Brand / Logo */
 .brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  color: var(--nav-text) !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--nav-text);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
 }
+
 .brand-logo {
-  height: calc(var(--nav-height) - 20px) !important; /* fits inside nav */
-  width: auto !important;
-  margin-right: 10px !important;
-}
-.brand-text {
-  font-weight: 600 !important;
-  font-size: var(--nav-brand-font-size) !important;
-  color: var(--nav-text) !important;
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
-/* Links list */
+/* Navigation Links */
 .nav-links {
-  list-style: none !important;
-  display: flex !important;
-  gap: 18px !important;
-  align-items: center !important;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
 }
+
 .nav-links li a {
-  color: var(--nav-text) !important;
-  text-decoration: none !important;
-  padding: 10px 8px !important;
-  border-radius: 6px !important;
-  display: inline-block !important;
-  font-size: var(--nav-font-size) !important;
+  color: var(--nav-text);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
 }
-.nav-links li a:hover,
-.nav-links li a:focus {
+
+/* Hover Effect: Orange Underline Animation */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--nav-hover);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--nav-hover);
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Active Link Style (for current page) */
+.active-link {
   color: var(--nav-hover) !important;
-  text-decoration: none !important;
-  background: rgba(255, 255, 255, 0.06) !important;
 }
 
-/* Hamburger for small screens */
+.active-link::after {
+  width: 100% !important; 
+}
+
+/* Special Login Button Style in Nav */
+.btn-login {
+  background-color: rgba(255,255,255,0.15);
+  padding: 8px 20px !important;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-login:hover {
+  background-color: var(--nav-hover) !important;
+  color: #fff !important;
+  border-color: var(--nav-hover);
+}
+
+.btn-login::after {
+  display: none; /* No underline for button */
+}
+
+/* Toggle Button (Hamburger) */
 .nav-toggle {
-  display: none !important; /* hidden on desktop */
-  background: transparent !important;
-  border: none !important;
-  font-size: 22px !important;
-  color: var(--nav-text) !important;
-  cursor: pointer !important;
-  padding: 8px !important;
-}
-.nav-toggle:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.2) !important;
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--nav-text);
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
-/* Responsive */
+/* =========================================
+   RESPONSIVE (Mobile)
+   ========================================= */
 @media (max-width: 880px) {
   .nav-toggle {
-    display: block !important;
+    display: block;
   }
+
   .nav-links {
-    position: absolute !important;
-    top: var(--nav-height) !important;
-    right: 0 !important;
-    background: var(--nav-bg) !important;
-    width: 220px !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 10px !important;
-    gap: 6px !important;
-    transform-origin: top right !important;
-    transform: scaleY(0) !important;
-    transition: transform 160ms ease !important;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18) !important;
+    position: absolute;
+    top: var(--nav-height);
+    right: 0;
+    width: 100%;
+    background: var(--primary-dark, #0f3d3e); /* Fallback or var from style.css */
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 20px 0;
+    /* Hidden state */
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: -1;
+    border-bottom: 2px solid var(--nav-hover);
   }
+
+  /* Shown state (toggled via JS) */
   .nav-links.show {
-    transform: scaleY(1) !important;
+    transform: translateY(0);
+    opacity: 1;
   }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
   .nav-links li a {
-    width: 100% !important;
-    padding: 10px 12px !important;
+    display: block;
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  .btn-login {
+    width: 80%;
+    margin: 10px auto;
+    display: inline-block !important;
   }
 }
 
-/* Make sure body content is not hidden under navbar */
-body {
-  padding-top: calc(var(--nav-height)) !important;
-}
-
-/* ===== Remove Scrollbar From Entire Website ===== */
-
-/* Chrome, Safari, Edge */
-::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-}
-
-/* Firefox */
-html {
-  scrollbar-width: none !important;
-}
-
-/* IE & old Edge */
-html {
-  -ms-overflow-style: none !important;
-}
+/* Note: I removed the body padding-top. 
+   Because our Hero section is transparent/video, 
+   we want the content to sit BEHIND the navbar. */

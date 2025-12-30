@@ -88,6 +88,7 @@ body {
   text-align: center;
   color: white;
   margin-bottom: 3rem;
+  margin-top: 70px;
 }
 
 .ticket-hero h1 {
@@ -986,4 +987,3 @@ html {
 html {
   -ms-overflow-style: none !important;
 }
-

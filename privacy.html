@@ -1,208 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" href="/img/image.ico" type="image/x-icon" />
 
-  <title>Privacy Policy | Zoo Planet</title>
+    <title>Privacy Policy | Zoo Planet</title>
 
-  <!-- shared -->
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/footer.css">
+    <!-- shared -->
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
 
-  <!-- page -->
-  <link rel="stylesheet" href="css/privacy.css">
+    <!-- page -->
+    <link rel="stylesheet" href="css/privacy.css" />
 
-  <!-- icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="site-navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a class="brand" href="index.html" aria-label="Zoo Planet home">
+          <img class="brand-logo" src="img/navlogo.png" alt="Zoo Planet logo" />
+          <span class="brand-text">Zoo Planet</span>
+        </a>
 
-  <!-- NAVBAR -->
-  <nav class="site-navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a class="brand" href="index.html" aria-label="Zoo Planet home">
-        <img class="brand-logo" src="img/navlogo.png" alt="Zoo Planet logo">
-        <span class="brand-text">Zoo Planet</span>
-      </a>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-icon">☰</span>
+        </button>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-icon">☰</span>
-      </button>
-
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="ticket.html">Tickets</a></li>
-        <li><a href="service.html">Services</a></li>
-        <li><a href="visit.html">Plan Visit</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <!-- <li><a href="privacy.html" class="active">Privacy</a></li> -->
-      </ul>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="privacy-hero">
-    <div class="hero-inner">
-      <h1>Privacy Policy</h1>
-      <p>Your privacy matters. This page explains how Zoo Planet collects, uses and protects your data.</p>
-      <div class="hero-actions">
-        <button id="printPolicy" class="btn">Print / Save</button>
-        <a href="#toc" class="btn btn-secondary">Jump to Contents</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="ticket.html">Tickets</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <!-- <li><a href="privacy.html" class="active">Privacy</a></li> -->
+        </ul>
       </div>
-    </div>
-  </header>
+    </nav>
 
-  <!-- MAIN -->
-  <main class="privacy-main container" id="main">
-    <div class="privacy-grid">
-      <aside class="privacy-toc" id="toc" aria-label="Table of contents">
-        <h2>Contents</h2>
-        <nav>
-          <ul>
-            <li><a href="#intro">1. Introduction</a></li>
-            <li><a href="#data-collected">2. Data We Collect</a></li>
-            <li><a href="#how-use">3. How We Use Data</a></li>
-            <li><a href="#cookies">4. Cookies & Tracking</a></li>
-            <li><a href="#third-parties">5. Third-Party Services</a></li>
-            <li><a href="#your-rights">6. Your Rights</a></li>
-            <li><a href="#security">7. Security</a></li>
-            <li><a href="#children">8. Children</a></li>
-            <li><a href="#changes">9. Changes</a></li>
-            <li><a href="#contact-privacy">10. Contact</a></li>
-          </ul>
-        </nav>
-      </aside>
+    <!-- HERO -->
+    <header class="privacy-hero">
+      <div class="hero-inner">
+        <h1>Privacy Policy</h1>
+        <p>
+          Your privacy matters. This page explains how Zoo Planet collects, uses
+          and protects your data.
+        </p>
+        <div class="hero-actions">
+          <button id="printPolicy" class="btn">Print / Save</button>
+          <a href="#toc" class="btn btn-secondary">Jump to Contents</a>
+        </div>
+      </div>
+    </header>
 
-      <section class="privacy-content" aria-labelledby="privacyHeading">
-        <article id="intro">
-          <h2>1. Introduction</h2>
-          <p>Zoo Planet (“we”, “us”, “our”) is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose and protect your information when you visit our website, make bookings, or interact with our services.</p>
-        </article>
+    <!-- MAIN -->
+    <main class="privacy-main container" id="main">
+      <div class="privacy-grid">
+        <aside class="privacy-toc" id="toc" aria-label="Table of contents">
+          <h2>Contents</h2>
+          <nav>
+            <ul>
+              <li><a href="#intro">1. Introduction</a></li>
+              <li><a href="#data-collected">2. Data We Collect</a></li>
+              <li><a href="#how-use">3. How We Use Data</a></li>
+              <li><a href="#cookies">4. Cookies & Tracking</a></li>
+              <li><a href="#third-parties">5. Third-Party Services</a></li>
+              <li><a href="#your-rights">6. Your Rights</a></li>
+              <li><a href="#security">7. Security</a></li>
+              <li><a href="#children">8. Children</a></li>
+              <li><a href="#changes">9. Changes</a></li>
+              <li><a href="#contact-privacy">10. Contact</a></li>
+            </ul>
+          </nav>
+        </aside>
 
-        <article id="data-collected">
-          <h2>2. Data We Collect</h2>
-          <p>We collect information you provide directly and information automatically collected when you use our services.</p>
-          <h3>Information you provide</h3>
-          <ul>
-            <li>Contact details — name, email, phone, postal address;</li>
-            <li>Booking information — visit date, ticket type, payment details (payment processors handle card data);</li>
-            <li>Membership and donation information;</li>
-            <li>Volunteering applications, resumes and other application materials;</li>
-            <li>Support requests and communications with our team.</li>
-          </ul>
-          <h3>Automatically-collected information</h3>
-          <ul>
-            <li>Device and browser information (IP address, user agent, device type);</li>
-            <li>Usage data — pages visited, actions taken, referral URLs;</li>
-            <li>Analytics and cookies (see Cookies section).</li>
-          </ul>
-        </article>
+        <section class="privacy-content" aria-labelledby="privacyHeading">
+          <article id="intro">
+            <h2>1. Introduction</h2>
+            <p>
+              Zoo Planet (“we”, “us”, “our”) is committed to protecting your
+              personal information. This Privacy Policy explains how we collect,
+              use, disclose and protect your information when you visit our
+              website, make bookings, or interact with our services.
+            </p>
+          </article>
 
-        <article id="how-use">
-          <h2>3. How We Use Your Data</h2>
-          <p>We use personal data to:</p>
-          <ul>
-            <li>Process bookings, payments, memberships and donations;</li>
-            <li>Provide customer support and respond to inquiries;</li>
-            <li>Send transactional communications (booking confirmations, receipts);</li>
-            <li>Send marketing communications where you have opted in (you can unsubscribe anytime);</li>
-            <li>Improve our site, services and personalise your experience;</li>
-            <li>Comply with legal obligations and protect our rights.</li>
-          </ul>
-        </article>
+          <article id="data-collected">
+            <h2>2. Data We Collect</h2>
+            <p>
+              We collect information you provide directly and information
+              automatically collected when you use our services.
+            </p>
+            <h3>Information you provide</h3>
+            <ul>
+              <li>Contact details — name, email, phone, postal address;</li>
+              <li>
+                Booking information — visit date, ticket type, payment details
+                (payment processors handle card data);
+              </li>
+              <li>Membership and donation information;</li>
+              <li>
+                Volunteering applications, resumes and other application
+                materials;
+              </li>
+              <li>Support requests and communications with our team.</li>
+            </ul>
+            <h3>Automatically-collected information</h3>
+            <ul>
+              <li>
+                Device and browser information (IP address, user agent, device
+                type);
+              </li>
+              <li>Usage data — pages visited, actions taken, referral URLs;</li>
+              <li>Analytics and cookies (see Cookies section).</li>
+            </ul>
+          </article>
 
-        <article id="cookies">
-          <h2>4. Cookies & Tracking</h2>
-          <p>We use cookies and similar technologies to improve your experience and gather analytics. Cookies may be:</p>
-          <ul>
-            <li><strong>Essential:</strong> Required for core functions (bookings, security).</li>
-            <li><strong>Performance:</strong> Aggregate analytics to improve site performance.</li>
-            <li><strong>Functional:</strong> Preferences and personalization.</li>
-            <li><strong>Advertising:</strong> Third-party advertising and tracking (only where permitted).</li>
-          </ul>
-          <p>You can manage cookie preferences via your browser settings. For detailed list of cookies we use, contact us or view the cookie policy (if available).</p>
-        </article>
+          <article id="how-use">
+            <h2>3. How We Use Your Data</h2>
+            <p>We use personal data to:</p>
+            <ul>
+              <li>Process bookings, payments, memberships and donations;</li>
+              <li>Provide customer support and respond to inquiries;</li>
+              <li>
+                Send transactional communications (booking confirmations,
+                receipts);
+              </li>
+              <li>
+                Send marketing communications where you have opted in (you can
+                unsubscribe anytime);
+              </li>
+              <li>
+                Improve our site, services and personalise your experience;
+              </li>
+              <li>Comply with legal obligations and protect our rights.</li>
+            </ul>
+          </article>
 
-        <article id="third-parties">
-          <h2>5. Third-Party Services</h2>
-          <p>We may share data with trusted third parties who perform services on our behalf, such as payment processors (Stripe/PayPal), email providers, analytics (Google Analytics) and hosting providers. These parties process data only as necessary and under contract.</p>
-        </article>
+          <article id="cookies">
+            <h2>4. Cookies & Tracking</h2>
+            <p>
+              We use cookies and similar technologies to improve your experience
+              and gather analytics. Cookies may be:
+            </p>
+            <ul>
+              <li>
+                <strong>Essential:</strong> Required for core functions
+                (bookings, security).
+              </li>
+              <li>
+                <strong>Performance:</strong> Aggregate analytics to improve
+                site performance.
+              </li>
+              <li>
+                <strong>Functional:</strong> Preferences and personalization.
+              </li>
+              <li>
+                <strong>Advertising:</strong> Third-party advertising and
+                tracking (only where permitted).
+              </li>
+            </ul>
+            <p>
+              You can manage cookie preferences via your browser settings. For
+              detailed list of cookies we use, contact us or view the cookie
+              policy (if available).
+            </p>
+          </article>
 
-        <article id="your-rights">
-          <h2>6. Your Rights</h2>
-          <p>Depending on your jurisdiction, you may have rights such as:</p>
-          <ul>
-            <li>Access to personal data we hold about you;</li>
-            <li>Correction of inaccurate data;</li>
-            <li>Request deletion of your data (subject to legal obligations);</li>
-            <li>Object to or restrict processing; and</li>
-            <li>Data portability requests.</li>
-          </ul>
-          <p>To exercise rights, contact us using the details below. We will respond in line with applicable law.</p>
-        </article>
+          <article id="third-parties">
+            <h2>5. Third-Party Services</h2>
+            <p>
+              We may share data with trusted third parties who perform services
+              on our behalf, such as payment processors (Stripe/PayPal), email
+              providers, analytics (Google Analytics) and hosting providers.
+              These parties process data only as necessary and under contract.
+            </p>
+          </article>
 
-        <article id="security">
-          <h2>7. Security</h2>
-          <p>We implement reasonable administrative, technical and physical safeguards to protect personal data. However, no system is 100% secure. If a breach occurs, we will follow applicable notification obligations.</p>
-        </article>
+          <article id="your-rights">
+            <h2>6. Your Rights</h2>
+            <p>Depending on your jurisdiction, you may have rights such as:</p>
+            <ul>
+              <li>Access to personal data we hold about you;</li>
+              <li>Correction of inaccurate data;</li>
+              <li>
+                Request deletion of your data (subject to legal obligations);
+              </li>
+              <li>Object to or restrict processing; and</li>
+              <li>Data portability requests.</li>
+            </ul>
+            <p>
+              To exercise rights, contact us using the details below. We will
+              respond in line with applicable law.
+            </p>
+          </article>
 
-        <article id="children">
-          <h2>8. Children</h2>
-          <p>Our services are not directed at children under 13 (or local age of consent). We do not knowingly collect personal information from children without parental consent. If you believe your child has provided us with personal data, contact us to request removal.</p>
-        </article>
+          <article id="security">
+            <h2>7. Security</h2>
+            <p>
+              We implement reasonable administrative, technical and physical
+              safeguards to protect personal data. However, no system is 100%
+              secure. If a breach occurs, we will follow applicable notification
+              obligations.
+            </p>
+          </article>
 
-        <article id="changes">
-          <h2>9. Changes to this Policy</h2>
-          <p>We may update this Privacy Policy occasionally. We will post the updated policy here with a revised effective date. Continued use after updates indicates acceptance of the changes.</p>
-        </article>
+          <article id="children">
+            <h2>8. Children</h2>
+            <p>
+              Our services are not directed at children under 13 (or local age
+              of consent). We do not knowingly collect personal information from
+              children without parental consent. If you believe your child has
+              provided us with personal data, contact us to request removal.
+            </p>
+          </article>
 
-        <article id="contact-privacy">
-          <h2>10. Contact</h2>
-          <p>If you have questions about this policy or wish to exercise your rights, contact us:</p>
-          <ul>
-            <li>Email: <a href="mailto:privacy@zoo-planet.example">privacy@zoo-planet.example</a></li>
-            <li>Phone: +91 12345 67890</li>
-            <li>Address: 123 Safari Ave, Green City</li>
-          </ul>
-        </article>
+          <article id="changes">
+            <h2>9. Changes to this Policy</h2>
+            <p>
+              We may update this Privacy Policy occasionally. We will post the
+              updated policy here with a revised effective date. Continued use
+              after updates indicates acceptance of the changes.
+            </p>
+          </article>
 
-        <section class="privacy-meta">
-          <p class="last-updated"><strong>Effective date:</strong> <span id="privacy-updated">2025-01-01</span></p>
+          <article id="contact-privacy">
+            <h2>10. Contact</h2>
+            <p>
+              If you have questions about this policy or wish to exercise your
+              rights, contact us:
+            </p>
+            <ul>
+              <li>
+                Email:
+                <a href="mailto:privacy@zoo-planet.example"
+                  >privacy@zoo-planet.example</a
+                >
+              </li>
+              <li>Phone: +91 12345 67890</li>
+              <li>Address: 123 Safari Ave, Green City</li>
+            </ul>
+          </article>
 
-          <div class="privacy-actions">
-            <label class="accept">
-              <input type="checkbox" id="acceptPrivacy"> I have read and accept the Privacy Policy
-            </label>
-            <button id="continuePrivacy" class="btn btn-accent" disabled>Continue</button>
-          </div>
+          <section class="privacy-meta">
+            <p class="last-updated">
+              <strong>Effective date:</strong>
+              <span id="privacy-updated">2025-01-01</span>
+            </p>
+
+            <div class="privacy-actions">
+              <label class="accept">
+                <input type="checkbox" id="acceptPrivacy" /> I have read and
+                accept the Privacy Policy
+              </label>
+              <button id="continuePrivacy" class="btn btn-accent" disabled>
+                Continue
+              </button>
+            </div>
+          </section>
         </section>
-      </section>
-    </div>
-  </main>
+      </div>
+    </main>
 
-  <!-- cookie consent banner -->
-  <div id="cookie-consent" class="cookie-banner" aria-hidden="true">
-    <div class="cookie-inner">
-      <p><strong>We use cookies</strong> to improve your experience. By using our site you consent to cookies. <a href="privacy.html#cookies">Learn more</a></p>
-      <div class="cookie-actions">
-        <button id="acceptCookies" class="btn btn-accent">Accept</button>
-        <button id="manageCookies" class="btn btn-secondary">Manage</button>
+    <!-- cookie consent banner -->
+    <div id="cookie-consent" class="cookie-banner" aria-hidden="true">
+      <div class="cookie-inner">
+        <p>
+          <strong>We use cookies</strong> to improve your experience. By using
+          our site you consent to cookies.
+          <a href="privacy.html#cookies">Learn more</a>
+        </p>
+        <div class="cookie-actions">
+          <button id="acceptCookies" class="btn btn-accent">Accept</button>
+          <button id="manageCookies" class="btn btn-secondary">Manage</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- footer -->
-  <div id="footer-placeholder"></div>
-  <script src="js/footer.js" defer></script>
+    <!-- footer -->
+    <div id="footer-placeholder"></div>
+    <script src="js/footer.js" defer></script>
 
-  <!-- shared -->
-  <script src="js/nav.js" defer></script>
+    <!-- shared -->
+    <script src="js/nav.js" defer></script>
 
-  <!-- page script -->
-  <script src="js/privacy.js" defer></script>
-</body>
+    <!-- page script -->
+    <script src="js/privacy.js" defer></script>
+  </body>
 </html>

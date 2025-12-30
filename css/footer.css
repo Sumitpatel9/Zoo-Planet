@@ -5,8 +5,8 @@
 
 /* Footer variables */
 :root {
-  --footer-bg: #074f88;        /* dark blue base */
-  --footer-accent: #0a6ebd;    /* navbar blue */
+  --footer-bg: rgba(15, 61, 62, 0.85);        /* dark blue base */
+  --footer-accent: rgba(15, 61, 62, 0.85);    /* navbar blue */
   --footer-text: #eaf2f9;      /* light text */
   --footer-muted: rgba(234,242,249,0.8);
   --footer-radius: 10px;
@@ -19,7 +19,8 @@
 
 /* Base footer layout */
 .site-footer {
-  background: linear-gradient(180deg, var(--footer-bg), #063a63);
+  /* background: linear-gradient(180deg, var(--footer-bg), #063a63); */
+  background: rgba(15, 61, 62, 0.85);
   color: var(--footer-text);
   font-family: var(--brand-font);
   width: 100%;

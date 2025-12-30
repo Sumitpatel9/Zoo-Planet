@@ -11,7 +11,7 @@
     const rect = footer.getBoundingClientRect();
     const h = Math.ceil(rect.height);
     // Keep a small extra gap
-    document.body.style.paddingBottom = (h + 24) + 'px';
+    // document.body.style.paddingBottom = (h + 24) + 'px';
   }
 
   // adjust on load and resize
