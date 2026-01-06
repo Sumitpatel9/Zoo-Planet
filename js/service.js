@@ -1,6 +1,10 @@
 // ==================== ZOO PLANET - SERVICES.JS ====================
 // Complete services page with API integration + payment system
 
+const MEMBERSHIP_API = 'https://zoo-planet-backend.onrender.com/api/memberships';
+const EVENTS_API = 'https://zoo-planet-backend.onrender.com/api/events';
+const TOURS_API = 'https://zoo-planet-backend.onrender.com/api/tours';
+
 // ==================== PRICE CONFIGURATIONS ====================
 const PRICES = {
     membership: {
@@ -531,7 +535,7 @@ if (membershipForm) {
     try {
       console.log('📤 Submitting membership:', formData);
       
-      const res = await fetch("http://localhost:4000/api/memberships", {
+      const res = await fetch(MEMBERSHIP_API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -622,9 +626,9 @@ if (eventForm) {
     console.log('✅ All required fields present, sending to backend...');
 
     try {
-      console.log('📤 Sending POST request to http://localhost:4000/api/events');
+      console.log(`📤 Sending POST request to ${EVENTS_API}`);
       
-      const res = await fetch("http://localhost:4000/api/events", {
+      const res = await fetch(EVENTS_API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -694,7 +698,7 @@ if (tourForm) {
         try {
             console.log('📤 Submitting tour booking:', formData);
             
-            const res = await fetch('http://localhost:4000/api/tours', {
+            const res = await fetch(TOURS_API, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
