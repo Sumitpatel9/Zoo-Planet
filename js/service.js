@@ -762,4 +762,4 @@ document.addEventListener('DOMContentLoaded', function() {
 console.log('%c🦁 Zoo Planet Services Loaded!', 'color: #2d8659; font-size: 16px; font-weight: bold;');
 console.log('%c💳 Payment System Active', 'color: #2d8659; font-size: 14px; font-weight: bold;');
 console.log('%c✅ Features: Pre-set prices | GST calculation | Payment methods | Real-time updates', 'color: #666;');
-console.log('%cBackend API: http://localhost:4000', 'color: #666; font-weight: bold;');
+console.log('%cBackend API: https://zoo-planet-backend.onrender.com', 'color: #666; font-weight: bold;');

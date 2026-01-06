@@ -1,5 +1,7 @@
 // ==================== API CONFIGURATION ====================
-const API_BASE = 'http://localhost:4000';
+const API_BASE = window.location.hostname === 'localhost'
+    ? "http://localhost:4000"
+    : "https://zoo-planet-backend.onrender.com";
 
 // ==================== FORM VALIDATION & SUBMISSION ====================
 const contactForm = document.getElementById('contactForm') || document.getElementById('contact-form');

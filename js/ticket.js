@@ -1,7 +1,9 @@
 // ==================== ZOO PLANET - TICKET BOOKING SYSTEM ====================
 // Enhanced version with improved UI/UX and backend integration
 
-const API_BASE = "http://localhost:4000"; // Change to your backend URL when deployed
+const API_BASE = window.location.hostname === 'localhost'
+    ? "http://localhost:4000"
+    : "https://zoo-planet-backend.onrender.com"; 
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,6 +1,8 @@
 // ==================== ZOO PLANET - DONATE.JS ====================
 // Donation page functionality with API integration
 
+const API_BASE = "https://zoo-planet-backend.onrender.com";
+
 // ==================== DONATION TYPE TOGGLE ====================
 document.querySelectorAll(".type-btn").forEach((btn) => {
   btn.addEventListener("click", function () {
@@ -215,7 +217,7 @@ document
 
     try {
       // Make API call to backend
-      const response = await fetch("http://localhost:4000/api/donations", {
+      const response = await fetch(`${API_BASE}/api/donations`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -520,7 +522,7 @@ console.log(
   "color: #2d8659; font-size: 16px; font-weight: bold;"
 );
 console.log(
-  "%cBackend API: http://localhost:4000/api/donations",
+  "%cBackend API: `${API_BASE}/api/donations`/api/donations",
   "color: #666; font-weight: bold;"
 );
 console.log(
@@ -585,7 +587,7 @@ document.getElementById('adoptionForm')?.addEventListener('submit', async functi
     };
     
     try {
-        const response = await fetch('http://localhost:4000/api/adoptions', {
+        const response = await fetch(`${API_BASE}/api/donations`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
