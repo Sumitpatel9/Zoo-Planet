@@ -532,81 +532,83 @@ console.log(
 // ==================== END OF DONATE.JS ====================
 
 // ==================== ADOPTION MODAL FUNCTIONALITY ====================
-let selectedAnimal = '';
+let selectedAnimal = "";
 let selectedPrice = 0;
 
 function openAdoptModal() {
-    document.getElementById('adoptModal').classList.add('show');
-    document.getElementById('adoptModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+  document.getElementById("adoptModal").classList.add("show");
+  document.getElementById("adoptModal").style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 function closeAdoptModal() {
-    document.getElementById('adoptModal').classList.remove('show');
-    document.getElementById('adoptModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+  document.getElementById("adoptModal").classList.remove("show");
+  document.getElementById("adoptModal").style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 function selectAnimal(animal, price) {
-    selectedAnimal = animal;
-    selectedPrice = price;
-    
-    // Update form modal
-    document.getElementById('selectedAnimalName').textContent = animal;
-    document.getElementById('selectedAnimalPrice').textContent = price.toLocaleString('en-IN');
-    
-    // Close selection modal, open form modal
-    closeAdoptModal();
-    
-    setTimeout(() => {
-        document.getElementById('adoptFormModal').classList.add('show');
-        document.getElementById('adoptFormModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }, 300);
+  selectedAnimal = animal;
+  selectedPrice = price;
+
+  // Update form modal
+  document.getElementById("selectedAnimalName").textContent = animal;
+  document.getElementById("selectedAnimalPrice").textContent =
+    price.toLocaleString("en-IN");
+
+  // Close selection modal, open form modal
+  closeAdoptModal();
+
+  setTimeout(() => {
+    document.getElementById("adoptFormModal").classList.add("show");
+    document.getElementById("adoptFormModal").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }, 300);
 }
 
 function closeAdoptFormModal() {
-    document.getElementById('adoptFormModal').classList.remove('show');
-    document.getElementById('adoptFormModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+  document.getElementById("adoptFormModal").classList.remove("show");
+  document.getElementById("adoptFormModal").style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 // Handle adoption form submission
-document.getElementById('adoptionForm')?.addEventListener('submit', async function(e) {
+document
+  .getElementById("adoptionForm")
+  ?.addEventListener("submit", async function (e) {
     e.preventDefault();
-    
+
     const formData = {
-        animal: selectedAnimal,
-        price: selectedPrice,
-        firstName: this.firstName.value,
-        lastName: this.lastName.value,
-        email: this.email.value,
-        phone: this.phone.value,
-        paymentMethod: this.paymentMethod.value,
-        timestamp: new Date().toISOString()
+      animal: selectedAnimal,
+      price: selectedPrice,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      paymentMethod: this.paymentMethod.value,
+      timestamp: new Date().toISOString(),
     };
-    
+
     try {
-        const response = await fetch(`${API_BASE}/api/donations`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) throw new Error(data.error || 'Adoption failed');
-        
-        // Show success
-        document.getElementById('adoptionSuccess').classList.add('show');
-        
-        setTimeout(() => {
-            closeAdoptFormModal();
-            this.reset();
-            document.getElementById('adoptionSuccess').classList.remove('show');
-        }, 3000);
-        
+      const response = await fetch(`${API_BASE}/api/donations`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) throw new Error(data.error || "Adoption failed");
+
+      // Show success
+      document.getElementById("adoptionSuccess").classList.add("show");
+
+      setTimeout(() => {
+        closeAdoptFormModal();
+        this.reset();
+        document.getElementById("adoptionSuccess").classList.remove("show");
+      }, 3000);
     } catch (error) {
-        alert(error.message || 'Adoption failed. Please try again.');
+      alert(error.message || "Adoption failed. Please try again.");
     }
-});
+  });
