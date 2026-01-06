@@ -1,257 +1,287 @@
-// Tab switching with animation
-document.querySelectorAll('.auth-tab').forEach(tab => {
-    tab.addEventListener('click', function () {
-        // Remove active class from all tabs
-        document.querySelectorAll('.auth-tab').forEach(t => {
-            t.classList.remove('active');
-            t.style.boxShadow = 'none';
-        });
+// ==================== CONFIGURATION ====================
+const LOGIN_API_URL = 'http://localhost:5000/api/auth/login';
+const SIGNUP_API_URL = 'http://localhost:5000/api/auth/signup';
+// For production: Update URLs accordingly
 
-        // Add active class to clicked tab
-        this.classList.add('active');
+// ==================== TAB SWITCHING ====================
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
 
-        // Hide all forms
-        document.querySelectorAll('.auth-form').forEach(form => {
-            form.classList.remove('active');
-        });
-
-        // Show corresponding form with animation
-        const targetForm = document.getElementById(`${this.dataset.tab}-form`);
-        targetForm.classList.add('active');
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTab = button.dataset.tab;
+        
+        // Remove active class from all tabs and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        button.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
     });
 });
 
-// Toggle password visibility
-document.querySelectorAll('.toggle-password').forEach(button => {
-    button.addEventListener('click', function () {
-        const input = this.parentElement.querySelector('input');
-        const icon = this.querySelector('i');
+// ==================== PASSWORD TOGGLE ====================
+const toggleButtons = document.querySelectorAll('.toggle-password');
 
-        if (input.type === 'password') {
-            input.type = 'text';
+toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.dataset.target;
+        const passwordInput = document.getElementById(targetId);
+        const icon = button.querySelector('i');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
             icon.classList.remove('fa-eye');
             icon.classList.add('fa-eye-slash');
         } else {
-            input.type = 'password';
+            passwordInput.type = 'password';
             icon.classList.remove('fa-eye-slash');
             icon.classList.add('fa-eye');
         }
     });
 });
 
-// Password strength indicator
-const passwordInput = document.getElementById('reg-password');
-if (passwordInput) {
-    passwordInput.addEventListener('input', function () {
-        const strengthBars = document.querySelectorAll('.strength-bar');
-        const strengthText = document.querySelector('.strength-text');
+// ==================== PASSWORD STRENGTH CHECKER ====================
+const signupPasswordInput = document.getElementById('signupPassword');
+const passwordStrength = document.getElementById('passwordStrength');
+
+if (signupPasswordInput) {
+    signupPasswordInput.addEventListener('input', function() {
         const password = this.value;
+        const strengthBar = passwordStrength.querySelector('.strength-bar');
+        
+        if (password.length === 0) {
+            passwordStrength.classList.remove('show');
+            return;
+        }
+        
+        passwordStrength.classList.add('show');
+        
         let strength = 0;
-
-        // Reset bars
-        strengthBars.forEach(bar => {
-            bar.style.backgroundColor = '#eee';
-        });
-
-        // Check password strength
-        if (password.length >= 8) strength++;
-        if (password.match(/[A-Z]/)) strength++;
-        if (password.match(/[0-9]/)) strength++;
-        if (password.match(/[^A-Za-z0-9]/)) strength++;
-
-        // Update UI
-        if (strength > 0) {
-            for (let i = 0; i < strength; i++) {
-                let color;
-                if (strength === 1) color = '#ff4d4d'; // Weak
-                else if (strength === 2) color = '#ffa64d'; // Medium
-                else if (strength === 3) color = '#66cc66'; // Strong
-                else color = '#2d862d'; // Very strong
-
-                strengthBars[i].style.backgroundColor = color;
-            }
-
-            const strengthLabels = ['Weak', 'Medium', 'Strong', 'Very strong'];
-            strengthText.textContent = strengthLabels[strength - 1];
-            strengthText.style.color = strengthBars[strength - 1].style.backgroundColor;
+        if (password.length >= 6) strength++;
+        if (password.length >= 10) strength++;
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+        if (/\d/.test(password)) strength++;
+        if (/[^a-zA-Z\d]/.test(password)) strength++;
+        
+        strengthBar.className = 'strength-bar';
+        
+        if (strength <= 2) {
+            strengthBar.classList.add('weak');
+        } else if (strength <= 4) {
+            strengthBar.classList.add('medium');
         } else {
-            strengthText.textContent = 'Password strength';
-            strengthText.style.color = '#999';
+            strengthBar.classList.add('strong');
         }
-
-        // Check password match when password changes
-        checkPasswordMatch();
     });
 }
 
-// Function to check if passwords match
-function checkPasswordMatch() {
-    const password = document.getElementById('reg-password')?.value || '';
-    const confirmPassword = document.getElementById('reg-confirm')?.value || '';
-    const confirmInput = document.getElementById('reg-confirm');
-    
-    if (!confirmInput) return;
+// ==================== LOGIN FORM SUBMISSION ====================
+const loginForm = document.getElementById('loginForm');
+const loginSuccess = document.getElementById('loginSuccess');
+const loginError = document.getElementById('loginError');
 
-    // Remove existing error message
-    let errorElement = document.querySelector('.password-mismatch');
-    if (errorElement) {
-        errorElement.remove();
-    }
-
-    // Only show error if confirm password field has content and passwords don't match
-    if (confirmPassword.length > 0 && password !== confirmPassword) {
-        // Create and show error message
-        errorElement = document.createElement('div');
-        errorElement.className = 'password-mismatch';
-        errorElement.style.color = '#ff4d4d';
-        errorElement.style.fontSize = '0.85rem';
-        errorElement.style.marginTop = '0.5rem';
-        errorElement.style.fontWeight = '500';
-        errorElement.textContent = 'Passwords do not match!';
+if (loginForm) {
+    loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
         
-        confirmInput.parentNode.appendChild(errorElement);
+        // Clear previous messages
+        loginSuccess.classList.remove('show');
+        loginError.classList.remove('show');
         
-        // Add red border to confirm password field
-        confirmInput.style.borderColor = '#ff4d4d';
-        confirmInput.style.boxShadow = '0 0 0 2px rgba(255, 77, 77, 0.1)';
-    } else if (confirmPassword.length > 0 && password === confirmPassword) {
-        // Add green border when passwords match
-        confirmInput.style.borderColor = '#2d862d';
-        confirmInput.style.boxShadow = '0 0 0 2px rgba(45, 134, 45, 0.1)';
-    } else {
-        // Reset border when confirm password is empty
-        confirmInput.style.borderColor = '';
-        confirmInput.style.boxShadow = '';
-    }
+        // Clear errors
+        document.querySelectorAll('#login .form-control').forEach(input => {
+            input.classList.remove('error');
+        });
+        
+        // Get form data
+        const formData = {
+            email: document.getElementById('loginEmail').value.trim(),
+            password: document.getElementById('loginPassword').value
+        };
+        
+        // Validate
+        let isValid = true;
+        
+        if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            document.getElementById('loginEmail').classList.add('error');
+            isValid = false;
+        }
+        
+        if (!formData.password) {
+            document.getElementById('loginPassword').classList.add('error');
+            isValid = false;
+        }
+        
+        if (!isValid) return;
+        
+        // Show loading
+        const submitBtn = loginForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+        submitBtn.disabled = true;
+        
+        try {
+            const response = await fetch(LOGIN_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Success
+                loginSuccess.classList.add('show');
+                
+                // Store token (if using JWT)
+                if (data.token) {
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                }
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+                
+            } else {
+                throw new Error(data.message || 'Login failed');
+            }
+            
+        } catch (error) {
+            console.error('Login error:', error);
+            loginError.classList.add('show');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            setTimeout(() => {
+                loginError.classList.remove('show');
+            }, 5000);
+        }
+    });
 }
 
-// Check password match when confirm password changes
-document.getElementById('reg-confirm')?.addEventListener('input', function () {
-    checkPasswordMatch();
-});
+// ==================== SIGNUP FORM SUBMISSION ====================
+const signupForm = document.getElementById('signupForm');
+const signupSuccess = document.getElementById('signupSuccess');
+const signupError = document.getElementById('signupError');
 
-// Registration form submission with enhanced validation
-document.getElementById('registerForm')?.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const password = document.getElementById('reg-password')?.value;
-    const confirmPassword = document.getElementById('reg-confirm')?.value;
-    const email = document.getElementById('reg-email')?.value;
-    const name = document.getElementById('reg-name')?.value;
-
-    // Validate all required fields
-    if (!name || !email || !password || !confirmPassword) {
-        alert('Please fill in all required fields!');
-        return;
-    }
-
-    // Check if passwords match
-    if (password !== confirmPassword) {
-        // Show error message
-        let errorElement = document.querySelector('.password-mismatch');
-        if (!errorElement) {
-            errorElement = document.createElement('div');
-            errorElement.className = 'password-mismatch';
-            errorElement.style.color = '#ff4d4d';
-            errorElement.style.fontSize = '0.85rem';
-            errorElement.style.marginTop = '0.5rem';
-            errorElement.style.fontWeight = '500';
-            document.getElementById('reg-confirm').parentNode.appendChild(errorElement);
+if (signupForm) {
+    signupForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Clear previous messages
+        signupSuccess.classList.remove('show');
+        signupError.classList.remove('show');
+        
+        // Clear errors
+        document.querySelectorAll('#signup .form-control').forEach(input => {
+            input.classList.remove('error');
+        });
+        
+        // Get form data
+        const formData = {
+            name: document.getElementById('signupName').value.trim(),
+            email: document.getElementById('signupEmail').value.trim(),
+            password: document.getElementById('signupPassword').value,
+            confirmPassword: document.getElementById('signupConfirmPassword').value
+        };
+        
+        // Validate
+        let isValid = true;
+        
+        if (!formData.name) {
+            document.getElementById('signupName').classList.add('error');
+            isValid = false;
         }
-        errorElement.textContent = 'Passwords do not match! Please check your passwords.';
         
-        // Focus on confirm password field
-        document.getElementById('reg-confirm').focus();
+        if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            document.getElementById('signupEmail').classList.add('error');
+            isValid = false;
+        }
         
-        // Show alert as well for better user experience
-        alert('Passwords do not match! Please make sure both password fields contain the same password.');
-        return; // Stop form submission
-    }
+        if (!formData.password || formData.password.length < 6) {
+            document.getElementById('signupPassword').classList.add('error');
+            isValid = false;
+        }
+        
+        if (formData.password !== formData.confirmPassword) {
+            document.getElementById('signupConfirmPassword').classList.add('error');
+            isValid = false;
+        }
+        
+        if (!isValid) return;
+        
+        // Show loading
+        const submitBtn = signupForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+        submitBtn.disabled = true;
+        
+        try {
+            const response = await fetch(SIGNUP_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    password: formData.password
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Success
+                signupSuccess.classList.add('show');
+                
+                // Store token if provided
+                if (data.token) {
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                }
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+                
+            } else {
+                throw new Error(data.message || 'Signup failed');
+            }
+            
+        } catch (error) {
+            console.error('Signup error:', error);
+            signupError.querySelector('p').textContent = error.message || 'Registration failed. Please try again.';
+            signupError.classList.add('show');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            setTimeout(() => {
+                signupError.classList.remove('show');
+            }, 5000);
+        }
+    });
+}
 
-    // Check minimum password strength (at least 2 criteria)
-    let strength = 0;
-    if (password.length >= 8) strength++;
-    if (password.match(/[A-Z]/)) strength++;
-    if (password.match(/[0-9]/)) strength++;
-    if (password.match(/[^A-Za-z0-9]/)) strength++;
-
-    if (strength < 2) {
-        alert('Password is too weak! Please use a stronger password with at least 8 characters, including uppercase letters, numbers, or special characters.');
-        return;
-    }
-
-    // If all validation passes, proceed with registration
-    showSuccessModal('Your account has been created successfully!');
+// Remove error on input
+document.querySelectorAll('.form-control').forEach(input => {
+    input.addEventListener('input', function() {
+        this.classList.remove('error');
+    });
 });
 
-// Login form submission
-document.getElementById('loginForm')?.addEventListener('submit', function (e) {
-    e.preventDefault();
-    
-    const email = document.getElementById('login-email')?.value;
-    const password = document.getElementById('login-password')?.value;
-    
-    if (!email || !password) {
-        alert('Please fill in both email and password!');
-        return;
-    }
-    
-    showSuccessModal('You have successfully logged in!');
-});
-
-// Social login buttons
-document.querySelectorAll('.social-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
+// ==================== SOCIAL LOGIN (Placeholder) ====================
+document.querySelectorAll('.social-btn').forEach(button => {
+    button.addEventListener('click', function() {
         const provider = this.classList.contains('google') ? 'Google' : 'Facebook';
-        showSuccessModal(`In a real implementation, this would authenticate with ${provider}`);
+        alert(`${provider} login will be implemented with OAuth 2.0`);
+        // TODO: Implement OAuth 2.0 flow
     });
 });
-
-// Forgot password link
-document.querySelector('.forgot-password')?.addEventListener('click', function (e) {
-    e.preventDefault();
-    showSuccessModal('Password reset link would be sent to your email in a real implementation');
-});
-
-// Show success modal
-function showSuccessModal(message) {
-    const modal = document.getElementById('successModal');
-    const modalMessage = document.getElementById('modalMessage');
-
-    if (modal && modalMessage) {
-        modalMessage.textContent = message;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// Close modal
-document.getElementById('modalContinue')?.addEventListener('click', function () {
-    closeModal();
-});
-
-document.querySelector('.close-modal')?.addEventListener('click', function () {
-    closeModal();
-});
-
-// Close modal with ESC key
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
-
-// Click outside modal to close
-document.getElementById('successModal')?.addEventListener('click', function (e) {
-    if (e.target === this) {
-        closeModal();
-    }
-});
-
-function closeModal() {
-    const modal = document.getElementById('successModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}

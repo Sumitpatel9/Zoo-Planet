@@ -1,280 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
-
-    <title>Terms & Conditions | Zoo Planet</title>
-
-    <!-- shared styles (keep nav.css first so page CSS can override safely) -->
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-
-    <!-- this page styles -->
-    <link rel="stylesheet" href="css/terms.css" />
-
-    <!-- icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="site-navbar" role="navigation" aria-label="Main navigation">
-      <div class="nav-container">
-        <a class="brand" href="index.html" aria-label="Zoo Planet home">
-          <img class="brand-logo" src="img/navlogo.png" alt="Zoo Planet logo" />
-          <span class="brand-text">Zoo Planet</span>
-        </a>
-
-        <button
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <span class="nav-toggle-icon">☰</span>
-        </button>
-
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="ticket.html">Tickets</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- PAGE HERO -->
-    <header class="terms-hero">
-      <div class="hero-inner">
-        <h1>Terms &amp; Conditions</h1>
-        <p>
-          Important legal information governing use of Zoo Planet's website,
-          services and visits.
-        </p>
-        <div class="hero-actions">
-          <button id="printTerms" class="btn">Print / Save</button>
-          <a href="#toc" class="btn btn-secondary">Jump to Contents</a>
-        </div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms of Service - Read the terms and conditions for using Zoo Planet's services">
+    <title>Terms of Service - Zoo Planet</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/terms.css">
+</head>
+<body>
+    
+    <!-- ==================== HEADER (Same as all pages) ==================== -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦁</span>
+                <span class="logo-text">Zoo Planet</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+                <li><a href="login.html" class="btn-login">LOGIN</a></li>
+            </ul>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="terms-main container" id="main">
-      <div class="terms-grid">
-        <!-- Table of contents (left) -->
-        <aside class="terms-toc" id="toc" aria-label="Table of contents">
-          <h2>Contents</h2>
-          <nav>
-            <ul>
-              <li><a href="#agreement">1. Agreement to Terms</a></li>
-              <li><a href="#use">2. Use of the Website</a></li>
-              <li><a href="#tickets">3. Tickets & Bookings</a></li>
-              <li><a href="#visits">4. Visiting Rules & Safety</a></li>
-              <li><a href="#membership">5. Memberships</a></li>
-              <li><a href="#donations">6. Donations</a></li>
-              <li><a href="#privacy">7. Privacy</a></li>
-              <li><a href="#liability">8. Limitation of Liability</a></li>
-              <li><a href="#intellectual">9. Intellectual Property</a></li>
-              <li><a href="#changes">10. Changes to Terms</a></li>
-              <li><a href="#contact-terms">11. Contact & Governing Law</a></li>
-            </ul>
-          </nav>
-        </aside>
-
-        <!-- Terms content (right) -->
-        <section class="terms-content" aria-labelledby="termsHeading">
-          <article id="agreement">
-            <h2>1. Agreement to Terms</h2>
-            <p>
-              These Terms &amp; Conditions ("Terms") govern your access to and
-              use of the Zoo Planet website and any related products, services,
-              or events provided by Zoo Planet. By accessing or using our
-              website, booking tickets, or visiting the zoo, you agree to be
-              bound by these Terms.
-            </p>
-          </article>
-
-          <article id="use">
-            <h2>2. Use of the Website</h2>
-            <p>
-              You agree to use this website only for lawful purposes. You must
-              not use the website to upload, post, or transmit any unlawful,
-              harmful, or offensive content. You must not interfere with the
-              website's operation or security.
-            </p>
-            <ul>
-              <li>
-                Do not attempt to probe, scan, or test system or network
-                vulnerability;
-              </li>
-              <li>
-                Do not use robots, scrapers or automated tools except where
-                explicitly permitted;
-              </li>
-              <li>
-                Keep your account credentials secure if you create an account on
-                our site.
-              </li>
-            </ul>
-          </article>
-
-          <article id="tickets">
-            <h2>3. Tickets & Bookings</h2>
-            <p>
-              All ticket purchases made through the website are subject to
-              availability and these terms. When you buy a ticket you enter a
-              contract with Zoo Planet.
-            </p>
-            <h3>Refunds & Cancellations</h3>
-            <p>
-              Refunds are available up to 48 hours before the visit date unless
-              otherwise specified. Service fees are non-refundable. For
-              cancellations due to severe weather or unforeseen circumstances,
-              Zoo Planet may offer rescheduling or refunds at its discretion.
-            </p>
-            <h3>Entry Conditions</h3>
-            <p>
-              Tickets are valid only for the date and times shown. Entry may be
-              refused for guests who do not comply with zoo rules or local law.
-            </p>
-          </article>
-
-          <article id="visits">
-            <h2>4. Visiting Rules & Safety</h2>
-            <p>
-              For the safety of visitors and animals, you must comply with all
-              site rules and staff instructions. Failure to follow rules may
-              result in removal from the premises without refund.
-            </p>
-            <ul>
-              <li>
-                Do not feed or touch animals unless in a supervised experience;
-              </li>
-              <li>Stay within designated paths and viewing areas;</li>
-              <li>Children must be supervised at all times;</li>
-              <li>
-                Pets are not permitted unless explicitly allowed for specific
-                events.
-              </li>
-            </ul>
-          </article>
-
-          <article id="membership">
-            <h2>5. Memberships</h2>
-            <p>
-              Membership terms vary by plan. Memberships grant benefits subject
-              to the membership level and are non-transferable. Membership
-              benefits and pricing may change — existing members will be
-              notified with reasonable notice.
-            </p>
-            <p>
-              For membership cancellations, see the membership policy on our
-              Membership page.
-            </p>
-          </article>
-
-          <article id="donations">
-            <h2>6. Donations & Grants</h2>
-            <p>
-              Donations are used to support our conservation, education and
-              animal care programs. Donations are non-refundable unless
-              otherwise specified in the donation campaign terms.
-            </p>
-          </article>
-
-          <article id="privacy">
-            <h2>7. Privacy</h2>
-            <p>
-              We collect and process personal data as described in our Privacy
-              Policy. By using our services you consent to that policy.
-              Sensitive personal data will be handled in accordance with
-              applicable laws.
-            </p>
-            <p>
-              For details, see our <a href="privacy.html">Privacy Policy</a>.
-            </p>
-          </article>
-
-          <article id="liability">
-            <h2>8. Limitation of Liability</h2>
-            <p>
-              To the extent permitted by law, Zoo Planet and its officers, staff
-              and partners will not be liable for indirect or consequential
-              losses arising out of or in connection with use of the website,
-              attendance at the zoo, or reliance on information provided on the
-              site.
-            </p>
-          </article>
-
-          <article id="intellectual">
-            <h2>9. Intellectual Property</h2>
-            <p>
-              All content on this website — text, images, logos, and designs —
-              is owned or licensed by Zoo Planet and protected by copyright and
-              trademark laws. You may not reproduce, distribute, or create
-              derivative works without written permission.
-            </p>
-          </article>
-
-          <article id="changes">
-            <h2>10. Changes to Terms</h2>
-            <p>
-              Zoo Planet may update these Terms from time to time. We will post
-              the revised Terms on this page and indicate the effective date.
-              Continued use of the website after changes indicates acceptance of
-              the updated Terms.
-            </p>
-          </article>
-
-          <article id="contact-terms">
-            <h2>11. Contact & Governing Law</h2>
-            <p>
-              If you have questions about these Terms, contact us at
-              <a href="mailto:info@zoo-planet.example"
-                >info@zoo-planet.example</a
-              >.
-            </p>
-            <p>
-              These Terms are governed by the laws of the jurisdiction where Zoo
-              Planet operates. Disputes will be handled in local courts as
-              applicable.
-            </p>
-          </article>
-
-          <!-- Acceptance / Last updated -->
-          <section class="terms-meta">
-            <p class="last-updated">
-              <strong>Last updated:</strong>
-              <span id="terms-updated">2025-01-01</span>
-            </p>
-
-            <div class="terms-actions">
-              <label class="accept">
-                <input type="checkbox" id="acceptTerms" /> I have read and
-                accept the Terms &amp; Conditions
-              </label>
-              <button id="continueBtn" class="btn btn-accent" disabled>
-                Continue
-              </button>
+    <!-- ==================== TERMS HERO ==================== -->
+    <section class="terms-hero">
+        <div class="terms-hero-overlay"></div>
+        <div class="container">
+            <div class="terms-hero-content fade-in-up">
+                <h1 class="terms-hero-title">Terms of Service</h1>
+                <p class="terms-hero-subtitle">
+                    Please read these terms carefully before using our services
+                </p>
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span>/</span>
+                    <span>Terms of Service</span>
+                </div>
+                <div class="last-updated">
+                    <i class="fas fa-calendar-alt"></i> Last Updated: January 6, 2026
+                </div>
             </div>
-          </section>
-        </section>
-      </div>
-    </main>
+        </div>
+    </section>
 
-    <!-- footer placeholder -->
-    <div id="footer-placeholder"></div>
-    <script src="js/footer.js" defer></script>
+    <!-- ==================== QUICK ACCEPTANCE ==================== -->
+    <section class="section acceptance-section">
+        <div class="container">
+            <div class="acceptance-box animate-on-scroll">
+                <div class="acceptance-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="acceptance-content">
+                    <h3>Agreement to Terms</h3>
+                    <p>By accessing or using Zoo Planet's website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.</p>
+                </div>
+                <div class="acceptance-actions">
+                    <button class="btn btn-primary" id="acceptTerms">
+                        <i class="fas fa-check"></i> I Accept
+                    </button>
+                    <button class="btn btn-outline" id="downloadTerms">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- shared scripts -->
-    <script src="js/nav.js" defer></script>
+    <!-- ==================== TERMS CONTENT ==================== -->
+    <section class="section terms-content-section">
+        <div class="container">
+            <div class="terms-layout">
+                
+                <!-- Sidebar Navigation (Desktop) -->
+                <aside class="terms-sidebar">
+                    <div class="sidebar-sticky">
+                        <h3 class="sidebar-title">Table of Contents</h3>
+                        <nav class="sidebar-nav" id="sidebarNav">
+                            <a href="#section-1" class="sidebar-link active">Definitions</a>
+                            <a href="#section-2" class="sidebar-link">Use License</a>
+                            <a href="#section-3" class="sidebar-link">User Accounts</a>
+                            <a href="#section-4" class="sidebar-link">Ticket & Booking Policy</a>
+                            <a href="#section-5" class="sidebar-link">Payment Terms</a>
+                            <a href="#section-6" class="sidebar-link">Cancellation & Refunds</a>
+                            <a href="#section-7" class="sidebar-link">User Conduct</a>
+                            <a href="#section-8" class="sidebar-link">Intellectual Property</a>
+                            <a href="#section-9" class="sidebar-link">Limitation of Liability</a>
+                            <a href="#section-10" class="sidebar-link">Governing Law</a>
+                            <a href="#section-11" class="sidebar-link">Changes to Terms</a>
+                            <a href="#section-12" class="sidebar-link">Contact Information</a>
+                        </nav>
 
-    <!-- page script -->
-    <script src="js/terms.js" defer></script>
-  </body>
+                        <div class="sidebar-help">
+                            <i class="fas fa-life-ring"></i>
+                            <h4>Need Help?</h4>
+                            <p>Our support team is here to assist you</p>
+                            <a href="contact.html" class="btn btn-primary btn-sm">Get Support</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="terms-main">
+                    
+                    <!-- Section 1: Definitions -->
+                    <article class="terms-section animate-on-scroll" id="section-1">
+                        <div class="section-number">01</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-book"></i> Definitions
+                        </h2>
+                        <p class="section-intro">
+                            For the purposes of these Terms of Service:
+                        </p>
+
+                        <div class="definition-list">
+                            <div class="definition-item">
+                                <strong>"Company"</strong>
+                                <p>Refers to Zoo Planet, located at 123 Zoo Lane, Wildlife City, CA 90210.</p>
+                            </div>
+                            <div class="definition-item">
+                                <strong>"Services"</strong>
+                                <p>Refers to all services provided by Zoo Planet, including but not limited to zoo admission, educational programs, events, and online platform access.</p>
+                            </div>
+                            <div class="definition-item">
+                                <strong>"User" or "You"</strong>
+                                <p>Refers to the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service.</p>
+                            </div>
+                            <div class="definition-item">
+                                <strong>"Website"</strong>
+                                <p>Refers to Zoo Planet's website accessible at www.zooplanet.com</p>
+                            </div>
+                            <div class="definition-item">
+                                <strong>"Content"</strong>
+                                <p>Refers to all text, images, videos, audio, or other materials available through our Services.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Section 2: Use License -->
+                    <article class="terms-section animate-on-scroll" id="section-2">
+                        <div class="section-number">02</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-key"></i> Use License
+                        </h2>
+                        <p>
+                            Permission is granted to temporarily access the materials on Zoo Planet's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                        </p>
+
+                        <ul class="terms-list">
+                            <li><i class="fas fa-times-circle"></i> Modify or copy the materials</li>
+                            <li><i class="fas fa-times-circle"></i> Use the materials for any commercial purpose or public display</li>
+                            <li><i class="fas fa-times-circle"></i> Attempt to decompile or reverse engineer any software on Zoo Planet's website</li>
+                            <li><i class="fas fa-times-circle"></i> Remove any copyright or proprietary notations from the materials</li>
+                            <li><i class="fas fa-times-circle"></i> Transfer the materials to another person or "mirror" the materials on any other server</li>
+                        </ul>
+
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Important:</strong> This license shall automatically terminate if you violate any of these restrictions and may be terminated by Zoo Planet at any time.</p>
+                        </div>
+                    </article>
+
+                    <!-- Section 3: User Accounts -->
+                    <article class="terms-section animate-on-scroll" id="section-3">
+                        <div class="section-number">03</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-user-circle"></i> User Accounts
+                        </h2>
+                        <p>
+                            When you create an account with us, you must provide accurate, complete, and current information at all times.
+                        </p>
+
+                        <h3>Account Responsibilities</h3>
+                        <div class="responsibility-grid">
+                            <div class="responsibility-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Security</h4>
+                                <p>You are responsible for safeguarding your password and any activities under your account</p>
+                            </div>
+                            <div class="responsibility-card">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h4>Notification</h4>
+                                <p>Immediately notify us of any unauthorized use of your account</p>
+                            </div>
+                            <div class="responsibility-card">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Accuracy</h4>
+                                <p>Keep your account information accurate and up-to-date</p>
+                            </div>
+                            <div class="responsibility-card">
+                                <i class="fas fa-ban"></i>
+                                <h4>No Sharing</h4>
+                                <p>Do not share your account credentials with others</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <i class="fas fa-info-circle"></i>
+                            <p>We reserve the right to suspend or terminate your account if any information provided proves to be inaccurate or incomplete.</p>
+                        </div>
+                    </article>
+
+                    <!-- Section 4: Ticket & Booking Policy -->
+                    <article class="terms-section animate-on-scroll" id="section-4">
+                        <div class="section-number">04</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-ticket-alt"></i> Ticket & Booking Policy
+                        </h2>
+                        
+                        <h3>Ticket Purchase</h3>
+                        <p>All ticket purchases are subject to availability and confirmation. Zoo Planet reserves the right to refuse or cancel any booking at any time.</p>
+
+                        <div class="policy-table">
+                            <div class="policy-row policy-header">
+                                <div class="policy-cell">Ticket Type</div>
+                                <div class="policy-cell">Validity</div>
+                                <div class="policy-cell">Transferable</div>
+                                <div class="policy-cell">Refundable</div>
+                            </div>
+                            <div class="policy-row">
+                                <div class="policy-cell" data-label="Ticket Type">Standard Admission</div>
+                                <div class="policy-cell" data-label="Validity">Single Day</div>
+                                <div class="policy-cell" data-label="Transferable"><i class="fas fa-check text-success"></i> Yes</div>
+                                <div class="policy-cell" data-label="Refundable"><i class="fas fa-check text-success"></i> Yes (24h)</div>
+                            </div>
+                            <div class="policy-row">
+                                <div class="policy-cell" data-label="Ticket Type">Annual Membership</div>
+                                <div class="policy-cell" data-label="Validity">365 Days</div>
+                                <div class="policy-cell" data-label="Transferable"><i class="fas fa-times text-danger"></i> No</div>
+                                <div class="policy-cell" data-label="Refundable"><i class="fas fa-check text-success"></i> Yes (7 days)</div>
+                            </div>
+                            <div class="policy-row">
+                                <div class="policy-cell" data-label="Ticket Type">Special Events</div>
+                                <div class="policy-cell" data-label="Validity">Event Date</div>
+                                <div class="policy-cell" data-label="Transferable"><i class="fas fa-times text-danger"></i> No</div>
+                                <div class="policy-cell" data-label="Refundable"><i class="fas fa-times text-danger"></i> No</div>
+                            </div>
+                        </div>
+
+                        <h3>Admission Rules</h3>
+                        <ul class="terms-list">
+                            <li><i class="fas fa-check"></i> Valid ticket or membership card must be presented at entrance</li>
+                            <li><i class="fas fa-check"></i> Children under 2 years old receive free admission</li>
+                            <li><i class="fas fa-check"></i> Tickets are non-refundable after the visit date</li>
+                            <li><i class="fas fa-check"></i> Lost or stolen tickets cannot be replaced</li>
+                        </ul>
+                    </article>
+
+                    <!-- Section 5: Payment Terms -->
+                    <article class="terms-section animate-on-scroll" id="section-5">
+                        <div class="section-number">05</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-credit-card"></i> Payment Terms
+                        </h2>
+                        <p>
+                            All payments must be made in full at the time of booking unless otherwise agreed in writing.
+                        </p>
+
+                        <h3>Accepted Payment Methods</h3>
+                        <div class="payment-methods">
+                            <div class="payment-card">
+                                <i class="fab fa-cc-visa"></i>
+                                <span>Visa</span>
+                            </div>
+                            <div class="payment-card">
+                                <i class="fab fa-cc-mastercard"></i>
+                                <span>Mastercard</span>
+                            </div>
+                            <div class="payment-card">
+                                <i class="fab fa-cc-amex"></i>
+                                <span>American Express</span>
+                            </div>
+                            <div class="payment-card">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-card">
+                                <i class="fab fa-google-pay"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="payment-card">
+                                <i class="fab fa-apple-pay"></i>
+                                <span>Apple Pay</span>
+                            </div>
+                        </div>
+
+                        <div class="security-badge">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <strong>Secure Payment Processing</strong>
+                                <p>All transactions are encrypted and processed securely through our payment partners</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Section 6: Cancellation & Refunds -->
+                    <article class="terms-section animate-on-scroll" id="section-6">
+                        <div class="section-number">06</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-undo"></i> Cancellation & Refunds
+                        </h2>
+                        
+                        <h3>Refund Policy</h3>
+                        <div class="refund-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <strong>24+ hours before visit</strong>
+                                    <p>Full refund (100%)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <strong>12-24 hours before visit</strong>
+                                    <p>Partial refund (50%)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <strong>Less than 12 hours</strong>
+                                    <p>No refund</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <i class="fas fa-clock"></i>
+                            <p><strong>Processing Time:</strong> Refunds are typically processed within 5-7 business days and will appear on your original payment method.</p>
+                        </div>
+                    </article>
+
+                    <!-- Section 7: User Conduct -->
+                    <article class="terms-section animate-on-scroll" id="section-7">
+                        <div class="section-number">07</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-gavel"></i> User Conduct
+                        </h2>
+                        <p>
+                            While visiting Zoo Planet or using our services, you agree not to:
+                        </p>
+
+                        <div class="conduct-grid">
+                            <div class="conduct-item prohibited">
+                                <i class="fas fa-ban"></i>
+                                <h4>Prohibited Actions</h4>
+                                <ul>
+                                    <li>Harass or harm animals in any way</li>
+                                    <li>Damage property or facilities</li>
+                                    <li>Use offensive or abusive language</li>
+                                    <li>Engage in illegal activities</li>
+                                    <li>Disrupt other visitors' experience</li>
+                                </ul>
+                            </div>
+                            <div class="conduct-item required">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Required Behavior</h4>
+                                <ul>
+                                    <li>Follow all posted rules and signage</li>
+                                    <li>Respect staff instructions</li>
+                                    <li>Supervise children at all times</li>
+                                    <li>Dispose of trash properly</li>
+                                    <li>Maintain safe distance from animals</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Warning:</strong> Violation of these conduct rules may result in immediate removal from the premises without refund and possible legal action.</p>
+                        </div>
+                    </article>
+
+                    <!-- Section 8: Intellectual Property -->
+                    <article class="terms-section animate-on-scroll" id="section-8">
+                        <div class="section-number">08</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-copyright"></i> Intellectual Property
+                        </h2>
+                        <p>
+                            All content on this website, including text, graphics, logos, images, and software, is the property of Zoo Planet and is protected by copyright and trademark laws.
+                        </p>
+
+                        <h3>Copyright Notice</h3>
+                        <div class="copyright-box">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>&copy; 2026 Zoo Planet. All Rights Reserved.</p>
+                            <p>Unauthorized use or reproduction of any content is strictly prohibited.</p>
+                        </div>
+
+                        <h3>User-Generated Content</h3>
+                        <p>By submitting content (photos, reviews, comments) to Zoo Planet, you grant us a non-exclusive, royalty-free, worldwide license to use, reproduce, and display such content for promotional purposes.</p>
+                    </article>
+
+                    <!-- Section 9: Limitation of Liability -->
+                    <article class="terms-section animate-on-scroll" id="section-9">
+                        <div class="section-number">09</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-balance-scale"></i> Limitation of Liability
+                        </h2>
+                        <p>
+                            Zoo Planet shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.
+                        </p>
+
+                        <div class="liability-cards">
+                            <div class="liability-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Personal Injury</h4>
+                                <p>Visitors assume all risks associated with zoo visits. We are not liable for injuries except in cases of gross negligence.</p>
+                            </div>
+                            <div class="liability-card">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h4>Property Loss</h4>
+                                <p>We are not responsible for lost, stolen, or damaged personal property on premises.</p>
+                            </div>
+                            <div class="liability-card">
+                                <i class="fas fa-cloud"></i>
+                                <h4>Weather Events</h4>
+                                <p>Zoo Planet is not liable for closures or disruptions due to weather or natural disasters.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Section 10: Governing Law -->
+                    <article class="terms-section animate-on-scroll" id="section-10">
+                        <div class="section-number">10</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-landmark"></i> Governing Law
+                        </h2>
+                        <p>
+                            These Terms shall be governed by and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law provisions.
+                        </p>
+
+                        <h3>Dispute Resolution</h3>
+                        <div class="dispute-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Informal Resolution</h4>
+                                    <p>Contact our support team to resolve disputes amicably</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Mediation</h4>
+                                    <p>If informal resolution fails, mediation may be required</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Arbitration</h4>
+                                    <p>Final disputes will be resolved through binding arbitration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Section 11: Changes to Terms -->
+                    <article class="terms-section animate-on-scroll" id="section-11">
+                        <div class="section-number">11</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-sync-alt"></i> Changes to Terms
+                        </h2>
+                        <p>
+                            We reserve the right to modify or replace these Terms at any time. Material changes will be notified to users via email or prominent notice on our website at least 30 days prior to the changes taking effect.
+                        </p>
+
+                        <div class="info-box">
+                            <i class="fas fa-bell"></i>
+                            <p><strong>Stay Informed:</strong> Your continued use of the Service after any changes indicates your acceptance of the new Terms.</p>
+                        </div>
+                    </article>
+
+                    <!-- Section 12: Contact Information -->
+                    <article class="terms-section animate-on-scroll" id="section-12">
+                        <div class="section-number">12</div>
+                        <h2 class="section-title">
+                            <i class="fas fa-envelope-open-text"></i> Contact Information
+                        </h2>
+                        <p>
+                            If you have any questions about these Terms of Service, please contact us:
+                        </p>
+
+                        <div class="contact-grid">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>legal@zooplanet.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address</strong>
+                                    <p>123 Zoo Lane, Wildlife City, CA 90210</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Business Hours</strong>
+                                    <p>Mon-Fri: 9:00 AM - 5:00 PM PST</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="final-cta">
+                            <h3>Need Assistance?</h3>
+                            <p>Our legal and support teams are ready to help answer your questions</p>
+                            <a href="contact.html" class="btn btn-primary btn-large">
+                                <i class="fas fa-comments"></i> Contact Support
+                            </a>
+                        </div>
+                    </article>
+
+                </main>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER (Same as all pages) ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> Zoo Planet</h3>
+                    <p>Bringing you closer to nature's wonders since 2020</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Zoo Lane, Wildlife City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@zooplanet.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hours</h3>
+                    <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    <p><i class="far fa-clock"></i> Sat - Sun: 8:00 AM - 7:00 PM</p>
+                    <p><i class="far fa-clock"></i> Holidays: 10:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Zoo Planet. All rights reserved. | 
+                   <a href="privacy.html">Privacy Policy</a> | 
+                   <a href="terms.html">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- UI JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/terms.js"></script>
+</body>
 </html>

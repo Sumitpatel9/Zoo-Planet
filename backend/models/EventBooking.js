@@ -1,44 +1,45 @@
 const mongoose = require("mongoose");
 
-const eventBookingSchema = new mongoose.Schema( {
-    eventName: {
+const eventBookingSchema = new mongoose.Schema(
+  {
+    eventName: { type: String, required: true, trim: true },
+    eventType: {
       type: String,
       required: true,
+      enum: ["birthday", "corporate", "school", "wedding"],
     },
-
-    eventDate: {
+    eventDate: { type: Date, required: true },
+    preferredTime: {
       type: String,
       required: true,
+      enum: ["morning", "afternoon", "evening"],
     },
-
-    participants: {
-      type: Number,
-      min: 1,
-      required: true,
-    },
-
-    fullName: {
+    guests: { type: Number, required: true, min: 1, max: 200 },
+    contactName: { type: String, required: true, trim: true },
+    email: { type: String, required: true, trim: true, lowercase: true },
+    phone: { type: String, required: true, trim: true },
+    specialRequests: { type: String, default: "" },
+    baseAmount: { type: Number, required: true, min: 0 },
+    totalAmount: { type: Number, required: true, min: 0 },
+    paymentMethod: {
       type: String,
       required: true,
+      enum: ["card", "upi", "netbanking", "wallet"],
     },
-
-    email: {
+    paymentStatus: {
       type: String,
-      required: true,
+      enum: ["pending", "completed", "failed", "refunded"],
+      default: "completed",
     },
-
-    phone: {
+    status: {
       type: String,
-      required: true,
+      enum: ["pending", "confirmed", "cancelled", "completed"],
+      default: "confirmed",
     },
-
-    specialRequirements: String,
-
-    termsAccepted: {
-      type: Boolean,
-      required: true,
-    },
+    bookingReference: { type: String }, // ✅ No unique constraint for now
+    termsAccepted: { type: Boolean, required: true, default: true },
   },
-  { timestamps: true });
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("EventBooking", eventBookingSchema);

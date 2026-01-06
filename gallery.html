@@ -3,297 +3,571 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
-    <title>Zoo Planet - Explore Wildlife Wonders</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Explore our amazing collection of wildlife photos at Zoo Planet Gallery"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/gallery.css" />
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-  </head>
+    <title>Gallery - Zoo Planet</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+  </head>
   <body>
-    <!-- START: Site Navbar (paste into every HTML file right after <body>) -->
-    <nav class="site-navbar" role="navigation" aria-label="Main Navigation">
-      <div class="nav-container">
-        <a class="brand" href="index.html" aria-label="Zoo Planet home">
-          <img
-            src="../img/navlogo.png"
-            alt="Zoo Planet logo"
-            class="brand-logo"
-          />
-          <span class="brand-text">Zoo Planet</span>
+    <!-- ==================== HEADER (Same as Index) ==================== -->
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
         </a>
 
-        <button
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <span class="nav-toggle-icon">☰</span>
-        </button>
-
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="ticket.html">Tickets</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link active">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li><a href="login.html" class="btn-login">LOGIN</a></li>
         </ul>
-      </div>
-    </nav>
-    <!-- END: Site Navbar -->
-    <section id="gallery" class="gallery-section">
-      <!-- <a href="index.html" class="back-button">
-            <i class="fas fa-arrow-left"></i> Back to Home
-        </a> -->
-      <!-- <div class="dropdown-button">
-            <a><i class="fas fa-arrow-left"></i> Back to...</a>
-            <div class="dropdown-menu">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="ticket.html"><i class="fas fa-ticket-alt"></i> Tickets</a>
-                <a href="service.html"><i class="fas fa-envelope"></i> Service</a>
-                <a href="contact.html"><i class="fas fa-image"></i> Contact</a>
-                <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
-            </div>
-        </div> -->
 
-      <!-- Hero Background with Title -->
-      <div class="gallery-hero">
-        <h1>Explore Our Wildlife</h1>
-        <p>Discover the amazing animals at Zoo Planet</p>
-      </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
 
-      <div class="gallery">
-        <h2>Animal Gallery</h2>
-        <div class="gallery-filters">
-          <button class="filter-btn active" data-filter="all">
-            All Animals
-          </button>
-          <button class="filter-btn" data-filter="mammals">Mammals</button>
-          <button class="filter-btn" data-filter="birds">Birds</button>
-          <button class="filter-btn" data-filter="reptiles">Reptiles</button>
-          <button class="filter-btn" data-filter="aquatic">Aquatic</button>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Mammals -->
-          <div class="gallery-item mammals">
-            <img
-              src="/img/africanlion.png"
-              alt="African Lion"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?lion"
-            />
-            <div class="animal-info">
-              <h3>African Lion</h3>
-              <span class="animal-category">Mammal</span>
-            </div>
-          </div>
-
-          <div class="gallery-item mammals">
-            <img
-              src="/img/giraffe.png"
-              alt="Giraffe"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?giraffe"
-            />
-            <div class="animal-info">
-              <h3>Giraffe</h3>
-              <span class="animal-category">Mammal</span>
-            </div>
-          </div>
-
-          <div class="gallery-item mammals">
-            <img
-              src="/img/africanelephant.png"
-              alt="African Elephant"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?elephant"
-            />
-            <div class="animal-info">
-              <h3>African Elephant</h3>
-              <span class="animal-category">Mammal</span>
-            </div>
-          </div>
-
-          <div class="gallery-item mammals">
-            <img
-              src="/img/panda.png"
-              alt="Giant Panda"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?panda"
-            />
-            <div class="animal-info">
-              <h3>Giant Panda</h3>
-              <span class="animal-category">Mammal</span>
-            </div>
-          </div>
-
-          <!-- Birds -->
-          <div class="gallery-item birds">
-            <img
-              src="/img/peacock.png"
-              alt="Indian Peacock"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?peacock"
-            />
-            <div class="animal-info">
-              <h3>Indian Peacock</h3>
-              <span class="animal-category">Bird</span>
-            </div>
-          </div>
-
-          <div class="gallery-item birds">
-            <img
-              src="/img/ScarletMacaw.png"
-              alt="Scarlet Macaw"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?parrot"
-            />
-            <div class="animal-info">
-              <h3>Scarlet Macaw</h3>
-              <span class="animal-category">Bird</span>
-            </div>
-          </div>
-
-          <div class="gallery-item birds">
-            <img
-              src="/img/Bald Eagle.png"
-              alt="Bald Eagle"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?eagle"
-            />
-            <div class="animal-info">
-              <h3>Bald Eagle</h3>
-              <span class="animal-category">Bird</span>
-            </div>
-          </div>
-
-          <div class="gallery-item birds">
-            <img
-              src="/img/Greater Flamingo.png"
-              alt="Greater Flamingo"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?flamingo"
-            />
-            <div class="animal-info">
-              <h3>Greater Flamingo</h3>
-              <span class="animal-category">Bird</span>
-            </div>
-          </div>
-
-          <!-- Reptiles -->
-          <div class="gallery-item reptiles">
-            <img
-              src="/img/Nile Crocodile.png"
-              alt="Nile Crocodile"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?crocodile"
-            />
-            <div class="animal-info">
-              <h3>Nile Crocodile</h3>
-              <span class="animal-category">Reptile</span>
-            </div>
-          </div>
-
-          <div class="gallery-item reptiles">
-            <img
-              src="/img/Burmese Python.png"
-              alt="Burmese Python"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?python"
-            />
-            <div class="animal-info">
-              <h3>Burmese Python</h3>
-              <span class="animal-category">Reptile</span>
-            </div>
-          </div>
-
-          <div class="gallery-item reptiles">
-            <img
-              src="/img/Komodo Dragon.png"
-              alt="Komodo Dragon"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?komodo"
-            />
-            <div class="animal-info">
-              <h3>Komodo Dragon</h3>
-              <span class="animal-category">Reptile</span>
-            </div>
-          </div>
-
-          <div class="gallery-item reptiles">
-            <img
-              src="/img/Green Sea Turtle.png"
-              alt="Green Sea Turtle"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?turtle"
-            />
-            <div class="animal-info">
-              <h3>Green Sea Turtle</h3>
-              <span class="animal-category">Reptile</span>
-            </div>
-          </div>
-
-          <!-- Aquatic -->
-          <div class="gallery-item aquatic">
-            <img
-              src="/img/Bottlenose Dolphin.png"
-              alt="Bottlenose Dolphin"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?dolphin"
-            />
-            <div class="animal-info">
-              <h3>Bottlenose Dolphin</h3>
-              <span class="animal-category">Aquatic</span>
-            </div>
-          </div>
-
-          <div class="gallery-item aquatic">
-            <img
-              src="/img/Emperor Penguin.png"
-              alt="Emperor Penguin"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?penguin"
-            />
-            <div class="animal-info">
-              <h3>Emperor Penguin</h3>
-              <span class="animal-category">Aquatic</span>
-            </div>
-          </div>
-
-          <div class="gallery-item aquatic">
-            <img
-              src="/img/Great White Shark.png"
-              alt="Great White Shark"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?shark"
-            />
-            <div class="animal-info">
-              <h3>Great White Shark</h3>
-              <span class="animal-category">Aquatic</span>
-            </div>
-          </div>
-
-          <div class="gallery-item aquatic">
-            <img
-              src="/img/Moon Jellyfish.png"
-              alt="Moon Jellyfish"
-              data-enlarged="https://source.unsplash.com/random/1200x800/?jellyfish"
-            />
-            <div class="animal-info">
-              <h3>Moon Jellyfish</h3>
-              <span class="animal-category">Aquatic</span>
-            </div>
+    <!-- ==================== GALLERY HERO ==================== -->
+    <section class="gallery-hero">
+      <div class="gallery-hero-overlay"></div>
+      <div class="container">
+        <div class="gallery-hero-content fade-in-up">
+          <h1 class="gallery-hero-title">Animal Gallery</h1>
+          <p class="gallery-hero-subtitle">
+            Browse through our stunning collection of wildlife photography
+          </p>
+          <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span>/</span>
+            <span>Gallery</span>
           </div>
         </div>
-      </div>
-
-      <!-- Lightbox Modal -->
-      <div class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightbox-img" />
-        <div class="lightbox-caption"></div>
       </div>
     </section>
 
-    <div id="footer-placeholder"></div>
+    <!-- ==================== FILTER SECTION ==================== -->
+    <section class="section filter-section">
+      <div class="container">
+        <div class="filter-wrapper">
+          <h3 class="filter-title">
+            <i class="fas fa-filter"></i> Filter by Category
+          </h3>
+          <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">
+              <i class="fas fa-th"></i> All Animals
+            </button>
+            <button class="filter-btn" data-filter="mammals">
+              <i class="fas fa-paw"></i> Mammals
+            </button>
+            <button class="filter-btn" data-filter="birds">
+              <i class="fas fa-dove"></i> Birds
+            </button>
+            <button class="filter-btn" data-filter="reptiles">
+              <i class="fas fa-dragon"></i> Reptiles
+            </button>
+            <button class="filter-btn" data-filter="aquatic">
+              <i class="fas fa-fish"></i> Aquatic
+            </button>
+            <button class="filter-btn" data-filter="endangered">
+              <i class="fas fa-heart"></i> Endangered
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ==================== GALLERY GRID ==================== -->
+    <section class="section gallery-section">
+      <div class="container">
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-item" data-category="mammals endangered">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=600&h=600&fit=crop"
+                alt="African Lion"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">African Lion</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=1200"
+                    data-title="African Lion"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+              <div class="gallery-badge endangered">Endangered</div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="gallery-item" data-category="mammals">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?w=600&h=600&fit=crop"
+                alt="Asian Elephant"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Asian Elephant</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?w=1200"
+                    data-title="Asian Elephant"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="gallery-item" data-category="mammals">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&h=600&fit=crop"
+                alt="Giraffe"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Giraffe</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1200"
+                    data-title="Giraffe"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+              <div class="gallery-badge new">New</div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="gallery-item" data-category="birds">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=600&h=600&fit=crop"
+                alt="Emperor Penguin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Emperor Penguin</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Birds
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=1200"
+                    data-title="Emperor Penguin"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 5 -->
+          <div class="gallery-item" data-category="mammals endangered">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=600&h=600&fit=crop"
+                alt="Panda Bear"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Giant Panda</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=1200"
+                    data-title="Giant Panda"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+              <div class="gallery-badge endangered">Endangered</div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 6 -->
+          <div class="gallery-item" data-category="mammals">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1549480017-d76466a4b7e8?w=600&h=600&fit=crop"
+                alt="Tiger"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Bengal Tiger</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1549480017-d76466a4b7e8?w=1200"
+                    data-title="Bengal Tiger"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 7 -->
+          <div class="gallery-item" data-category="birds">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=600&h=600&fit=crop"
+                alt="Macaw Parrot"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Macaw Parrot</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Birds
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=1200"
+                    data-title="Macaw Parrot"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 8 -->
+          <div class="gallery-item" data-category="reptiles">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1516728778615-2d590ea1855e?w=600&h=600&fit=crop"
+                alt="Chameleon"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Chameleon</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Reptiles
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1516728778615-2d590ea1855e?w=1200"
+                    data-title="Chameleon"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 9 -->
+          <div class="gallery-item" data-category="mammals">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=600&h=600&fit=crop"
+                alt="Zebra"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Zebra</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=1200"
+                    data-title="Zebra"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 10 -->
+          <div class="gallery-item" data-category="aquatic">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=600&fit=crop"
+                alt="Sea Turtle"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Sea Turtle</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Aquatic
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200"
+                    data-title="Sea Turtle"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 11 -->
+          <div class="gallery-item" data-category="birds">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600&h=600&fit=crop"
+                alt="Eagle"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Bald Eagle</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Birds
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=1200"
+                    data-title="Bald Eagle"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 12 -->
+          <div class="gallery-item" data-category="mammals">
+            <div class="gallery-item-inner">
+              <img
+                src="https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&h=600&fit=crop"
+                alt="Koala"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <h3 class="gallery-title">Koala</h3>
+                  <p class="gallery-category">
+                    <i class="fas fa-tag"></i> Mammals
+                  </p>
+                  <button
+                    class="gallery-btn"
+                    data-image="https://images.unsplash.com/photo-1574169208507-84376144848b?w=1200"
+                    data-title="Koala"
+                  >
+                    <i class="fas fa-search-plus"></i> View Full
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-lg">
+          <button class="btn btn-primary btn-large" id="loadMoreBtn">
+            <i class="fas fa-plus-circle"></i> Load More Animals
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LIGHTBOX MODAL ==================== -->
+    <div class="lightbox" id="lightbox">
+      <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close lightbox"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+      <button
+        class="lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Previous image"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="lightbox-content">
+        <img src="" alt="" id="lightboxImage" />
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
+    </div>
+
+    <!-- ==================== FOOTER (Same as Index) ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="fas fa-paw"></i> Zoo Planet</h3>
+            <p>Bringing you closer to nature's wonders since 2020</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html"
+                  ><i class="fas fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html"
+                  ><i class="fas fa-chevron-right"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Support Us</h3>
+            <ul>
+              <li>
+                <a href="donate.html"
+                  ><i class="fas fa-chevron-right"></i> Donate Now</a
+                >
+              </li>
+              <li>
+                <a href="service.html#memberships"
+                  ><i class="fas fa-chevron-right"></i> Memberships</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Volunteer</a
+                >
+              </li>
+              <li>
+                <a href="donate.html#impact"
+                  ><i class="fas fa-chevron-right"></i> Our Impact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Visit Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Zoo Lane, Wildlife City
+            </p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@zooplanet.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Hours</h3>
+            <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+            <p><i class="far fa-clock"></i> Sat - Sun: 8:00 AM - 7:00 PM</p>
+            <p><i class="far fa-clock"></i> Holidays: 10:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Zoo Planet. All rights reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- UI JavaScript -->
+    <!-- <script src="js/main.js"></script> -->
     <script src="js/gallery.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/footer.js"></script>
+
+    <!-- DO NOT MODIFY: Your backend scripts -->
+    <!-- <script src="backend.js"></script> -->
   </body>
 </html>

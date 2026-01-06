@@ -1,197 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About Us | Zoo Planet</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about Zoo Planet's mission, history, and commitment to wildlife conservation"
+    />
+    <title>About Us - Zoo Planet</title>
 
-  <!-- shared CSS -->
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/footer.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- page CSS -->
-  <link rel="stylesheet" href="css/about.css">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-  <!-- icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/about.css" />
+  </head>
+  <body>
+    <!-- ==================== HEADER (Same as all pages) ==================== -->
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
+        </a>
 
-  <!-- NAVBAR -->
-  <nav class="site-navbar" role="navigation" aria-label="Main Navigation">
-    <div class="nav-container">
-      <a class="brand" href="index.html" aria-label="Zoo Planet home">
-        <img class="brand-logo" src="img/navlogo.png" alt="Zoo Planet logo" />
-        <span class="brand-text">Zoo Planet</span>
-      </a>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link active">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li><a href="login.html" class="btn-login">LOGIN</a></li>
+        </ul>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-icon">☰</span>
-      </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="ticket.html">Tickets</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="service.html">Services</a></li>
-        <li><a href="visit.html">Plan Visit</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- ==================== ABOUT HERO ==================== -->
+    <section class="about-hero">
+      <div class="about-hero-overlay"></div>
+      <div class="container">
+        <div class="about-hero-content fade-in-up">
+          <h1 class="about-hero-title">About Zoo Planet</h1>
+          <p class="about-hero-subtitle">
+            Dedicated to wildlife conservation, education, and creating
+            unforgettable experiences
+          </p>
+          <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span>/</span>
+            <span>About</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- HERO -->
-  <header class="about-hero" role="banner">
-    <div class="hero-inner">
-      <h1>About Zoo Planet</h1>
-      <p>Connecting people & wildlife — conservation, education and unforgettable experiences.</p>
-      <a href="donate.html" class="btn btn-accent hero-cta">Support Our Work</a>
-    </div>
-  </header>
+    <!-- ==================== MISSION SECTION ==================== -->
+    <section class="section mission-section">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-image animate-on-scroll">
+            <img
+              src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=800&h=600&fit=crop"
+              alt="Wildlife Conservation"
+              loading="lazy"
+            />
+            <div class="mission-badge">
+              <i class="fas fa-award"></i>
+              <span>25+ Years</span>
+            </div>
+          </div>
+          <div class="mission-content animate-on-scroll">
+            <h2 class="section-title" style="text-align: left">Our Mission</h2>
+            <p class="mission-text">
+              At Zoo Planet, we are committed to inspiring people to care about
+              wildlife and the natural world. Our mission extends beyond
+              entertainment – we strive to be leaders in conservation,
+              education, and research.
+            </p>
+            <p class="mission-text">
+              Through innovative programs and partnerships, we work tirelessly
+              to protect endangered species, preserve natural habitats, and
+              educate the next generation of conservation champions.
+            </p>
+            <div class="mission-values">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <h4>Conservation</h4>
+                <p>Protecting endangered species and habitats</p>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h4>Education</h4>
+                <p>Inspiring learning through experience</p>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-microscope"></i>
+                </div>
+                <h4>Research</h4>
+                <p>Advancing wildlife science</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <main class="about-main">
+    <!-- ==================== STORY SECTION ==================== -->
+    <section class="section story-section bg-light">
+      <div class="container">
+        <div class="text-center mb-lg">
+          <h2 class="section-title animate-on-scroll">Our Story</h2>
+          <p class="section-subtitle animate-on-scroll">
+            A journey of passion and dedication
+          </p>
+        </div>
 
-    <!-- Mission & Vision -->
-    <section class="mission-section container">
-      <div class="mission-grid">
-        <div class="mission-text">
-          <h2>Our Mission</h2>
-          <p>We protect wildlife and habitats through rescue, rehabilitation, education and community engagement — inspiring visitors to care for nature.</p>
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item animate-on-scroll">
+            <div class="timeline-marker">
+              <i class="fas fa-flag"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2000</div>
+              <h3 class="timeline-title">The Beginning</h3>
+              <p class="timeline-text">
+                Zoo Planet opened its doors with just 50 animals and a dream to
+                create a world-class conservation center.
+              </p>
+            </div>
+          </div>
 
-          <h3>Our Vision</h3>
-          <p>To build a future where people and wildlife thrive together.</p>
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item animate-on-scroll">
+            <div class="timeline-marker">
+              <i class="fas fa-tree"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2005</div>
+              <h3 class="timeline-title">Expansion & Growth</h3>
+              <p class="timeline-text">
+                Expanded to 100 acres and introduced our first successful
+                breeding program for endangered species.
+              </p>
+            </div>
+          </div>
 
-          <div class="cta-row">
-            <a class="btn btn-secondary" href="volunteer.html">Become a Volunteer</a>
-            <a class="btn btn-accent" href="service.html#membership-info">Join as Member</a>
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item animate-on-scroll">
+            <div class="timeline-marker">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2010</div>
+              <h3 class="timeline-title">Recognition</h3>
+              <p class="timeline-text">
+                Received international recognition for our conservation efforts
+                and wildlife rehabilitation programs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4 -->
+          <div class="timeline-item animate-on-scroll">
+            <div class="timeline-marker">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2015</div>
+              <h3 class="timeline-title">Global Partnerships</h3>
+              <p class="timeline-text">
+                Established partnerships with conservation organizations
+                worldwide to protect endangered species.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 5 -->
+          <div class="timeline-item animate-on-scroll">
+            <div class="timeline-marker">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2020</div>
+              <h3 class="timeline-title">Innovation</h3>
+              <p class="timeline-text">
+                Launched cutting-edge virtual education programs and
+                state-of-the-art animal care facilities.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 6 -->
+          <div class="timeline-item animate-on-scroll">
+            <div class="timeline-marker">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026</div>
+              <h3 class="timeline-title">Today & Beyond</h3>
+              <p class="timeline-text">
+                Home to 500+ species with over 50,000 annual visitors, leading
+                the way in wildlife conservation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEAM SECTION ==================== -->
+    <section class="section team-section">
+      <div class="container">
+        <div class="text-center mb-lg">
+          <h2 class="section-title animate-on-scroll">Meet Our Team</h2>
+          <p class="section-subtitle animate-on-scroll">
+            Passionate experts dedicated to wildlife care
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <div class="team-card animate-on-scroll">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop"
+                alt="Dr. Sarah Mitchell"
+                loading="lazy"
+              />
+              <div class="team-overlay">
+                <div class="team-social">
+                  <a href="#" aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                  <a href="#" aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" aria-label="Email"
+                    ><i class="fas fa-envelope"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-content">
+              <h3 class="team-name">Dr. Sarah Mitchell</h3>
+              <p class="team-role">Director of Conservation</p>
+              <p class="team-bio">
+                25+ years of experience in wildlife conservation and veterinary
+                science.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-card animate-on-scroll">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+                alt="James Rodriguez"
+                loading="lazy"
+              />
+              <div class="team-overlay">
+                <div class="team-social">
+                  <a href="#" aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                  <a href="#" aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" aria-label="Email"
+                    ><i class="fas fa-envelope"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-content">
+              <h3 class="team-name">James Rodriguez</h3>
+              <p class="team-role">Head Zookeeper</p>
+              <p class="team-bio">
+                Expert in animal behavior with specialty in big cats and
+                primates.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-card animate-on-scroll">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                alt="Emily Chen"
+                loading="lazy"
+              />
+              <div class="team-overlay">
+                <div class="team-social">
+                  <a href="#" aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                  <a href="#" aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" aria-label="Email"
+                    ><i class="fas fa-envelope"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-content">
+              <h3 class="team-name">Emily Chen</h3>
+              <p class="team-role">Education Coordinator</p>
+              <p class="team-bio">
+                Passionate educator developing innovative wildlife learning
+                programs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-card animate-on-scroll">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop"
+                alt="Dr. Michael Brown"
+                loading="lazy"
+              />
+              <div class="team-overlay">
+                <div class="team-social">
+                  <a href="#" aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                  <a href="#" aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" aria-label="Email"
+                    ><i class="fas fa-envelope"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-content">
+              <h3 class="team-name">Dr. Michael Brown</h3>
+              <p class="team-role">Wildlife Veterinarian</p>
+              <p class="team-bio">
+                Specialist in exotic animal medicine and emergency care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ACHIEVEMENTS SECTION ==================== -->
+    <section class="section achievements-section">
+      <div class="achievements-overlay"></div>
+      <div class="container">
+        <div class="text-center mb-lg">
+          <h2 class="section-title" style="color: white">Our Achievements</h2>
+          <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9)">
+            Making a difference in wildlife conservation
+          </p>
+        </div>
+
+        <div class="achievements-grid">
+          <div class="achievement-card animate-on-scroll">
+            <div class="achievement-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <div class="achievement-number" data-target="500">0</div>
+            <p class="achievement-label">Animal Species</p>
+          </div>
+
+          <div class="achievement-card animate-on-scroll">
+            <div class="achievement-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="achievement-number" data-target="50">0</div>
+            <p class="achievement-label">Endangered Species Saved</p>
+          </div>
+
+          <div class="achievement-card animate-on-scroll">
+            <div class="achievement-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="achievement-number" data-target="50000">0</div>
+            <p class="achievement-label">Annual Visitors</p>
+          </div>
+
+          <div class="achievement-card animate-on-scroll">
+            <div class="achievement-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="achievement-number" data-target="150">0</div>
+            <p class="achievement-label">Conservation Projects</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VISIT CTA SECTION ==================== -->
+    <section class="section visit-cta-section bg-light">
+      <div class="container">
+        <div class="visit-cta-content animate-on-scroll">
+          <div class="visit-cta-text">
+            <h2 class="visit-cta-title">Ready to Experience Wildlife?</h2>
+            <p class="visit-cta-subtitle">
+              Visit us today and be part of our conservation journey
+            </p>
+          </div>
+          <div class="visit-cta-buttons">
+            <a href="ticket.html" class="btn btn-primary btn-large">
+              <i class="fas fa-ticket-alt"></i> Plan Your Visit
+            </a>
+            <a href="gallery.html" class="btn btn-secondary btn-large">
+              <i class="fas fa-images"></i> View Gallery
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER (Same as all pages) ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="fas fa-paw"></i> Zoo Planet</h3>
+            <p>Bringing you closer to nature's wonders since 2020</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html"
+                  ><i class="fas fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html"
+                  ><i class="fas fa-chevron-right"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Support Us</h3>
+            <ul>
+              <li>
+                <a href="donate.html"
+                  ><i class="fas fa-chevron-right"></i> Donate Now</a
+                >
+              </li>
+              <li>
+                <a href="service.html#memberships"
+                  ><i class="fas fa-chevron-right"></i> Memberships</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Volunteer</a
+                >
+              </li>
+              <li>
+                <a href="donate.html#impact"
+                  ><i class="fas fa-chevron-right"></i> Our Impact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Visit Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Zoo Lane, Wildlife City
+            </p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@zooplanet.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Hours</h3>
+            <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+            <p><i class="far fa-clock"></i> Sat - Sun: 8:00 AM - 7:00 PM</p>
+            <p><i class="far fa-clock"></i> Holidays: 10:00 AM - 5:00 PM</p>
           </div>
         </div>
 
-        <div class="mission-image">
-          <img src="https://source.unsplash.com/800x600/?conservation,wildlife" alt="Conservation" />
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Zoo Planet. All rights reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <!-- Stats -->
-    <section class="stats-section">
-      <div class="container stats-grid">
-        <div class="stat">
-          <div class="stat-num" data-target="250000">0</div>
-          <div class="stat-label">Annual Visitors</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-target="120">0</div>
-          <div class="stat-label">Species Protected</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-target="4500">0</div>
-          <div class="stat-label">Kids Educated (yr)</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-target="35">0</div>
-          <div class="stat-label">Years of Conservation</div>
-        </div>
-      </div>
-    </section>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <!-- History / Timeline -->
-    <section class="history-section container">
-      <h2>Our Story</h2>
-      <ol class="timeline">
-        <li>
-          <strong>1990</strong>
-          <p>Zoo Planet founded as a small rescue centre focused on native wildlife.</p>
-        </li>
-        <li>
-          <strong>2005</strong>
-          <p>Expanded with new habitats and public education programs.</p>
-        </li>
-        <li>
-          <strong>2015</strong>
-          <p>Launched conservation partnerships and community outreach.</p>
-        </li>
-        <li>
-          <strong>2023</strong>
-          <p>Major renovation of exhibits and launch of our digital learning portal.</p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Team -->
-    <section class="team-section container">
-      <h2>Meet the Team</h2>
-      <p class="lead">Dedicated keepers, educators and conservationists working together every day.</p>
-
-      <div class="team-grid">
-        <!-- Team card (copy / update images & names as needed) -->
-        <article class="team-card">
-          <button class="team-photo" data-full="img/team-alex.jpg" aria-label="View Alex photo">
-            <img src="img/team-alex-thumb.jpg" alt="Alex, Head Keeper" />
-          </button>
-          <h4>Alex Morgan</h4>
-          <div class="role">Head Keeper</div>
-          <p class="desc">Leads animal care and enrichment programs with 12+ years experience.</p>
-        </article>
-
-        <article class="team-card">
-          <button class="team-photo" data-full="img/team-sana.jpg" aria-label="View Sana photo">
-            <img src="img/team-sana-thumb.jpg" alt="Sana, Education Manager" />
-          </button>
-          <h4>Sana Patel</h4>
-          <div class="role">Education Manager</div>
-          <p class="desc">Designs visitor programs and school outreach.</p>
-        </article>
-
-        <article class="team-card">
-          <button class="team-photo" data-full="img/team-raj.jpg" aria-label="View Raj photo">
-            <img src="img/team-raj-thumb.jpg" alt="Raj, Conservation Lead" />
-          </button>
-          <h4>Raj Kumar</h4>
-          <div class="role">Conservation Lead</div>
-          <p class="desc">Coordinates field projects and partner research.</p>
-        </article>
-
-        <article class="team-card">
-          <button class="team-photo" data-full="img/team-maya.jpg" aria-label="View Maya photo">
-            <img src="img/team-maya-thumb.jpg" alt="Maya, Guest Services" />
-          </button>
-          <h4>Maya Singh</h4>
-          <div class="role">Guest Services</div>
-          <p class="desc">Ensures visitors have a welcoming experience.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Team Photo Modal -->
-    <div id="team-modal" class="team-modal" aria-hidden="true" role="dialog" aria-label="Team photo">
-      <div class="team-modal-inner">
-        <button class="close-modal" aria-label="Close photo">&times;</button>
-        <img id="team-modal-img" src="" alt="Team full photo">
-        <div class="modal-caption" id="team-modal-caption"></div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <section class="about-cta container">
-      <h2>Visit & Support Our Work</h2>
-      <p>Plan your visit, become a member or donate to help protect wildlife.</p>
-      <div class="cta-row">
-        <a class="btn btn-accent" href="visit.html">Plan Your Visit</a>
-        <a class="btn btn-secondary" href="donate.html">Donate</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <div id="footer-placeholder"></div>
-  <script src="js/footer.js" defer></script>
-
-  <!-- shared scripts -->
-  <script src="js/nav.js" defer></script>
-  <!-- page script -->
-  <script src="js/about.js" defer></script>
-</body>
+    <!-- UI JavaScript -->
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/about.js"></script>
+  </body>
 </html>

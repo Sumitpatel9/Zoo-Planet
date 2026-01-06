@@ -3,120 +3,452 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
-    <title>Zoo Planet - Explore Wildlife Wonders</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Welcome to Zoo Planet - Explore wildlife, conservation, and amazing animals from around the world"
     />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
+    <title>Zoo Planet - Wild Adventures Await</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
   <body>
-    <!-- START: Site Navbar (paste into every HTML file right after <body>) -->
-    <nav class="site-navbar" role="navigation" aria-label="Main Navigation">
-      <div class="nav-container">
-        <a class="brand" href="index.html" aria-label="Zoo Planet home">
-          <img
-            src="../img/navlogo.png"
-            alt="Zoo Planet logo"
-            class="brand-logo"
-          />
-          <span class="brand-text">Zoo Planet</span>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
         </a>
 
-        <button
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <span class="nav-toggle-icon">☰</span>
-        </button>
-
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="ticket.html">Tickets</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link active">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li><a href="login.html" class="btn-login">LOGIN</a></li>
         </ul>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
       </div>
-    </nav>
-    <!-- END: Site Navbar -->
-    <!-- <header>
-        <nav class="navbar">
-            <div class="logo">Zoo Planet</div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/gallery.html">Gallery</a></li>
-                <li><a href="/ticket.html">Tickets</a></li>
-                <li><a href="/service.html">Services</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li><a href="/login.html" class="btn">Login</a></li>
+
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-text">
+            <h1 class="hero-title fade-in-up">
+              Welcome to <span class="text-gradient">Zoo Planet</span>
+            </h1>
+            <p class="hero-subtitle fade-in-up" style="animation-delay: 0.2s">
+              Discover the wonders of wildlife and embark on an unforgettable
+              journey through nature's most magnificent creatures
+            </p>
+            <div class="hero-buttons fade-in-up" style="animation-delay: 0.4s">
+              <a href="gallery.html" class="btn btn-primary btn-large">
+                <i class="fas fa-images"></i> Explore Gallery
+              </a>
+              <a href="about.html" class="btn btn-outline-white btn-large">
+                <i class="fas fa-info-circle"></i> Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <a href="#features" class="scroll-down">
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="section features-section bg-light" id="features">
+      <div class="container">
+        <div class="text-center mb-lg">
+          <h2 class="section-title animate-on-scroll">Why Visit Zoo Planet?</h2>
+          <p class="section-subtitle animate-on-scroll">
+            Experience wildlife like never before
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card animate-on-scroll" data-delay="0">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-paw"></i>
+              </div>
+            </div>
+            <h3 class="feature-title">Diverse Species</h3>
+            <p class="feature-text">
+              Home to over 500 species from around the world, from majestic
+              lions to playful penguins
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll" data-delay="0.2">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+            </div>
+            <h3 class="feature-title">Conservation</h3>
+            <p class="feature-text">
+              Dedicated to protecting endangered species and preserving natural
+              habitats
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll" data-delay="0.4">
+            <div class="feature-icon-wrapper">
+              <div class="feature-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+            </div>
+            <h3 class="feature-title">Education</h3>
+            <p class="feature-text">
+              Interactive programs and guided tours for visitors of all ages
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED ANIMALS ==================== -->
+    <section class="section animals-section">
+      <div class="container">
+        <div class="text-center mb-lg">
+          <h2 class="section-title animate-on-scroll">Featured Animals</h2>
+          <p class="section-subtitle animate-on-scroll">
+            Meet some of our most popular residents
+          </p>
+        </div>
+
+        <div class="animals-grid">
+          <!-- Animal Card 1 -->
+          <div class="animal-card animate-on-scroll" data-delay="0">
+            <div class="card-img-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=600&h=400&fit=crop"
+                alt="African Lion"
+                class="card-img"
+                loading="lazy"
+              />
+              <div class="card-badge">Popular</div>
+              <div class="card-overlay">
+                <a href="gallery.html" class="overlay-link">
+                  <i class="fas fa-eye"></i> View Details
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">African Lion</h3>
+              <p class="card-category"><i class="fas fa-tag"></i> Big Cats</p>
+              <p class="card-text">
+                The king of the jungle, known for their majestic manes and
+                powerful roars
+              </p>
+              <a href="gallery.html" class="card-link">
+                Learn More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Animal Card 2 -->
+          <div class="animal-card animate-on-scroll" data-delay="0.1">
+            <div class="card-img-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?w=600&h=400&fit=crop"
+                alt="Asian Elephant"
+                class="card-img"
+                loading="lazy"
+              />
+              <div class="card-overlay">
+                <a href="gallery.html" class="overlay-link">
+                  <i class="fas fa-eye"></i> View Details
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Asian Elephant</h3>
+              <p class="card-category"><i class="fas fa-tag"></i> Mammals</p>
+              <p class="card-text">
+                Gentle giants with remarkable intelligence and strong family
+                bonds
+              </p>
+              <a href="gallery.html" class="card-link">
+                Learn More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Animal Card 3 -->
+          <div class="animal-card animate-on-scroll" data-delay="0.2">
+            <div class="card-img-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&h=400&fit=crop"
+                alt="Giraffe"
+                class="card-img"
+                loading="lazy"
+              />
+              <div class="card-badge badge-new">New</div>
+              <div class="card-overlay">
+                <a href="gallery.html" class="overlay-link">
+                  <i class="fas fa-eye"></i> View Details
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Giraffe</h3>
+              <p class="card-category"><i class="fas fa-tag"></i> Herbivores</p>
+              <p class="card-text">
+                Tallest mammals on Earth with distinctive spotted coats and long
+                necks
+              </p>
+              <a href="gallery.html" class="card-link">
+                Learn More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Animal Card 4 -->
+          <div class="animal-card animate-on-scroll" data-delay="0.3">
+            <div class="card-img-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=600&h=400&fit=crop"
+                alt="Emperor Penguin"
+                class="card-img"
+                loading="lazy"
+              />
+              <div class="card-overlay">
+                <a href="gallery.html" class="overlay-link">
+                  <i class="fas fa-eye"></i> View Details
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Emperor Penguin</h3>
+              <p class="card-category"><i class="fas fa-tag"></i> Birds</p>
+              <p class="card-text">
+                Adorable birds that waddle on ice and are expert swimmers
+              </p>
+              <a href="gallery.html" class="card-link">
+                Learn More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-lg animate-on-scroll">
+          <a href="gallery.html" class="btn btn-primary btn-large">
+            View All Animals <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STATS SECTION ==================== -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card animate-on-scroll" data-delay="0">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-number" data-target="50000">0</div>
+            <div class="stat-label">Annual Visitors</div>
+          </div>
+
+          <div class="stat-card animate-on-scroll" data-delay="0.1">
+            <div class="stat-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-label">Animal Species</div>
+          </div>
+
+          <div class="stat-card animate-on-scroll" data-delay="0.2">
+            <div class="stat-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="stat-number" data-target="25">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+
+          <div class="stat-card animate-on-scroll" data-delay="0.3">
+            <div class="stat-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="stat-number" data-target="150">0</div>
+            <div class="stat-label">Conservation Projects</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section">
+      <div class="cta-overlay"></div>
+      <div class="container">
+        <div class="cta-content animate-on-scroll">
+          <h2 class="cta-title">Plan Your Visit Today</h2>
+          <p class="cta-text">
+            Join us for an amazing adventure and create memories that will last
+            a lifetime
+          </p>
+          <div class="cta-buttons">
+            <a href="ticket.html" class="btn btn-secondary btn-large">
+              <i class="fas fa-ticket-alt"></i> Book Tickets
+            </a>
+            <a href="contact.html" class="btn btn-outline-white btn-large">
+              <i class="fas fa-phone"></i> Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="fas fa-paw"></i> Zoo Planet</h3>
+            <p>Bringing you closer to nature's wonders since 2020</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html"
+                  ><i class="fas fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html"
+                  ><i class="fas fa-chevron-right"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
             </ul>
-        </nav>
-    </header> -->
+          </div>
 
-    <section class="hero">
-      <h1>Discover the Wonders of Wildlife</h1>
-      <p>
-        Zoo Planet offers an unforgettable experience with over 500 species from
-        around the world. Explore, learn, and connect with nature like never
-        before.
-      </p>
-      <a href="/ticket.html" class="btn">Buy Tickets Now</a>
-    </section>
+          <div class="footer-section">
+            <h3>Support Us</h3>
+            <ul>
+              <li>
+                <a href="donate.html"
+                  ><i class="fas fa-chevron-right"></i> Donate Now</a
+                >
+              </li>
+              <li>
+                <a href="service.html#memberships"
+                  ><i class="fas fa-chevron-right"></i> Memberships</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Volunteer</a
+                >
+              </li>
+              <li>
+                <a href="donate.html#impact"
+                  ><i class="fas fa-chevron-right"></i> Our Impact</a
+                >
+              </li>
+            </ul>
+          </div>
 
-    <section class="featured">
-      <h2>Featured Attractions</h2>
-      <div class="attractions">
-        <div class="attraction-card">
-          <img src="/img/safariadv.png" alt="Safari Adventure" />
-          <div class="card-content">
-            <h3>Safari Adventure</h3>
+          <div class="footer-section">
+            <h3>Visit Us</h3>
             <p>
-              Experience our open-range safari with lions, giraffes, and zebras
-              roaming freely.
+              <i class="fas fa-map-marker-alt"></i> 123 Zoo Lane, Wildlife City
             </p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@zooplanet.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Hours</h3>
+            <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+            <p><i class="far fa-clock"></i> Sat - Sun: 8:00 AM - 7:00 PM</p>
+            <p><i class="far fa-clock"></i> Holidays: 10:00 AM - 5:00 PM</p>
           </div>
         </div>
-        <div class="attraction-card">
-          <img src="/img/aquaticworld.png" alt="Aquatic World" />
-          <div class="card-content">
-            <h3>Aquatic World</h3>
-            <p>
-              Discover marine life in our state-of-the-art aquarium with a 360°
-              tunnel.
-            </p>
-          </div>
-        </div>
-        <div class="attraction-card">
-          <img src="/img/butterfly.png" alt="Butterfly Garden" />
-          <div class="card-content">
-            <h3>Butterfly Garden</h3>
-            <p>
-              Walk among thousands of colorful butterflies in our tropical
-              garden.
-            </p>
-          </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Zoo Planet. All rights reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <div id="footer-placeholder"></div>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/nav.js"></script>
-    <script src="js/footer.js"></script>
+    <!-- UI JavaScript -->
+    <script src="js/main.js"></script>
+
+    <!-- DO NOT MODIFY: Your backend scripts load here -->
+    <!-- <script src="backend.js"></script> -->
   </body>
 </html>

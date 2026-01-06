@@ -1,33 +1,132 @@
-// Service tabs functionality
+// ==================== ZOO PLANET - SERVICES.JS ====================
+// Complete services page with API integration + payment system
+
+// ==================== PRICE CONFIGURATIONS ====================
+const PRICES = {
+    membership: {
+        individual: 75,
+        family: 150,
+        premium: 250
+    },
+    events: {
+        // Keys match your HTML onclick values
+        'birthday': 299,
+        'corporate': 999,
+        'school': 199,
+        'wedding': 2999
+    },
+    tours: {
+        // Keys match your HTML onclick values
+        'safari': 25,
+        'behind-scenes': 45,
+        'rainforest': 18,
+        'twilight': 35
+    }
+};
+
+// Event and Tour full names for display
+const EVENT_NAMES = {
+    'birthday': 'Birthday Party',
+    'corporate': 'Corporate Event',
+    'school': 'School Field Trip',
+    'wedding': 'Wedding Reception'
+};
+
+const TOUR_NAMES = {
+    'safari': 'Safari Adventure Tour',
+    'behind-scenes': 'Behind-the-Scenes Experience',
+    'rainforest': 'Tropical Rainforest Walk',
+    'twilight': 'Twilight Safari'
+};
+
+const GST_RATE = 0.18; // 18% GST
+
+// Global variables
+let selectedMembershipPlan = '';
+let membershipAmount = 0;
+let selectedEventType = '';
+let selectedEventKey = '';
+let eventAmount = 0;
+let selectedTourType = '';
+let selectedTourKey = '';
+let tourPricePerPerson = 0;
+
+// ==================== CALCULATE PAYMENT SUMMARY ====================
+// ==================== CALCULATE PAYMENT SUMMARY (IMPROVED) ====================
+function updatePaymentSummary(baseAmount, prefix) {
+    const tax = (baseAmount * GST_RATE).toFixed(2);
+    const total = (parseFloat(baseAmount) + parseFloat(tax)).toFixed(2);
+    
+    // Use prefix to target correct modal's elements
+    let baseAmountEl = document.getElementById(`${prefix}BaseAmount`);
+    let taxAmountEl = document.getElementById(`${prefix}TaxAmount`);
+    let totalAmountEl = document.getElementById(`${prefix}TotalAmount`);
+    
+    // Fallback for membership (no prefix)
+    if (!baseAmountEl) {
+        baseAmountEl = document.getElementById('baseAmount');
+        taxAmountEl = document.getElementById('taxAmount');
+        totalAmountEl = document.getElementById('totalAmount');
+    }
+    
+    // Update elements if they exist
+    if (baseAmountEl) {
+        baseAmountEl.textContent = `₹${baseAmount}`;
+        baseAmountEl.style.fontWeight = '600';
+        baseAmountEl.style.color = '#fff';
+    }
+    
+    if (taxAmountEl) {
+        taxAmountEl.textContent = `₹${tax}`;
+        taxAmountEl.style.fontWeight = '600';
+        taxAmountEl.style.color = '#fff';
+    }
+    
+    if (totalAmountEl) {
+        totalAmountEl.textContent = `₹${total}`;
+        totalAmountEl.style.fontWeight = '700';
+        totalAmountEl.style.fontSize = '20px';
+        totalAmountEl.style.color = '#fff';
+    }
+    
+    console.log(`💰 Payment Summary Updated [${prefix || 'membership'}]: Base: ₹${baseAmount}, GST (18%): ₹${tax}, Total: ₹${total}`);
+    
+    // Make payment summary visible
+    const paymentSummary = baseAmountEl?.closest('.payment-summary');
+    if (paymentSummary) {
+        paymentSummary.style.display = 'block';
+        paymentSummary.style.animation = 'fadeIn 0.5s ease';
+    }
+    
+    return parseFloat(total);
+}
+
+// ==================== SERVICE TABS FUNCTIONALITY ====================
 document.querySelectorAll(".service-tab").forEach((tab) => {
   tab.addEventListener("click", function () {
-    // Remove active class from all tabs
     document.querySelectorAll(".service-tab").forEach((t) => {
       t.classList.remove("active");
       t.style.transform = "";
       t.style.boxShadow = "";
     });
 
-    // Add active class to clicked tab with animation
     this.classList.add("active");
     this.style.transform = "translateY(-5px)";
     this.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
 
-    // Hide all info sections
     document.querySelectorAll(".service-info").forEach((info) => {
       info.classList.remove("active");
     });
 
-    // Show corresponding info section with animation
     const targetInfo = document.getElementById(`${this.dataset.tab}-info`);
-    targetInfo.classList.add("active");
-
-    // Scroll to the content smoothly
-    targetInfo.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (targetInfo) {
+      targetInfo.classList.add("active");
+      targetInfo.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 });
 
-// Membership card hover effect enhancement
+// ==================== MEMBERSHIP CARD HOVER EFFECT ====================
 document.querySelectorAll(".membership-card").forEach((card) => {
   card.addEventListener("mouseenter", function () {
     if (!this.classList.contains("highlight")) {
@@ -42,432 +141,621 @@ document.querySelectorAll(".membership-card").forEach((card) => {
   });
 });
 
-// Close other sections when one is opened (for mobile)
-function closeOtherSections(currentSection) {
-  document.querySelectorAll(".service-info").forEach((section) => {
-    if (section !== currentSection && section.classList.contains("active")) {
-      section.classList.remove("active");
-    }
-  });
-}
-
-// Handle ESC key to reset tabs (if needed)
+// ==================== ESC KEY HANDLER ====================
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    document.querySelectorAll(".service-tab").forEach((tab) => {
-      tab.classList.remove("active");
-      tab.style.transform = "";
-      tab.style.boxShadow = "";
+    document.querySelectorAll(".modal").forEach(modal => {
+      modal.style.display = "none";
+      modal.classList.remove('show');
     });
-
-    document.querySelectorAll(".service-info").forEach((info) => {
-      info.classList.remove("active");
-    });
-
-    // Activate first tab by default
-    document.querySelector(".service-tab").click();
+    document.body.style.overflow = 'auto';
   }
 });
 
-// Tour Booking Modal Functionality
-document.querySelectorAll(".tour-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const tourName = this.getAttribute("data-tour");
-    document.getElementById("modalTourTitle").textContent = `Book ${tourName}`;
-    document.getElementById("tourBookingModal").style.display = "block";
+// ==================== MEMBERSHIP MODAL FUNCTIONS ====================
+function openMembershipModal(plan) {
+  selectedMembershipPlan = plan;
+  const modal = document.getElementById('membershipModal');
+  if (!modal) return;
+  
+  const planName = plan.charAt(0).toUpperCase() + plan.slice(1);
+  const selectedPlanElement = document.getElementById('selectedPlan');
+  if (selectedPlanElement) {
+    selectedPlanElement.textContent = `${planName} Plan`;
+  }
+  
+  // Get price from configuration
+  membershipAmount = PRICES.membership[plan] || 0;
+  console.log(`🎫 Opening Membership: ${plan} - ₹${membershipAmount}`);
+  
+  // Show/hide family members section
+  const familySection = document.getElementById('familyMembersSection');
+  if (familySection) {
+    familySection.style.display = (plan === 'family' || plan === 'premium') ? 'block' : 'none';
+  }
+  
+  modal.classList.add('show');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  // Update payment summary after modal opens
+  setTimeout(() => {
+    updatePaymentSummary(membershipAmount, 'membership');
+  }, 100);
+}
+
+function closeMembershipModal() {
+  const modal = document.getElementById('membershipModal');
+  if (!modal) return;
+  
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  
+  const form = document.getElementById('membershipForm');
+  if (form) form.reset();
+  
+  // Reset payment details
+  document.querySelectorAll('[id$="-details"]').forEach(detail => {
+    detail.classList.remove('active');
+  });
+}
+
+// ==================== EVENT MODAL FUNCTIONS ====================
+function openEventModal(eventKey) {
+  selectedEventKey = eventKey;
+  selectedEventType = EVENT_NAMES[eventKey] || eventKey;
+  
+  const modal = document.getElementById('eventModal');
+  if (!modal) return;
+  
+  const selectedEventElement = document.getElementById('selectedEvent');
+  if (selectedEventElement) {
+    selectedEventElement.textContent = selectedEventType;
+  }
+  
+  eventAmount = PRICES.events[eventKey] || 0;
+  console.log(`🎉 Opening Event: ${selectedEventType} (${eventKey}) - ₹${eventAmount}`);
+  
+  modal.classList.add('show');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  setTimeout(() => {
+    updatePaymentSummary(eventAmount, 'event');  // ✅ Changed prefix
+  }, 100);
+}
+
+
+function closeEventModal() {
+  const modal = document.getElementById('eventModal');
+  if (!modal) return;
+  
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  
+  const form = document.getElementById('eventForm');
+  if (form) form.reset();
+  
+  // Reset payment details
+  document.querySelectorAll('[id$="-details"]').forEach(detail => {
+    detail.classList.remove('active');
+  });
+}
+
+// ==================== TOUR MODAL FUNCTIONS ====================
+function openTourModal(tourKey) {
+  selectedTourKey = tourKey;
+  selectedTourType = TOUR_NAMES[tourKey] || tourKey;
+  
+  const modal = document.getElementById('tourModal');
+  if (!modal) return;
+  
+  const selectedTourElement = document.getElementById('selectedTour');
+  if (selectedTourElement) {
+    selectedTourElement.textContent = selectedTourType;
+  }
+  
+  tourPricePerPerson = PRICES.tours[tourKey] || 0;
+  console.log(`🦁 Opening Tour: ${selectedTourType} (${tourKey}) - ₹${tourPricePerPerson}/person`);
+  
+  modal.classList.add('show');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  setTimeout(() => {
+    updatePaymentSummary(tourPricePerPerson, 'tour');  // ✅ Changed prefix
+  }, 100);
+}
+
+
+function closeTourModal() {
+  const modal = document.getElementById('tourModal');
+  if (!modal) return;
+  
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  
+  const form = document.getElementById('tourForm');
+  if (form) form.reset();
+  
+  // Reset payment details
+  document.querySelectorAll('[id$="-details"]').forEach(detail => {
+    detail.classList.remove('active');
+  });
+}
+
+// ==================== SERVICE NAVIGATION ====================
+document.querySelectorAll('.service-nav-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    document.querySelectorAll('.service-nav-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    
+    if (targetSection) {
+      const headerOffset = 140;
+      const elementPosition = targetSection.offsetTop;
+      const offsetPosition = elementPosition - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   });
 });
 
-// Private Tour Modal Functionality
-document
-  .getElementById("privateTourBtn")
-  .addEventListener("click", function () {
-    document.getElementById("privateTourModal").style.display = "block";
+// Update active nav on scroll
+window.addEventListener('scroll', function() {
+  const sections = document.querySelectorAll('.section[id]');
+  const navButtons = document.querySelectorAll('.service-nav-btn');
+  
+  let current = '';
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (window.pageYOffset >= (sectionTop - 200)) {
+      current = section.getAttribute('id');
+    }
   });
+  
+  navButtons.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('href') === `#${current}`) {
+      btn.classList.add('active');
+    }
+  });
+});
 
-// Close Modal Functionality
+// ==================== SEASON TAB FUNCTIONALITY ====================
+document.querySelectorAll('.season-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const season = this.getAttribute('data-season');
+    
+    document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.season-content').forEach(c => c.classList.remove('active'));
+    
+    this.classList.add('active');
+    const seasonContent = document.getElementById(season);
+    if (seasonContent) {
+      seasonContent.classList.add('active');
+    }
+  });
+});
+
+// ==================== CLOSE MODAL FUNCTIONALITY ====================
 document.querySelectorAll(".close-modal").forEach((closeBtn) => {
   closeBtn.addEventListener("click", function () {
-    this.closest(".modal").style.display = "none";
+    const modal = this.closest(".modal");
+    if (modal) {
+      modal.style.display = "none";
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
   });
 });
 
-// Close modal when clicking outside
 window.addEventListener("click", function (event) {
   if (event.target.classList.contains("modal")) {
     event.target.style.display = "none";
+    event.target.classList.remove('show');
+    document.body.style.overflow = 'auto';
   }
 });
 
-// Form Submissions
-document
-  .getElementById("tourBookingForm")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-    // Here you would normally send the data to your server
-    document.getElementById("tourBookingModal").style.display = "none";
-
-    // Show confirmation
-    document.getElementById("confirmationTitle").textContent =
-      "Tour Booking Confirmed!";
-    document.getElementById("confirmationMessage").textContent =
-      "Thank you for your booking. We've sent a confirmation to your email.";
-    document.getElementById("confirmationModal").style.display = "block";
-
-    // Reset form
-    this.reset();
-  });
-
-document
-  .getElementById("privateTourForm")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-    // Here you would normally send the data to your server
-    document.getElementById("privateTourModal").style.display = "none";
-
-    // Show confirmation
-    document.getElementById("confirmationTitle").textContent =
-      "Inquiry Submitted!";
-    document.getElementById("confirmationMessage").textContent =
-      "Thank you for your private tour inquiry. Our team will contact you within 24 hours to discuss your request.";
-    document.getElementById("confirmationModal").style.display = "block";
-
-    // Reset form
-    this.reset();
-  });
-
-// Close confirmation modal
-document
-  .querySelector(".close-confirmation")
-  .addEventListener("click", function () {
-    document.getElementById("confirmationModal").style.display = "none";
-  });
-
-// Set minimum date for date inputs to today
-const today = new Date().toISOString().split("T")[0];
-document.getElementById("tourDate").min = today;
-document.getElementById("preferredDate1").min = today;
-document.getElementById("preferredDate2").min = today;
-
-// Membership Form Functionality
-document.querySelectorAll(".membership-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const plan = this.getAttribute("data-plan");
-    const price = this.getAttribute("data-price");
-
-    document.getElementById(
-      "membershipModalTitle"
-    ).textContent = `Join ${plan} Membership`;
-    document.getElementById("membershipPlan").value = `${plan} Membership`;
-    document.getElementById("membershipPrice").value = `₹${price}/year`;
-
-    // Show/hide family member fields
-    const familyFields = document.querySelector(".family-fields");
-    if (plan === "Family") {
-      familyFields.style.display = "block";
-    } else {
-      familyFields.style.display = "none";
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function() {
+    const modal = this.closest('.modal');
+    if (modal) {
+      modal.classList.remove('show');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
-
-    document.getElementById("membershipModal").style.display = "block";
   });
 });
 
-// Event Booking Functionality
-document.querySelectorAll(".event-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const eventName = this.getAttribute("data-event");
-    document.getElementById(
-      "eventModalTitle"
-    ).textContent = `Book ${eventName}`;
-    document.getElementById("eventName").value = eventName;
-
-    // Populate dates (this would normally come from an API)
-    const dateSelect = document.getElementById("eventDate");
-    dateSelect.innerHTML = '<option value="">Select available date</option>';
-
-    // Add sample dates based on event type
-    if (eventName === "Moonlight Safari") {
-      addDateOptions(dateSelect, "Friday", 4);
-    } else if (eventName === "Breakfast with Giraffes") {
-      addDateOptions(dateSelect, "Saturday", 3);
-    } else if (eventName === "Photography Workshop") {
-      addDateOptions(dateSelect, "Sunday", 2);
-    }
-
-    document.getElementById("eventBookingModal").style.display = "block";
-  });
-});
-
-// Helper function to add date options
-function addDateOptions(select, dayOfWeek, count) {
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const targetDay = days.indexOf(dayOfWeek);
-
-  const today = new Date();
-  let found = 0;
-  let date = new Date(today);
-
-  while (found < count) {
-    if (date.getDay() === targetDay) {
-      const dateStr = date.toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      });
-
-      const option = document.createElement("option");
-      option.value = date.toISOString().split("T")[0];
-      option.textContent = dateStr;
-      select.appendChild(option);
-
-      found++;
-    }
-    date.setDate(date.getDate() + 1);
-  }
+// ==================== PAYMENT METHOD TOGGLE ====================
+function setupPaymentMethodToggle() {
+    // For all payment method radios
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Hide all payment details in this form
+            const form = this.closest('form');
+            if (form) {
+                form.querySelectorAll('.payment-details').forEach(detail => {
+                    detail.classList.remove('active');
+                });
+                
+                // Show selected payment details
+                const selectedMethod = this.value;
+                const detailsSection = form.querySelector(`#${selectedMethod}-details`);
+                if (detailsSection) {
+                    detailsSection.classList.add('active');
+                    console.log(`💳 Payment method selected: ${selectedMethod}`);
+                }
+            }
+        });
+    });
 }
 
-// Payment method toggle
-document
-  .getElementById("paymentMethod")
-  .addEventListener("change", function () {
-    document.querySelector(".payment-details").style.display = "none";
-    document.querySelector(".upi-details").style.display = "none";
+// ==================== CARD FORMATTING ====================
+function formatCardNumber(input) {
+    let value = input.value.replace(/\s/g, '').replace(/\D/g, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    input.value = formattedValue;
+}
 
-    if (this.value === "credit") {
-      document.querySelector(".payment-details").style.display = "block";
-    } else if (this.value === "upi") {
-      document.querySelector(".upi-details").style.display = "block";
+function formatCardExpiry(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
     }
-  });
+    input.value = value;
+}
 
-// Form Submissions
-// document.getElementById('membershipForm').addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     document.getElementById('membershipModal').style.display = 'none';
-
-//     // Set confirmation details
-//     const plan = document.getElementById('membershipPlan').value;
-//     document.getElementById('confirmationPlan').textContent = plan;
-
-//     // Generate random member ID
-//     const randomId = 'ZM' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
-//     document.getElementById('memberId').textContent = randomId;
-
-//     // Set expiry date (1 year from now)
-//     const expiry = new Date();
-//     expiry.setFullYear(expiry.getFullYear() + 1);
-//     document.getElementById('expiryDate').textContent = expiry.toLocaleDateString('en-US', {
-//         year: 'numeric',
-//         month: 'long',
-//         day: 'numeric'
-//     });
-
-//     document.getElementById('membershipConfirmation').style.display = 'block';
-//     this.reset();
-// });
-
-// document
-//   .getElementById("membershipForm")
-//   .addEventListener("submit", async function (e) {
-//     e.preventDefault();
-
-//     const formData = {
-//       membershipPlan: document
-//         .getElementById("membershipPlan")
-//         .value.replace(" Membership", "")
-//         .value.toLowerCase(),
-//       price: Number(
-//         document.getElementById("membershipPrice").value.replace(/\D/g, "")
-//       ),
-//       firstName: document.getElementById("firstName").value,
-//       lastName: document.getElementById("lastName").value,
-//       email: document.getElementById("email").value,
-//       phone: document.getElementById("phone").value,
-//       address: document.getElementById("address").value,
-//       city: document.getElementById("city").value,
-//       zipCode: document.getElementById("zipCode").value,
-//       paymentMethod: document.getElementById("paymentMethod").value,
-//       termsAccepted: document.getElementById("agreeTerms").checked,
-//     };
-
-//     try {
-//       const res = await fetch("http://localhost:4000/api/memberships", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(formData),
-//       });
-
-//       const data = await res.json();
-//       if (!res.ok) throw new Error(data.error || "Membership failed");
-
-//       document.getElementById("membershipModal").style.display = "none";
-//       document.getElementById("membershipConfirmation").style.display = "block";
-//       this.reset();
-//     } catch (err) {
-//       alert(err.message);
-//     }
-//   });
-
-document.getElementById("membershipForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const termsCheckbox = document.getElementById("agreeTerms");
-  if (!termsCheckbox || !termsCheckbox.checked) {
-    alert("You must accept Terms & Conditions");
-    return;
-  }
-
-  const planRaw = document.getElementById("membershipPlan").value;
-
-  const formData = {
-    membershipPlan: planRaw.replace(" Membership", "").toLowerCase(),
-    price: Number(document.getElementById("membershipPrice").value.replace(/\D/g, "")),
-    firstName: document.getElementById("firstName").value,
-    lastName: document.getElementById("lastName").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    address: document.getElementById("address").value,
-    city: document.getElementById("city").value,
-    zipCode: document.getElementById("zipCode").value,
-    paymentMethod: document.getElementById("paymentMethod").value,
-    termsAccepted: true
-  };
-
-  try {
-    const res = await fetch("http://localhost:4000/api/memberships", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+// Apply card formatting
+function setupCardFormatting() {
+    document.querySelectorAll('input[id*="cardNumber"]').forEach(input => {
+        input.addEventListener('input', function() {
+            formatCardNumber(this);
+        });
     });
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Membership failed");
+    document.querySelectorAll('input[id*="cardExpiry"]').forEach(input => {
+        input.addEventListener('input', function() {
+            formatCardExpiry(this);
+        });
+    });
 
-    document.getElementById("membershipModal").style.display = "none";
-    document.getElementById("membershipConfirmation").style.display = "block";
-    this.reset();
+    document.querySelectorAll('input[id*="cardCvv"]').forEach(input => {
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 3);
+        });
+    });
+}
 
-  } catch (err) {
-    alert(err.message);
-  }
-});
+// ==================== UPI & WALLET SELECTION ====================
+function setupUpiAndWalletSelection() {
+    document.querySelectorAll('.upi-app').forEach(app => {
+        app.addEventListener('click', function() {
+            const parent = this.parentElement;
+            parent.querySelectorAll('.upi-app').forEach(a => {
+                a.style.border = '2px solid transparent';
+                a.style.background = '';
+            });
+            
+            this.style.border = '2px solid var(--primary-color)';
+            this.style.background = 'rgba(45, 134, 89, 0.1)';
+        });
+    });
+
+    document.querySelectorAll('.wallet-option').forEach(wallet => {
+        wallet.addEventListener('click', function() {
+            const parent = this.parentElement;
+            parent.querySelectorAll('.wallet-option').forEach(w => {
+                w.classList.remove('selected');
+            });
+            this.classList.add('selected');
+        });
+    });
+}
+
+// ==================== REAL-TIME QUANTITY UPDATE ====================
+function setupQuantityUpdates() {
+    // Event guests update
+    const eventGuestsInputs = document.querySelectorAll('#eventForm input[name="guests"]');
+    eventGuestsInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const guests = parseInt(this.value) || 1;
+            const totalAmount = eventAmount * guests;
+            updatePaymentSummary(totalAmount, 'event');  // ✅ Added prefix
+        });
+    });
+
+    // Tour participants update
+    const tourParticipantsInputs = document.querySelectorAll('#tourForm input[name="participants"]');
+    tourParticipantsInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const participants = parseInt(this.value) || 1;
+            const totalAmount = tourPricePerPerson * participants;
+            updatePaymentSummary(totalAmount, 'tour');  // ✅ Added prefix
+        });
+    });
+}
 
 
-// document.getElementById('eventBookingForm').addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     document.getElementById('eventBookingModal').style.display = 'none';
-
-//     // Show confirmation
-//     document.getElementById('confirmationTitle').textContent = 'Event Booking Confirmed!';
-//     const eventName = document.getElementById('eventName').value;
-//     document.getElementById('confirmationMessage').textContent =
-//         `Your booking for ${eventName} has been confirmed. Details have been sent to your email.`;
-//     document.getElementById('confirmationModal').style.display = 'block';
-
-//     this.reset();
-// });
-
-document
-  .getElementById("eventBookingForm")
-  .addEventListener("submit", async function (e) {
+// ==================== MEMBERSHIP FORM SUBMISSION ====================
+const membershipForm = document.getElementById("membershipForm");
+if (membershipForm) {
+  membershipForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
+    // Check payment method
+    const paymentMethod = this.querySelector('input[name="paymentMethod"]:checked');
+    
+    if (!paymentMethod) {
+        alert('❌ Please select a payment method');
+        return;
+    }
+
+    const termsCheckbox = this.querySelector('input[type="checkbox"][name="terms"]');
+    if (!termsCheckbox || !termsCheckbox.checked) {
+      alert("❌ You must accept Terms & Conditions");
+      return;
+    }
+
+    // Calculate final amount
+    const finalAmount = membershipAmount + (membershipAmount * GST_RATE);
+
     const formData = {
-      eventName: document.getElementById("eventName").value,
-      eventDate: document.getElementById("eventDate").value,
-      participants: Number(document.getElementById("eventParticipants").value),
-      fullName: document.getElementById("eventFullName").value,
-      email: document.getElementById("eventEmail").value,
-      phone: document.getElementById("eventPhone").value,
-      specialRequirements: document.getElementById("eventSpecialReq").value,
-      termsAccepted: document.getElementById("eventAgreeTerms").checked,
+      membershipPlan: selectedMembershipPlan,
+      price: membershipAmount,
+      totalAmount: parseFloat(finalAmount.toFixed(2)),
+      firstName: this.querySelector('input[name="firstName"]')?.value,
+      lastName: this.querySelector('input[name="lastName"]')?.value,
+      email: this.querySelector('input[name="email"]')?.value,
+      phone: this.querySelector('input[name="phone"]')?.value,
+      address: this.querySelector('input[name="address"]')?.value,
+      city: this.querySelector('input[name="city"]')?.value,
+      zipCode: this.querySelector('input[name="zip"]')?.value,
+      paymentMethod: paymentMethod.value,
+      termsAccepted: true
     };
 
     try {
-      const res = await fetch("http://localhost:4000/api/events", {
+      console.log('📤 Submitting membership:', formData);
+      
+      const res = await fetch("http://localhost:4000/api/memberships", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Event booking failed");
+      if (!res.ok) throw new Error(data.error || "Membership failed");
 
-      document.getElementById("eventBookingModal").style.display = "none";
-      document.getElementById("confirmationModal").style.display = "block";
+      closeMembershipModal();
+      alert(`✅ Payment Successful!\n\nMembership: ${selectedMembershipPlan}\nAmount Paid: ₹${finalAmount.toFixed(2)}\nReference: ${data.membershipId || 'Confirmed'}\n\nConfirmation sent to your email!`);
       this.reset();
+
     } catch (err) {
-      alert(err.message);
+      console.error('❌ Membership error:', err);
+      alert('❌ ' + err.message);
     }
   });
+}
 
-document.getElementById("tourBookingForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+// ==================== EVENT FORM SUBMISSION ====================
+// ==================== EVENT FORM SUBMISSION WITH DEBUG ====================
+const eventForm = document.getElementById("eventForm");
+if (eventForm) {
+  eventForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const formData = {
-    tourDate: document.getElementById("tourDate").value,
-    tourTime: document.getElementById("tourTime").value,
-    participants: Number(document.getElementById("participants").value),
-    fullName: document.getElementById("fullName").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    specialRequests: document.getElementById("specialRequests").value.trim(),
-  };
+    console.log('🔍 Form submission started');
 
-  // ✅ Correct validation
-  if (
-    !formData.tourDate ||
-    !formData.tourTime ||
-    formData.participants <= 0 ||
-    !formData.fullName ||
-    !formData.email ||
-    !formData.phone
-  ) {
-    alert("Please fill all required tour fields");
-    return;
-  }
+    // Check payment method
+    const paymentMethod = eventForm.querySelector('input[name="paymentMethod"]:checked');
+    
+    if (!paymentMethod) {
+        alert('❌ Please select a payment method');
+        return;
+    }
 
-  try {
-    const res = await fetch("http://localhost:4000/api/tours", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+    const termsCheckbox = eventForm.querySelector('input[type="checkbox"][name="terms"]');
+    if (!termsCheckbox || !termsCheckbox.checked) {
+      alert("❌ You must accept Terms & Conditions");
+      return;
+    }
+
+    // Get all form values
+    const guests = parseInt(eventForm.querySelector('input[name="guests"]')?.value) || 1;
+    const baseAmount = eventAmount * guests;
+    const finalAmount = baseAmount + (baseAmount * GST_RATE);
+
+    const formData = {
+      eventName: selectedEventType,
+      eventType: selectedEventKey,
+      eventDate: eventForm.querySelector('input[name="eventDate"]')?.value,
+      preferredTime: eventForm.querySelector('select[name="eventTime"]')?.value,
+      guests: guests,
+      contactName: eventForm.querySelector('input[name="contactName"]')?.value,
+      email: eventForm.querySelector('input[name="email"]')?.value,
+      phone: eventForm.querySelector('input[name="phone"]')?.value,
+      specialRequests: eventForm.querySelector('textarea[name="specialRequests"]')?.value || '',
+      baseAmount: eventAmount,
+      totalAmount: parseFloat(finalAmount.toFixed(2)),
+      paymentMethod: paymentMethod.value,
+      termsAccepted: true
+    };
+
+    // ✅ DETAILED DEBUG LOGGING
+    console.log('📋 Form Data Being Sent:');
+    console.log('─────────────────────────────────');
+    Object.entries(formData).forEach(([key, value]) => {
+      const type = typeof value;
+      const isEmpty = !value || value === '' || value === 0;
+      console.log(`${key}: ${JSON.stringify(value)} [${type}] ${isEmpty ? '❌ EMPTY' : '✅'}`);
     });
+    console.log('─────────────────────────────────');
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Tour booking failed");
+    // Check for empty required fields
+    const requiredFields = [
+      'eventName', 'eventType', 'eventDate', 'preferredTime', 
+      'guests', 'contactName', 'email', 'phone', 'paymentMethod'
+    ];
+    
+    const emptyFields = requiredFields.filter(field => !formData[field] || formData[field] === '');
+    
+    if (emptyFields.length > 0) {
+      console.error('❌ Empty required fields:', emptyFields);
+      alert(`❌ Please fill in the following fields:\n${emptyFields.join(', ')}`);
+      return;
+    }
 
-    document.getElementById("tourBookingModal").style.display = "none";
-    document.getElementById("confirmationModal").style.display = "block";
-    this.reset();
-  } catch (err) {
-    alert(err.message);
-  }
-});
+    console.log('✅ All required fields present, sending to backend...');
 
+    try {
+      console.log('📤 Sending POST request to http://localhost:4000/api/events');
+      
+      const res = await fetch("http://localhost:4000/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
+      console.log('📥 Response status:', res.status);
 
-// Close modals
-document
-  .querySelectorAll(".close-modal, .close-confirmation")
-  .forEach((btn) => {
-    btn.addEventListener("click", function () {
-      this.closest(".modal").style.display = "none";
-    });
+      const data = await res.json();
+      console.log('📥 Response data:', data);
+      
+      if (!res.ok) {
+        console.error('❌ Backend error response:', data);
+        throw new Error(data.error || data.message || "Booking failed");
+      }
+
+      closeEventModal();
+      alert(`✅ Payment Successful!\n\nEvent: ${selectedEventType}\nGuests: ${guests}\nAmount Paid: ₹${finalAmount.toFixed(2)}\nReference: ${data.booking?.bookingReference || 'Confirmed'}\n\nConfirmation sent to your email!`);
+      eventForm.reset();
+      
+    } catch (err) {
+      console.error('❌ Event error:', err);
+      alert('❌ ' + err.message);
+    }
   });
+}
 
-window.addEventListener("click", function (event) {
-  if (event.target.classList.contains("modal")) {
-    event.target.style.display = "none";
-  }
+
+// ==================== TOUR FORM SUBMISSION ====================
+const tourForm = document.getElementById('tourForm');
+if (tourForm) {
+    tourForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Check payment method
+        const paymentMethod = this.querySelector('input[name="paymentMethod"]:checked');
+        
+        if (!paymentMethod) {
+            alert('❌ Please select a payment method');
+            return;
+        }
+        
+        const termsCheckbox = this.querySelector('input[type="checkbox"][name="terms"]');
+        if (!termsCheckbox || !termsCheckbox.checked) {
+          alert("❌ You must accept Terms & Conditions");
+          return;
+        }
+        
+        const participants = parseInt(this.querySelector('input[name="participants"]')?.value) || 1;
+        const baseAmount = tourPricePerPerson * participants;
+        const finalAmount = baseAmount + (baseAmount * GST_RATE);
+        
+        const formData = {
+            tourName: selectedTourType,
+            tourDate: this.querySelector('input[name="tourDate"]')?.value,
+            tourTime: this.querySelector('select[name="tourTime"]')?.value,
+            participants: participants,
+            fullName: this.querySelector('input[name="fullName"]')?.value,
+            email: this.querySelector('input[name="email"]')?.value,
+            phone: this.querySelector('input[name="phone"]')?.value,
+            language: this.querySelector('select[name="language"]')?.value,
+            pricePerPerson: tourPricePerPerson,
+            totalAmount: parseFloat(finalAmount.toFixed(2)),
+            paymentMethod: paymentMethod.value,
+            termsAccepted: true
+        };
+        
+        try {
+            console.log('📤 Submitting tour booking:', formData);
+            
+            const res = await fetch('http://localhost:4000/api/tours', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Tour booking failed');
+            
+            closeTourModal();
+            alert(`✅ Payment Successful!\n\nTour: ${selectedTourType}\nParticipants: ${participants}\nAmount Paid: ₹${finalAmount.toFixed(2)}\nReference: ${data.booking?.bookingReference || 'Confirmed'}\n\nConfirmation sent to your email!`);
+            this.reset();
+            
+        } catch (err) {
+            console.error('❌ Tour error:', err);
+            alert('❌ ' + err.message);
+        }
+    });
+}
+
+// ==================== SET MINIMUM DATE ====================
+const today = new Date().toISOString().split("T")[0];
+document.querySelectorAll('input[type="date"]').forEach(input => {
+    input.setAttribute('min', today);
 });
+
+// ==================== ANIMATION ON SCROLL ====================
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.membership-card, .event-card, .tour-card, .hours-card, .accessibility-card').forEach(card => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(30px)';
+  card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(card);
+});
+
+// ==================== INITIALIZE ON DOM LOAD ====================
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Setup all payment features
+    setupPaymentMethodToggle();
+    setupCardFormatting();
+    setupUpiAndWalletSelection();
+    setupQuantityUpdates();
+    
+    console.log('✅ All payment features initialized!');
+});
+
+// ==================== CONSOLE LOG ====================
+console.log('%c🦁 Zoo Planet Services Loaded!', 'color: #2d8659; font-size: 16px; font-weight: bold;');
+console.log('%c💳 Payment System Active', 'color: #2d8659; font-size: 14px; font-weight: bold;');
+console.log('%c✅ Features: Pre-set prices | GST calculation | Payment methods | Real-time updates', 'color: #666;');
+console.log('%cBackend API: http://localhost:4000', 'color: #666; font-weight: bold;');

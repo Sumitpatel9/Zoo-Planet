@@ -3,240 +3,574 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
-    <title>Zoo Planet - Explore Wildlife Wonders</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Get in touch with Zoo Planet - Visit us, contact our team, or send us a message"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/contact.css" />
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-  </head>
+    <title>Contact Us - Zoo Planet</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+  </head>
   <body>
-    <!-- START: Site Navbar (paste into every HTML file right after <body>) -->
-    <nav class="site-navbar" role="navigation" aria-label="Main Navigation">
-      <div class="nav-container">
-        <a class="brand" href="index.html" aria-label="Zoo Planet home">
-          <img
-            src="../img/navlogo.png"
-            alt="Zoo Planet logo"
-            class="brand-logo"
-          />
-          <span class="brand-text">Zoo Planet</span>
+    <!-- ==================== HEADER (Same as all pages) ==================== -->
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
         </a>
 
-        <button
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <span class="nav-toggle-icon">☰</span>
-        </button>
-
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="ticket.html">Tickets</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link active">CONTACT</a></li>
+          <li><a href="login.html" class="btn-login">LOGIN</a></li>
         </ul>
-      </div>
-    </nav>
-    <!-- END: Site Navbar -->
-    <section id="contact" class="contact-section">
-      <!-- Back Button -->
-      <!-- <a href="index.html" class="back-button">
-            <i class="fas fa-arrow-left"></i> Back to Home
-        </a> -->
-      <!-- <div class="dropdown-button">
-            <a><i class="fas fa-arrow-left"></i> Back to...</a>
-            <div class="dropdown-menu">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="gallery.html"><i class="fas fa-image"></i> Gallery</a>
-                <a href="ticket.html"><i class="fas fa-ticket-alt"></i> Tickets</a>
-                <a href="service.html"><i class="fas fa-envelope"></i> Service</a>
-                <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
-            </div>
-        </div> -->
 
-      <!-- Hero Background with Overlay -->
-      <div class="contact-hero">
-        <h2>Contact Us</h2>
-        <p>
-          We'd love to hear from you! Reach out with any questions or feedback
-        </p>
-      </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
 
-      <div class="contact-container">
-        <div class="contact-info">
-          <div class="info-header">
-            <h3>Get In Touch</h3>
-            <span class="info-badge">Quick Info</span>
+    <!-- ==================== CONTACT HERO ==================== -->
+    <section class="contact-hero">
+      <div class="contact-hero-overlay"></div>
+      <div class="container">
+        <div class="contact-hero-content fade-in-up">
+          <h1 class="contact-hero-title">Get In Touch</h1>
+          <p class="contact-hero-subtitle">
+            We'd love to hear from you! Reach out with questions, feedback, or
+            visit information
+          </p>
+          <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span>/</span>
+            <span>Contact</span>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="info-item">
+    <!-- ==================== CONTACT INFO CARDS ==================== -->
+    <section class="section contact-info-section">
+      <div class="container">
+        <div class="contact-info-grid">
+          <!-- Info Card 1 -->
+          <div class="info-card animate-on-scroll">
             <div class="info-icon">
               <i class="fas fa-map-marker-alt"></i>
             </div>
-            <div class="info-content">
-              <h4>Visit Us</h4>
-              <p><b>Zoo-Planet</b> Wildlife Avenue, Forest City, Modasa</p>
-            </div>
+            <h3 class="info-title">Visit Us</h3>
+            <p class="info-text">123 Zoo Lane, Wildlife City</p>
+            <p class="info-text">California, USA 90210</p>
+            <a href="#" class="info-link">
+              Get Directions <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
 
-          <div class="info-item highlight">
+          <!-- Info Card 2 -->
+          <div class="info-card animate-on-scroll">
             <div class="info-icon">
-              <i class="fas fa-phone"></i>
+              <i class="fas fa-phone-alt"></i>
             </div>
-            <div class="info-content">
-              <h4>Call Us</h4>
-              <p>(123) 456-7890</p>
-              <small>Mon-Fri: 9am-5pm</small>
-            </div>
+            <h3 class="info-title">Call Us</h3>
+            <p class="info-text">Main: +1 (555) 123-4567</p>
+            <p class="info-text">Support: +1 (555) 123-4568</p>
+            <a href="tel:+15551234567" class="info-link">
+              Call Now <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
 
-          <div class="info-item">
+          <!-- Info Card 3 -->
+          <div class="info-card animate-on-scroll">
             <div class="info-icon">
               <i class="fas fa-envelope"></i>
             </div>
-            <div class="info-content">
-              <h4>Email Us</h4>
-              <p>info@zooplanet.com</p>
-              <small>Response within 24 hours</small>
-            </div>
+            <h3 class="info-title">Email Us</h3>
+            <p class="info-text">info@zooplanet.com</p>
+            <p class="info-text">support@zooplanet.com</p>
+            <a href="mailto:info@zooplanet.com" class="info-link">
+              Send Email <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
 
-          <div class="social-section">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-              <a href="https://www.facebook.com/" class="social-link facebook">
-                <i class="fab fa-facebook-f"></i>
-                <span>Facebook</span>
-              </a>
-              <a href="https://x.com/" class="social-link twitter">
-                <i class="fab fa-twitter"></i>
-                <span>Twitter</span>
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                class="social-link instagram"
-              >
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-              </a>
-              <a
-                href="https://www.youtube.com/results?search_query=zoo"
-                class="social-link youtube"
-              >
-                <i class="fab fa-youtube"></i>
-                <span>YouTube</span>
-              </a>
+          <!-- Info Card 4 -->
+          <div class="info-card animate-on-scroll">
+            <div class="info-icon">
+              <i class="fas fa-clock"></i>
             </div>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <div class="form-header">
-            <h3>Send Us a Message</h3>
-            <p>Fill out the form below and we'll get back to you soon</p>
-          </div>
-
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" placeholder="John Doe" required />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="john@example.com"
-                  required
-                  style="width: 95%"
-                />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  placeholder="(123) 456-7890"
-                  style="width: 100%"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" required>
-                <option value="" disabled selected>Select a subject</option>
-                <option value="general">General Inquiry</option>
-                <option value="membership">Membership Question</option>
-                <option value="event">Event Booking</option>
-                <option value="feedback">Feedback</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea
-                id="message"
-                placeholder="Type your message here..."
-                rows="5"
-                required
-              ></textarea>
-            </div>
-
-            <div class="form-footer">
-              <button type="submit" class="btn submit-btn">
-                <i class="fas fa-paper-plane"></i> Send Message
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div class="map-container">
-          <div class="map-header">
-            <h3>Find Us on the Map</h3>
-            <button class="map-control" id="zoomIn">
-              <i class="fas fa-search-plus"></i>
-            </button>
-            <button class="map-control" id="zoomOut">
-              <i class="fas fa-search-minus"></i>
-            </button>
-          </div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209126327!2d-73.98784468459384!3d40.74844047932799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTkuNiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2"
-            allowfullscreen=""
-            loading="lazy"
-          ></iframe>
-          <div class="map-actions">
-            <a
-              href="https://maps.app.goo.gl/36x7DYFUifqHrQcPA"
-              class="btn map-btn"
-            >
-              <i class="fas fa-directions"></i> Get Directions
+            <h3 class="info-title">Opening Hours</h3>
+            <p class="info-text">Mon-Fri: 9:00 AM - 6:00 PM</p>
+            <p class="info-text">Sat-Sun: 8:00 AM - 7:00 PM</p>
+            <a href="#" class="info-link">
+              View Schedule <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <div id="footer-placeholder"></div>
+    <!-- ==================== CONTACT FORM & MAP SECTION ==================== -->
+    <section class="section contact-main-section bg-light">
+      <div class="container">
+        <div class="contact-main-grid">
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper animate-on-scroll">
+            <div class="form-header">
+              <h2 class="form-title">Send Us a Message</h2>
+              <p class="form-subtitle">
+                Fill out the form below and we'll get back to you shortly
+              </p>
+            </div>
 
+            <form class="contact-form" id="contactForm">
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="name" class="form-label">
+                  <i class="fas fa-user"></i> Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control"
+                  placeholder="John Doe"
+                  required
+                />
+                <span class="form-error">Please enter your full name</span>
+              </div>
+
+              <div class="form-row">
+                <!-- Email -->
+                <div class="form-group">
+                  <label for="email" class="form-label">
+                    <i class="fas fa-envelope"></i> Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="john.doe@example.com"
+                    required
+                  />
+                  <span class="form-error">Please enter a valid email</span>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                  <label for="phone" class="form-label">
+                    <i class="fas fa-phone"></i> Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-control"
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label for="subject" class="form-label">
+                  <i class="fas fa-tag"></i> Subject *
+                </label>
+                <select
+                  id="subject"
+                  name="subject"
+                  class="form-control"
+                  required
+                >
+                  <option value="">Select a subject</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Plan a Visit">Plan a Visit</option>
+                  <option value="Educational Programs">
+                    Educational Programs
+                  </option>
+                  <option value="Membership Information">
+                    Membership Information
+                  </option>
+                  <option value="Feedback">Feedback</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span class="form-error">Please select a subject</span>
+              </div>
+
+              <!-- Message -->
+              <div class="form-group">
+                <label for="message" class="form-label">
+                  <i class="fas fa-comment"></i> Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-control"
+                  rows="6"
+                  placeholder="Write your message here..."
+                  required
+                ></textarea>
+                <span class="form-error">Please enter your message</span>
+              </div>
+
+              <!-- Newsletter Checkbox -->
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="subscribe" id="subscribe" />
+                  <span class="checkbox-text">
+                    Subscribe to our newsletter for updates and special offers
+                  </span>
+                </label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-large btn-block">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+
+              <!-- Success Message -->
+              <div class="form-success" id="formSuccess">
+                <i class="fas fa-check-circle"></i>
+                <p>Thank you! Your message has been sent successfully.</p>
+              </div>
+
+              <!-- Error Message -->
+              <div class="form-error-message" id="formError">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Oops! Something went wrong. Please try again.</p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Map & Additional Info -->
+          <div class="contact-sidebar">
+            <!-- Map -->
+            <div class="map-wrapper animate-on-scroll">
+              <h3 class="sidebar-title">
+                <i class="fas fa-map"></i> Find Us Here
+              </h3>
+              <div class="map-container">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.5582524621593!2d-118.39193668479424!3d34.06319908060634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf26740eda69%3A0x6c30eca6e2d23eaa!2sLos%20Angeles%20Zoo%20%26%20Botanical%20Gardens!5e0!3m2!1sen!2sus!4v1609876543210!5m2!1sen!2sus"
+                  width="100%"
+                  height="300"
+                  style="border: 0; border-radius: 12px"
+                  allowfullscreen=""
+                  loading="lazy"
+                >
+                </iframe>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="quick-info animate-on-scroll">
+              <h3 class="sidebar-title">
+                <i class="fas fa-info-circle"></i> Quick Information
+              </h3>
+              <ul class="quick-info-list">
+                <li>
+                  <i class="fas fa-ticket-alt"></i>
+                  <div>
+                    <strong>Admission Tickets</strong>
+                    <p>Adults: $25 | Children: $15</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-parking"></i>
+                  <div>
+                    <strong>Free Parking</strong>
+                    <p>Available for all visitors</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-wheelchair"></i>
+                  <div>
+                    <strong>Accessibility</strong>
+                    <p>Wheelchair accessible facilities</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-utensils"></i>
+                  <div>
+                    <strong>Food & Dining</strong>
+                    <p>Multiple restaurants on-site</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-connect animate-on-scroll">
+              <h3 class="sidebar-title">
+                <i class="fas fa-share-alt"></i> Connect With Us
+              </h3>
+              <div class="social-buttons">
+                <a href="#" class="social-btn facebook">
+                  <i class="fab fa-facebook-f"></i>
+                  <span>Facebook</span>
+                </a>
+                <a href="#" class="social-btn twitter">
+                  <i class="fab fa-twitter"></i>
+                  <span>Twitter</span>
+                </a>
+                <a href="#" class="social-btn instagram">
+                  <i class="fab fa-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+                <a href="#" class="social-btn youtube">
+                  <i class="fab fa-youtube"></i>
+                  <span>YouTube</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section class="section faq-section">
+      <div class="container">
+        <div class="text-center mb-lg">
+          <h2 class="section-title animate-on-scroll">
+            Frequently Asked Questions
+          </h2>
+          <p class="section-subtitle animate-on-scroll">
+            Quick answers to common questions
+          </p>
+        </div>
+
+        <div class="faq-wrapper">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question">
+              <span>What are your visiting hours?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We're open Monday to Friday from 9:00 AM to 6:00 PM, and
+                weekends from 8:00 AM to 7:00 PM. During holidays, we operate
+                from 10:00 AM to 5:00 PM. Please check our website for any
+                special closures.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question">
+              <span>Do I need to book tickets in advance?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                While walk-ins are welcome, we highly recommend booking tickets
+                online in advance, especially during peak seasons and weekends.
+                This ensures entry and helps us manage visitor capacity for the
+                best experience.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question">
+              <span>Is the zoo wheelchair accessible?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! All our facilities are fully wheelchair accessible. We also
+                offer complimentary wheelchair rentals at the main entrance
+                (first-come, first-served basis). Service animals are always
+                welcome.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question">
+              <span>Can I bring food and drinks?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Outside food and non-alcoholic beverages are permitted in
+                designated picnic areas. We also have several restaurants and
+                cafes on-site offering a variety of dining options. Glass
+                containers and alcoholic beverages are not allowed.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question">
+              <span>Do you offer educational programs?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Absolutely! We offer educational programs for all ages,
+                including guided tours, school field trips, summer camps, and
+                workshops. Contact our Education Department at
+                education@zooplanet.com for more information and bookings.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-item animate-on-scroll">
+            <button class="faq-question">
+              <span>What's your refund policy?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Tickets can be cancelled or rescheduled up to 24 hours before
+                your visit date for a full refund. For same-day cancellations
+                due to emergencies, please contact our support team who will
+                review on a case-by-case basis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER (Same as all pages) ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="fas fa-paw"></i> Zoo Planet</h3>
+            <p>Bringing you closer to nature's wonders since 2020</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html"
+                  ><i class="fas fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html"
+                  ><i class="fas fa-chevron-right"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Support Us</h3>
+            <ul>
+              <li>
+                <a href="donate.html"
+                  ><i class="fas fa-chevron-right"></i> Donate Now</a
+                >
+              </li>
+              <li>
+                <a href="service.html#memberships"
+                  ><i class="fas fa-chevron-right"></i> Memberships</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Volunteer</a
+                >
+              </li>
+              <li>
+                <a href="donate.html#impact"
+                  ><i class="fas fa-chevron-right"></i> Our Impact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Visit Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Zoo Lane, Wildlife City
+            </p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@zooplanet.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Hours</h3>
+            <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+            <p><i class="far fa-clock"></i> Sat - Sun: 8:00 AM - 7:00 PM</p>
+            <p><i class="far fa-clock"></i> Holidays: 10:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Zoo Planet. All rights reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- UI JavaScript -->
+    <script src="js/main.js"></script>
     <script src="js/contact.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/footer.js"></script>
   </body>
 </html>

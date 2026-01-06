@@ -3,153 +3,961 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/img/image.ico" type="image/x-icon" />
+    <meta
+      name="description"
+      content="Support Zoo Planet - Make a Donation to Wildlife Conservation"
+    />
+    <title>Donate - Zoo Planet | Support Wildlife Conservation</title>
 
-    <title>Donate | Zoo Planet</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/donate.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-  </head>
 
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/donate.css" />
+  </head>
   <body>
-    <!-- NAVBAR -->
-    <nav class="site-navbar">
-      <div class="nav-container">
-        <a href="index.html" class="brand">
-          <img src="img/navlogo.png" class="brand-logo" alt="Zoo Planet" />
-          <span class="brand-text">Zoo Planet</span>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
         </a>
 
-        <button class="nav-toggle" aria-label="Toggle menu">
-          <span class="nav-toggle-icon">☰</span>
-        </button>
-
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="ticket.html">Tickets</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li><a href="login.html" class="btn-login">LOGIN</a></li>
         </ul>
-      </div>
-    </nav>
 
-    <!-- HERO SECTION -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- ==================== DONATE HERO ==================== -->
     <section class="donate-hero">
-      <div class="hero-content">
-        <h1>Support Wildlife Conservation</h1>
-        <p>
-          Your donation helps protect animals, preserve habitats, and support
-          rescue missions.
-        </p>
+      <div class="donate-hero-overlay"></div>
+      <div class="container">
+        <div class="donate-hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-heart"></i>
+            <span>Make a Difference</span>
+          </div>
+          <h1 class="donate-hero-title">Support Wildlife Conservation</h1>
+          <p class="donate-hero-subtitle">
+            Your donation helps us protect endangered species, improve animal
+            habitats, and educate future generations about wildlife
+            conservation.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">250+</div>
+              <div class="stat-label">Animals Protected</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Conservation Programs</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50K+</div>
+              <div class="stat-label">Donors Worldwide</div>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a href="#donation-form" class="btn btn-primary btn-large">
+              <i class="fas fa-heart"></i> Donate Now
+            </a>
+            <a href="#impact" class="btn btn-outline btn-large">
+              <i class="fas fa-info-circle"></i> Learn More
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- DONATION FORM SECTION -->
-    <section class="donation-section">
-      <div class="donation-container">
-        <h2>Make a Donation</h2>
-        <p class="intro">
-          Choose an amount and payment method. Every contribution makes a
-          difference.
-        </p>
-
-        <!-- Donation Amount Buttons -->
-        <div class="amount-buttons">
-          <button class="amount-btn" data-amount="500">₹500</button>
-          <button class="amount-btn" data-amount="1000">₹1000</button>
-          <button class="amount-btn" data-amount="2000">₹2000</button>
-          <button class="amount-btn" data-amount="5000">₹5000</button>
+    <!-- ==================== DONATION AMOUNT SECTION ==================== -->
+    <section class="section donation-section" id="donation-form">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Your Contribution Matters</span>
+          <h2 class="section-title">Choose Your Donation Amount</h2>
+          <p class="section-subtitle">
+            Every donation, no matter the size, makes a real difference in
+            animal welfare and conservation
+          </p>
         </div>
 
-        <!-- Custom Amount -->
-        <div class="form-group">
-          <label for="custom-amount">Custom Amount (₹)</label>
-          <input type="number" id="custom-amount" placeholder="Enter amount" />
-        </div>
+        <div class="donation-container">
+          <!-- Donation Form -->
+          <div class="donation-form-card">
+            <form class="donation-form" id="donationForm">
+              <!-- Donation Type -->
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fas fa-sync-alt"></i> Donation Type
+                </label>
+                <div class="donation-type-toggle">
+                  <button
+                    type="button"
+                    class="type-btn active"
+                    data-type="one-time"
+                  >
+                    One-Time
+                  </button>
+                  <button type="button" class="type-btn" data-type="monthly">
+                    Monthly
+                  </button>
+                </div>
+                <input
+                  type="hidden"
+                  name="donationType"
+                  id="donationType"
+                  value="one-time"
+                />
+              </div>
 
-        <!-- Donor Details -->
-        <div class="form-group">
-          <label for="donor-name">Full Name</label>
-          <input type="text" id="donor-name" required />
-        </div>
+              <!-- Preset Amounts -->
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fas fa-hand-holding-usd"></i> Select Amount
+                </label>
+                <div class="amount-grid">
+                  <button type="button" class="amount-btn" data-amount="500">
+                    <span class="amount">₹500</span>
+                    <span class="desc">Feed 5 animals</span>
+                  </button>
+                  <button type="button" class="amount-btn" data-amount="1000">
+                    <span class="amount">₹1,000</span>
+                    <span class="desc">Medical care</span>
+                  </button>
+                  <button type="button" class="amount-btn" data-amount="2500">
+                    <span class="amount">₹2,500</span>
+                    <span class="desc">Habitat upgrade</span>
+                  </button>
+                  <button type="button" class="amount-btn" data-amount="5000">
+                    <span class="amount">₹5,000</span>
+                    <span class="desc">Conservation project</span>
+                  </button>
+                  <button type="button" class="amount-btn" data-amount="10000">
+                    <span class="amount">₹10,000</span>
+                    <span class="desc">Major impact</span>
+                  </button>
+                  <button type="button" class="amount-btn custom-btn">
+                    <span class="amount">Custom</span>
+                    <span class="desc">Enter your amount</span>
+                  </button>
+                </div>
+              </div>
 
-        <div class="form-group">
-          <label for="donor-email">Email</label>
-          <input type="email" id="donor-email" required />
-        </div>
+              <!-- Custom Amount Input -->
+              <div
+                class="form-group"
+                id="customAmountGroup"
+                style="display: none"
+              >
+                <label class="form-label">
+                  <i class="fas fa-rupee-sign"></i> Enter Custom Amount
+                </label>
+                <div class="input-with-icon">
+                  <span class="input-icon">₹</span>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="customAmount"
+                    name="customAmount"
+                    min="100"
+                    placeholder="Enter amount (Min ₹100)"
+                  />
+                </div>
+              </div>
 
-        <div class="form-group">
-          <label for="donor-phone">Phone Number</label>
-          <input type="tel" id="donor-phone" required />
-        </div>
+              <input type="hidden" name="amount" id="selectedAmount" />
 
-        <!-- Payment Methods -->
-        <h3>Payment Method</h3>
-        <div class="payment-methods">
-          <label>
-            <input type="radio" name="pay-method" value="upi" checked />
-            <i class="fas fa-mobile-alt"></i> UPI
-          </label>
-          <label>
-            <input type="radio" name="pay-method" value="card" />
-            <i class="fas fa-credit-card"></i> Credit/Debit Card
-          </label>
-          <label>
-            <input type="radio" name="pay-method" value="paypal" />
-            <i class="fab fa-paypal"></i> PayPal
-          </label>
-        </div>
+              <!-- Dedication (Optional) -->
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="dedicationCheck" />
+                  <span>Make this donation in honor/memory of someone</span>
+                </label>
+              </div>
 
-        <!-- Payment Details -->
-        <div class="payment-details">
-          <!-- UPI -->
-          <div class="upi-section active" id="upi-section">
-            <p>Scan the QR Code</p>
-            <img
-              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=donate@upi"
-              class="upi-qr"
-              alt="UPI QR Code"
-            />
-            <p>Or enter your UPI ID</p>
-            <input type="text" id="upi-id" placeholder="yourname@upi" />
+              <div id="dedicationFields" style="display: none">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Dedication Type</label>
+                    <select class="form-control" name="dedicationType">
+                      <option value="honor">In Honor Of</option>
+                      <option value="memory">In Memory Of</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="dedicationName"
+                      placeholder="Person's name"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Donor Information -->
+              <div class="form-section-title">
+                <i class="fas fa-user"></i> Your Information
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">
+                    <i class="fas fa-user"></i> First Name
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="firstName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">
+                    <i class="fas fa-user"></i> Last Name
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="lastName"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">
+                    <i class="fas fa-envelope"></i> Email
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">
+                    <i class="fas fa-phone"></i> Phone
+                  </label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    name="phone"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Payment Method -->
+              <div class="form-section-title">
+                <i class="fas fa-credit-card"></i> Payment Method
+              </div>
+
+              <div class="form-group">
+                <div class="payment-methods">
+                  <label class="payment-option">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="card"
+                      checked
+                    />
+                    <div class="payment-card">
+                      <i class="fas fa-credit-card"></i>
+                      <span>Credit/Debit Card</span>
+                    </div>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="paymentMethod" value="upi" />
+                    <div class="payment-card">
+                      <i class="fas fa-mobile-alt"></i>
+                      <span>UPI</span>
+                    </div>
+                  </label>
+                  <label class="payment-option">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="netbanking"
+                    />
+                    <div class="payment-card">
+                      <i class="fas fa-university"></i>
+                      <span>Net Banking</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Terms and Newsletter -->
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="newsletter" />
+                  <span
+                    >Yes, I'd like to receive updates about Zoo Planet's
+                    conservation work</span
+                  >
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="terms" required />
+                  <span
+                    >I agree to the
+                    <a href="terms.html">Terms & Conditions</a> and
+                    <a href="privacy.html">Privacy Policy</a></span
+                  >
+                </label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-block btn-large">
+                <i class="fas fa-heart"></i> Complete Donation
+              </button>
+
+              <div class="secure-badge">
+                <i class="fas fa-lock"></i>
+                <span>Your donation is secure and encrypted</span>
+              </div>
+
+              <!-- Success/Error Messages -->
+              <div class="form-message success" id="donationSuccess">
+                <i class="fas fa-check-circle"></i>
+                <p>Thank you for your generous donation!</p>
+              </div>
+              <div class="form-message error" id="donationError">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Donation failed. Please try again.</p>
+              </div>
+            </form>
           </div>
 
-          <!-- Card -->
-          <div class="card-section" id="card-section">
-            <input type="text" placeholder="Card Number" maxlength="16" />
-            <div class="row">
-              <input type="text" placeholder="MM/YY" maxlength="5" />
-              <input type="text" placeholder="CVV" maxlength="3" />
+          <!-- Donation Summary Sidebar -->
+          <div class="donation-summary">
+            <div class="summary-card">
+              <h3 class="summary-title">
+                <i class="fas fa-receipt"></i> Donation Summary
+              </h3>
+
+              <div class="summary-item">
+                <span>Donation Type:</span>
+                <strong id="summaryType">One-Time</strong>
+              </div>
+
+              <div class="summary-item large">
+                <span>Amount:</span>
+                <strong id="summaryAmount">₹0</strong>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-total">
+                <span>Total:</span>
+                <strong id="summaryTotal">₹0</strong>
+              </div>
+
+              <div class="tax-benefit">
+                <i class="fas fa-info-circle"></i>
+                <p>
+                  Your donation is tax-deductible under Section 80G. You'll
+                  receive a tax receipt via email.
+                </p>
+              </div>
+            </div>
+
+            <!-- Impact Card -->
+            <div class="impact-card">
+              <div class="impact-icon">
+                <i class="fas fa-paw"></i>
+              </div>
+              <h4>Your Impact</h4>
+              <p id="impactText">Select an amount to see your impact</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== IMPACT SECTION ==================== -->
+    <section class="section impact-section" id="impact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Where Your Money Goes</span>
+          <h2 class="section-title">Your Donation's Impact</h2>
+          <p class="section-subtitle">
+            We're committed to transparency. Here's exactly how your
+            contribution helps wildlife conservation.
+          </p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-item">
+            <div class="impact-image">
+              <img
+                src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=600&q=80"
+                alt="Animal Care"
+              />
+              <div class="impact-overlay">
+                <div class="impact-percentage">40%</div>
+              </div>
+            </div>
+            <div class="impact-content">
+              <h3><i class="fas fa-heart"></i> Animal Care & Welfare</h3>
+              <p>
+                Providing nutritious food, medical care, and enrichment
+                activities for all our animals.
+              </p>
             </div>
           </div>
 
-          <!-- PayPal -->
-          <div class="paypal-section" id="paypal-section">
-            <p>You will be redirected to PayPal to complete this donation.</p>
+          <div class="impact-item">
+            <div class="impact-image">
+              <img
+                src="https://images.unsplash.com/photo-1516934024742-b461fba47600?w=600&q=80"
+                alt="Conservation"
+              />
+              <div class="impact-overlay">
+                <div class="impact-percentage">30%</div>
+              </div>
+            </div>
+            <div class="impact-content">
+              <h3><i class="fas fa-leaf"></i> Conservation Programs</h3>
+              <p>
+                Supporting breeding programs and habitat restoration for
+                endangered species.
+              </p>
+            </div>
+          </div>
+
+          <div class="impact-item">
+            <div class="impact-image">
+              <img
+                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80"
+                alt="Education"
+              />
+              <div class="impact-overlay">
+                <div class="impact-percentage">20%</div>
+              </div>
+            </div>
+            <div class="impact-content">
+              <h3>
+                <i class="fas fa-graduation-cap"></i> Education & Outreach
+              </h3>
+              <p>
+                Teaching children and adults about wildlife conservation and
+                environmental protection.
+              </p>
+            </div>
+          </div>
+
+          <div class="impact-item">
+            <div class="impact-image">
+              <img
+                src="https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?w=600&q=80"
+                alt="Facilities"
+              />
+              <div class="impact-overlay">
+                <div class="impact-percentage">10%</div>
+              </div>
+            </div>
+            <div class="impact-content">
+              <h3><i class="fas fa-building"></i> Facility Improvements</h3>
+              <p>
+                Upgrading habitats and facilities to meet the highest standards
+                of animal care.
+              </p>
+            </div>
           </div>
         </div>
-
-        <button class="donate-btn" id="donate-btn">
-          <i class="fas fa-heart"></i> Donate Now
-        </button>
-
-        <p class="secure"><i class="fas fa-lock"></i> Secure Payment</p>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <div id="footer-placeholder"></div>
-    <script src="js/footer.js"></script>
+    <!-- ==================== OTHER WAYS TO HELP ==================== -->
+    <section class="section ways-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">More Ways to Support</span>
+          <h2 class="section-title">Other Ways to Help</h2>
+          <p class="section-subtitle">
+            Beyond monetary donations, there are many ways to support our
+            mission
+          </p>
+        </div>
 
-    <script src="js/nav.js"></script>
+        <div class="ways-grid">
+          <div class="way-card">
+            <div class="way-icon">
+              <i class="fas fa-hands-helping"></i>
+            </div>
+            <h3>Volunteer</h3>
+            <p>
+              Join our team of dedicated volunteers and work directly with
+              animals and visitors.
+            </p>
+            <a href="contact.html" class="btn btn-outline">Learn More</a>
+          </div>
+
+          <div class="way-card">
+            <div class="way-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <h3>Adopt an Animal</h3>
+            <p>
+              Symbolically adopt one of our animals and receive exclusive
+              updates about them.
+            </p>
+            <!-- <a href="service.html" class="btn btn-outline">Adopt Now</a> -->
+            <a
+              href="#adopt-modal"
+              class="btn btn-outline"
+              onclick="openAdoptModal()"
+              return
+              false
+            >
+              ADOPT NOW
+            </a>
+          </div>
+
+          <div class="way-card">
+            <div class="way-icon">
+              <i class="fas fa-gift"></i>
+            </div>
+            <h3>Corporate Sponsorship</h3>
+            <p>
+              Partner with us through corporate sponsorships and make a lasting
+              impact.
+            </p>
+            <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+          </div>
+
+          <div class="way-card">
+            <div class="way-icon">
+              <i class="fas fa-share-alt"></i>
+            </div>
+            <h3>Spread the Word</h3>
+            <p>
+              Share our mission on social media and help us reach more wildlife
+              supporters.
+            </p>
+            <div class="social-share">
+              <a href="#" class="social-btn"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-btn"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-btn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Donor Stories</span>
+          <h2 class="section-title">What Our Donors Say</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "Supporting Zoo Planet has been incredibly rewarding. Knowing my
+              donation directly helps endangered animals gives me so much joy!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Priya Sharma</h4>
+                <span>Monthly Donor since 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "The transparency and dedication of Zoo Planet's team is amazing.
+              I love receiving updates about how my contributions are making a
+              difference."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Rajesh Kumar</h4>
+                <span>Corporate Sponsor</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "As an animal lover, donating to Zoo Planet feels like the perfect
+              way to contribute to wildlife conservation. Highly recommend!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Anita Patel</h4>
+                <span>One-Time Donor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-logo">
+              <span class="logo-icon">🦁</span>
+              Zoo Planet
+            </h3>
+            <p class="footer-desc">
+              Dedicated to wildlife conservation, education, and creating
+              memorable experiences for visitors of all ages.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support Us</h4>
+            <ul class="footer-links">
+              <li><a href="donate.html">Donate Now</a></li>
+              <li><a href="service.html#memberships">Memberships</a></li>
+              <li><a href="contact.html">Volunteer</a></li>
+              <li><a href="donate.html#impact">Our Impact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Wildlife Avenue,
+                Nature City
+              </li>
+              <li><i class="fas fa-phone"></i> +91 1234567890</li>
+              <li><i class="fas fa-envelope"></i> info@zooplanet.com</li>
+              <li><i class="fas fa-clock"></i> Daily 9:00 AM - 6:00 PM</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Zoo Planet. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== ADOPTION MODAL ==================== -->
+    <div class="modal" id="adoptModal">
+      <div class="modal-overlay" onclick="closeAdoptModal()"></div>
+      <div class="modal-content modal-large">
+        <button class="close-modal" onclick="closeAdoptModal()">&times;</button>
+
+        <div class="modal-header">
+          <div class="modal-icon">
+            <i class="fas fa-paw"></i>
+          </div>
+          <h2>Adopt an Animal</h2>
+          <p>Choose your animal friend and make a difference</p>
+        </div>
+
+        <div class="adoption-grid">
+          <!-- Lion Package -->
+          <div class="adoption-card">
+            <div class="adoption-image">
+              <img
+                src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400&q=80"
+                alt="Lion"
+              />
+              <div class="adoption-badge">Popular</div>
+            </div>
+            <div class="adoption-content">
+              <h3>🦁 Adopt a Lion</h3>
+              <div class="adoption-price">₹5,000/year</div>
+              <ul class="adoption-benefits">
+                <li><i class="fas fa-check"></i> Adoption Certificate</li>
+                <li><i class="fas fa-check"></i> Monthly Photo Updates</li>
+                <li><i class="fas fa-check"></i> Zoo Entry Pass (2 visits)</li>
+                <li><i class="fas fa-check"></i> Behind-the-Scenes Tour</li>
+              </ul>
+              <button
+                class="btn btn-primary btn-block"
+                onclick="selectAnimal('Lion', 5000)"
+              >
+                Adopt Lion
+              </button>
+            </div>
+          </div>
+
+          <!-- Elephant Package -->
+          <div class="adoption-card">
+            <div class="adoption-image">
+              <img
+                src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=400&q=80"
+                alt="Elephant"
+              />
+              <div class="adoption-badge featured">Featured</div>
+            </div>
+            <div class="adoption-content">
+              <h3>🐘 Adopt an Elephant</h3>
+              <div class="adoption-price">₹10,000/year</div>
+              <ul class="adoption-benefits">
+                <li><i class="fas fa-check"></i> Adoption Certificate</li>
+                <li><i class="fas fa-check"></i> Weekly Updates</li>
+                <li><i class="fas fa-check"></i> Zoo Entry Pass (5 visits)</li>
+                <li><i class="fas fa-check"></i> VIP Behind-the-Scenes</li>
+                <li><i class="fas fa-check"></i> Name on Donor Wall</li>
+              </ul>
+              <button
+                class="btn btn-primary btn-block"
+                onclick="selectAnimal('Elephant', 10000)"
+              >
+                Adopt Elephant
+              </button>
+            </div>
+          </div>
+
+          <!-- Penguin Package -->
+          <div class="adoption-card">
+            <div class="adoption-image">
+              <img
+                src="https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=400&q=80"
+                alt="Penguin"
+              />
+            </div>
+            <div class="adoption-content">
+              <h3>🐧 Adopt a Penguin</h3>
+              <div class="adoption-price">₹3,000/year</div>
+              <ul class="adoption-benefits">
+                <li><i class="fas fa-check"></i> Adoption Certificate</li>
+                <li><i class="fas fa-check"></i> Quarterly Updates</li>
+                <li><i class="fas fa-check"></i> Zoo Entry Pass (1 visit)</li>
+                <li><i class="fas fa-check"></i> Penguin Plush Toy</li>
+              </ul>
+              <button
+                class="btn btn-primary btn-block"
+                onclick="selectAnimal('Penguin', 3000)"
+              >
+                Adopt Penguin
+              </button>
+            </div>
+          </div>
+
+          <!-- Tiger Package -->
+          <div class="adoption-card">
+            <div class="adoption-image">
+              <img
+                src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=400&q=80"
+                alt="Tiger"
+              />
+            </div>
+            <div class="adoption-content">
+              <h3>🐯 Adopt a Tiger</h3>
+              <div class="adoption-price">₹7,500/year</div>
+              <ul class="adoption-benefits">
+                <li><i class="fas fa-check"></i> Adoption Certificate</li>
+                <li><i class="fas fa-check"></i> Monthly Updates</li>
+                <li><i class="fas fa-check"></i> Zoo Entry Pass (3 visits)</li>
+                <li><i class="fas fa-check"></i> Feeding Experience</li>
+                <li><i class="fas fa-check"></i> Photo with Keeper</li>
+              </ul>
+              <button
+                class="btn btn-primary btn-block"
+                onclick="selectAnimal('Tiger', 7500)"
+              >
+                Adopt Tiger
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Adoption Form Modal (appears after selecting animal) -->
+    <div class="modal" id="adoptFormModal">
+      <div class="modal-overlay" onclick="closeAdoptFormModal()"></div>
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeAdoptFormModal()">
+          &times;
+        </button>
+
+        <div class="modal-header">
+          <h2>Complete Your Adoption</h2>
+          <p>You're adopting: <strong id="selectedAnimalName"></strong></p>
+          <div class="adoption-amount">
+            ₹<span id="selectedAnimalPrice"></span>/year
+          </div>
+        </div>
+
+        <form id="adoptionForm" class="modal-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-user"></i> First Name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="firstName"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-user"></i> Last Name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="lastName"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-envelope"></i> Email
+            </label>
+            <input type="email" class="form-control" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-phone"></i> Phone
+            </label>
+            <input type="tel" class="form-control" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-credit-card"></i> Payment Method
+            </label>
+            <select class="form-control" name="paymentMethod" required>
+              <option value="">Select Payment Method</option>
+              <option value="card">Credit/Debit Card</option>
+              <option value="upi">UPI</option>
+              <option value="netbanking">Net Banking</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="terms" required />
+              <span
+                >I agree to the
+                <a href="terms.html">Terms & Conditions</a></span
+              >
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-large">
+            <i class="fas fa-heart"></i> Complete Adoption
+          </button>
+        </form>
+
+        <div class="form-message success" id="adoptionSuccess">
+          <i class="fas fa-check-circle"></i>
+          <p>Adoption successful! Check your email for details.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
     <script src="js/donate.js"></script>
   </body>
 </html>

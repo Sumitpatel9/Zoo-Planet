@@ -1,64 +1,76 @@
-// js/about.js
-document.addEventListener('DOMContentLoaded', function () {
-  // Animated counters
-  const counters = document.querySelectorAll('.stat-num');
-  const speed = 1200; // duration in ms
+// ==================== COUNTER ANIMATION ====================
+const animateCounters = () => {
+    const counters = document.querySelectorAll('.achievement-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.dataset.target);
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        entry.target.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        entry.target.textContent = target.toLocaleString() + '+';
+                    }
+                };
+                
+                updateCounter();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+};
 
-  function animateCounter(el) {
-    const target = +el.dataset.target;
-    let start = 0;
-    const stepTime = Math.max(Math.floor(speed / target), 20);
-    const timer = setInterval(() => {
-      start += Math.ceil(target / (speed / stepTime));
-      if (start >= target) {
-        el.textContent = target.toLocaleString();
-        clearInterval(timer);
-      } else {
-        el.textContent = start.toLocaleString();
-      }
-    }, stepTime);
-  }
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', animateCounters);
 
-  // Trigger when in view
-  function onScroll() {
-    counters.forEach(c => {
-      const rect = c.getBoundingClientRect();
-      if (rect.top < window.innerHeight && !c.dataset.animated) {
-        animateCounter(c);
-        c.dataset.animated = 'true';
-      }
+// ==================== SCROLL ANIMATIONS ====================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
     });
-  }
-  onScroll();
-  window.addEventListener('scroll', onScroll);
+}, observerOptions);
 
-  // Team photo modal
-  const modal = document.getElementById('team-modal');
-  const modalImg = document.getElementById('team-modal-img');
-  const modalCaption = document.getElementById('team-modal-caption');
-  const closeBtn = modal && modal.querySelector('.close-modal');
+document.querySelectorAll('.animate-on-scroll').forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'all 0.8s ease-out';
+    observer.observe(element);
+});
 
-  document.querySelectorAll('.team-photo').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const full = btn.dataset.full || btn.querySelector('img').src;
-      const alt = btn.querySelector('img').alt || '';
-      if (modal && modalImg) {
-        modalImg.src = full;
-        modalCaption.textContent = alt;
-        modal.setAttribute('aria-hidden','false');
-      }
-    });
-  });
+// ==================== TIMELINE ANIMATION ====================
+const timelineItems = document.querySelectorAll('.timeline-item');
 
-  if (closeBtn) closeBtn.addEventListener('click', () => modal && modal.setAttribute('aria-hidden','true'));
-  window.addEventListener('click', (e) => { if (e.target === modal) modal.setAttribute('aria-hidden','true'); });
-
-  // smooth anchor links (optional)
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const targetId = a.getAttribute('href').slice(1);
-      const t = document.getElementById(targetId);
-      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
-    });
-  });
+timelineItems.forEach((item, index) => {
+    item.style.opacity = '0';
+    item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+    item.style.transition = 'all 0.8s ease-out';
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+                timelineObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    timelineObserver.observe(item);
 });
