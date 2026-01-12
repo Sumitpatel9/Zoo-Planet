@@ -1,576 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Book your Zoo Planet tickets online - Easy and secure booking">
+    <meta
+      name="description"
+      content="Book your Zoo Planet tickets online - Easy and secure booking"
+    />
     <link rel="icon" href="/img/image.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦁</text></svg>"
+    />
     <title>Book Tickets - Zoo Planet | Wildlife Adventure Awaits</title>
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/ticket.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- ==================== HEADER ==================== -->
     <header class="header" id="header">
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <span class="logo-icon">🦁</span>
-                <span class="logo-text">Zoo Planet</span>
-            </a>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">HOME</a></li>
-                <li><a href="about.html" class="nav-link">ABOUT</a></li>
-                <li><a href="service.html" class="nav-link">SERVICES</a></li>
-                <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
-                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-                <li><a href="login.html" class="btn-login">LOGIN</a></li>
-            </ul>
-            
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li><a href="login.html" class="btn-login">LOGIN</a></li>
+        </ul>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
     </header>
 
     <!-- ==================== TICKET SECTION ==================== -->
     <section id="tickets" class="ticket-section">
-        
-        <!-- Hero Background -->
-        <div class="ticket-hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Plan Your Visit</h1>
-                <p>Book your tickets for an unforgettable wildlife experience</p>
-                
-                <!-- View Ticket Search -->
-                <div class="view-ticket-card">
-                    <h2><i class="fas fa-search"></i> View Your Booking</h2>
-                    
-                    <div class="search-options">
-                        <label class="search-option">
-                            <input type="radio" name="searchType" value="ref" checked />
-                            <span><i class="fas fa-ticket-alt"></i> Booking Reference</span>
-                        </label>
-                        
-                        <label class="search-option">
-                            <input type="radio" name="searchType" value="mobile" />
-                            <span><i class="fas fa-mobile-alt"></i> Mobile Number</span>
-                        </label>
-                    </div>
-                    
-                    <div class="search-input-group">
-                        <input
-                            type="text"
-                            id="search-value"
-                            placeholder="Enter booking reference"
-                            class="search-input"
-                        />
-                        <button onclick="viewTicket()" class="search-btn">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </div>
-                </div>
+      <!-- Hero Background -->
+      <div class="ticket-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Plan Your Visit</h1>
+          <p>Book your tickets for an unforgettable wildlife experience</p>
+
+          <!-- View Ticket Search -->
+          <div class="view-ticket-card">
+            <h2><i class="fas fa-search"></i> View Your Booking</h2>
+
+            <div class="search-options">
+              <label class="search-option">
+                <input type="radio" name="searchType" value="ref" checked />
+                <span><i class="fas fa-ticket-alt"></i> Booking Reference</span>
+              </label>
+
+              <label class="search-option">
+                <input type="radio" name="searchType" value="mobile" />
+                <span><i class="fas fa-mobile-alt"></i> Mobile Number</span>
+              </label>
             </div>
+
+            <div class="search-input-group">
+              <input
+                type="text"
+                id="search-value"
+                placeholder="Enter booking reference"
+                class="search-input"
+              />
+              <button onclick="viewTicket()" class="search-btn">
+                <i class="fas fa-search"></i> Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Booking Container -->
+      <div class="ticket-container">
+        <!-- Ticket Options Grid -->
+        <div class="ticket-options-section">
+          <div class="section-header">
+            <h2><i class="fas fa-ticket-alt"></i> Choose Your Tickets</h2>
+            <p>Select the ticket types that suit your group</p>
+          </div>
+
+          <div class="ticket-options">
+            <!-- Adult Ticket -->
+            <div class="ticket-card" data-type="adult">
+              <div class="ticket-ribbon">Most Popular</div>
+              <div class="ticket-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <h3>Adult</h3>
+              <p class="ticket-age">Ages 13+</p>
+              <div class="price-tag">
+                <span class="currency">₹</span>
+                <span class="amount">24.99</span>
+              </div>
+              <ul class="ticket-features">
+                <li><i class="fas fa-check"></i> Full zoo access</li>
+                <li><i class="fas fa-check"></i> All exhibits</li>
+              </ul>
+              <button class="btn select-ticket" data-type="adult">
+                <i class="fas fa-plus-circle"></i> Add Ticket
+              </button>
+            </div>
+
+            <!-- Child Ticket -->
+            <div class="ticket-card" data-type="child">
+              <div class="ticket-icon">
+                <i class="fas fa-child"></i>
+              </div>
+              <h3>Child</h3>
+              <p class="ticket-age">Ages 3-12</p>
+              <div class="price-tag">
+                <span class="currency">₹</span>
+                <span class="amount">14.99</span>
+              </div>
+              <ul class="ticket-features">
+                <li><i class="fas fa-check"></i> Full zoo access</li>
+                <li><i class="fas fa-check"></i> Kid-friendly zones</li>
+              </ul>
+              <button class="btn select-ticket" data-type="child">
+                <i class="fas fa-plus-circle"></i> Add Ticket
+              </button>
+            </div>
+
+            <!-- Senior Ticket -->
+            <div class="ticket-card" data-type="senior">
+              <div class="ticket-icon">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <h3>Senior</h3>
+              <p class="ticket-age">Ages 65+</p>
+              <div class="price-tag">
+                <span class="currency">₹</span>
+                <span class="amount">19.99</span>
+              </div>
+              <ul class="ticket-features">
+                <li><i class="fas fa-check"></i> Discounted rate</li>
+                <li><i class="fas fa-check"></i> Rest areas available</li>
+              </ul>
+              <button class="btn select-ticket" data-type="senior">
+                <i class="fas fa-plus-circle"></i> Add Ticket
+              </button>
+            </div>
+
+            <!-- Family Pack -->
+            <div class="ticket-card highlight" data-type="family">
+              <div class="ticket-ribbon featured">Save 15%</div>
+              <div class="ticket-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Family Pack</h3>
+              <p class="ticket-age">2 Adults + 2 Children</p>
+              <div class="price-tag">
+                <span class="currency">₹</span>
+                <span class="amount">69.99</span>
+              </div>
+              <ul class="ticket-features">
+                <li><i class="fas fa-check"></i> Best value</li>
+                <li><i class="fas fa-check"></i> Family-friendly</li>
+              </ul>
+              <button class="btn select-ticket" data-type="family">
+                <i class="fas fa-plus-circle"></i> Add Ticket
+              </button>
+            </div>
+
+            <!-- Student Ticket -->
+            <div class="ticket-card" data-type="student">
+              <div class="ticket-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h3>Student</h3>
+              <p class="ticket-age">With valid ID</p>
+              <div class="price-tag">
+                <span class="currency">₹</span>
+                <span class="amount">18.99</span>
+              </div>
+              <ul class="ticket-features">
+                <li><i class="fas fa-check"></i> ID required</li>
+                <li><i class="fas fa-check"></i> Educational access</li>
+              </ul>
+              <button class="btn select-ticket" data-type="student">
+                <i class="fas fa-plus-circle"></i> Add Ticket
+              </button>
+            </div>
+
+            <!-- Group Ticket -->
+            <div class="ticket-card" data-type="group">
+              <div class="ticket-icon">
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <h3>Group</h3>
+              <p class="ticket-age">10+ people</p>
+              <div class="price-tag">
+                <span class="currency">₹</span>
+                <span class="amount">12.99</span>
+              </div>
+              <ul class="ticket-features">
+                <li><i class="fas fa-check"></i> Bulk discount</li>
+                <li><i class="fas fa-check"></i> Group activities</li>
+              </ul>
+              <button class="btn select-ticket" data-type="group">
+                <i class="fas fa-plus-circle"></i> Add Ticket
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Main Booking Container -->
-        <div class="ticket-container">
-            
-            <!-- Ticket Options Grid -->
-            <div class="ticket-options-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-ticket-alt"></i> Choose Your Tickets</h2>
-                    <p>Select the ticket types that suit your group</p>
-                </div>
-                
-                <div class="ticket-options">
-                    <!-- Adult Ticket -->
-                    <div class="ticket-card" data-type="adult">
-                        <div class="ticket-ribbon">Most Popular</div>
-                        <div class="ticket-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h3>Adult</h3>
-                        <p class="ticket-age">Ages 13+</p>
-                        <div class="price-tag">
-                            <span class="currency">₹</span>
-                            <span class="amount">24.99</span>
-                        </div>
-                        <ul class="ticket-features">
-                            <li><i class="fas fa-check"></i> Full zoo access</li>
-                            <li><i class="fas fa-check"></i> All exhibits</li>
-                        </ul>
-                        <button class="btn select-ticket" data-type="adult">
-                            <i class="fas fa-plus-circle"></i> Add Ticket
-                        </button>
-                    </div>
+        <!-- Booking Form Sidebar -->
+        <div class="booking-form-container">
+          <div class="booking-form">
+            <h3><i class="fas fa-shopping-cart"></i> Your Booking</h3>
 
-                    <!-- Child Ticket -->
-                    <div class="ticket-card" data-type="child">
-                        <div class="ticket-icon">
-                            <i class="fas fa-child"></i>
-                        </div>
-                        <h3>Child</h3>
-                        <p class="ticket-age">Ages 3-12</p>
-                        <div class="price-tag">
-                            <span class="currency">₹</span>
-                            <span class="amount">14.99</span>
-                        </div>
-                        <ul class="ticket-features">
-                            <li><i class="fas fa-check"></i> Full zoo access</li>
-                            <li><i class="fas fa-check"></i> Kid-friendly zones</li>
-                        </ul>
-                        <button class="btn select-ticket" data-type="child">
-                            <i class="fas fa-plus-circle"></i> Add Ticket
-                        </button>
-                    </div>
+            <form id="ticket-form">
+              <!-- Visit Date -->
+              <div class="form-group">
+                <label for="visit-date">
+                  <i class="fas fa-calendar-alt"></i> Visit Date
+                  <span class="required">*</span>
+                </label>
+                <input type="date" id="visit-date" required />
+              </div>
 
-                    <!-- Senior Ticket -->
-                    <div class="ticket-card" data-type="senior">
-                        <div class="ticket-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h3>Senior</h3>
-                        <p class="ticket-age">Ages 65+</p>
-                        <div class="price-tag">
-                            <span class="currency">₹</span>
-                            <span class="amount">19.99</span>
-                        </div>
-                        <ul class="ticket-features">
-                            <li><i class="fas fa-check"></i> Discounted rate</li>
-                            <li><i class="fas fa-check"></i> Rest areas available</li>
-                        </ul>
-                        <button class="btn select-ticket" data-type="senior">
-                            <i class="fas fa-plus-circle"></i> Add Ticket
-                        </button>
-                    </div>
-
-                    <!-- Family Pack -->
-                    <div class="ticket-card highlight" data-type="family">
-                        <div class="ticket-ribbon featured">Save 15%</div>
-                        <div class="ticket-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Family Pack</h3>
-                        <p class="ticket-age">2 Adults + 2 Children</p>
-                        <div class="price-tag">
-                            <span class="currency">₹</span>
-                            <span class="amount">69.99</span>
-                        </div>
-                        <ul class="ticket-features">
-                            <li><i class="fas fa-check"></i> Best value</li>
-                            <li><i class="fas fa-check"></i> Family-friendly</li>
-                        </ul>
-                        <button class="btn select-ticket" data-type="family">
-                            <i class="fas fa-plus-circle"></i> Add Ticket
-                        </button>
-                    </div>
-
-                    <!-- Student Ticket -->
-                    <div class="ticket-card" data-type="student">
-                        <div class="ticket-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Student</h3>
-                        <p class="ticket-age">With valid ID</p>
-                        <div class="price-tag">
-                            <span class="currency">₹</span>
-                            <span class="amount">18.99</span>
-                        </div>
-                        <ul class="ticket-features">
-                            <li><i class="fas fa-check"></i> ID required</li>
-                            <li><i class="fas fa-check"></i> Educational access</li>
-                        </ul>
-                        <button class="btn select-ticket" data-type="student">
-                            <i class="fas fa-plus-circle"></i> Add Ticket
-                        </button>
-                    </div>
-
-                    <!-- Group Ticket -->
-                    <div class="ticket-card" data-type="group">
-                        <div class="ticket-icon">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <h3>Group</h3>
-                        <p class="ticket-age">10+ people</p>
-                        <div class="price-tag">
-                            <span class="currency">₹</span>
-                            <span class="amount">12.99</span>
-                        </div>
-                        <ul class="ticket-features">
-                            <li><i class="fas fa-check"></i> Bulk discount</li>
-                            <li><i class="fas fa-check"></i> Group activities</li>
-                        </ul>
-                        <button class="btn select-ticket" data-type="group">
-                            <i class="fas fa-plus-circle"></i> Add Ticket
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Booking Form Sidebar -->
-            <div class="booking-form-container">
-                <div class="booking-form">
-                    <h3><i class="fas fa-shopping-cart"></i> Your Booking</h3>
-                    
-                    <form id="ticket-form">
-                        <!-- Visit Date -->
-                        <div class="form-group">
-                            <label for="visit-date">
-                                <i class="fas fa-calendar-alt"></i> Visit Date
-                                <span class="required">*</span>
-                            </label>
-                            <input type="date" id="visit-date" required />
-                        </div>
-
-                        <!-- Selected Tickets Summary -->
-                        <div class="ticket-summary">
-                            <h4><i class="fas fa-list"></i> Selected Tickets</h4>
-                            <div id="selected-tickets" class="selected-tickets-list">
-                                <p class="empty-state">
-                                    <i class="fas fa-info-circle"></i>
-                                    No tickets selected yet
-                                </p>
-                            </div>
-                            
-                            <div class="total-section">
-                                <div class="total-row">
-                                    <span>Subtotal:</span>
-                                    <span id="subtotal-amount">₹0.00</span>
-                                </div>
-                                <div class="total-row main-total">
-                                    <span>Total:</span>
-                                    <span id="total-amount">₹0.00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Visitor Information -->
-                        <div class="form-section">
-                            <h4><i class="fas fa-user"></i> Visitor Information</h4>
-                            
-                            <div class="form-group">
-                                <label for="full-name">
-                                    <i class="fas fa-user"></i> Full Name
-                                    <span class="required">*</span>
-                                </label>
-                                <input type="text" id="full-name" placeholder="Enter your full name" required />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">
-                                    <i class="fas fa-envelope"></i> Email
-                                    <span class="required">*</span>
-                                </label>
-                                <input type="email" id="email" placeholder="your@email.com" required />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">
-                                    <i class="fas fa-phone"></i> Phone Number
-                                    <span class="required">*</span>
-                                </label>
-                                <input type="tel" id="phone" placeholder="+91 1234567890" required />
-                            </div>
-
-                            <!-- Dynamic fields (birth date, student ID) will be inserted here -->
-                        </div>
-
-                        <!-- Payment Methods -->
-                        <div class="form-section payment-section">
-                            <h4><i class="fas fa-credit-card"></i> Payment Method</h4>
-                            
-                            <div class="payment-options">
-                                <label class="payment-option">
-                                    <input type="radio" name="payment" value="credit" checked />
-                                    <div class="payment-card">
-                                        <i class="fab fa-cc-visa"></i>
-                                        <span>Credit/Debit Card</span>
-                                    </div>
-                                </label>
-                                
-                                <label class="payment-option">
-                                    <input type="radio" name="payment" value="upi" />
-                                    <div class="payment-card">
-                                        <i class="fas fa-mobile-alt"></i>
-                                        <span>UPI</span>
-                                    </div>
-                                </label>
-                                
-                                <label class="payment-option">
-                                    <input type="radio" name="payment" value="paypal" />
-                                    <div class="payment-card">
-                                        <i class="fab fa-paypal"></i>
-                                        <span>PayPal</span>
-                                    </div>
-                                </label>
-                                
-                                <label class="payment-option">
-                                    <input type="radio" name="payment" value="cash" />
-                                    <div class="payment-card">
-                                        <i class="fas fa-money-bill-wave"></i>
-                                        <span>Cash at Entry</span>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <!-- Payment Details Sections -->
-                            <div class="payment-details active" id="credit-details">
-                                <div class="form-group">
-                                    <label for="card-number">Card Number</label>
-                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" />
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="expiry">Expiry</label>
-                                        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cvv">CVV</label>
-                                        <input type="text" id="cvv" placeholder="123" maxlength="4" />
-                                    </div>
-                                </div>
-                                <div class="card-icons">
-                                    <i class="fab fa-cc-visa"></i>
-                                    <i class="fab fa-cc-mastercard"></i>
-                                    <i class="fab fa-cc-amex"></i>
-                                </div>
-                            </div>
-
-                            <div class="payment-details" id="upi-details">
-                                <div class="upi-options">
-                                    <label class="upi-option">
-                                        <input type="radio" name="upi-method" value="qr" checked />
-                                        <span><i class="fas fa-qrcode"></i> Scan QR</span>
-                                    </label>
-                                    <label class="upi-option">
-                                        <input type="radio" name="upi-method" value="id" />
-                                        <span><i class="fas fa-mobile-alt"></i> UPI ID</span>
-                                    </label>
-                                </div>
-                                <div class="upi-qr active">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=zoo-planet@upi" alt="UPI QR Code" />
-                                    <p>Scan with any UPI app</p>
-                                </div>
-                                <div class="upi-id">
-                                    <input type="text" id="upi-id" placeholder="yourname@upi" />
-                                    <button type="button" class="btn upi-verify-btn">Verify & Pay</button>
-                                </div>
-                            </div>
-
-                            <div class="payment-details" id="paypal-details">
-                                <div class="paypal-info">
-                                    <i class="fab fa-paypal"></i>
-                                    <p>You'll be redirected to PayPal for secure payment</p>
-                                    <button type="button" class="btn paypal-btn">Continue to PayPal</button>
-                                </div>
-                            </div>
-
-                            <div class="payment-details" id="cash-details">
-                                <div class="cash-info">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                    <p>Pay with cash at the zoo entrance</p>
-                                    <p class="note">Please bring exact change</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn submit-btn">
-                            <i class="fas fa-check-circle"></i> Complete Booking
-                        </button>
-
-                        <!-- Loading Spinner -->
-                        <div class="loading-spinner" id="loading-spinner" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i>
-                            <p>Processing your booking...</p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ticket List Modal (for mobile number search) -->
-        <div id="ticket-list-modal" class="modal" style="display: none">
-            <div class="modal-overlay"></div>
-            <div class="modal-content modal-table">
-                <button class="close-modal" onclick="document.getElementById('ticket-list-modal').style.display='none'">&times;</button>
-                <h3><i class="fas fa-list"></i> Your Bookings</h3>
-                <div class="table-responsive">
-                    <table class="booking-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Booking Ref</th>
-                                <th>Visit Date</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ticket-list-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Confirmation Modal -->
-        <div class="modal" id="confirmation-modal" style="display: none">
-            <div class="modal-overlay"></div>
-            <div class="modal-content modal-large">
-                <div class="modal-header">
-                    <h2><i class="fas fa-check-circle"></i> Booking Confirmed!</h2>
-                    <button class="close-modal">&times;</button>
-                </div>
-                
-                <div class="modal-body">
-                    <div class="ticket-header">
-                        <div class="zoo-logo">
-                            <i class="fas fa-paw"></i>
-                            <span>Zoo Planet</span>
-                        </div>
-                        <div class="booking-ref">
-                            <span>Booking Reference:</span>
-                            <strong id="booking-reference">WAZ-000000</strong>
-                        </div>
-                    </div>
-
-                    <div class="ticket-details">
-                        <div class="visitor-info">
-                            <h3>Visitor Information</h3>
-                            <p><strong>Name:</strong> <span id="conf-name">-</span></p>
-                            <p><strong>Email:</strong> <span id="conf-email">-</span></p>
-                            <p><strong>Phone:</strong> <span id="conf-phone">-</span></p>
-                        </div>
-
-                        <div class="visit-info">
-                            <h3>Visit Details</h3>
-                            <p><strong>Visit Date:</strong> <span id="conf-visit-date">-</span></p>
-                            <p><strong>Booking Date:</strong> <span id="conf-booking-date">-</span></p>
-                            <p><strong>Payment:</strong> <span id="conf-payment-method">-</span></p>
-                        </div>
-                    </div>
-
-                    <div class="ticket-items">
-                        <h3>Tickets Booked</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody id="conf-ticket-items"></tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3"><strong>Total:</strong></td>
-                                    <td><strong id="conf-total-amount">₹0.00</strong></td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-
-                    <div class="important-notes">
-                        <h3><i class="fas fa-exclamation-triangle"></i> Important Notes</h3>
-                        <ul>
-                            <li>Bring valid ID and this booking reference</li>
-                            <li>Tickets valid only for specified date</li>
-                            <li>Entry: 9:00 AM - 4:00 PM</li>
-                            <li>No refunds for no-shows</li>
-                        </ul>
-                    </div>
-
-                    <div class="qr-code-section">
-                        <div id="ticket-qr-code"></div>
-                        <p>Scan this at the entrance</p>
-                    </div>
+              <!-- Selected Tickets Summary -->
+              <div class="ticket-summary">
+                <h4><i class="fas fa-list"></i> Selected Tickets</h4>
+                <div id="selected-tickets" class="selected-tickets-list">
+                  <p class="empty-state">
+                    <i class="fas fa-info-circle"></i>
+                    No tickets selected yet
+                  </p>
                 </div>
 
-                <div class="modal-footer">
-                    <button class="btn download-ticket">
-                        <i class="fas fa-download"></i> Download
+                <div class="total-section">
+                  <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal-amount">₹0.00</span>
+                  </div>
+                  <div class="total-row main-total">
+                    <span>Total:</span>
+                    <span id="total-amount">₹0.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Visitor Information -->
+              <div class="form-section">
+                <h4><i class="fas fa-user"></i> Visitor Information</h4>
+
+                <div class="form-group">
+                  <label for="full-name">
+                    <i class="fas fa-user"></i> Full Name
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="full-name"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">
+                    <i class="fas fa-envelope"></i> Email
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">
+                    <i class="fas fa-phone"></i> Phone Number
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="+91 1234567890"
+                    required
+                  />
+                </div>
+
+                <!-- Dynamic fields (birth date, student ID) will be inserted here -->
+              </div>
+
+              <!-- Payment Methods -->
+              <div class="form-section payment-section">
+                <h4><i class="fas fa-credit-card"></i> Payment Method</h4>
+
+                <div class="payment-options">
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="credit" checked />
+                    <div class="payment-card">
+                      <i class="fab fa-cc-visa"></i>
+                      <span>Credit/Debit Card</span>
+                    </div>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="upi" />
+                    <div class="payment-card">
+                      <i class="fas fa-mobile-alt"></i>
+                      <span>UPI</span>
+                    </div>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="paypal" />
+                    <div class="payment-card">
+                      <i class="fab fa-paypal"></i>
+                      <span>PayPal</span>
+                    </div>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="cash" />
+                    <div class="payment-card">
+                      <i class="fas fa-money-bill-wave"></i>
+                      <span>Cash at Entry</span>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Payment Details Sections -->
+                <div class="payment-details active" id="credit-details">
+                  <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input
+                      type="text"
+                      id="card-number"
+                      placeholder="1234 5678 9012 3456"
+                      maxlength="19"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="expiry">Expiry</label>
+                      <input
+                        type="text"
+                        id="expiry"
+                        placeholder="MM/YY"
+                        maxlength="5"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="cvv">CVV</label>
+                      <input
+                        type="text"
+                        id="cvv"
+                        placeholder="123"
+                        maxlength="4"
+                      />
+                    </div>
+                  </div>
+                  <div class="card-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                  </div>
+                </div>
+
+                <div class="payment-details" id="upi-details">
+                  <div class="upi-options">
+                    <label class="upi-option">
+                      <input
+                        type="radio"
+                        name="upi-method"
+                        value="qr"
+                        checked
+                      />
+                      <span><i class="fas fa-qrcode"></i> Scan QR</span>
+                    </label>
+                    <label class="upi-option">
+                      <input type="radio" name="upi-method" value="id" />
+                      <span><i class="fas fa-mobile-alt"></i> UPI ID</span>
+                    </label>
+                  </div>
+                  <div class="upi-qr active">
+                    <img
+                      src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=zoo-planet@upi"
+                      alt="UPI QR Code"
+                    />
+                    <p>Scan with any UPI app</p>
+                  </div>
+                  <div class="upi-id">
+                    <input type="text" id="upi-id" placeholder="yourname@upi" />
+                    <button type="button" class="btn upi-verify-btn">
+                      Verify & Pay
                     </button>
-                    <button class="btn print-ticket">
-                        <i class="fas fa-print"></i> Print
-                    </button>
-                    <button class="btn close-btn">Close</button>
+                  </div>
                 </div>
-            </div>
+
+                <div class="payment-details" id="paypal-details">
+                  <div class="paypal-info">
+                    <i class="fab fa-paypal"></i>
+                    <p>You'll be redirected to PayPal for secure payment</p>
+                    <button type="button" class="btn paypal-btn">
+                      Continue to PayPal
+                    </button>
+                  </div>
+                </div>
+
+                <div class="payment-details" id="cash-details">
+                  <div class="cash-info">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <p>Pay with cash at the zoo entrance</p>
+                    <p class="note">Please bring exact change</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn submit-btn">
+                <i class="fas fa-check-circle"></i> Complete Booking
+              </button>
+
+              <!-- Loading Spinner -->
+              <div
+                class="loading-spinner"
+                id="loading-spinner"
+                style="display: none"
+              >
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Processing your booking...</p>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+
+      <!-- Ticket List Modal (for mobile number search) -->
+      <div id="ticket-list-modal" class="modal" style="display: none">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-table">
+          <button
+            class="close-modal"
+            onclick="document.getElementById('ticket-list-modal').style.display='none'"
+          >
+            &times;
+          </button>
+          <h3><i class="fas fa-list"></i> Your Bookings</h3>
+          <div class="table-responsive">
+            <table class="booking-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Booking Ref</th>
+                  <th>Visit Date</th>
+                  <th>Total</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="ticket-list-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmation Modal -->
+      <div class="modal" id="confirmation-modal" style="display: none">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+          <div class="modal-header">
+            <h2><i class="fas fa-check-circle"></i> Booking Confirmed!</h2>
+            <button class="close-modal">&times;</button>
+          </div>
+
+          <div class="modal-body">
+            <div class="ticket-header">
+              <div class="zoo-logo">
+                <i class="fas fa-paw"></i>
+                <span>Zoo Planet</span>
+              </div>
+              <div class="booking-ref">
+                <span>Booking Reference:</span>
+                <strong id="booking-reference">WAZ-000000</strong>
+              </div>
+            </div>
+
+            <div class="ticket-details">
+              <div class="visitor-info">
+                <h3>Visitor Information</h3>
+                <p><strong>Name:</strong> <span id="conf-name">-</span></p>
+                <p><strong>Email:</strong> <span id="conf-email">-</span></p>
+                <p><strong>Phone:</strong> <span id="conf-phone">-</span></p>
+              </div>
+
+              <div class="visit-info">
+                <h3>Visit Details</h3>
+                <p>
+                  <strong>Visit Date:</strong>
+                  <span id="conf-visit-date">-</span>
+                </p>
+                <p>
+                  <strong>Booking Date:</strong>
+                  <span id="conf-booking-date">-</span>
+                </p>
+                <p>
+                  <strong>Payment:</strong>
+                  <span id="conf-payment-method">-</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="ticket-items">
+              <h3>Tickets Booked</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody id="conf-ticket-items"></tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3"><strong>Total:</strong></td>
+                    <td><strong id="conf-total-amount">₹0.00</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <div class="important-notes">
+              <h3>
+                <i class="fas fa-exclamation-triangle"></i> Important Notes
+              </h3>
+              <ul>
+                <li>Bring valid ID and this booking reference</li>
+                <li>Tickets valid only for specified date</li>
+                <li>Entry: 9:00 AM - 4:00 PM</li>
+                <li>No refunds for no-shows</li>
+              </ul>
+            </div>
+
+            <div class="qr-code-section">
+              <div id="ticket-qr-code"></div>
+              <p>Scan this at the entrance</p>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn download-ticket">
+              <i class="fas fa-download"></i> Download
+            </button>
+            <button class="btn print-ticket">
+              <i class="fas fa-print"></i> Print
+            </button>
+            <button class="btn close-btn">Close</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-logo">
-                        <span class="logo-icon">🦁</span>
-                        Zoo Planet
-                    </h3>
-                    <p class="footer-desc">
-                        Dedicated to wildlife conservation and creating memorable experiences
-                    </p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="donate.html">Donate</a></li>
-                        <li><a href="services.html">Memberships</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul class="footer-contact">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Wildlife Avenue</li>
-                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
-                        <li><i class="fas fa-envelope"></i> info@zooplanet.com</li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-logo">
+              <span class="logo-icon">🦁</span>
+              Zoo Planet
+            </h3>
+            <p class="footer-desc">
+              Dedicated to wildlife conservation and creating memorable
+              experiences
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
+          </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 Zoo Planet. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
-            </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul class="footer-links">
+              <li><a href="donate.html">Donate</a></li>
+              <li><a href="services.html">Memberships</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <ul class="footer-contact">
+              <li><i class="fas fa-map-marker-alt"></i> 123 Wildlife Avenue</li>
+              <li><i class="fas fa-phone"></i> +91 1234567890</li>
+              <li><i class="fas fa-envelope"></i> info@zooplanet.com</li>
+            </ul>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Zoo Planet. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
@@ -578,5 +660,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/ticket.js"></script>
-</body>
+  </body>
 </html>
