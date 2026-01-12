@@ -1,26 +1,35 @@
 // ==================== ZOO PLANET - DONATE.JS ====================
 // Donation page functionality with API integration
 
-const API_BASE = "https://zoo-planet-backend.onrender.com";
+// ==================== API CONFIGURATION ====================
+const API_BASE = window.location.hostname === 'localhost'
+    ? 'http://localhost:4000'
+    : 'https://zoo-planet-backend.onrender.com';
+
+// const API_BASE = "http://localhost:4000"; // Change this to your backend URL in production
+
+const DONATIONS_API = `${API_BASE}/api/donations`;
+const ADOPTIONS_API = `${API_BASE}/api/adoptions`;
+
+console.log(`🔗 Using API: ${API_BASE}`);
 
 // ==================== DONATION TYPE TOGGLE ====================
 document.querySelectorAll(".type-btn").forEach((btn) => {
   btn.addEventListener("click", function () {
-    // Remove active from all
     document
       .querySelectorAll(".type-btn")
       .forEach((b) => b.classList.remove("active"));
-
-    // Add active to clicked
     this.classList.add("active");
 
-    // Update hidden input
     const type = this.getAttribute("data-type");
     document.getElementById("donationType").value = type;
 
-    // Update summary
     document.getElementById("summaryType").textContent =
-      type === "one-time" ? "One-Time" : "Monthly";
+      type === "one-time"
+        ? "One-Time"
+        : type === "monthly"
+        ? "Monthly"
+        : "Yearly";
   });
 });
 
@@ -29,35 +38,28 @@ let selectedAmount = 0;
 
 document.querySelectorAll(".amount-btn").forEach((btn) => {
   btn.addEventListener("click", function () {
-    // Remove active from all
     document
       .querySelectorAll(".amount-btn")
       .forEach((b) => b.classList.remove("active"));
 
-    // Check if custom button
     if (this.classList.contains("custom-btn")) {
       this.classList.add("active");
       document.getElementById("customAmountGroup").style.display = "block";
       document.getElementById("customAmount").focus();
     } else {
-      // Regular amount button
       this.classList.add("active");
       document.getElementById("customAmountGroup").style.display = "none";
 
       const amount = parseInt(this.getAttribute("data-amount"));
       selectedAmount = amount;
-
-      // Update hidden input
       document.getElementById("selectedAmount").value = amount;
-
-      // Update summary
       updateSummary(amount);
     }
   });
 });
 
 // Handle custom amount input
-document.getElementById("customAmount").addEventListener("input", function () {
+document.getElementById("customAmount")?.addEventListener("input", function () {
   const amount = parseInt(this.value) || 0;
 
   if (amount >= 100) {
@@ -72,15 +74,12 @@ document.getElementById("customAmount").addEventListener("input", function () {
 
 // ==================== UPDATE SUMMARY ====================
 function updateSummary(amount) {
-  // Update amount display
   document.getElementById(
     "summaryAmount"
   ).textContent = `₹${amount.toLocaleString("en-IN")}`;
   document.getElementById(
     "summaryTotal"
   ).textContent = `₹${amount.toLocaleString("en-IN")}`;
-
-  // Update impact text
   updateImpactText(amount);
 }
 
@@ -111,7 +110,7 @@ function updateImpactText(amount) {
 // ==================== DEDICATION CHECKBOX ====================
 document
   .getElementById("dedicationCheck")
-  .addEventListener("change", function () {
+  ?.addEventListener("change", function () {
     const dedicationFields = document.getElementById("dedicationFields");
     if (this.checked) {
       dedicationFields.style.display = "block";
@@ -127,34 +126,40 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-  const regex = /^[\d\s\-\+\(\)]+$/;
-  return phone.length >= 10 && regex.test(phone);
+  const cleaned = phone.replace(/\D/g, "");
+  return cleaned.length === 10;
 }
 
 function showSuccessMessage(message) {
   const successElement = document.getElementById("donationSuccess");
-  successElement.querySelector("p").textContent = message;
-  successElement.classList.add("show");
+  if (successElement) {
+    successElement.querySelector("p").textContent = message;
+    successElement.classList.add("show");
 
-  setTimeout(() => {
-    successElement.classList.remove("show");
-  }, 5000);
+    setTimeout(() => {
+      successElement.classList.remove("show");
+    }, 5000);
+  }
 }
 
 function showErrorMessage(message) {
   const errorElement = document.getElementById("donationError");
-  errorElement.querySelector("p").textContent = message;
-  errorElement.classList.add("show");
+  if (errorElement) {
+    errorElement.querySelector("p").textContent = message;
+    errorElement.classList.add("show");
 
-  setTimeout(() => {
-    errorElement.classList.remove("show");
-  }, 5000);
+    setTimeout(() => {
+      errorElement.classList.remove("show");
+    }, 5000);
+  } else {
+    alert(message);
+  }
 }
 
 // ==================== FORM SUBMISSION WITH BACKEND ====================
 document
   .getElementById("donationForm")
-  .addEventListener("submit", async function (e) {
+  ?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const submitBtn = this.querySelector('button[type="submit"]');
@@ -168,8 +173,15 @@ document
       return;
     }
 
-    const email = this.email.value;
-    const phone = this.phone.value;
+    const email = this.email.value.trim();
+    const phone = this.phone.value.trim();
+    const firstName = this.firstName.value.trim();
+    const lastName = this.lastName.value.trim();
+
+    if (!firstName || !lastName) {
+      showErrorMessage("Please enter your full name");
+      return;
+    }
 
     if (!validateEmail(email)) {
       showErrorMessage("Please enter a valid email address");
@@ -177,38 +189,31 @@ document
     }
 
     if (!validatePhone(phone)) {
-      showErrorMessage("Please enter a valid phone number");
+      showErrorMessage("Please enter a valid 10-digit phone number");
       return;
     }
 
-    // Check terms
     if (!this.terms.checked) {
       showErrorMessage("Please accept the Terms & Conditions");
       return;
     }
 
-    // Prepare form data
+    // Prepare form data matching backend model
     const formData = {
-      donationType: document.getElementById("donationType").value,
-      amount: selectedAmount,
-      firstName: this.firstName.value,
-      lastName: this.lastName.value,
+      donorName: `${firstName} ${lastName}`,
       email: email,
-      phone: phone,
+      phone: phone.replace(/\D/g, ""), // Only digits
+      amount: selectedAmount,
+      donationType:
+        document.getElementById("donationType")?.value || "one-time",
+      purpose: this.purpose?.value || "general",
       paymentMethod: this.paymentMethod.value,
-      newsletter: this.newsletter.checked,
-      termsAccepted: this.terms.checked,
-      timestamp: new Date().toISOString(),
+      isAnonymous: this.anonymous?.checked || false,
+      message: this.message?.value?.trim() || "",
+      taxReceiptRequested: this.taxReceipt?.checked !== false,
     };
 
-    // Add dedication if selected
-    const dedicationCheck = document.getElementById("dedicationCheck");
-    if (dedicationCheck.checked) {
-      formData.dedication = {
-        type: this.dedicationType.value,
-        name: this.dedicationName.value,
-      };
-    }
+    console.log("📤 Sending donation data:", formData);
 
     // Show loading state
     submitBtn.disabled = true;
@@ -216,8 +221,7 @@ document
       '<i class="fas fa-spinner fa-spin"></i> Processing Donation...';
 
     try {
-      // Make API call to backend
-      const response = await fetch(`${API_BASE}/api/donations`, {
+      const response = await fetch(DONATIONS_API, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -226,6 +230,7 @@ document
       });
 
       const data = await response.json();
+      console.log("📥 Response:", data);
 
       if (!response.ok) {
         throw new Error(data.error || "Donation failed");
@@ -233,8 +238,13 @@ document
 
       // Success!
       showSuccessMessage(
-        "Thank you for your generous donation! A receipt has been sent to your email."
+        `Thank you for your generous donation of ₹${selectedAmount.toLocaleString(
+          "en-IN"
+        )}! Reference: ${data.donation.donationReference}`
       );
+
+      // Clear localStorage draft
+      clearDonationDraft();
 
       // Reset form after 2 seconds
       setTimeout(() => {
@@ -242,21 +252,18 @@ document
         selectedAmount = 0;
         updateSummary(0);
 
-        // Remove active states
         document
           .querySelectorAll(".amount-btn")
           .forEach((b) => b.classList.remove("active"));
         document.getElementById("customAmountGroup").style.display = "none";
-        document.getElementById("dedicationFields").style.display = "none";
 
-        // Scroll to top
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+        const dedicationFields = document.getElementById("dedicationFields");
+        if (dedicationFields) dedicationFields.style.display = "none";
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }, 2000);
 
-      // Analytics tracking (if Google Analytics is available)
+      // Analytics tracking
       if (typeof gtag !== "undefined") {
         gtag("event", "donation", {
           event_category: "Donations",
@@ -265,22 +272,210 @@ document
         });
       }
     } catch (error) {
-      console.error("Donation Error:", error);
+      console.error("❌ Donation Error:", error);
       showErrorMessage(
         error.message || "Donation failed. Please try again or contact support."
       );
     } finally {
-      // Reset button state
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
     }
   });
 
+// ==================== ADOPTION MODAL FUNCTIONALITY ====================
+let selectedAnimal = "";
+let selectedAnimalType = "";
+let selectedPrice = 0;
+let selectedPlan = "";
+
+function openAdoptModal() {
+  const modal = document.getElementById("adoptModal");
+  if (modal) {
+    modal.classList.add("show");
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeAdoptModal() {
+  const modal = document.getElementById("adoptModal");
+  if (modal) {
+    modal.classList.remove("show");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+}
+
+function selectAnimal(animalName, animalType, plan, price) {
+  // ✅ Add validation
+  if (!animalName || !price) {
+    console.error("Missing required parameters:", {
+      animalName,
+      animalType,
+      plan,
+      price,
+    });
+    return;
+  }
+
+  selectedAnimal = animalName;
+  selectedAnimalType = animalType || "other";
+  selectedPlan = plan || "bronze";
+  selectedPrice = Number(price) || 0;
+
+  // Update form modal
+  const nameElement = document.getElementById("selectedAnimalName");
+  const priceElement = document.getElementById("selectedAnimalPrice");
+
+  if (nameElement) nameElement.textContent = animalName;
+  if (priceElement)
+    priceElement.textContent = selectedPrice.toLocaleString("en-IN");
+
+  closeAdoptModal();
+
+  setTimeout(() => {
+    const formModal = document.getElementById("adoptFormModal");
+    if (formModal) {
+      formModal.classList.add("show");
+      formModal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+  }, 300);
+}
+
+function closeAdoptFormModal() {
+  const modal = document.getElementById("adoptFormModal");
+  if (modal) {
+    modal.classList.remove("show");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+}
+
+// Handle adoption form submission
+document
+  .getElementById("adoptionForm")
+  ?.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+
+    const firstName = this.firstName.value.trim();
+    const lastName = this.lastName.value.trim();
+    const email = this.email.value.trim();
+    const phone = this.phone.value.trim();
+    const address = this.address?.value?.trim();
+    const city = this.city?.value?.trim();
+    const zipCode = this.zipCode?.value?.trim();
+
+    // Validation
+    if (!firstName || !lastName) {
+      alert("Please enter your full name");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      alert("Please enter a valid 10-digit phone number");
+      return;
+    }
+
+    if (!address || !city || !zipCode) {
+      alert("Please complete your address information");
+      return;
+    }
+
+    // Prepare form data matching backend model
+    const formData = {
+      animalName: selectedAnimal,
+      animalType: selectedAnimalType,
+      adoptionPlan: selectedPlan,
+      duration: this.duration?.value || "1year",
+      price: selectedPrice,
+      adopterName: `${firstName} ${lastName}`,
+      email: email,
+      phone: phone.replace(/\D/g, ""),
+      address: address,
+      city: city,
+      zipCode: zipCode,
+      paymentMethod: this.paymentMethod.value,
+      certificateRequested: this.certificate?.checked !== false,
+      message: this.message?.value?.trim() || "",
+    };
+
+    console.log("📤 Sending adoption data:", formData);
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+    try {
+      const response = await fetch(ADOPTIONS_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log("📥 Response:", data);
+
+      if (!response.ok) {
+        throw new Error(data.error || "Adoption failed");
+      }
+
+      // Show success
+      const successElement = document.getElementById("adoptionSuccess");
+      if (successElement) {
+        successElement.querySelector(
+          "p"
+        ).textContent = `Thank you for adopting ${selectedAnimal}! Reference: ${data.adoption.adoptionReference}`;
+        successElement.classList.add("show");
+      } else {
+        alert(
+          `Success! Thank you for adopting ${selectedAnimal}! Reference: ${data.adoption.adoptionReference}`
+        );
+      }
+
+      setTimeout(() => {
+        closeAdoptFormModal();
+        this.reset();
+        if (successElement) successElement.classList.remove("show");
+      }, 3000);
+    } catch (error) {
+      console.error("❌ Adoption Error:", error);
+      alert(error.message || "Adoption failed. Please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+  });
+
+// Close modals on outside click
+window.addEventListener("click", function (e) {
+  const adoptModal = document.getElementById("adoptModal");
+  const formModal = document.getElementById("adoptFormModal");
+
+  if (e.target === adoptModal) closeAdoptModal();
+  if (e.target === formModal) closeAdoptFormModal();
+});
+
+// Close modals on Escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeAdoptModal();
+    closeAdoptFormModal();
+  }
+});
+
 // ==================== SMOOTH SCROLL TO DONATION FORM ====================
 document.querySelectorAll('a[href="#donation-form"]').forEach((link) => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
-
     const target = document.querySelector("#donation-form");
     if (target) {
       const headerOffset = 100;
@@ -310,7 +505,6 @@ const observer = new IntersectionObserver(function (entries) {
   });
 }, observerOptions);
 
-// Observe all animated elements
 document
   .querySelectorAll(".impact-item, .way-card, .testimonial-card")
   .forEach((element) => {
@@ -321,36 +515,47 @@ document
   });
 
 // ==================== COUNTER ANIMATION FOR HERO STATS ====================
-function animateCounter(element, target, duration = 2000) {
+function animateCounter(element, target, suffix = "+", duration = 2000) {
   let start = 0;
   const increment = target / (duration / 16);
 
   const timer = setInterval(() => {
     start += increment;
     if (start >= target) {
-      element.textContent =
-        target + (element.textContent.includes("K") ? "K+" : "+");
+      element.textContent = target.toLocaleString() + suffix;
       clearInterval(timer);
     } else {
-      element.textContent =
-        Math.floor(start) + (element.textContent.includes("K") ? "K+" : "+");
+      element.textContent = Math.floor(start).toLocaleString() + suffix;
     }
   }, 16);
 }
 
-// Animate counters when page loads
 window.addEventListener("load", function () {
-  const statNumbers = document.querySelectorAll(".stat-number");
+  // Define your stats data
+  const stats = [
+    {
+      selector: ".stat-item:nth-child(1) .stat-number",
+      value: 500,
+      suffix: "+",
+    },
+    {
+      selector: ".stat-item:nth-child(2) .stat-number",
+      value: 50,
+      suffix: "+",
+    },
+    {
+      selector: ".stat-item:nth-child(3) .stat-number",
+      value: 10000,
+      suffix: "+",
+    },
+  ];
 
   setTimeout(() => {
-    statNumbers.forEach((stat) => {
-      const text = stat.textContent;
-      const number = parseInt(text.replace(/[^\d]/g, ""));
-
-      if (text.includes("K")) {
-        animateCounter(stat, number, 2000);
-      } else {
-        animateCounter(stat, number, 1500);
+    stats.forEach((stat) => {
+      const element = document.querySelector(stat.selector);
+      if (element) {
+        element.textContent = "0+"; // Start from 0
+        animateCounter(element, stat.value, stat.suffix, 2000);
       }
     });
   }, 300);
@@ -359,23 +564,13 @@ window.addEventListener("load", function () {
 // ==================== PAYMENT METHOD VISUAL FEEDBACK ====================
 document.querySelectorAll('input[name="paymentMethod"]').forEach((radio) => {
   radio.addEventListener("change", function () {
-    // Add ripple effect or animation here if needed
-    const card = this.nextElementSibling;
-    card.style.transform = "scale(1.05)";
-    setTimeout(() => {
-      card.style.transform = "scale(1)";
-    }, 200);
-  });
-});
-
-// ==================== PAYMENT METHOD VISUAL FEEDBACK ====================
-document.querySelectorAll('input[name="paymentMethod"]').forEach((radio) => {
-  radio.addEventListener("change", function () {
-    const card = this.nextElementSibling;
-    card.style.transform = "scale(1.05)";
-    setTimeout(() => {
-      card.style.transform = "scale(1)";
-    }, 200);
+    const label = this.closest("label") || this.nextElementSibling;
+    if (label) {
+      label.style.transform = "scale(1.05)";
+      setTimeout(() => {
+        label.style.transform = "scale(1)";
+      }, 200);
+    }
   });
 });
 
@@ -387,7 +582,6 @@ document.querySelectorAll('input[name="paymentMethod"]').forEach((radio) => {
   window.addEventListener("scroll", function () {
     const scrollPosition = window.pageYOffset;
 
-    // Add shadow effect when scrolling
     if (scrollPosition > 200) {
       summary.style.transition = "box-shadow 0.3s ease";
       summary.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
@@ -401,29 +595,26 @@ document.querySelectorAll('input[name="paymentMethod"]').forEach((radio) => {
 const donationForm = document.getElementById("donationForm");
 if (donationForm) {
   const formInputs = donationForm.querySelectorAll(
-    'input:not([type="checkbox"]):not([type="radio"])'
+    'input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])'
   );
 
   formInputs.forEach((input) => {
-    // Load saved data on page load
     const savedValue = localStorage.getItem(`donation_${input.name}`);
-    if (savedValue && input.type !== "hidden") {
+    if (savedValue) {
       input.value = savedValue;
     }
 
-    // Save data on change
     input.addEventListener("input", function () {
       localStorage.setItem(`donation_${this.name}`, this.value);
     });
   });
 }
 
-// Clear localStorage after successful donation
 function clearDonationDraft() {
   const donationForm = document.getElementById("donationForm");
   if (donationForm) {
     const formInputs = donationForm.querySelectorAll(
-      'input:not([type="checkbox"]):not([type="radio"])'
+      'input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])'
     );
     formInputs.forEach((input) => {
       localStorage.removeItem(`donation_${input.name}`);
@@ -433,59 +624,16 @@ function clearDonationDraft() {
 
 // ==================== KEYBOARD SHORTCUTS ====================
 document.addEventListener("keydown", function (e) {
-  // Ctrl/Cmd + D = Focus on donation form
   if ((e.ctrlKey || e.metaKey) && e.key === "d") {
     e.preventDefault();
-    document
-      .querySelector(".donation-form")
-      .scrollIntoView({ behavior: "smooth" });
-    document.querySelector(".amount-btn").focus();
+    const form = document.querySelector(".donation-form");
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth" });
+      const firstBtn = document.querySelector(".amount-btn");
+      if (firstBtn) firstBtn.focus();
+    }
   }
 });
-
-// ==================== PRINT RECEIPT FUNCTION ====================
-function printReceipt(donationData) {
-  const receiptWindow = window.open("", "_blank");
-  receiptWindow.document.write(`
-        <html>
-        <head>
-            <title>Donation Receipt - Zoo Planet</title>
-            <style>
-                body { font-family: Arial, sans-serif; padding: 40px; }
-                .header { text-align: center; margin-bottom: 30px; }
-                .amount { font-size: 2rem; color: #2d8659; font-weight: bold; }
-                table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-                td { padding: 10px; border-bottom: 1px solid #ddd; }
-                .footer { margin-top: 40px; text-align: center; color: #666; }
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <h1>🦁 Zoo Planet</h1>
-                <h2>Donation Receipt</h2>
-            </div>
-            <div class="amount">₹${donationData.amount}</div>
-            <table>
-                <tr><td>Date:</td><td>${new Date().toLocaleDateString()}</td></tr>
-                <tr><td>Donor:</td><td>${donationData.firstName} ${
-    donationData.lastName
-  }</td></tr>
-                <tr><td>Email:</td><td>${donationData.email}</td></tr>
-                <tr><td>Type:</td><td>${donationData.donationType}</td></tr>
-                <tr><td>Payment Method:</td><td>${
-                  donationData.paymentMethod
-                }</td></tr>
-            </table>
-            <div class="footer">
-                <p>This donation is tax-deductible under Section 80G</p>
-                <p>Thank you for supporting wildlife conservation!</p>
-            </div>
-        </body>
-        </html>
-    `);
-  receiptWindow.document.close();
-  receiptWindow.print();
-}
 
 // ==================== SOCIAL SHARING ====================
 document.querySelectorAll(".social-btn").forEach((btn) => {
@@ -497,16 +645,19 @@ document.querySelectorAll(".social-btn").forEach((btn) => {
       "I just donated to Zoo Planet to support wildlife conservation! Join me in making a difference."
     );
 
-    const platform = this.querySelector("i").classList;
+    const iconClasses = this.querySelector("i")?.classList;
     let shareUrl = "";
 
-    if (platform.contains("fa-facebook-f")) {
+    if (iconClasses?.contains("fa-facebook-f")) {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    } else if (platform.contains("fa-twitter")) {
+    } else if (
+      iconClasses?.contains("fa-twitter") ||
+      iconClasses?.contains("fa-x-twitter")
+    ) {
       shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-    } else if (platform.contains("fa-linkedin-in")) {
+    } else if (iconClasses?.contains("fa-linkedin-in")) {
       shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-    } else if (platform.contains("fa-whatsapp")) {
+    } else if (iconClasses?.contains("fa-whatsapp")) {
       shareUrl = `https://wa.me/?text=${text}%20${url}`;
     }
 
@@ -522,93 +673,16 @@ console.log(
   "color: #2d8659; font-size: 16px; font-weight: bold;"
 );
 console.log(
-  "%cBackend API: `${API_BASE}/api/donations`/api/donations",
+  `%cDonations API: ${DONATIONS_API}`,
+  "color: #666; font-weight: bold;"
+);
+console.log(
+  `%cAdoptions API: ${ADOPTIONS_API}`,
   "color: #666; font-weight: bold;"
 );
 console.log(
   "%cThank you for supporting wildlife conservation! 💚",
   "color: #2d8659;"
 );
+
 // ==================== END OF DONATE.JS ====================
-
-// ==================== ADOPTION MODAL FUNCTIONALITY ====================
-let selectedAnimal = "";
-let selectedPrice = 0;
-
-function openAdoptModal() {
-  document.getElementById("adoptModal").classList.add("show");
-  document.getElementById("adoptModal").style.display = "flex";
-  document.body.style.overflow = "hidden";
-}
-
-function closeAdoptModal() {
-  document.getElementById("adoptModal").classList.remove("show");
-  document.getElementById("adoptModal").style.display = "none";
-  document.body.style.overflow = "auto";
-}
-
-function selectAnimal(animal, price) {
-  selectedAnimal = animal;
-  selectedPrice = price;
-
-  // Update form modal
-  document.getElementById("selectedAnimalName").textContent = animal;
-  document.getElementById("selectedAnimalPrice").textContent =
-    price.toLocaleString("en-IN");
-
-  // Close selection modal, open form modal
-  closeAdoptModal();
-
-  setTimeout(() => {
-    document.getElementById("adoptFormModal").classList.add("show");
-    document.getElementById("adoptFormModal").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }, 300);
-}
-
-function closeAdoptFormModal() {
-  document.getElementById("adoptFormModal").classList.remove("show");
-  document.getElementById("adoptFormModal").style.display = "none";
-  document.body.style.overflow = "auto";
-}
-
-// Handle adoption form submission
-document
-  .getElementById("adoptionForm")
-  ?.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const formData = {
-      animal: selectedAnimal,
-      price: selectedPrice,
-      firstName: this.firstName.value,
-      lastName: this.lastName.value,
-      email: this.email.value,
-      phone: this.phone.value,
-      paymentMethod: this.paymentMethod.value,
-      timestamp: new Date().toISOString(),
-    };
-
-    try {
-      const response = await fetch(`${API_BASE}/api/donations`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) throw new Error(data.error || "Adoption failed");
-
-      // Show success
-      document.getElementById("adoptionSuccess").classList.add("show");
-
-      setTimeout(() => {
-        closeAdoptFormModal();
-        this.reset();
-        document.getElementById("adoptionSuccess").classList.remove("show");
-      }, 3000);
-    } catch (error) {
-      alert(error.message || "Adoption failed. Please try again.");
-    }
-  });

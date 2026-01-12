@@ -70,15 +70,15 @@
           </p>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number">250+</div>
+              <div class="stat-number">500+</div>
               <div class="stat-label">Animals Protected</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">15</div>
+              <div class="stat-number">50+</div>
               <div class="stat-label">Conservation Programs</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">50K+</div>
+              <div class="stat-number">10000+</div>
               <div class="stat-label">Donors Worldwide</div>
             </div>
           </div>
@@ -740,7 +740,7 @@
       </div>
     </footer>
 
-    <!-- ==================== ADOPTION MODAL ==================== -->
+    <!-- ==================== ADOPTION MODAL (Selection Grid) ==================== -->
     <div class="modal" id="adoptModal">
       <div class="modal-overlay" onclick="closeAdoptModal()"></div>
       <div class="modal-content modal-large">
@@ -775,7 +775,7 @@
               </ul>
               <button
                 class="btn btn-primary btn-block"
-                onclick="selectAnimal('Lion', 5000)"
+                onclick="selectAnimal('Simba the Lion', 'lion', 'gold', 5000)"
               >
                 Adopt Lion
               </button>
@@ -803,7 +803,7 @@
               </ul>
               <button
                 class="btn btn-primary btn-block"
-                onclick="selectAnimal('Elephant', 10000)"
+                onclick="selectAnimal('Ella the Elephant', 'elephant', 'platinum', 10000)"
               >
                 Adopt Elephant
               </button>
@@ -829,7 +829,7 @@
               </ul>
               <button
                 class="btn btn-primary btn-block"
-                onclick="selectAnimal('Penguin', 3000)"
+                onclick="selectAnimal('Percy the Penguin', 'penguin', 'silver', 3000)"
               >
                 Adopt Penguin
               </button>
@@ -856,7 +856,7 @@
               </ul>
               <button
                 class="btn btn-primary btn-block"
-                onclick="selectAnimal('Tiger', 7500)"
+                onclick="selectAnimal('Tiger the Tiger', 'tiger', 'gold', 7500)"
               >
                 Adopt Tiger
               </button>
@@ -866,7 +866,7 @@
       </div>
     </div>
 
-    <!-- Adoption Form Modal (appears after selecting animal) -->
+    <!-- ==================== ADOPTION FORM MODAL ==================== -->
     <div class="modal" id="adoptFormModal">
       <div class="modal-overlay" onclick="closeAdoptFormModal()"></div>
       <div class="modal-content">
@@ -875,14 +875,21 @@
         </button>
 
         <div class="modal-header">
-          <h2>Complete Your Adoption</h2>
-          <p>You're adopting: <strong id="selectedAnimalName"></strong></p>
+          <div class="modal-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h2>Adopt <span id="selectedAnimalName">Animal</span></h2>
           <div class="adoption-amount">
-            ₹<span id="selectedAnimalPrice"></span>/year
+            ₹<span id="selectedAnimalPrice">0</span>
           </div>
         </div>
 
-        <form id="adoptionForm" class="modal-form">
+        <form class="modal-form" id="adoptionForm">
+          <!-- Personal Information -->
+          <div class="form-section-title">
+            <i class="fas fa-user"></i> Personal Information
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">
@@ -893,6 +900,7 @@
                 class="form-control"
                 name="firstName"
                 required
+                placeholder="Enter first name"
               />
             </div>
             <div class="form-group">
@@ -904,55 +912,178 @@
                 class="form-control"
                 name="lastName"
                 required
+                placeholder="Enter last name"
               />
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label">
-              <i class="fas fa-envelope"></i> Email
-            </label>
-            <input type="email" class="form-control" name="email" required />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-envelope"></i> Email
+              </label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                required
+                placeholder="your.email@example.com"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-phone"></i> Phone
+              </label>
+              <input
+                type="tel"
+                class="form-control"
+                name="phone"
+                required
+                placeholder="10-digit phone number"
+                maxlength="10"
+              />
+            </div>
+          </div>
+
+          <!-- Address Information -->
+          <div class="form-section-title">
+            <i class="fas fa-map-marker-alt"></i> Address Information
           </div>
 
           <div class="form-group">
             <label class="form-label">
-              <i class="fas fa-phone"></i> Phone
+              <i class="fas fa-home"></i> Street Address
             </label>
-            <input type="tel" class="form-control" name="phone" required />
+            <input
+              type="text"
+              class="form-control"
+              name="address"
+              required
+              placeholder="House no, Street, Area"
+            />
           </div>
 
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-city"></i> City
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                required
+                placeholder="Your city"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-mail-bulk"></i> Zip Code
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="zipCode"
+                required
+                placeholder="6-digit code"
+                maxlength="6"
+              />
+            </div>
+          </div>
+
+          <!-- Adoption Duration -->
           <div class="form-group">
             <label class="form-label">
-              <i class="fas fa-credit-card"></i> Payment Method
+              <i class="fas fa-calendar-alt"></i> Adoption Duration
             </label>
-            <select class="form-control" name="paymentMethod" required>
-              <option value="">Select Payment Method</option>
-              <option value="card">Credit/Debit Card</option>
-              <option value="upi">UPI</option>
-              <option value="netbanking">Net Banking</option>
+            <select class="form-control" name="duration" required>
+              <option value="3months">3 Months</option>
+              <option value="6months">6 Months</option>
+              <option value="1year" selected>1 Year</option>
             </select>
           </div>
 
+          <!-- Payment Method -->
+          <div class="form-section-title">
+            <i class="fas fa-credit-card"></i> Payment Method
+          </div>
+
+          <div class="form-group">
+            <div class="payment-methods">
+              <label class="payment-option">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="credit"
+                  checked
+                />
+                <div class="payment-card">
+                  <i class="fas fa-credit-card"></i>
+                  <span>Credit Card</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="upi" />
+                <div class="payment-card">
+                  <i class="fas fa-mobile-alt"></i>
+                  <span>UPI</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="cash" />
+                <div class="payment-card">
+                  <i class="fas fa-money-bill-wave"></i>
+                  <span>Cash</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Additional Options -->
           <div class="form-group">
             <label class="checkbox-label">
-              <input type="checkbox" name="terms" required />
-              <span
-                >I agree to the
-                <a href="terms.html">Terms & Conditions</a></span
-              >
+              <input type="checkbox" name="certificate" checked />
+              <span>Send me an adoption certificate</span>
             </label>
           </div>
 
+          <div class="form-group">
+            <label class="form-label">
+              <i class="fas fa-comment"></i> Special Message (Optional)
+            </label>
+            <textarea
+              class="form-control"
+              name="message"
+              rows="3"
+              placeholder="Any special message or request..."
+            ></textarea>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="terms" required />
+              <span>
+                I agree to the <a href="terms.html">Terms & Conditions</a>
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
           <button type="submit" class="btn btn-primary btn-block btn-large">
             <i class="fas fa-heart"></i> Complete Adoption
           </button>
-        </form>
 
-        <div class="form-message success" id="adoptionSuccess">
-          <i class="fas fa-check-circle"></i>
-          <p>Adoption successful! Check your email for details.</p>
-        </div>
+          <!-- Success/Error Messages -->
+          <div class="form-message success" id="adoptionSuccess">
+            <i class="fas fa-check-circle"></i>
+            <p>Thank you for adopting!</p>
+          </div>
+          <div class="form-message error" id="adoptionError">
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Adoption failed. Please try again.</p>
+          </div>
+        </form>
       </div>
     </div>
 

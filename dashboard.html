@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="User Dashboard - Zoo Planet" />
+    <title>My Dashboard - Zoo Planet</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">Zoo Planet</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="service.html" class="nav-link">SERVICES</a></li>
+          <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li>
+            <a href="dashboard.html" class="btn-login active">
+              <i class="fas fa-user"></i> DASHBOARD
+            </a>
+          </li>
+        </ul>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- ==================== DASHBOARD SECTION ==================== -->
+    <section class="dashboard-section">
+      <div class="container">
+        <!-- User Welcome Header -->
+        <div class="dashboard-header">
+          <div class="user-welcome">
+            <div class="user-avatar">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-info">
+              <h1>Welcome back, <span id="userName">Loading...</span>! 👋</h1>
+              <p>Manage your bookings, donations, and account settings</p>
+            </div>
+          </div>
+          <button class="btn btn-danger" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon tickets">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="totalTickets">0</h3>
+              <p>Active Tickets</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon events">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="totalEvents">0</h3>
+              <p>Event Bookings</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon adoptions">
+              <i class="fas fa-paw"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="totalAdoptions">0</h3>
+              <p>Animal Adoptions</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon donations">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="totalDonations">₹0</h3>
+              <p>Total Donations</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Tabs -->
+        <div class="dashboard-tabs">
+          <button class="tab-btn active" data-tab="tickets">
+            <i class="fas fa-ticket-alt"></i> My Tickets
+          </button>
+          <button class="tab-btn" data-tab="events">
+            <i class="fas fa-calendar"></i> Event Bookings
+          </button>
+          <button class="tab-btn" data-tab="adoptions">
+            <i class="fas fa-paw"></i> Adoptions
+          </button>
+          <button class="tab-btn" data-tab="donations">
+            <i class="fas fa-heart"></i> Donations
+          </button>
+          <button class="tab-btn" data-tab="profile">
+            <i class="fas fa-user-cog"></i> Profile
+          </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content active" id="tickets">
+          <div class="section-header">
+            <h2><i class="fas fa-ticket-alt"></i> My Tickets</h2>
+            <a href="ticket.html" class="btn btn-primary btn-small">
+              <i class="fas fa-plus"></i> Book New Ticket
+            </a>
+          </div>
+
+          <div class="tickets-list" id="ticketsList">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i> Loading tickets...
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="events">
+          <div class="section-header">
+            <h2><i class="fas fa-calendar"></i> Event Bookings</h2>
+            <a href="service.html#events" class="btn btn-primary btn-small">
+              <i class="fas fa-plus"></i> Book Event
+            </a>
+          </div>
+
+          <div class="events-list" id="eventsList">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i> Loading events...
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="adoptions">
+          <div class="section-header">
+            <h2><i class="fas fa-paw"></i> My Adoptions</h2>
+            <a href="donate.html#adopt" class="btn btn-primary btn-small">
+              <i class="fas fa-plus"></i> Adopt Animal
+            </a>
+          </div>
+
+          <div class="adoptions-list" id="adoptionsList">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i> Loading adoptions...
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="donations">
+          <div class="section-header">
+            <h2><i class="fas fa-heart"></i> My Donations</h2>
+            <a href="donate.html" class="btn btn-primary btn-small">
+              <i class="fas fa-plus"></i> Make Donation
+            </a>
+          </div>
+
+          <div class="donations-list" id="donationsList">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i> Loading donations...
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="profile">
+          <div class="section-header">
+            <h2><i class="fas fa-user-cog"></i> Profile Settings</h2>
+          </div>
+
+          <div class="profile-card">
+            <form class="profile-form" id="profileForm">
+              <div class="form-group">
+                <label for="profileName">
+                  <i class="fas fa-user"></i> Full Name
+                </label>
+                <input
+                  type="text"
+                  id="profileName"
+                  class="form-control"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="profileEmail">
+                  <i class="fas fa-envelope"></i> Email Address
+                </label>
+                <input
+                  type="email"
+                  id="profileEmail"
+                  class="form-control"
+                  placeholder="Your email"
+                  readonly
+                />
+                <small>Email cannot be changed</small>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <i class="fas fa-shield-alt"></i> Account Status
+                </label>
+                <div class="status-badge active">
+                  <i class="fas fa-check-circle"></i> Active
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <i class="fas fa-calendar"></i> Member Since
+                </label>
+                <p id="memberSince" class="info-text">Loading...</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Update Profile
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="fas fa-paw"></i> Zoo Planet</h3>
+            <p>Bringing you closer to nature's wonders since 2020</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html"
+                  ><i class="fas fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html"
+                  ><i class="fas fa-chevron-right"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Visit Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Zoo Lane, Wildlife City
+            </p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@zooplanet.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Hours</h3>
+            <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+            <p><i class="far fa-clock"></i> Sat - Sun: 8:00 AM - 7:00 PM</p>
+            <p><i class="far fa-clock"></i> Holidays: 10:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Zoo Planet. All rights reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

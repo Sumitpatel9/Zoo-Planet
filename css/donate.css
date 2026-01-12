@@ -128,120 +128,282 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Donation Type Toggle */
+/* ==================== FORM GROUPS ==================== */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.form-label i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* ==================== FORM CONTROLS ==================== */
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(45, 134, 89, 0.1);
+    background: #fff;
+}
+
+.form-control::placeholder {
+    color: #999;
+}
+
+/* ==================== FORM ROW ==================== */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* ==================== CHECKBOX LABELS ==================== */
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--gray);
+    cursor: pointer;
+    padding: var(--spacing-sm) 0;
+    transition: color 0.2s ease;
+}
+
+.checkbox-label:hover {
+    color: var(--dark-gray);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-label span {
+    line-height: 1.6;
+}
+
+.checkbox-label a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.checkbox-label a:hover {
+    color: var(--primary-dark);
+}
+
+/* ==================== DONATION TYPE TOGGLE ==================== */
 .donation-type-toggle {
     display: flex;
-    gap: var(--spacing-sm);
-    background: var(--light-gray);
+    gap: 8px;
+    background: #f5f5f5;
     padding: 6px;
-    border-radius: var(--border-radius-sm);
+    border-radius: 10px;
+    margin-bottom: 4px;
 }
 
 .type-btn {
     flex: 1;
-    padding: 12px 24px;
+    padding: 14px 24px;
     background: transparent;
     border: none;
-    border-radius: var(--border-radius-sm);
+    border-radius: 8px;
     font-weight: 600;
+    font-size: 1rem;
     color: var(--gray);
     cursor: pointer;
-    transition: var(--transition-base);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.type-btn:hover {
+    color: var(--dark-gray);
+    background: rgba(45, 134, 89, 0.1);
 }
 
 .type-btn.active {
     background: var(--primary-color);
     color: var(--white);
+    box-shadow: 0 4px 12px rgba(45, 134, 89, 0.3);
+    transform: translateY(-2px);
 }
 
-/* Amount Grid */
+/* ==================== AMOUNT GRID ==================== */
 .amount-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
+    gap: 12px;
+    margin-top: 4px;
 }
 
 .amount-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--spacing-md);
+    justify-content: center;
+    padding: 18px 12px;
     background: var(--white);
-    border: 2px solid #e0e0e0;
-    border-radius: var(--border-radius-sm);
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
     cursor: pointer;
-    transition: var(--transition-base);
+    transition: all 0.3s ease;
     text-align: center;
+    min-height: 100px;
 }
 
 .amount-btn:hover {
     border-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    background: rgba(45, 134, 89, 0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(45, 134, 89, 0.15);
 }
 
 .amount-btn.active {
     border-color: var(--primary-color);
-    background: rgba(45, 134, 89, 0.1);
+    border-width: 3px;
+    background: rgba(45, 134, 89, 0.08);
+    box-shadow: 0 6px 20px rgba(45, 134, 89, 0.2);
+    transform: translateY(-4px);
 }
 
 .amount-btn .amount {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
     color: var(--dark-gray);
     margin-bottom: 6px;
+    line-height: 1;
+}
+
+.amount-btn.active .amount {
+    color: var(--primary-color);
 }
 
 .amount-btn .desc {
     font-size: 0.85rem;
     color: var(--gray);
+    line-height: 1.3;
+}
+
+.amount-btn.custom-btn {
+    border-style: dashed;
 }
 
 .amount-btn.custom-btn .amount {
     font-size: 1.3rem;
 }
 
-/* Custom Amount Input */
+.amount-btn.custom-btn:hover {
+    border-style: solid;
+}
+
+/* ==================== CUSTOM AMOUNT INPUT ==================== */
+#customAmountGroup {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .input-with-icon {
     position: relative;
 }
 
 .input-icon {
     position: absolute;
-    left: 15px;
+    left: 16px;
     top: 50%;
     transform: translateY(-50%);
     font-weight: 700;
-    color: var(--gray);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    pointer-events: none;
 }
 
 .input-with-icon .form-control {
-    padding-left: 40px;
+    padding-left: 42px;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
-/* Form Section Title */
+/* ==================== DEDICATION FIELDS ==================== */
+#dedicationFields {
+    animation: slideDown 0.3s ease;
+    background: #f9f9f9;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid var(--primary-color);
+    margin-top: var(--spacing-md);
+}
+
+/* ==================== FORM SECTION TITLE ==================== */
 .form-section-title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
+    gap: 12px;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--dark-gray);
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--light-gray);
+    border-bottom: 3px solid var(--primary-color);
+    position: relative;
+}
+
+.form-section-title::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-dark);
 }
 
 .form-section-title i {
     color: var(--primary-color);
+    font-size: 1.3rem;
 }
 
-/* Payment Methods */
+/* ==================== PAYMENT METHODS ==================== */
 .payment-methods {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-md);
+    margin-top: 4px;
 }
 
 .payment-option {
@@ -256,45 +418,163 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: var(--spacing-md);
+    gap: 12px;
+    padding: var(--spacing-lg);
     background: var(--white);
-    border: 2px solid #e0e0e0;
-    border-radius: var(--border-radius-sm);
-    transition: var(--transition-base);
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
+    transition: all 0.3s ease;
     text-align: center;
+    min-height: 100px;
+    justify-content: center;
 }
 
 .payment-card i {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--gray);
+    transition: all 0.3s ease;
+}
+
+.payment-card span {
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+.payment-option:hover .payment-card {
+    border-color: var(--primary-color);
+    background: rgba(45, 134, 89, 0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(45, 134, 89, 0.15);
 }
 
 .payment-option input[type="radio"]:checked + .payment-card {
     border-color: var(--primary-color);
-    background: rgba(45, 134, 89, 0.05);
+    border-width: 3px;
+    background: rgba(45, 134, 89, 0.08);
+    box-shadow: 0 6px 20px rgba(45, 134, 89, 0.2);
 }
 
 .payment-option input[type="radio"]:checked + .payment-card i {
     color: var(--primary-color);
+    transform: scale(1.1);
 }
 
-/* Secure Badge */
+/* ==================== SUBMIT BUTTON ==================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--white);
+    border: none;
+    padding: 16px 32px;
+    border-radius: var(--border-radius-sm);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(45, 134, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(45, 134, 89, 0.4);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-primary i {
+    font-size: 1.2rem;
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+}
+
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+/* ==================== SECURE BADGE ==================== */
 .secure-badge {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     padding: var(--spacing-md);
-    background: var(--light-gray);
+    background: linear-gradient(135deg, #f5f5f5, #e9e9e9);
     border-radius: var(--border-radius-sm);
     color: var(--gray);
     font-size: 0.95rem;
     margin-top: var(--spacing-md);
+    border: 1px solid #e0e0e0;
 }
 
 .secure-badge i {
     color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* ==================== FORM MESSAGES ==================== */
+.form-message {
+    display: none;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-top: var(--spacing-md);
+    text-align: center;
+    font-weight: 600;
+    animation: slideDown 0.3s ease;
+}
+
+.form-message.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.form-message.success {
+    background: rgba(45, 134, 89, 0.1);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.form-message.success i {
+    font-size: 1.5rem;
+}
+
+.form-message.error {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+}
+
+.form-message.error i {
+    font-size: 1.5rem;
+}
+
+/* ==================== SELECT DROPDOWN ==================== */
+.form-control select,
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d8659' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
 }
 
 /* ==================== DONATION SUMMARY ==================== */
@@ -382,7 +662,7 @@
     margin: 0;
 }
 
-/* Impact Card */
+/* ==================== IMPACT CARD ==================== */
 .impact-card {
     text-align: center;
 }
@@ -654,60 +934,6 @@
     color: var(--gray);
 }
 
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 1024px) {
-    .donation-container {
-        grid-template-columns: 1fr;
-    }
-
-    .donation-summary {
-        position: static;
-        order: -1;
-    }
-}
-
-@media (max-width: 768px) {
-    .donate-hero {
-        min-height: 500px;
-        background-attachment: scroll;
-    }
-
-    .hero-stats {
-        gap: var(--spacing-md);
-    }
-
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .amount-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .payment-methods {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-    }
-
-    .hero-cta .btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .amount-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .donation-form-card {
-        padding: var(--spacing-lg);
-    }
-}
-/* ==================== END OF DONATE PAGE STYLES ==================== */
-
 /* ==================== MODAL BASE STYLES ==================== */
 .modal {
     display: none;
@@ -792,7 +1018,6 @@
     transform: rotate(90deg);
 }
 
-/* ==================== MODAL HEADER ==================== */
 .modal-header {
     text-align: center;
     margin-bottom: var(--spacing-xl);
@@ -833,7 +1058,6 @@
     margin-top: var(--spacing-lg);
 }
 
-/* ==================== ADOPTION CARD ==================== */
 .adoption-card {
     background: var(--white);
     border-radius: var(--border-radius-lg);
@@ -849,7 +1073,6 @@
     border-color: var(--primary-color);
 }
 
-/* ==================== ADOPTION IMAGE ==================== */
 .adoption-image {
     position: relative;
     height: 200px;
@@ -884,7 +1107,6 @@
     background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
 }
 
-/* ==================== ADOPTION CONTENT ==================== */
 .adoption-content {
     padding: var(--spacing-lg);
 }
@@ -902,7 +1124,6 @@
     margin-bottom: var(--spacing-md);
 }
 
-/* ==================== ADOPTION BENEFITS ==================== */
 .adoption-benefits {
     list-style: none;
     margin-bottom: var(--spacing-lg);
@@ -924,7 +1145,6 @@
     flex-shrink: 0;
 }
 
-/* ==================== ADOPTION FORM MODAL ==================== */
 .adoption-amount {
     font-size: 2rem;
     font-weight: 800;
@@ -995,57 +1215,104 @@
     text-decoration: underline;
 }
 
-/* ==================== FORM MESSAGE ==================== */
-.form-message {
-    display: none;
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-sm);
-    margin-top: var(--spacing-md);
-    text-align: center;
+/* ==================== FOCUS STATES ==================== */
+.form-control:focus,
+.type-btn:focus,
+.amount-btn:focus,
+.payment-card:focus-within {
+    outline: 3px solid rgba(45, 134, 89, 0.3);
+    outline-offset: 2px;
 }
 
-.form-message.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+/* ==================== LOADING STATE ==================== */
+.btn-primary .fa-spinner {
+    animation: spin 1s linear infinite;
 }
 
-.form-message.success {
-    background: rgba(45, 134, 89, 0.1);
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.form-message.success i {
-    font-size: 1.5rem;
+/* ==================== SCROLLBAR STYLING ==================== */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
 }
 
-.form-message.error {
-    background: rgba(255, 107, 107, 0.1);
-    color: #ff6b6b;
-    border: 2px solid #ff6b6b;
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
 }
 
-/* ==================== BUTTON STYLES ==================== */
-.btn-block {
-    width: 100%;
-    display: block;
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
 }
 
-.btn-large {
-    padding: 14px 28px;
-    font-size: 1.1rem;
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
+    .donation-container {
+        grid-template-columns: 1fr;
+    }
+
+    .donation-summary {
+        position: static;
+        order: -1;
+    }
+
     .adoption-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .donate-hero {
+        min-height: 500px;
+        background-attachment: scroll;
+    }
+
+    .hero-stats {
+        gap: var(--spacing-md);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .amount-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-card {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .payment-card i {
+        font-size: 1.8rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
     .modal-content {
         width: 95%;
         padding: var(--spacing-lg);
@@ -1074,6 +1341,35 @@
 }
 
 @media (max-width: 480px) {
+    .amount-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .donation-form-card {
+        padding: var(--spacing-lg);
+    }
+
+    .donation-type-toggle {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .type-btn {
+        padding: 12px 20px;
+    }
+
+    .form-section-title {
+        font-size: 1.1rem;
+    }
+
+    .amount-btn {
+        min-height: 85px;
+    }
+
+    .amount-btn .amount {
+        font-size: 1.4rem;
+    }
+
     .modal-content {
         border-radius: 0;
         width: 100%;
@@ -1087,21 +1383,24 @@
     }
 }
 
-/* ==================== SCROLLBAR STYLING ==================== */
-.modal-content::-webkit-scrollbar {
-    width: 8px;
+/* Textarea styling */
+textarea.form-control {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
 }
 
-.modal-content::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+textarea.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(45, 134, 89, 0.1);
 }
 
-.modal-content::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-}
 
-.modal-content::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
-}
+
+/* ==================== END OF DONATE PAGE STYLES ==================== */

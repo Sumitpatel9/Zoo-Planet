@@ -1,6 +1,12 @@
 // ==================== CONFIGURATION ====================
-const LOGIN_API_URL = 'http://localhost:5000/api/auth/login';
-const SIGNUP_API_URL = 'http://localhost:5000/api/auth/signup';
+const API_BASE = window.location.hostname === 'localhost'
+    ? 'http://localhost:4000'
+    : 'https://zoo-planet-backend.onrender.com';
+
+// const API_BASE = 'http://localhost:4000'; // For development
+
+const LOGIN_API_URL = `${API_BASE}/api/auth/login`;
+const SIGNUP_API_URL = `${API_BASE}/api/auth/signup`;
 // For production: Update URLs accordingly
 
 // ==================== TAB SWITCHING ====================
@@ -145,7 +151,7 @@ if (loginForm) {
                 
                 // Redirect after 2 seconds
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'dashboard.html';
                 }, 2000);
                 
             } else {
@@ -249,7 +255,7 @@ if (signupForm) {
                 
                 // Redirect after 2 seconds
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'dashboard.html';
                 }, 2000);
                 
             } else {
